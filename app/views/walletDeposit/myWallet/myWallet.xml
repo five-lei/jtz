@@ -1,0 +1,180 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://fh_ic" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center" style="font-size: 16;"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="我的钱包"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" tap="balanceDetailBtnTap">
+                        <Label text="余额明细" class="bar_label" style="font-size: 16;"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="我的钱包" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem text="余额明细" ios.position="right" tap="balanceDetailBtnTap" class="action-cancel"/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <DockLayout width="100%" height="100%" style.backgroundColor="rgb(240,240,240)" stretchLastChild="false"
+                orientation="vertical">
+
+        <GridLayout dock="top" height="92%">
+            <lv:RadListView items="{{depositeInfoList}}" itemLoading="{{onItemLoading}}">
+                <!--listView的布局-->
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                </lv:RadListView.listViewLayout>
+
+                <!--listView的内容-->
+                <lv:RadListView.itemTemplate>
+                    <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                    <StackLayout orientation="vertical">
+                        <StackLayout id="topSection" visibility="collapse" orientation="vertical">
+                            <StackLayout id="topAccoundSection" orientation="vertical" android:verticalAlignment="top" ios:class="firstContent"
+                                         android:class="ADfirstContent">
+                                <Label class="userTypeLabel" text="{{state ? '月结用户' : '普通用户'}}" horizontalAlignment="left"
+                                       ios:verticalAlignment="top"></Label>
+                                <label text="{{money}}" horizontalAlignment="center" ios:verticalAlignment="center"
+                                       ios:class="numberLabel" android:class="ADnumberLabel"></label>
+                                <label text="账户余额(元)" horizontalAlignment="center" ios:class="accountLabel"
+                                       ios:verticalAlignment="center"></label>
+                            </StackLayout>
+
+                            <Android>
+                                <StackLayout orientation="vertical" verticalAlignment="center">
+                                    <GridLayout columns="*,*,*" rows="auto" class="items-view"
+                                                tap="jumpBindingCardPage">
+                                        <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                                     android:horizontalAlignment="left" row="0" col="0">
+                                            <Image src="res://yhk" class="item-image"/>
+                                            <Label text="银行卡" verticalAlignment="center" style="margin-left:10"/>
+                                        </StackLayout>
+                                        <Image src="res://jr" class="right-image" row="0" col="2"
+                                               horizontalAlignment="right"/>
+                                    </GridLayout>
+
+                                    <StackLayout class="lines">
+                                    </StackLayout>
+
+                                    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="{{jumpDepositeRecord}}">
+                                        <StackLayout orientation="horizontal" row="0" col="0">
+                                            <Image src="res://txjl" class="item-image"/>
+                                            <Label text="提现记录" verticalAlignment="center" style="margin-left:10"/>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout class="lines">
+                                    </StackLayout>
+
+                                    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="jumpSetPayment">
+                                        <StackLayout orientation="horizontal" row="0" col="0">
+                                            <Image src="res://zfsz" class="item-image"/>
+                                            <Label text="支付设置" verticalAlignment="center" style="margin-left:10"/>
+                                        </StackLayout>
+                                        <Image src="res://jr" class="right-image" row="0" col="2"
+                                               horizontalAlignment="right"/>
+                                    </GridLayout>
+
+                                </StackLayout>
+
+                            </Android>
+                            <ios>
+                                <StackLayout orientation="vertical" verticalAlignment="center" class="secondContent">
+                                    <GridLayout rows="45" columns="auto,*,*" tap="jumpBindingCardPage">
+                                        <Image src="res://drawable-hdpi/yhk@2x" row="0" col="0" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="left" class="leftIcon"></Image>
+                                        <label text="银行卡" row="0" col="1" class="centerShow"></label>
+                                        <Image src="res://drawable-hdpi/btn_more" row="0" col="2" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="right" class="rightIcon"></Image>
+                                    </GridLayout>
+                                    <StackLayout class="line">
+                                    </StackLayout>
+
+                                    <GridLayout rows="45" columns="auto,*,*" tap="{{jumpDepositeRecord}}">
+                                        <Image src="res://drawable-hdpi/txjl@2x" row="0" col="0" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="left" class="leftIcon"></Image>
+                                        <label text="提现记录" row="0" col="1" class="centerShow"></label>
+                                        <Image src="res://drawable-hdpi/btn_more" row="0" col="2" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="right" class="rightIcon"></Image>
+                                    </GridLayout>
+                                    <StackLayout class="line">
+                                    </StackLayout>
+
+                                    <GridLayout rows="45" columns="auto,*,*" tap="jumpSetPayment">
+                                        <Image src="res://drawable-hdpi/zfsz@2x" row="0" col="0" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="left" class="leftIcon"></Image>
+                                        <label text="支付设置" row="0" col="1" class="centerShow"></label>
+                                        <Image src="res://drawable-hdpi/btn_more" row="0" col="2" stretch="none"
+                                               verticalAlignment="center"
+                                               horizontalAlignment="right" class="rightIcon"></Image>
+                                    </GridLayout>
+                                    <StackLayout class="line">
+                                    </StackLayout>
+                                </StackLayout>
+                            </ios>
+                            <StackLayout class="seperateLine"></StackLayout>
+                        </StackLayout>
+                        <StackLayout orientation="vertical" verticalAlignment="center" ios:class="thirdContent"
+                                     android:class="ADthirdContent">
+                            <GridLayout rows="30" columns="auto,auto,*" ios:class="third-depositeNum"
+                                        android:class="ADthird-depositeNum">
+                                <label text="{{state ? wtNo : '提现单号: ' + wtNo}}" row="0" col="0" ios:class="depositeNumber"
+                                       android:class="ADdepositeNumber" verticalAlignment="center"></label>
+                                <label text="{{withdrawTime}}" row="0" col="1" class="depositeDate"
+                                       verticalAlignment="center"></label>
+                                <label text="{{withdrawState}}" row="0" col="2" horizontalAlignment="right"
+                                       ios:class="depositeRemind"
+                                       android:class="ADdepositeRemind" verticalAlignment="center"></label>
+                            </GridLayout>
+
+                            <label text="一智通供应链管理有限公司" ios:class="third-company"
+                                   android:class="ADthird-company"></label>
+
+                            <label text="{{'¥ '+ withdrawMoney}}" ios:class="third-money"
+                                   android:class="ADthird-money"></label>
+
+                            <GridLayout rows="30" columns="auto,auto" ios:class="third-detail"
+                                        android:class="ADthird-detail">
+                                <label text="{{'已付: ¥' + paidMoney}}" row="0" col="0" class="paid"></label>
+                                <label text="{{'未付: ¥' + noPiadMoney}}" row="0" col="1"></label>
+                            </GridLayout>
+
+                            <StackLayout class="line_one"></StackLayout>
+                            <StackLayout wtNo="{{ wtNo }}" orderInfo="{{month_wtNo}}" state="{{ state }}" class="fourth-check" verticalAlignment="center" tap="jumpDepositeCheckDetail">
+                                <label text="查看详情" horizontalAlignment="center"></label>
+                            </StackLayout>
+                            <StackLayout class="line_two"></StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+
+        </GridLayout>
+
+        <StackLayout class="fifth-apply" verticalAlignment="center" dock="bottom" tap="{{depositeApplyClick}}"
+                     height="8%">
+            <label text="申请提现" horizontalAlignment="center"></label>
+        </StackLayout>
+
+    </DockLayout>
+
+</Page>

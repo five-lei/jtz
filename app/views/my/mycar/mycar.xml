@@ -1,0 +1,75 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      xmlns:f="nativescript-fresco/nativescript-fresco"
+      loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh_ico" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="我的车辆"/>
+                    </StackLayout>
+
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="我的车辆" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+<StackLayout orientation="vertical" class="mainview">
+
+<StackLayout orientation="vertical"   class="list_page">  
+<lv:RadListView id="list-view" items="{{ carList }}" pullToRefresh="true" pullToRefreshInitiated="pullToRefreshInitiated" selectionBehavior="Press" itemSelected="{{itemSelected}}">
+        <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout itemHeight="100" />
+        </lv:RadListView.listViewLayout>
+        <lv:RadListView.itemTemplate >
+
+             <StackLayout  orientation="vertical" style="padding-left:5; padding-right:5; padding-top:10;" backgroundColor="#eeeeee" >
+             <GridLayout columns="*,*,*,*,*" rows="auto,auto"  class="items-view" >
+                <Image src="res://fanhuo_im" class="item-image" rowSpan="2" col="0"  horizontalAlignment="left"/> 
+                <StackLayout orientation="horizontal" row="0" colSpan="3" col="1"
+                 verticalAlignment="center">
+                    <Label text="{{ car_type }}"  /> 
+                    <Label text="{{ car_number }}"  class="car-name" /> 
+               </StackLayout>
+  
+               <StackLayout orientation="horizontal" row="1" colSpan="3" col="1" verticalAlignment="center">
+                    <Label text="{{ car_length }}" class="car-size" /> 
+                    <Label text="{{ car_capacity }}"  class="car-names" /> 
+                    <Label text="{{ car_name }}"  class="car-names" /> 
+               </StackLayout>
+     
+               <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="5" >
+                <Label id="lab1" text="待审核"  class="hint-label" visibility="{{ car_set ? 'visible' : 'collapsed' }}"/>
+                <Image src="res://rz"  visibility="{{ car_set ? 'collapsed' : 'visible' }}"/> 
+                
+              </StackLayout>
+            </GridLayout>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+</lv:RadListView>
+
+ </StackLayout>   
+
+ 
+         
+ <StackLayout orientation="vertical"  verticalAlignment="bottom" class="btn_page">  
+    <button text="添加车辆" class= "grid_label_select" tap="next_btn" />
+</StackLayout>
+</StackLayout>
+</Page>

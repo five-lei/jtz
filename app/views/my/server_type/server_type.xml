@@ -1,0 +1,136 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar >
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://fh_ico" class="bar-image"/>
+                        <Label text="返回" style="color:white;font-size: 16px; margin-top:1px"  />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" >
+                        <Label text="" style="color:black;font-size: 18px; "/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" >
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+
+    </Page.actionBar>
+    <GridLayout columns="*" rows="100,40,*,50" style="background-color: white;">
+        <StackLayout style="background-color: rgb(255,138,37);" row="0" col="0">
+            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                <Label text="花" color="white" class="information_text" verticalAlignment="center"/>
+                <Label text="10" color="white" style="font-size: 40;" verticalAlignment="center"/>
+                <Label text="秒" color="white" class="information_text" verticalAlignment="center"/>
+            </StackLayout>
+            <Label text="让我们更了解你们" color="white" class="information_text1"/>
+        </StackLayout>
+        <Label text="选出你所选的服务类型" color="sandybrown" class="information_text2" row="1" col="0"/>
+
+        <!--<StackLayout orientation="vertical" row="2" col="0">
+
+            <GridLayout columns="*,*,*,*" rows="*,*" class="information_grid"  id="Grid_style">
+                <StackLayout orientation="vertical" row="0" col="0" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" tap="Grid_style"
+                             style="background-color: #ff8b00;margin-left:10;height:65;color:white">
+                    <StackLayout width="12" height="12" verticalAlignment="top" horizontalAlignment="right">
+                        <Image src="res://sc2x"/>
+                    </StackLayout>
+                    <Label text="地板" class="information_type"/>
+
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout row="0" col="0">
+                            <Label text="安" class="type-btn"/>
+                        </StackLayout>
+                        <StackLayout row="0" col="1">
+                            <Label text="配" class="type-btn"/>
+                        </StackLayout>
+                        <StackLayout borderRadius="1" row="0" col="2">
+                            <Label text="返" class="type-btn"/>
+                        </StackLayout>
+
+                    </GridLayout>
+
+                </StackLayout>
+                <StackLayout orientation="vertical" borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0"
+                             col="1" style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="灯具" class="information_type"/>
+
+
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="2"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="集成吊顶" class="information_type"/>
+
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="3"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="门窗" class="information_type"/>
+
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="1" col="0"
+                             style="margin-left:10; margin-top:10;height:65" verticalAlignment="center">
+                    <Label text="涂料" class="information_type"/>
+
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="1" col="1"
+                             style="margin-left:10;margin-top:10;height:65" verticalAlignment="center">
+                    <Label text="卫浴" class="information_type"/>
+
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="1" col="2"
+                             style="margin-left:10;margin-top:10;height:65" verticalAlignment="center">
+                    <Label text="民用家具" class="information_type"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>-->
+
+        <StackLayout orientation="vertical" row="2" col="0" style="margin-top:20">
+                <WrapLayout orientation="horizontal">
+                    <Repeater id="list-view" items="{{ serviceList }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="vertical" borderRadius="1" borderWidth="1"
+                                         borderColor="sandybrown" tap="{{onSelected}}"
+                                         class="{{ selectCondition?'typeSelected':'typeNotSelected' }}">
+                                <!--tap="Grid_style"-->
+
+                                <!--style="background-color: #ff8b00;margin-left:12;margin-top:10;height:65;width:80;color:white"-->
+                                <StackLayout width="12" height="12" verticalAlignment="top" horizontalAlignment="right" tap="{{notSelected}}">
+                                    <Image src="res://sc2x"/>
+                                </StackLayout>
+                                <Label text="{{serviceName}}" class="information_type"/>
+                                <GridLayout columns="*,*,*" rows="*">
+                                    <StackLayout row="0" col="0">
+                                        <Label text="{{serviceSetup}}" class="{{selectCondition?'operationSelected':'operationNotSelected'}}"/>
+                                    </StackLayout>
+                                    <StackLayout row="0" col="1">
+                                        <Label text="{{serviceAssign}}" class="{{selectCondition?'operationSelected':'operationNotSelected'}}"/>
+                                    </StackLayout>
+                                    <!--<StackLayout borderRadius="1" row="0" col="2">
+                                        <Label text="{{serviceReturn}}" class="{{selectCondition?'operationSelected':'operationNotSelected'}}"/>
+                                    </StackLayout>-->
+                                </GridLayout>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </WrapLayout>
+        </StackLayout>
+        <Button text="确定" tap="next_btn" class="information_bt" row="3" col="0"/>
+    </GridLayout>
+
+</Page>

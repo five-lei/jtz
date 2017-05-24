@@ -1,0 +1,137 @@
+﻿.iosActionBar{
+    background-color: white;
+    color: black;
+}
+.rightLabel{
+    color: #FB8901;
+}
+.page{
+    background-color: rgb(240,240,240);
+}
+
+Page{
+    background-color: white;
+}
+
+TextField{
+    width:60%;
+}
+
+.content{
+    background-color: white;
+    margin-top: 12px;
+}
+
+/*两个字的格式设置*/
+.select label{
+    color: #333333;
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+.ADselect label{
+    color: #333333;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.select TextField{
+    font-size: 16px;
+    color: #333333;
+    margin-left: 45px;
+    margin-top: 2px;
+}
+
+/*三个字的格式设置*/
+.name-phone label{
+    margin-left:8px;
+    color: #333333;
+    font-size: 18px;
+}
+.name-phone TextField{
+    font-size: 16px;
+    color: #333333;
+    margin-top: 2px;
+    margin-left: 30px;
+}
+
+/*分隔线*/
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);;
+}
+
+.page button{
+    width:95%;
+    height: 50px;
+    background-color: rgb(255,138,37);
+    color: white;
+    margin-top:30px;
+    border-radius: 6px;
+    font-size: 18px;
+}
+.Label_back{
+    color: orange;
+}
+.filter-option-item {
+    color: #151F2F;
+    height: 50px;
+    vertical-align: center;
+    background-color: white;
+}
+.seperateLine{
+    height: 1px;
+    width: 100%;
+    background-color: rgb(240,240,240);
+}
+.filter-option-stack{
+    background-color: rgb(240,240,240);
+}
+
+.selectLine{
+    background-color: white;
+    margin-top: 1px;
+    height: 45px;
+    width:100%;
+}
+
+.leftLabel{
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.ADleftLabel{
+    margin-left: 10px;
+    margin-right: 20px;
+    color: black;
+    font-size: 16px
+}
+.ADleftLabels{
+    margin-left: 10px;
+    margin-right: 70px;
+    color: black;
+    font-size: 16px
+}
+.centerContent .phoneLabel{
+    margin-right:55px;
+}
+
+.bottomContent button{
+    width:95%;
+    height: 45px;
+    margin-top:30px;
+    background-color: rgb(255,138,37);
+    color: white;
+    font-size: 18px ;
+    border-radius: 6px;
+}
+.cancelLine{
+    height: 6px;
+    width: 100%;
+    background-color: rgb(240,240,240);
+}
+
+.bankNameLabel{
+    width: 70%;
+    margin-left: 12px;
+}

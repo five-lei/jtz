@@ -1,0 +1,122 @@
+<examples:MoreBindingSelectedPage loaded="loaded"
+                                  xmlns="http://schemas.nativescript.org/tns.xsd"
+                                  xmlns:examples="views/walletDeposit/addBankCard/filter-base-page"
+                                  navigatingTo="onNavigatingTo">
+    <Page.actionBar >
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="color:rgb(255,138,37);font-size: 16px; margin-top:1px" />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label id="actionBar" text="修改银行卡" style="color:black;font-size: 18px; "/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" id="moreSelectedMenuBtn">
+                        <Label text="更多" class="rightLabel"></Label>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar id="actionBar" title="修改银行卡" class="iosActionBar">
+                <!--<ActionItem text="返回" ios.position="left" tap="onNavBtnTap"/>-->
+                <NavigationButton text="" />
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                     verticalAlignment="center" id="moreSelectedMenuBtn">
+                            <Label text="更多" class="rightLabel"></Label>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+
+            </ActionBar>
+
+        </ios>
+
+    </Page.actionBar>
+
+
+    <StackLayout orientation="vertical" class="page" >
+
+        <StackLayout class="lines"></StackLayout>
+        <!-- 银行卡 -->
+        <StackLayout orientation="vertical" id="bankPage" >
+
+            <StackLayout orientation="vertical" class="content">
+
+                <!--<GridLayout rows="45" columns="auto,*,auto" tap="addBankCardTap" ios:class="select" android:class="ADselect">-->
+                    <!--<label text="银行:" row="0" col="0" horizontalAlignment="left" verticalAlignment="center" ></label>-->
+                    <!--<TextField  text="{{bankName}}" id="bankName" hint="请选择银行" android:isEnabled='false' ios:editable='False' row="0" col="1" horizontalAlignment="left"-->
+                               <!--android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left;margin-left:40px"></TextField>-->
+                    <!--<Image src="res://btn_more" row="0" col="2" stretch="none" verticalAlignment="center" horizontalAlignment="right"></Image>-->
+                <!--</GridLayout>-->
+                <GridLayout rows="45" columns="auto,*,auto" tap="addBankCardTap" class="selectLine">
+                    <label text="银    行" row="0" col="0" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                    <label id="bankName" text="{{bankName}}" row="0" col="1" verticalAlignment="center" horizontalAlignment="left" class="bankNameLabel"></label>
+                    <Image src="res://btn_more"  android:style="height: 12" row="0" col="2" ios:stretch="none" verticalAlignment="center" horizontalAlignment="right"></Image>
+                </GridLayout>
+                <StackLayout ios:class="line" android:class="lines"></StackLayout>
+
+                <GridLayout rows="45" columns="auto,*" ios:class="select" android:class="ADselect">
+                    <label text="支行:" row="0" col="0" horizontalAlignment="left" verticalAlignment="center"></label>
+                    <TextField  text="{{subBranchName}}" id="subBranchName" hint="请输入支行"  row="0" col="1" horizontalAlignment="left" autocorrect="false"
+                               android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left;margin-left:40px"></TextField>
+                </GridLayout>
+                <StackLayout ios:class="line" android:class="lines"></StackLayout>
+
+                <StackLayout orientation="horizontal" minHeight="45" ios:class="name-phone" android:class="ADselect">
+                    <label text="持卡人:" horizontalAlignment="left" verticalAlignment="center"></label>
+                    <TextField  text="{{accountName}}" id="accountName" hint="请输入姓名"  android:editable='True' returnKeyType="next" autocorrect="false"
+                               android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left;margin-left:25px"></TextField>
+                </StackLayout>
+                <StackLayout ios:class="line" android:class="lines"></StackLayout>
+
+                <StackLayout orientation="horizontal" minHeight="45" ios:class="select" android:class="ADselect">
+                    <label text="卡号:" horizontalAlignment="left"  verticalAlignment="center"></label>
+                    <TextField  text="{{bankAccount}}" id="bankAccount" hint="请输入卡号" keyboardType="phone" returnKeyType="next" autocorrect="false"
+                               android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left;margin-left:40px"></TextField>
+                </StackLayout>
+                <StackLayout ios:class="line" android:class="lines">
+                </StackLayout>
+            </StackLayout>
+
+            <button text="确定" tap="bankCardPage"></button>
+        </StackLayout>
+
+        <!-- 支付宝-->
+        <StackLayout orientation="vertical" class="content" id="alipayPage" visibility="collapse">
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine" verticalAlignment="center">
+                <label text="支付宝账号:" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <TextField id="bankAccount2" text="{{alipayAccount}}" hint="请输入支付宝账号" class="centerShow" horizontalAlignment="left" keyboardType="email" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left" />
+            </StackLayout>
+
+            <StackLayout ios:class="line" android:class="lines">
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine">
+                <label text="姓名:" horizontalAlignment="left" ios:class="leftLabel phoneLabel" android:class="ADleftLabels" verticalAlignment="center"></label>
+                <TextField id="accountName2" text="{{alipayName}}" hint="请输入姓名" class="centerShow" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left"/>
+            </StackLayout>
+
+            <StackLayout ios:class="line" android:class="lines">
+            </StackLayout>
+
+            <StackLayout  class="bottomContent">
+                <button text="确定" tap="alipayBtn" horizontalAlignment="center"></button>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+
+
+
+</examples:MoreBindingSelectedPage>

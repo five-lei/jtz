@@ -1,0 +1,103 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:MDL="nativescript-materialdropdownlist"
+      loaded="pageLoaded"  id="pickerTarget">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="action-bar-view">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="center" verticalAlignment="center">
+                                <Image src="res://fh" class="bar-image-l" tap="onBackTap"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <!--Dropdown List widget-->
+                                <StackLayout class="dropdown-list" horizontalAlignment="center" verticalAlignment="center" >
+                                    <MDL:MaterialDropdownList id="searchTaskType" horizontalAlignment="center" verticalAlignment="center"
+                                                              itemsSeparatorColor="transparent" itemsRowHeight="30"
+                                                              items="{{ typeOptions }}"  targetViewId="pickerTarget"
+                                                              indexChange="onItemIndexChange"
+                                                              selectedIndex="{{ selectedTypeIndex }}">
+                                        <MDL:MaterialDropdownList.itemsTemplate>
+                                            <label class="list-label" text="{{ $value }}" />
+                                        </MDL:MaterialDropdownList.itemsTemplate>
+                                    </MDL:MaterialDropdownList>
+                                </StackLayout>
+                                <SearchBar hint="运单号/发货人姓名/手机号" class="ad_searchBar"  id="searchBar"></SearchBar>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="2">
+                                <Label text="搜索" class="search-btn" row="0" col="1" horizontalAlignment="center"
+                                       verticalAlignment="center" tap="tapSearchHandler"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*" rows="auto" verticalAlignment="top">
+                                <!--Dropdown List widget-->
+                                <StackLayout row="0" col="0" class="ios_dropdown-list" horizontalAlignment="left" verticalAlignment="center" >
+                                    <MDL:MaterialDropdownList id="searchTaskType" horizontalAlignment="center" verticalAlignment="center"
+                                                              itemsSeparatorColor="transparent" itemsRowHeight="36"
+                                                              items="{{ typeOptions }}"  targetViewId="pickerTarget"
+                                                              indexChange="onItemIndexChange"
+                                                              selectedIndex="{{ selectedTypeIndex }}">
+                                        <MDL:MaterialDropdownList.itemsTemplate>
+                                            <label class="list-label" text="{{ $value }}" />
+                                        </MDL:MaterialDropdownList.itemsTemplate>
+                                    </MDL:MaterialDropdownList>
+                                </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="1">
+                                <SearchBar hint="运单号/发货人姓名/手机号" textFieldBackgroundColor="rgb(234,234,234)" class="ios_searchBar" verticalAlignment="bottom" horizontalAlignment="right" id="searchBar"></SearchBar>
+                                <Label text="搜索" class="search-btn"  horizontalAlignment="right"
+                                       verticalAlignment="center" tap="tapSearchHandler"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                       <!-- <StackLayout orientation="horizontal">
+                            <SearchBar hint="运单号/发货人姓名/手机号" textFieldBackgroundColor="rgb(234,234,234)"
+                                       class="ios_searchBar" id="searchBar" horizontalAlignment="right"></SearchBar>
+                            <Label text="搜索" class="ios_search_btn" horizontalAlignment="right"
+                                   verticalAlignment="center" tap="tapSearchHandler"></Label>
+                        </StackLayout>-->
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <ScrollView>
+        <StackLayout class="page">
+            <StackLayout class="content first-content">
+                <GridLayout rows="*" columns="*,*">
+                    <Label text="最近搜索" class="color9" row="0" col="0" horizontalAlignment="left"
+                           verticalAlignment="center"></Label>
+                    <Image src="res://lj2x" row="0" col="1" horizontalAlignment="right" verticalAlignment="center"
+                           class="img17" tap="tapDelSearchHostory"></Image>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="content second-content">
+                <Repeater items="{{ taskSearchHistoryList }}">
+                    <Repeater.itemsLayout>
+                        <FlexboxLayout flexWrap="wrap" flexDirection="row"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <Label text="{{item}}" class="tag" verticalAlignment="center" tap="hisItemSearchTap"></Label>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+            <!--<GridLayout class="content third-content">;
+                <ListPicker  items="{{ typeOptions }}" width="40"></ListPicker>
+            </GridLayout>-->
+        </StackLayout>
+    </ScrollView>
+</Page>

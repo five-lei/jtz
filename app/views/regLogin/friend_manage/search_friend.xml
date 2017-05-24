@@ -1,0 +1,53 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo" class="page"  loaded="loaded" style="background-color: #eeeeee;" >
+    <Page.actionBar>
+        <ActionBar title="" style="background-color: #eeeeee;">
+            <GridLayout    columns="30,*,60" rows="*"  height="52" style="background-color: #eeeeee;">
+                <StackLayout orientation="horizontal" col="0"  row="0" verticalAlignment="center" >
+                    <Image src="res://fh" horizontalAlignment="center" style="width:25;height:25" tap="returnToFriendsList"/>
+                </StackLayout>
+
+                <StackLayout  col="1"  row="0" orientation="horizontal">
+                    <GridLayout  columns="auto,*" rows="*" style="background-color: white;"   borderRadius="5" borderWidth="1" borderColor="white" class="search_text">
+                        <Image src="res://ico_search_1" col="0" row="0" stretch="none" class="search_image"  verticalAlignment="center" horizontalAlignment="right" />
+                        <TextField row="0" col="1" hint="输入手机号\姓名" id="nameOrMobile" verticalAlignment="center" class="code_input"/>
+                    </GridLayout>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" col="2"  row="0" class="search_bt"   borderRadius="5" borderWidth="1"  borderColor="white" >
+                    <Label   text="搜索"   verticalAlignment="center"  tap="Search_Result" />
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+<StackLayout orientation="vertical">
+<GridLayout >
+
+    <lv:RadListView id="list-view" items="{{ groceryList }}" pullToRefresh="true" pullToRefreshInitiated="pullToRefreshInitiated" >
+        <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout android:itemHeight="100" scrollDirection="Vertical"/>
+        </lv:RadListView.listViewLayout>
+        <lv:RadListView.itemTemplate >
+            <StackLayout orientation="vertical" >
+                <StackLayout orientation="horizontal" tap="item_intent" style="background-color: white;" width="375">
+                    <Image src="{{image}}" horizontalAlignment="left" verticalAlignment="center" class="image_item"/>
+                    <GridLayout columns="*" rows="*,*" horizontalAlignment="right">
+                        <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center" class="item"
+                               col="0" row="0"/>
+                        <Label text="{{phone}}" horizontalAlignment="left" verticalAlignment="center"
+                               class="phone_item" col="0" row="1"/>
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout orientation="vertical" class="menu-line"></StackLayout>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+    </lv:RadListView>
+    </GridLayout>
+</StackLayout>
+</Page>

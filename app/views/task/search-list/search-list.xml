@@ -1,0 +1,636 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      xmlns:MDL="nativescript-materialdropdownlist"
+      id="pickerTarget"
+      navigatingTo="pageNavigatingTo"
+      loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="action-bar-view">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="center" verticalAlignment="center">
+                                <Image src="res://fh" class="bar-image-l" tap="onBackTap"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <!--Dropdown List widget-->
+                                <StackLayout class="dropdown-list" horizontalAlignment="center" verticalAlignment="center" >
+                                    <MDL:MaterialDropdownList id="searchTaskType" horizontalAlignment="center" verticalAlignment="center"
+                                                              itemsSeparatorColor="transparent" itemsRowHeight="30"
+                                                              items="{{ typeOptions }}"  targetViewId="pickerTarget"
+                                                              indexChange="onItemIndexChange"
+                                                              selectedIndex="{{ selectedTypeIndex }}">
+                                        <MDL:MaterialDropdownList.itemsTemplate>
+                                            <label class="list-label" text="{{ $value }}" />
+                                        </MDL:MaterialDropdownList.itemsTemplate>
+                                    </MDL:MaterialDropdownList>
+                                </StackLayout>
+                                <SearchBar hint="运单号/发货人姓名/手机号" class="ad_searchBar"  id="searchBar"></SearchBar>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="2">
+                                <Label text="搜索" class="search-btn" row="0" col="1" horizontalAlignment="center"
+                                       verticalAlignment="center" tap="tapSearchHandler"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*" rows="auto" verticalAlignment="center">
+                            <!--Dropdown List widget-->
+                            <StackLayout row="0" col="0" class="ios_dropdown-list" horizontalAlignment="left" verticalAlignment="center" >
+                                <MDL:MaterialDropdownList id="searchTaskType" horizontalAlignment="center" verticalAlignment="center"
+                                                          itemsSeparatorColor="transparent" itemsRowHeight="36"
+                                                          items="{{ typeOptions }}"  targetViewId="pickerTarget"
+                                                          indexChange="onItemIndexChange"
+                                                          selectedIndex="{{ selectedTypeIndex }}">
+                                    <MDL:MaterialDropdownList.itemsTemplate>
+                                        <label class="list-label" text="{{ $value }}" />
+                                    </MDL:MaterialDropdownList.itemsTemplate>
+                                </MDL:MaterialDropdownList>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="1">
+                                <SearchBar hint="运单号/发货人姓名/手机号" textFieldBackgroundColor="rgb(234,234,234)" class="ios_searchBar" verticalAlignment="bottom" horizontalAlignment="right" id="searchBar"></SearchBar>
+                                <Label text="搜索" class="search-btn" horizontalAlignment="right"
+                                       verticalAlignment="center" tap="tapSearchHandler"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                        <!--<StackLayout orientation="horizontal">-->
+                            <!--&lt;!&ndash;Dropdown List widget&ndash;&gt;-->
+                            <!--<StackLayout class="dropdown-list" horizontalAlignment="center" verticalAlignment="center" >-->
+                                <!--<MDL:MaterialDropdownList id="searchTaskType" horizontalAlignment="center" verticalAlignment="center"-->
+                                                          <!--itemsSeparatorColor="transparent" itemsRowHeight="30"-->
+                                                          <!--items="{{ typeOptions }}"-->
+                                                          <!--indexChange="onItemIndexChange"-->
+                                                          <!--selectedIndex="{{ selectedTypeIndex }}">-->
+                                    <!--<MDL:MaterialDropdownList.itemsTemplate>-->
+                                        <!--<label class="list-label" text="{{ $value }}" />-->
+                                    <!--</MDL:MaterialDropdownList.itemsTemplate>-->
+                                <!--</MDL:MaterialDropdownList>-->
+                            <!--</StackLayout>-->
+                            <!--<SearchBar hint="运单号/发货人姓名/手机号" textFieldBackgroundColor="rgb(234,234,234)"-->
+                                       <!--class="ios_searchBar" id="searchBar" horizontalAlignment="right"></SearchBar>-->
+                            <!--<Label text="搜索" class="ios_search_btn" horizontalAlignment="right"-->
+                                   <!--verticalAlignment="center" tap="tapSearchHandler"></Label>-->
+                        <!--</StackLayout>-->
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+
+    </Page.actionBar>
+    <StackLayout>
+        <GridLayout rows="auto,auto,*" columns="*" id="data-layout">
+            <ScrollView id="scrollView" orientation="horizontal" ios.showsHorizontalScrollIndicator="false"
+                        loaded="scrollViewLoaded" row="0" col="0">
+                <Repeater items="{{ barTypes }}">
+                    <Repeater.itemsLayout>
+                        <StackLayout orientation="horizontal"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <GridLayout tap="repeaterItemTap" columns="*" rows="*,auto" width="{{searchType!='new-task'?100:50}}"
+                                    class="{{ isSelected ? 'chartItemInRepeaterSelectedStyle' : 'chartItemInRepeaterStyle' }}">
+                            <Label text="{{tabName}}" col="0" row="0" horizontalAlignment="center"
+                                   verticalAlignment="center"></Label>
+                            <GridLayout col="0" row="1"
+                                        class="{{ isSelected ? 'galleryRepeaterItemBottomSelectedBorder' : 'galleryRepeaterItemBottomBorder'}}"/>
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </ScrollView>
+            <StackLayout class="ios_Line" row="1" col="0"></StackLayout>
+            <GridLayout row="2" col="0"  visibility="{{searchType==='new-task'?'visible':'collapse'}}">
+                <lv:RadListView id="newtask_list_view"
+                                items="{{currentTaskList}}"
+                                pullToRefresh="true" row="1"
+                                pullToRefreshInitiated="onPullToRefreshInitiated"
+                                loadMoreDataRequested="onLoadMoreItemsRequested"
+                                itemLoading="onItemLoading">
+                    <!--listView的布局-->
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+                    <!--listView的内容-->
+                    <lv:RadListView.itemTemplate>
+                        <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                        <StackLayout id="{{waybillId}}" class="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                     orientation="vertical">
+                            //订单号信息
+                            <GridLayout rows="40" columns="40,*,20,auto" class="order-info"  type="{{status}}" taskId="{{id}}" tap="tapNewTaskDetail">
+                                <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" class="img22"></Image>
+                                <StackLayout row="0" col="1" orientation="horizontal">
+                                    <Label text="{{orderNumber}}" class="order-number"  verticalAlignment="top"></Label>
+                                    <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" class="img16"
+                                           visibility="{{(qiang==true)?'visible':'collapse'}}"></Image>
+                                    <Image src="res://mao2x" stretch="fill" verticalAlignment="top" class="img16"
+                                           visibility="{{(tmail==true)?'visible':'collapse'}}"></Image>
+                                </StackLayout>
+                                <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right" ios:verticalAlignment="top"
+                                       class="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                       class="company-info"></Label>
+                                <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                       class="order-date"></Label>
+                            </GridLayout>
+                            <Label class="line"/>
+                            //收货地址相关信息
+                            <GridLayout taskType="0" rows="*" columns="*,20,100" class="shipping-info"
+                                        taskId="{{id}}"
+                                        waybillId="{{waybillId}}"
+                                        serviceType="{{serviceType}}"
+                                        orderSourceCode="{{ orderSourceCode }}"
+                                        serviceTypeTmall="{{ serviceTypeTmall }}"
+                                        sourceType="{{ sourceType }}">
+                                <StackLayout taskId="{{id}}" taskType="0" row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                    <button text="受理" tap="tapAcceptTask" class="btn btn-accept"></button>
+                                    <button text="取消" tap="tapCancelTask" class="btn btn-cancel"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{(!forwardTo && status==='waiting_appointment')?'visible':'collapse'}}">
+                                    <!--预约-->
+                                    <button text="预约" tap="tapOrderTask" class="btn btn-accept"></button>
+                                    <button text="提货" tap="tapPickTask" class="btn btn-cancel"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{(!forwardTo && status==='waiting_pickup')?'visible':'collapse'}}">
+                                    <!--提货-->
+                                    <button text="二次预约" tap="tapOrderTask" class="btn btn-accept"></button>
+                                    <button text="提货" tap="tapPickTask" class="btn btn-cancel"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             taskId="{{id}}"
+                                             from="{{status}}"  waybillId="{{ waybillId }}"
+                                             receivePersonName="{{ receivePersonName }}" installFee="{{price}}"
+                                             receivePersonPhone="{{ receivePersonPhone }}"
+                                             visibility="{{(!forwardTo && status==='waiting_sign_for')?'visible':'collapse'}}">
+                                    <!--待签收-->
+                                    <button text="二次预约" tap="tapOrderTask" class="btn btn-accept"></button>
+                                    <button text="签收" tmail="{{tmail}}" tap="tapReceiveTask" class="btn btn-cancel"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{(status==='cancelled' && 1==2)?'visible':'collapse'}}">
+                                    <!--已取消-->
+                                    <Image src="res://yiquxiao" class="img58_50"></Image>
+                                    <button text="删除" tap="tapDeleteTask" class="btn btn-cancel"></button>
+                                </StackLayout>
+                                <StackLayout orientation="vertical" row="1" col="0" class="shipping-address-info">
+                                    <Label  id="receiveAddress" text="{{'收货地址：'+address}}" class="address-info" textWrap="true" tap="tapNavigateByAddr"></Label>
+                                    <StackLayout orientation="horizontal" ios:class="ios_consignee">
+                                        <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center" ></Label>
+                                        <Label id="receivePersonPhone"  text="{{'('+receivePersonPhone+')'}}"
+                                               class="{{status==='cancelled'?'color9':'color-b'}}" textWrap="true" tap="callToDial" ></Label>
+                                    </StackLayout>
+                                    <StackLayout id="{{id+'_toggle'}}">
+                                        <StackLayout orientation="vertical" class="packing-detail">
+                                            <Label text="{{'包装数量:'+packCount+'   包装体积:'+packVolume+'  楼层:'+floor}}"
+                                                   textWrap="true"></Label>
+                                            <Label text="{{'预约计时:'+appointmentTime+'h   受理计时:'+dealTime+'h'}}" textWrap="true"></Label>
+                                        </StackLayout>
+                                        <Label text="{{'服务类型:'+serviceType}}"  textWrap="true" ></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </GridLayout>
+                            <StackLayout id="collapse-widget-down" orientation="vertical" android:tap="toggleCollapsePanel" android:visibility="visible" ios:visibility="collapse">
+                                <Image src="res://xiala2x" class="img20_7" horizontalAlignment="center"></Image>
+                                <Label class="filter-line"></Label>
+                            </StackLayout>
+                            <StackLayout id="collapse-widget-up" orientation="vertical" android:visibility="collapse" ios:visibility="collapse"  android:tap="toggleCollapsePanel">
+                                <Image src="res://sl" class="img20_7" horizontalAlignment="center"></Image>
+                            </StackLayout>
+                            //可隐藏折叠信息
+                            <StackLayout id="collapseInfoPanel" android:visibility="collapse">
+                                <Label id="collapse-widget-line" class="orange-line"></Label>
+                                <DockLayout class="collapse-info">
+                                    <GridLayout dock="top" rows="25" columns="*"
+                                                class="margin-right-10">
+                                        <Label id="pickupAddress" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                               col="0" class="address-info" textWrap="true" tap="tapNavigateByAddr"></Label>
+                                    </GridLayout>
+                                    <GridLayout dock="top" rows="25" columns="*"
+                                                class="margin-right-10">
+                                        <Label id="pickupPhone" text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                               tap="callToDial"></Label>
+                                    </GridLayout>
+                                    <GridLayout dock="top" rows="25" columns="*"
+                                                class="margin-right-10">
+                                        <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" class=""></Label>
+                                    </GridLayout>
+                                </DockLayout>
+                                <Label id="collapse-widget-line2" class="orange-line"></Label>
+                            </StackLayout>
+
+                            //底部操作按钮
+                            <!--待接单、取消-->
+                            <DockLayout  id="{{waybillId+'_operate'}}"  stretchLastChild="true" class="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                <GridLayout dock="left" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                            class="img20" row="2" col="1"></Image>
+                                    <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                            class="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                                <GridLayout dock="right" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                            horizontalAlignment="center" class="img20" row="2" col="2"></Image>
+                                    <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                            class="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                            </DockLayout>
+
+                            <!--预约、提货、待签收-->
+                            <GridLayout id="{{waybillId+'_operate'}}" rows="auto" columns="*,*,*" stretchLastChild="true"  class="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                    <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                            class="img20"    horizontalAlignment="right" ></Image>
+                                    <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  class="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                </StackLayout>
+                                <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                    <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" class="img20"></Image>
+                                    <Label  tap="tapCallHandler" text="电话" class="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                </StackLayout>
+                                <!--<StackLayout  row="10" col="1">
+                                    <Label text="{{'forwardTo'+forwardTo}}" style="color:#333" backgroundColor="red"></Label>
+                                    <Label text="{{'toMe'+toMe}}"></Label>
+                                    <Label text="{{'canForward'+canForward}}"></Label>
+                                </StackLayout>-->
+                                <StackLayout  taskId="{{id}}" row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                    <Image  tap="tapGTHandler" visibility="{{(!forwardTo && !toMe)?'visible':'collapse'}}" src="res://gt2x" class="img20"></Image>
+                                    <Label  tap="tapGTHandler" text="给TA" visibility="{{(!forwardTo && !toMe)?'visible':'collapse'}}"  class="{{(status==='cancelled')?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                    <Label  text="{{'已给'+forwardTo}}" visibility="{{forwardTo?'visible':'collapse'}}"  class="{{(forwardTo || status==='cancelled')?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                    <Label  tap="tapGTHandler" text="{{toMe+'给我'}}" visibility="{{toMe?'visible':'collapse'}}"  class="{{(status==='cancelled')?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                </StackLayout>
+                            </GridLayout>
+                            <!--已签收-->
+                            <StackLayout stretchLastChild="true" class="order-bottom-operate-3" visibility="{{(status==='had_sign_for' && forwardTo)?'visible':'collapse'}}">
+                                <Label text="{{'已给:'+forwardTo}}" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                            </StackLayout>
+                            <ios>
+                                <StackLayout class="ios_listLine"></StackLayout>
+                            </ios>
+                        </StackLayout>
+
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+            <GridLayout row="2" col="0"  visibility="{{searchType==='maintenance-task'?'visible':'collapse'}}">
+                <lv:RadListView id="maintenance_list_view"
+                                items="{{currentTaskList}}"
+                                pullToRefresh="true" row="1"
+                                pullToRefreshInitiated="onPullToRefreshInitiated"
+                                loadMoreDataRequested="onLoadMoreItemsRequested"
+                                itemLoading="onItemLoading">
+                    <!--listView的布局-->
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+                    <!--listView的内容-->
+                    <lv:RadListView.itemTemplate>
+                        <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                        <StackLayout id="{{waybillId}}" cssClass="order-content"
+                                     orientation="vertical">
+                            //订单号信息
+                            <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info" type="{{status}}" taskId="{{ id }}"
+                                        tap="tapTaskDetail">
+                                <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill"
+                                       cssClass="img22"></Image>
+                                <StackLayout row="0" col="1" orientation="horizontal">
+                                    <Label text="{{orderNumber}}" cssClass="order-number"
+                                           verticalAlignment="top"></Label>
+                                </StackLayout>
+                                <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                       ios:verticalAlignment="top"
+                                       cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                <Label text="{{company}}" row="40" col="1" verticalAlignment="bottom"
+                                       cssClass="company-info"></Label>
+                                <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                       cssClass="order-date"></Label>
+                            </GridLayout>
+                            <Label cssClass="line"/>
+                            //收货地址相关信息
+                            <GridLayout rows="*" columns="*,20,100" cssClass="shipping-info" taskId="{{ id }}"
+                                        waybillId="{{waybillId}}">
+                                <StackLayout taskType="aftermarket" row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='maintenance_waiting_list'?'visible':'collapse'}}">
+                                    <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='maintenance_waiting_appointment'?'visible':'collapse'}}">
+                                    <!--预约-->
+                                    <button text="预约" from="{{status}}" tap="tapOrderTask"
+                                            cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='maintenance_waiting_pickup'?'visible':'collapse'}}">
+                                    <!--提货-->
+                                    <button text="提货" tap="tapPickTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" from="{{status}}"  waybillId="{{ waybillId }}" taskId="{{ id }}"
+                                             receivePersonName="{{ receivePersonName }}" installFee="{{price}}"
+                                             receivePersonPhone="{{ receivePersonPhone }}"
+                                             visibility="{{status==='maintenance_waiting_sign_for'?'visible':'collapse'}}">
+                                    <!--待签收-->
+                                    <button text="签收"
+                                            tap="tapReceiveTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                    <!--已取消-->
+                                    <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                    <button text="删除" tap="tapDeleteTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout orientation="vertical" row="1" col="0"
+                                             cssClass="shipping-address-info">
+                                    <Label id="receiveAddress" text="{{'收货地址：'+address}}" cssClass="address-info"
+                                           textWrap="true" tap="tapNavigateByAddr"></Label>
+                                    <StackLayout orientation="horizontal" ios:class="ios_consignee">
+                                        <Label text="{{'收货人：'+receivePersonName}}"
+                                               verticalAlignment="center"></Label>
+                                        <Label id="receivePersonPhone" text="{{'('+receivePersonPhone+')'}}"
+                                               cssClass="{{status==='cancelled'?'color9':'color-b'}}"
+                                               textWrap="true" tap="callToDial"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </GridLayout>
+                            <StackLayout id="collapse-widget-down" orientation="vertical"
+                                         android:visibility="visible" ios:visibility="collapse"
+                                         android:tap="toggleCollapsePanel">
+                                <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                <Label cssClass="filter-line"></Label>
+                            </StackLayout>
+                            <StackLayout id="collapse-widget-up" orientation="vertical"
+                                         android:visibility="collapse" ios:visibility="collapse"
+                                         android:tap="toggleCollapsePanel">
+                                <Image src="res://sl" cssClass="img20_7" horizontalAlignment="center"></Image>
+                            </StackLayout>
+                            //可隐藏折叠信息
+                            <StackLayout id="collapseInfoPanel" android:visibility="collapse">
+                                <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                <DockLayout cssClass="collapse-info">
+                                    <GridLayout dock="top" rows="25" columns="*"
+                                                cssClass="margin-right-10">
+                                        <Label text="任务信息" row="1" col="0"
+                                               tap="callToDial"></Label>
+                                    </GridLayout>
+                                    <GridLayout dock="top" rows="*" columns="*"
+                                                cssClass="margin-right-10">
+                                        <Label text="{{remark}}" row="1" col="0" textWrap="true"
+                                               cssClass=""></Label>
+                                    </GridLayout>
+                                </DockLayout>
+                                <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                            </StackLayout>
+
+                            <!--底部操作按钮-->
+                            <DockLayout id="{{waybillId+'_operate'}}" stretchLastChild="true"
+                                        cssClass="order-bottom-operate">
+                                <GridLayout dock="left" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image tap="tapNavigateHandler"
+                                           src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                           verticalAlignment="center" horizontalAlignment="center"
+                                           cssClass="img20" row="2" col="1"></Image>
+                                    <Label tap="tapNavigateHandler" text="导航" row="20" col="1"
+                                           horizontalAlignment="center" verticalAlignment="center"
+                                           cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                                <GridLayout dock="right" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image tap="tapCallHandler"
+                                           src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}"
+                                           verticalAlignment="center"
+                                           horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                    <Label tap="tapCallHandler" text="电话" row="20" col="2"
+                                           horizontalAlignment="center" verticalAlignment="center"
+                                           cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                            </DockLayout>
+                            <ios>
+                                <StackLayout class="ios_listLine"></StackLayout>
+                            </ios>
+                        </StackLayout>
+
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+            <GridLayout row="2" col="0"  visibility="{{searchType==='return-task'?'visible':'collapse'}}">
+                <lv:RadListView id="return_list_view"
+                                items="{{currentTaskList}}"
+                                pullToRefresh="true" row="1"
+                                pullToRefreshInitiated="onPullToRefreshInitiated"
+                                loadMoreDataRequested="onLoadMoreItemsRequested"
+                                itemLoading="onItemLoading">
+                    <!--listView的布局-->
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+                    <!--listView的内容-->
+                    <lv:RadListView.itemTemplate>
+                        <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                        <StackLayout id="{{waybillId}}" cssClass="order-content"
+                                     orientation="vertical">
+                            //订单号信息
+                            <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info" taskId="{{id}}"
+                                        type="{{status}}" tap="tapTaskDetail">
+                                <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill"
+                                       cssClass="img22"></Image>
+                                <StackLayout row="0" col="1" orientation="horizontal">
+                                    <Label text="{{orderNumber}}" cssClass="order-number"
+                                           verticalAlignment="top"></Label>
+                                </StackLayout>
+                                <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                       ios:verticalAlignment="top"
+                                       cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                       cssClass="company-info"></Label>
+                                <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                       cssClass="order-date"></Label>
+                            </GridLayout>
+                            <Label cssClass="line"/>
+                            //收货地址相关信息
+                            <GridLayout rows="*" columns="*,20,100" cssClass="shipping-info"
+                                        taskId="{{ id }}"
+                                        taskType="aftermarket"
+                                        waybillId="{{waybillId}}"
+                                        from="{{status}}"
+                                        receivePersonName="{{ receivePersonName }}"
+                                        receivePersonPhone="{{ receivePersonPhone }}">
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='return_waiting_list'?'visible':'collapse'}}">
+                                    <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='return_waiting_appointment'?'visible':'collapse'}}">
+                                    <!--预约-->
+                                    <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='return_waiting_pickup'?'visible':'collapse'}}">
+                                    <!--提货-->
+                                    <button text="提货" tap="tapPickTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+
+                                             visibility="{{status==='return_waiting_sign_for'?'visible':'collapse'}}">
+                                    <!--待签收-->
+                                    <button text="签收" tap="tapReceiveTask"
+                                            cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout row="0" col="3" rowSpan="70" orientation="vertical"
+                                             visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                    <!--已取消-->
+                                    <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                    <button text="删除" tap="tapDeleteTask" cssClass="btn btn-accept"></button>
+                                </StackLayout>
+                                <StackLayout orientation="vertical" row="1" col="0"
+                                             cssClass="shipping-address-info">
+                                    <Label id="receiveAddress" text="{{'收货地址：'+address}}" cssClass="address-info"
+                                           textWrap="true" tap="tapNavigateByAddr"></Label>
+                                    <StackLayout orientation="horizontal" ios:class="ios_consignee">
+                                        <Label text="{{'收货人：'+receivePersonName}}"
+                                               verticalAlignment="center"></Label>
+                                        <Label id="receivePersonPhone" text="{{'('+receivePersonPhone+')'}}"
+                                               cssClass="{{status==='cancelled'?'color9':'color-b'}}"
+                                               textWrap="true" tap="callToDial"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </GridLayout>
+                            <StackLayout id="collapse-widget-down" orientation="vertical"
+                                         android:visibility="visible" ios:visibility="collapse"
+                                         android:tap="toggleCollapsePanel">
+                                <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                <Label cssClass="filter-line"></Label>
+                            </StackLayout>
+                            <StackLayout id="collapse-widget-up" orientation="vertical"
+                                         android:visibility="collapse" ios:visibility="collapse"
+                                         android:tap="toggleCollapsePanel">
+                                <Image src="res://sl" cssClass="img20_7" horizontalAlignment="center"></Image>
+                            </StackLayout>
+                            //可隐藏折叠信息
+                            <StackLayout id="collapseInfoPanel" android:visibility="collapse">
+                                <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                <DockLayout cssClass="collapse-info">
+                                    <GridLayout dock="top" rows="*" columns="*"
+                                                cssClass="margin-right-10">
+                                        <Label id="pickupAddress" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                               col="0" cssClass="address-info" textWrap="true"
+                                               tap="tapNavigateByAddr"></Label>
+                                    </GridLayout>
+                                    <GridLayout dock="top" rows="25" columns="*"
+                                                cssClass="margin-right-10">
+                                        <Label id="pickupPhone" text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                               tap="callToDial"></Label>
+                                    </GridLayout>
+                                    <GridLayout dock="top" rows="*" columns="*"
+                                                cssClass="margin-right-10">
+                                        <Label text="{{'备注：'+remark}}" row="1" col="0" textWrap="true"
+                                               cssClass=""></Label>
+                                    </GridLayout>
+                                </DockLayout>
+                                <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                            </StackLayout>
+                            <!--底部操作按钮-->
+                            <DockLayout id="{{waybillId+'_operate'}}" stretchLastChild="true"
+                                        cssClass="order-bottom-operate">
+                                <GridLayout dock="left" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image tap="tapNavigateHandler"
+                                           src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                           verticalAlignment="center" horizontalAlignment="center"
+                                           cssClass="img20" row="2" col="1"></Image>
+                                    <Label tap="tapNavigateHandler" text="导航" row="20" col="1"
+                                           horizontalAlignment="center" verticalAlignment="center"
+                                           cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                                <GridLayout dock="right" rows="40" columns="auto,*"
+                                            style="width:50%;">
+                                    <Image tap="tapCallHandler"
+                                           src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}"
+                                           verticalAlignment="center"
+                                           horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                    <Label tap="tapCallHandler" text="电话" row="20" col="2"
+                                           horizontalAlignment="center" verticalAlignment="center"
+                                           cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                </GridLayout>
+                            </DockLayout>
+                            <ios>
+                                <StackLayout class="ios_listLine"></StackLayout>
+                            </ios>
+                        </StackLayout>
+
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+            <GridLayout row="2" col="0"  visibility="{{searchType==='question-task'?'visible':'collapse'}}">
+                <lv:RadListView id="question_list_view"
+                                items="{{currentTaskList}}"
+                                pullToRefresh="true" loadOnDemandMode="Auto"
+                                pullToRefreshInitiated="onPullToRefreshInitiated"
+                                loadMoreDataRequested="onLoadMoreItemsRequested"
+                                itemLoading="onItemLoading">
+                    <!--listView的布局-->
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+
+                    <!--listView的内容-->
+                    <lv:RadListView.itemTemplate>
+                        <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                        //====START===全部问题记录信息开始
+                        <StackLayout flex="1" class="qs-problem-content" orientation="vertical">
+                            //订单号信息
+                            <DockLayout stretchLastChild="true" tap="tapQuestionDetail" class="margin-left-10" matterRecordId="{{id}}">
+                                <GridLayout dock="top" rows="25" columns="auto,*,*" class="margin-right-15">
+                                    <Label text="{{'单号：'+orderNumber}}" row="0" col="1"
+                                           class="qs-order-number"></Label>
+                                    <Label text="{{status}}" col="3" horizontalAlignment="right"
+                                           class="qs-task-status"></Label>
+                                </GridLayout>
+                                <GridLayout dock="top" rows="auto" columns="auto,auto,*">
+                                    <Label text="{{questionType}}" row="0" col="2" class="qs-order-problem-info"></Label>
+                                    <Label text="{{datetime}}" row="0" col="3" horizontalAlignment="right"
+                                           class="qs-deal-date margin-right-15"></Label>
+                                </GridLayout>
+                            </DockLayout>
+                            <Label class="qs-line"/>
+                            //图片信息
+                            <StackLayout class="qs-second-content" visibility="{{(images.length>0)?'visible':'collapse'}}">
+                                <Repeater items="{{ images }}">
+                                    <Repeater.itemsLayout>
+                                        <WrapLayout orientation="horizontal"/>
+                                    </Repeater.itemsLayout>
+                                    <Repeater.itemTemplate>
+                                        <StackLayout orientation="horizontal" class="qs-ios_imageShow" horizontalAlignment="left">
+                                            <Image  src="{{$value}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                                        </StackLayout>
+                                    </Repeater.itemTemplate>
+                                </Repeater>
+                            </StackLayout>
+                            <GridLayout rows="auto,*,*" columns="*" class="qs-third-content">
+                                <Label text="{{description}}" row="0" col="0" textWrap="true"></Label>
+                                <Label text="跟进备注" row="1" col="0" class="qs-remark"
+                                       verticalAlignment="center"></Label>
+                                <Label text="{{remark}}" row="2" col="0" class="qs-remark-info"
+                                       verticalAlignment="center" textWrap="true"></Label>
+                            </GridLayout>
+                            <ios>
+                                <StackLayout class="qs-ios_listLine"></StackLayout>
+                            </ios>
+                        </StackLayout>
+                        //====END===全部记录信息结束
+
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+</Page>

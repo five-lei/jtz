@@ -1,0 +1,108 @@
+<Page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="color:rgb(255,138,37);font-size: 16px; margin-top:1px"  />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" style="color:black;font-size: 18px; ">
+                        <Label  id="actionBar" text="绑定银行卡" />
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" >
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar id="actionBar" title="绑定银行卡" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="pageContent">
+
+
+        <StackLayout  class="contentTop">
+            <GridLayout rows="auto" columns="auto,auto" horizontalAlignment="center" >
+                <StackLayout id="card" orientation="horizontal" horizontalAlignment="center" verticalAlignment="center" row="0" col="0" android:class="ADcard" ios:class="card" tap="clickBankCard">
+                    <Image ios:src="res://drawable-hdpi/yhk2@2x" android:src="res://yhk2" ios:stretch="none" verticalAlignment="center" android:style="margin-right:4px;height:23px"/>
+                    <label text="银行卡" verticalAlignment="center" android:style="margin-left:4px;font-size:16px"></label>
+                </StackLayout>
+                <StackLayout id="alipay" orientation="horizontal" horizontalAlignment="center" verticalAlignment="center" row="0" col="1" android:class="ADalipay" ios:class="alipay" tap="clickAlipay">
+                    <Image ios:src="res://drawable-hdpi/zfb@2x" ios:stretch="none" android:src="res://zfb" verticalAlignment="center" android:style="margin-right:4px;;height:23px"/>
+                    <label text="支付宝" verticalAlignment="center" android:style="margin-left:4px;font-size:16px"></label>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <!-- 绑定银行卡内容 -->
+        <StackLayout orientation="vertical" class="centerContent" id="bankCardContent">
+
+            <!--<GridLayout rows="45" columns="auto,*,auto" tap="addBankCardMethod" class="selectLine">-->
+                <!--<label text="银    行" row="0" col="0" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>-->
+                <!--<TextField id="bankName" text="{{bank}}" hint="请选择银行" ios:editable='False' android:isEnabled='false' row="0" col="1" horizontalAlignment="left"-->
+                           <!--android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left"></TextField>-->
+                <!--<Image ios:src="res://btn_more" android:src="res://jr" android:style="height: 12;margin-right: 10" row="0" col="2" ios:stretch="none" verticalAlignment="center" horizontalAlignment="right"></Image>-->
+            <!--</GridLayout>-->
+
+            <GridLayout rows="45" columns="auto,*,auto" tap="addBankCardMethod" class="selectLine">
+                <label text="银    行" row="0" col="0" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <label id="bankName" text="请选择银行" row="0" col="1" android:style=" border-color: transparent; font-size: 16px;text-align: left" verticalAlignment="center" horizontalAlignment="left" class="bankNameLabel"></label>
+                <Image src="res://btn_more"  android:style="height: 12" row="0" col="2" ios:stretch="none" verticalAlignment="center" horizontalAlignment="right"></Image>
+            </GridLayout>
+
+            <GridLayout rows="45" columns="auto,*" class="selectLine">
+                <label text="支    行" row="0" col="0" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <TextField id="subBranchName" text="" hint="请选择支行"  row="0" col="1" horizontalAlignment="left" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left"></TextField>
+            </GridLayout>
+
+
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine">
+                <label text="持卡人" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <TextField id="accountName" hint="请输入姓名" text="" class="centerShow" verticalAlignment="center" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white; border-color: transparent; font-size: 16px;text-align: left"></TextField>
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine">
+                <label text="卡    号" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <TextField id="bankAccount" hint="请输入卡号" class="centerShow" keyboardType="phone" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left" />
+            </StackLayout>
+
+            <StackLayout  class="bottomContent" >
+                <button text="确定" tap="bankCardPageBtn" horizontalAlignment="center"></button>
+            </StackLayout>
+
+        </StackLayout>
+
+        <!-- 绑定支付宝内容 -->
+        <StackLayout id="alipayContent" orientation="vertical" class="centerContent" visibility="collapse">
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine">
+                <label text="支付宝账号" horizontalAlignment="left" verticalAlignment="center" ios:class="leftLabel" android:class="ADleftLabel"></label>
+                <TextField id="bankAccount2" hint="请输入支护宝帐号" class="centerShow" horizontalAlignment="left" keyboardType="email" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left" />
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" minHeight="40" class="selectLine">
+                <label text="姓名" horizontalAlignment="left" ios:class="leftLabel phoneLabel" android:class="ADleftLabels" verticalAlignment="center"></label>
+                <TextField id="accountName2" hint="请输入姓名" class="centerShow" returnKeyType="next" autocorrect="false"
+                           android:style="background-color:white;border-color: transparent; font-size: 16px;text-align: left"/>
+            </StackLayout>
+
+            <StackLayout  class="bottomContent">
+                <button text="确定" tap="alipayBtn" horizontalAlignment="center"></button>
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+</Page>

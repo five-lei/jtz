@@ -1,0 +1,47 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      xmlns:f="nativescript-fresco/nativescript-fresco"
+      loaded="loaded">
+
+    <Page.actionBar>
+        <iOS>
+            <ActionBar title="我的收藏" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+<GridLayout class="ios_content">
+    <lv:RadListView id="list-view" items="{{ collectList }}" pullToRefresh="true"  selectionBehavior="Press" itemSelected="{{itemSelected}}"
+                    pullToRefreshInitiated="pullToRefreshInitiated" class="ios_list" loadOnDemandMode="Manual"
+                    loadMoreDataRequested="loadMoreItemsRequested">
+        <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+        </lv:RadListView.listViewLayout>
+        <lv:RadListView.itemTemplate>
+            <StackLayout orientation="vertical" class="items-view">
+                <GridLayout columns="*,*,*,*" rows="auto,auto" tap="onSetTap" tap="onCardetailTap">
+                    <Image src="{{src}}" class="item-image" rowSpan="2" col="0"
+                           horizontalAlignment="left"/>
+                    <StackLayout orientation="horizontal" row="0" colSpan="3" col="1"
+                                 verticalAlignment="center" class="collect-content-left">
+                        <Label text="{{ collect_title }}"/>
+                        <Label text="精" class="car-name" horizontalAlignment="center"
+                               visibility="{{ collect_type ? 'visible' : 'collapsed' }}"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" row="1" colSpan="3" col="1"
+                                 verticalAlignment="center" class="collect-content-left">
+                        <Label text="{{ collect_content}}" class="car-size" textWrap="true"/>
+                    </StackLayout>
+
+                </GridLayout>
+                <StackLayout class="line-center ">
+                </StackLayout>
+
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+    </lv:RadListView>
+
+</GridLayout>
+</Page>

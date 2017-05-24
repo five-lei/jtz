@@ -1,0 +1,60 @@
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+
+.main-label {
+    horizontal-align: center;
+    color: gray;
+    font-size: 18;
+}
+
+.actionBar-view {
+    color: white;
+    font-size: 16;
+    margin-right: 10;
+}
+
+.search-image {
+    width: 25;
+    height: 25;
+}
+.bar-image{
+  height: 20;
+
+}
+.list_image{
+  width: 30;
+  height: 30;
+}
+
+
+.item{
+ margin-top: 10;
+ margin-left: 13;
+ font-size: 14;
+ color: black;
+}
+.phone_item{
+  margin-left: 13;
+
+ font-size: 12;
+}
+.image_item{
+ margin-top: 8;
+ margin-bottom: 8;
+ width: 40;
+ height: 40;
+ margin-left: 15;
+ border-radius: 20;
+}
+.headerTitle{
+    font-size: 14px;
+    color: rgb(156,156,156);
+    margin-left: 16px;
+}
+
+Page{
+    background-color: rgb(255,138,37);
+
+}

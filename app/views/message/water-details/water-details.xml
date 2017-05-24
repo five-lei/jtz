@@ -1,0 +1,85 @@
+<Page xmlns:lv="nativescript-telerik-ui-pro/listview"
+      loaded="loaded"
+>
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+        <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top"  class="actionBar-view">
+                <StackLayout orientation="horizontal"  row="0" col="0"
+                tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" height="20" marginRight="5"/>
+                <Label text="返回"   verticalAlignment="center" class="fh" tap="return"/>
+                </StackLayout>
+
+                <StackLayout  orientation="horizontal" horizontalAlignment="center"
+                              verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="分配任务"  />
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="返回"/>
+
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="流水详情" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <StackLayout class="content">
+        <StackLayout class="line1">
+
+        </StackLayout>
+        <!--<StackLayout orientation="vertical"  verticalAlignment="center" class="firstContent">-->
+            <!--<label text="-2000.00" horizontalAlignment="center" class="numberLabel" />-->
+            <!--<label text="提现成功" horizontalAlignment="center" class="withdraw"/>-->
+        <!--</StackLayout>-->
+
+            <lv:RadListView id="list-view" items="{{ detailList }}">
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout android:itemHeight="210" scrollDirection="Vertical"/>
+                </lv:RadListView.listViewLayout>
+                <lv:RadListView.itemTemplate>
+                    <StackLayout class="details">
+                    <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+                        <label text="{{key}}" row="0" col="0" horizontalAlignment="left" class="name"/>
+                        <label text="{{value}}" row="0" col="1" horizontalAlignment="right" class="type"/>
+                    </GridLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+            <!--<GridLayout rows="auto" columns="auto,*" class="checkAmount">-->
+                <!--<label text="提现类型" row="0" col="0" horizontalAlignment="left" class="name"/>-->
+                <!--<label text="支付宝提现" row="0" col="1" horizontalAlignment="right" class="type"/>-->
+            <!--</GridLayout>-->
+            <!--<GridLayout rows="auto" columns="auto,*" class="checkAmount">-->
+                <!--<label text="提现账户" row="0" col="0" horizontalAlignment="left" class="name" />-->
+                <!--<label text="948526948@qq.com" row="0" col="1" horizontalAlignment="right" class="type" />-->
+            <!--</GridLayout>-->
+            <!--<GridLayout rows="auto" columns="auto,*" class="checkAmount">-->
+                <!--<label text="已付金额" row="0" col="0" horizontalAlignment="left" class="name" />-->
+                <!--<label text="￥1500.00" row="0" col="1" horizontalAlignment="right" class="type"/>-->
+            <!--</GridLayout>-->
+            <!--<GridLayout rows="auto" columns="auto,*" class="checkAmount">-->
+                <!--<label text="未付金额" row="0" col="0" horizontalAlignment="left" class="name" />-->
+                <!--<label text="￥500" row="0" col="1" horizontalAlignment="right" class="type"/>-->
+            <!--</GridLayout>-->
+            <!--<StackLayout class="line">-->
+
+            <!--</StackLayout>-->
+            <!--<GridLayout rows="auto" columns="auto,*" class="checkNum">-->
+                <!--<label text="创建时间" row="0" col="0" horizontalAlignment="left" class="name" />-->
+                <!--<label text="2016-12-12 17:11:00" row="0" col="1" horizontalAlignment="right" class="type"/>-->
+            <!--</GridLayout>-->
+
+        <StackLayout>
+            <Label text="对此信息有疑问?" class="query" tap="onQuery"/>
+        </StackLayout>
+    </StackLayout>
+
+</Page>

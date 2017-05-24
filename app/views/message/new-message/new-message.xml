@@ -1,0 +1,90 @@
+<Page loaded="loaded">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" height="20" marginRight="5"/>
+                        <Label text="返回" verticalAlignment="center" class="fh" tap="return"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="新消息设置"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="新消息设置" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="page">
+        <StackLayout class="line1">
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="n-msg">
+            <GridLayout columns="*,*" rows="*" class="new-msg">
+                <Label text="新消息通知" horizontalAlignment="left" verticalAlignment="center" class="item" col="0" row="0"/>
+                <StackLayout col="1" row="0" horizontalAlignment="right" orientation="horizontal">
+                    <Label text="已开启" class="i-right" verticalAlignment="center"/>
+                    <Image src="res://jr" height="14" class="item-img"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line1">
+        </StackLayout>
+        <StackLayout class="push-message">
+            <Label textWrap="true" text="系统通知如果被关闭，你将不会收到来自家装通客户端的消息通知，建议开启；开启方式：“去系统-通知-家装通开启”为“允许通知”。"
+                   class="inform-msg"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="n-msg">
+            <GridLayout columns="*,*" rows="*" class="new-msg">
+                <Label text="系统消息通知" horizontalAlignment="left" verticalAlignment="center" class="item" col="0"
+                       row="0"/>
+                <StackLayout col="1" row="0" horizontalAlignment="right" orientation="horizontal">
+                    <Label text="开启" class="i-right" verticalAlignment="center" id="system-text"/>
+                    <Image src="{{selected ? 'res://guanbi' : 'res://kaiqi' }}" horizontalAlignment="right"
+                            class="ios_switchImage"   verticalAlignment="center" tap="{{iosMessageNoticClick}}"></Image>
+
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line1">
+        </StackLayout>
+        <StackLayout class="push-message" display="none">
+            <Label text="新消息通知开启后会推送消息信息" class="new-msg"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="n-msg">
+            <GridLayout columns="*,*" rows="*" class="new-msg">
+                <Label text="声音" horizontalAlignment="left" verticalAlignment="center" class="item" col="0" row="0"/>
+                <StackLayout col="1" row="0" horizontalAlignment="right" orientation="horizontal">
+                    <Label text="关闭" id="voice-text" class="i-right" verticalAlignment="center"/>
+                    <Image src="{{voiceSelected ? 'res://guanbi' : 'res://kaiqi' }}" horizontalAlignment="right"
+                               class="ios_switchImage"   verticalAlignment="center" tap="{{iosVoiceNoticClick}}"></Image>
+
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line1">
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="n-msg">
+            <GridLayout columns="*,*" rows="*" class="new-msg">
+                <Label text="震动" horizontalAlignment="left" verticalAlignment="center" class="item" col="0" row="0"/>
+                <StackLayout col="1" row="0" horizontalAlignment="right" orientation="horizontal">
+                    <Label text="关闭" id="shake-text" class="i-right" verticalAlignment="center"/>
+                     <Image src="{{shakeSelected ? 'res://guanbi' : 'res://kaiqi' }}" horizontalAlignment="right"
+                               class="ios_switchImage"  verticalAlignment="center" tap="{{iosShakeNoticClick}}"></Image>
+
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line1">
+        </StackLayout>
+    </StackLayout>
+
+</Page>

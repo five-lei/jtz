@@ -1,0 +1,92 @@
+<Page xmlns:lv="nativescript-telerik-ui-pro/listview" loaded="loaded">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left" tap="return">
+                        <Image src="res://fh" height="20" marginRight="5"/>
+                        <Label text="返回" verticalAlignment="center" class="fh"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label id="title" text="任务消息"/>
+                    </StackLayout>
+
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="首页"/>
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label id="title" text="任务消息" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <GridLayout orientation="vertical" rows="auto, *" columns="*" class="content">
+
+
+        <StackLayout row="0" col="0" height="50">
+            <StackLayout class="lines">
+            </StackLayout>
+            <GridLayout style="background-color: #eeeeee;" margin="8" borderRadius="5"
+                        borderWidth="1" borderColor="white" tap="SearchTap">
+                <Label id="search_input" text="手机号/客服姓名" col="1" row="0" horizontalAlignment="center"
+                       verticalAlignment="center"/>
+            </GridLayout>
+        </StackLayout>
+
+        <lv:RadListView row="1" col="0" id="lv1" items="{{ messageList }}" selectionBehavior="Press"
+                        itemSelected="{{itemSelected}}">
+            <!--listView的布局-->
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+            </lv:RadListView.listViewLayout>
+            <lv:RadListView.itemTemplate>
+                <StackLayout orientation="vertical" backgroundColor="white">
+                    <StackLayout id="select" orientation="horizontal">
+                        <Image src="{{image}}" class="image_item"
+                               horizontalAlignment="left"
+                               visibility="{{ image ? 'visible' : 'collapsed' }}"/>
+                        <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                     class="task-type-one"
+                                     visibility="{{ type=='dispatchTask' ? 'visible' : 'collapsed' }}">
+                            <Label id="person_real" text="新" verticalAlignment="center"/>
+                        </StackLayout>
+                        <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                     class="task-type-two"
+                                     visibility="{{ type=='fhreturn' ? 'visible' : 'collapsed' }}">
+                            <Label id="person_real" text="返" verticalAlignment="center"/>
+                        </StackLayout>
+                        <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                     class="task-type-three"
+                                     visibility="{{ type=='repair' ? 'visible' : 'collapsed' }}">
+                            <Label id="person_real" text="维" verticalAlignment="center"/>
+                        </StackLayout>
+                        <GridLayout orientation="vertical" rows="*, *" columns="*, *" verticalAlignment="center">
+                            <Label row="0" col="0" text="{{ name }} " horizontalAlignment="left"
+                                   style="font-size:16;color:black;"
+                                   class="text_item_left"/>
+                            <Label row="0" col="1" text="{{ time }} " horizontalAlignment="right" style="font-size:12"
+                                   class="text_item_right"/>
+                            <Label row="1" col="0" text="{{ content }} " horizontalAlignment="left" style="font-size:14"
+                                   class="text_item_left"/>
+                            <StackLayout row="1" col="1" horizontalAlignment="right">
+                                <Label text="{{ num }} "
+                                       visibility="{{ num ? 'visible' : 'collapsed' }}"
+                                       style="font-size:10; background-color:red;height:14;padding-left:4;padding-right:4;border-radius:8px;color:white;"
+                                       class="text_item_right"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                    <StackLayout class="lines">
+                    </StackLayout>
+                </StackLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+
+    </GridLayout>
+</Page>

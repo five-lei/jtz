@@ -1,0 +1,241 @@
+/**
+ *
+ */
+ActionBar{
+    background-color: white;
+    color: black;
+}
+
+.actionBar-view {
+    color: #fb8901;
+    font-size: 16;
+    padding-right: 10
+}
+.page{
+    background-color: rgb(240,240,240);
+    color:#333333;
+    font-size: 14;
+}
+.orderNumber{
+    font-size: 17;
+    color:#333333;
+}
+.order-description{
+    font-size: 12;
+    color: #999999;
+}
+/*第一部分*/
+.time-label{
+    background-color: #FFFBF2;
+    height: 45;
+    color: #e87e00;
+    text-align: center;
+}
+.accept-task-progress{
+    padding: 15 0 0 0;
+    height: 90;
+    color: #fff;
+    background-color: #e87e00;
+}
+.accept-task-progress .first-progress-image{
+    margin-left: 20;
+    margin-right: 10;
+}
+.accept-task-progress .last-progress-image{
+    margin-right: 20;
+    margin-left: 10;
+}
+.accept-task-progress .second-progress-image{
+}
+.progress-line{
+    width: 100%;
+    height: 3;
+    background-color: #fff;
+}
+.progress-line-un{
+    width: 100%;
+    height: 3;
+    background-color: #ffd39f;
+}
+progress-label{
+    font-size: 18!important;
+}
+.progress-label-un{
+    color: #ffd39f;
+}
+
+/**
+ * 第三部分
+ */
+
+.order-relinfo-content{
+    background-color: #ffffff;
+    color: #333333;
+    padding-bottom: 10;
+}
+.order-relinfo-pick{
+    padding: 10 0 0 0;
+}
+.order-relinfo-receive{
+    padding: 10 0 10 0;
+}
+.commodity-info-content{
+    background-color: white;
+    margin-top:15;
+    padding: 10;
+}
+label.title{
+    color: #999;
+    font-size: 15;
+    padding: 1 0 5 0;
+}
+.commodity-info label.name{
+    color: #333;
+    margin-bottom: 5;
+    margin-top: 5;
+}
+.commodity-info label.info-item{
+    margin-top: 5;
+    color: #666666;
+}
+.total-count{
+    color: #333;
+    padding: 10;
+}
+.operate-btn{
+    margin-left:8 !important;
+    color:#333;
+    font-size: 15;
+}
+
+/**费用信息*/
+
+.fee-detail-content{
+    background-color: white;
+    margin-top:15;
+    padding: 10;
+}
+.fee-detail-content label.title{
+    font-size: 15;
+    color: #999999;
+}
+.fee-detail-content label.info-item{
+    color: #666666;
+    padding: 5 10 5 5;
+}
+.total-fee{
+    background-color: #fafafa;
+    font-size: 16;
+    padding: 10 15 10 15;
+    color: #333;
+}
+.fee-number{
+    color: #fb3601;
+    font-size: 21;
+}
+
+/**签收信息*/
+.sign-parcel-content{
+    margin-top:15;
+    padding: 10;
+    background-color: white;
+}
+.sign-parcel-content image{
+    margin-left: 10;
+}
+.sign-info label{
+    margin-top: 5;
+}
+.sign-info .name{
+    color: #2793fe;
+}
+.sign-info .info-item{
+    color: #333333;
+}
+
+/**
+ * node-info-content
+ */
+.node-info-content{
+    background-color: #ffffff;
+    min-height: 100;
+    padding: 10 10 10 15;
+    color: #999999;
+}
+.node-info-content tabview{
+    font-size: 16;
+
+}
+.node-info-content .info-veiw{
+   font-size: 14;
+   padding: 10;
+}
+.node-info-content .info-item{
+  color: #333333;
+}
+/**模拟tab*/
+.tab-grid{
+    height: 40;
+    background-color: #ffffff;
+    color: #fb8901;
+}
+#node_label{
+    padding:10 25% 10 25%;
+    border-bottom-width: 3;
+    border-bottom: solid;
+    border-bottom-color: #fb8901;
+}
+#exception_label{
+    color: #666666;;
+    padding:10 25% 10 25%;
+    border-bottom-width: 3;
+    border-bottom: solid;
+    border-bottom-color: #ffffff;
+}
+
+/**底部按钮*/
+.operate-content{
+    background-color: #ffffff;
+    margin-top: 15;
+    font-size: 16;
+    height: 50;
+    vertical-align: middle;
+}
+
+.cancel-btn{
+    background-color: #ffffff;
+    color: #fb8901;
+    padding: 15 30 0 30;
+}
+.accept-btn{
+    background-color: #fb8901;
+    color: #ffffff;
+    padding:15 0 0 0;
+
+}
+.signInfo{
+    margin-top: 8px;
+    width: 100%;
+}
+.ios_imageShow{
+    padding: 0px 0px 8px 0px;
+}
+.imageShow{
+    padding: 0px 0px 8px 10px;
+}
+.sign-parcel-content .firstImage{
+    margin-left: 0px;
+}
+.bar-image {
+    height:23;
+    margin-right: 15
+}
+.bar-image1 {
+    width:24;
+    height:24;
+    margin-right: 15;
+}
+.ios_bar-image1{
+    width:24;
+    height:24;
+}

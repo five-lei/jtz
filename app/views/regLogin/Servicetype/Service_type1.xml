@@ -1,0 +1,58 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+               
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+
+    </Page.actionBar>
+    <GridLayout columns="*" rows="100,40,*,50" style="background-color: white;">
+        <StackLayout style="background-color: rgb(255,138,37);" row="0" col="0">
+            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                <Label text="花" color="white" class="information_text" verticalAlignment="center"/>
+                <Label text="10" color="white" style="font-size: 40;" verticalAlignment="center"/>
+                <Label text="秒" color="white" class="information_text" verticalAlignment="center"/>
+            </StackLayout>
+            <Label text="让我们更了解你们" color="white" class="information_text1"/>
+        </StackLayout>
+        <Label text="选出你所选服务的类型" color="sandybrown" class="information_text2" row="1" col="0"/>
+
+        <StackLayout orientation="vertical" row="2" col="0" style="margin-top:20">
+                <WrapLayout orientation="horizontal">
+                    <Repeater id="list-view" items="{{ serviceList }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="vertical" borderRadius="1" borderWidth="1"
+                                         borderColor="sandybrown" tap="{{onSelected}}"
+                                         class="{{ selectCondition?'typeSelected':'typeNotSelected' }}">
+                                <StackLayout width="24" height="16" verticalAlignment="top" horizontalAlignment="right" tap="{{onclear}}">
+                                    <Image src="res://sc2x" class="{{ selectCondition?'visible':'collapse'}}"/>
+                                </StackLayout>
+                                <Label text="{{serviceName}}" class="information_type"/>
+
+                                <WrapLayout orientation="horizontal">
+                                    <StackLayout margin="2">
+                                        <Label text="{{serviceSetup}}" id='setupJudge' class="{{setupCondition?'operationSelected':'operationNotSelected'}}"/>
+                                    </StackLayout>
+                                    <StackLayout margin="2">
+                                        <Label text="{{serviceAssign}}" id='assignJudge' class="{{assignCondition?'operationSelected':'operationNotSelected'}}"/>
+                                    </StackLayout>
+                                </WrapLayout>
+
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </WrapLayout>
+        </StackLayout>
+        <Button text="确定" tap="next_type" class="{{satisfy?'information_bt':'dissatisfy'}}" row="4" col="0" id="grayControl"/>
+    </GridLayout>
+</Page>

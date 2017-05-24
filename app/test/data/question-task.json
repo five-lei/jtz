@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "taskType": "waiting_deal",
+      "orderNumber": "324835",
+      "questionType": "损货 - 物流破损",
+      "status": "待处理",
+      "images": [{
+        "url1":"res://logo","url2":"res://logo","url3":"res://logo","url4":"res://logo"
+      },{
+        "url1":"res://logo"
+      }],
+      "remark": "这里是备注信息惺惺惜惺惺",
+      "description": "WebAssembly 是除了 JavaScript 以外，另一种可以在网页中运行的编程语言。过去如果你想在浏览器中运行代码来对网页中各种元素进行控制，只有 JavaScript 这一种选择",
+      "datetime": "2017/03/20 13:39"
+    },
+    {
+      "taskType": "waiting_deal",
+      "orderNumber": "324835",
+      "questionType": "损货 - 物流破损",
+      "status": "待处理",
+      "images": [{
+        "url1":"res://logo","url2":"res://logo","url3":"res://logo","url4":"res://logo"
+      }],
+      "remark": "这里是备注信息惺惺惜惺惺",
+      "description": "WebAssembly 是除了 JavaScript 以外，另一种可以在网页中运行的编程语言。过去如果你想在浏览器中运行代码来对网页中各种元素进行控制，只有 JavaScript 这一种选择",
+      "datetime": "2017/03/10 13:39"
+    },
+    {
+      "taskType": "in_dealing",
+      "orderNumber": "324835",
+      "questionType": "损货 - 物流破损",
+      "status": "处理中",
+      "images": [{
+        "url1":"res://logo","url2":"res://logo","url3":"res://logo","url4":"res://logo"
+      },{
+        "url1":"res://logo"
+      }],
+      "remark": "这里是备注信息惺惺惜惺惺",
+      "description": "WebAssembly 是除了 JavaScript 以外，另一种可以在网页中运行的编程语言。过去如果你想在浏览器中运行代码来对网页中各种元素进行控制，只有 JavaScript 这一种选择",
+      "datetime": "2017/03/10 13:39"
+    },
+    {
+      "taskType": "in_dealing",
+      "orderNumber": "324835",
+      "questionType": "损货 - 物流破损",
+      "status": "处理中",
+      "images": [{
+        "url1":"res://logo","url2":"res://logo","url3":"res://logo","url4":"res://logo"
+      },{
+        "url1":"res://logo"
+      }],
+      "remark": "这里是备注信息惺惺惜惺惺",
+      "description": "WebAssembly 是除了 JavaScript 以外，另一种可以在网页中运行的编程语言。过去如果你想在浏览器中运行代码来对网页中各种元素进行控制，只有 JavaScript 这一种选择",
+      "datetime": "2017/03/10 13:39"
+    },
+    {
+      "taskType": "had_deal",
+      "orderNumber": "324835",
+      "questionType": "损货 - 物流破损",
+      "status": "已处理",
+      "images": [{
+        "url1":"res://logo","url2":"res://logo","url3":"res://logo","url4":"res://logo"
+      },{
+        "url1":"res://logo"
+      }],
+      "remark": "这里是备注信息惺惺惜惺惺",
+      "description": "WebAssembly 是除了 JavaScript 以外，另一种可以在网页中运行的编程语言。过去如果你想在浏览器中运行代码来对网页中各种元素进行控制，只有 JavaScript 这一种选择",
+      "datetime": "2017/03/10 13:39"
+    }
+  ]
+}

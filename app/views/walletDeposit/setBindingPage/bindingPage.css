@@ -1,0 +1,123 @@
+﻿.iosActionBar{
+    background-color: white;
+    color: black;
+}
+Page{
+    background-color: white;
+}
+ActionItem{
+    color: orange;
+}
+
+.pageContent{
+    background-color: rgb(240,240,240);
+}
+
+.ico_navigation{
+    background-color: orange;
+}
+.action-cancel{
+    color: orange;
+}
+.contentTop{
+    width:100%;
+    height: 100px;
+}
+.contentTop GridLayout{
+    margin-top:20px;
+    color: white;
+    font-size: 18px;
+    font-family: "微软雅黑";
+}
+
+.card{
+    width: 40%;
+    height: 60px;
+    background-color: rgb(255,138,37);
+    margin-right:5px;
+    border-radius: 6px;
+}
+
+.ADcard{
+    width: 40%;
+    padding-top: 12;
+    padding-bottom: 12;
+    background-color: rgb(255,138,37);
+    margin-right:5px;
+    border-radius: 6px;
+}
+.card image{
+    margin-right:6px;
+}
+
+.alipay{
+    width: 40%;
+    height: 60px;
+    background-color: rgb(217,217,217);
+    margin-left:5px;
+    border-radius: 6px;
+}
+
+.ADalipay{
+    width: 40%;
+    padding-top: 12;
+    padding-bottom: 12;
+    background-color: rgb(217,217,217);
+    margin-left:5px;
+    border-radius: 6px;
+}
+.alipay image{
+    margin-right:6px;
+}
+
+.centerContent TextField{
+    width:70%;
+}
+
+.leftLabel{
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.ADleftLabel{
+    margin-left: 10px;
+    margin-right: 20px;
+    color: black;
+    font-size: 16px
+}
+
+.ADleftLabels{
+    margin-left: 10px;
+    margin-right: 70px;
+    color: black;
+    font-size: 16px
+}
+
+.selectLine{
+    background-color: white;
+    margin-top: 1px;
+    height: 45px;
+    width:100%;
+}
+
+.centerContent .phoneLabel{
+    margin-right:55px;
+}
+
+.bottomContent button{
+    width:95%;
+    height: 45px;
+    margin-top:30px;
+    background-color: rgb(255,138,37);
+    color: white;
+    font-size: 18px ;
+    border-radius: 6px;
+}
+.Label_back{
+    color: orange;
+}
+
+.bankNameLabel{
+    color: rgb(196,196,202);
+    width:70%;
+}

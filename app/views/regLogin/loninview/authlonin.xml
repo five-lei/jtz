@@ -1,0 +1,60 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <ActionBar.actionItems>
+                    <ActionItem>
+                        <ActionItem.actionView>
+                            <StackLayout>
+                                <Label text="帮助" class="lonin-tabtitle" tap="dialForHelp"/>
+                            </StackLayout>
+                        </ActionItem.actionView>
+                    </ActionItem>
+                </ActionBar.actionItems>
+            </ActionBar>
+        </Android>
+       <ios>
+           <ActionBar title="" class="iosActionBar">
+               <NavigationButton text=""/>
+               <ActionItem text="帮助" ios.position="right"/>
+           </ActionBar>
+       </ios>
+    </Page.actionBar>
+    <GridLayout columns="*" rows="auto,*">
+    <StackLayout orientation="vertical"  row="0" col="0">
+        <StackLayout height="140">
+            <Image src="res://dl_logo2x"  class="loni-logo" />
+        </StackLayout>
+        <StackLayout orientation="vertical" class="mainview">
+            <StackLayout orientation="horizontal" class="grid_label_one">
+                <Label text="手机号:" verticalAlignment="center" class="name-label"/>
+                <GridLayout columns="*,*" rows="40">
+                    <TextField row="0" col="0" hint="请输入账号" id="DI_Account" keyboardType="phone" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                    <Image src="res://btn_clear_pressed" row="0" col="1" class="code-image" horizontalAlignment="right" tap="Clear_Account"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="line_text"></StackLayout>
+            <StackLayout orientation="horizontal" class="grid_label_one">
+                <Label text="验证码:" verticalAlignment="center" class="name-label"/>
+                <GridLayout columns="*,*" rows="40">
+                    <TextField row="0" col="0" hint="请输入验证码" id="validateCode"  keyboardType="phone" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                    <button text="获取验证码" id="Bt_Auth" tap="Bt_Get_Auth" row="0" col="1" class= "code-btn" horizontalAlignment="right"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="line_text"></StackLayout>
+        </StackLayout>
+        <!--<Button text="登录" tap="Lonin_Home" class="bt_lon"  />-->
+        <Button text="登录" tap="Lonin_Home" ios:height="44" class="bt_lon" />
+        <GridLayout columns="*, *" rows="auto" >
+            <StackLayout horizontalAlignment="left" col="0" >
+                <Label text="忘记密码" tap="forget_password" class="left-label" />
+            </StackLayout>
+            <StackLayout col="1" horizontalAlignment="right">
+                <Label text="账号密码登录" tap="Auth_Code"  class="right-label" />
+            </StackLayout>
+        </GridLayout>
+
+    </StackLayout>
+        <Label  row="1" col="0"  text="立即注册" tap="phone_regist" class="registered-text" verticalAlignment="bottom"/>
+    </GridLayout>
+</Page>

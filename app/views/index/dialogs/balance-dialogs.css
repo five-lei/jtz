@@ -1,0 +1,30 @@
+﻿
+.balance{
+    padding-top: 15;
+    font-size: 18;
+    color: orange;
+    text-align: center;
+    margin-bottom: 5;
+}
+.msg{
+    padding:0 10 10;
+}
+.type{
+    height: 46;
+    width: 63;
+    margin-top: 30;
+    border-radius: 2;
+    border-color: #D3D3D3;
+    margin-left: 10;
+    border-width: 1;
+    background-color: white;
+
+}
+.bt_confirm{
+    background-color: rgb(255,138,37);
+    border-radius: 2;
+    border-color: rgb(255,138,37);
+    border-width: 1;
+    font-size: 14;
+    padding: 10;
+}

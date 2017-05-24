@@ -1,0 +1,68 @@
+<Page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar>
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="font-size: 16;color:rgb(255,138,37);margin-top:1px"/>
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="银行卡" style="font-size: 18;color:black;"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" tap="addBankCardBtnTap">
+                        <label text="修改" class="titleLabel"></label>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text="返回" tap="onBackTap"/>
+
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="center"
+                             verticalAlignment="center">
+                    <label text="银行卡" class="ios_titleLabel"></label>
+                </StackLayout>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                     verticalAlignment="center" tap="addBankCardBtnTap">
+                            <Label text="修改" class="rightLabel"></Label>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout class="page">
+
+        <StackLayout orientation="vertical" horizontalAlignment="center" ios:class="content" android:class="ADcontent">
+            <StackLayout horizontalAlignment="left" class="topContent">
+                <GridLayout rows="auto" columns="auto,*,auto">
+                    <Image src="{{(type ? 'res://alipay' : 'res://bank') }}" stretch="fill" row="0" col="0" horizontalAlignment="left"></Image>
+
+                    <StackLayout orientation="vertical" horizontalAlignment="left" row="0" col="1">
+                        <label  text="{{bankName}}" class="bankName"></label>
+                        <label  text="{{accountName}}" class="depositCar"></label>
+                    </StackLayout>
+
+                    <label class="bankState" text="{{state}}" row="0" col="2"></label>
+                </GridLayout>
+
+            </StackLayout>
+
+            <StackLayout horizontalAlignment="right" class="bottomContent">
+                <label  text="{{bankAccount}}"></label>
+                <!--<label text="***** **** **** 8888"></label>-->
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+</Page>

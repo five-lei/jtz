@@ -1,0 +1,77 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo" loaded="loaded">
+    <Page.actionBar>
+
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="font-size: 16;color:rgb(255,138,37);margin-top:1px"/>
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label text="历史提现记录" style="color:black;font-size: 18px; "/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar title="历史提现记录" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+
+        </ios>
+    </Page.actionBar>
+
+
+    <!--<StackLayout class="page" height="667">-->
+
+        <lv:RadListView items="{{messages}}" itemLoading="{{onItemLoading}}" style.backgroundColor="white">
+            <!--listView的布局-->
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Vertical" />
+            </lv:RadListView.listViewLayout>
+
+            <!--listView的内容-->
+            <lv:RadListView.itemTemplate>
+                <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                <StackLayout >
+
+                    <StackLayout verticalAlignment="center" class="headerSection" >
+                        <Label text="{{header}}" ios:class="headerTitle" android:class="ADheaderTitle" visibility="collapse"/>
+                    </StackLayout>
+
+                    <GridLayout wtNo="{{name}}" rows="auto" columns="*,auto" tap="itemClickMethod">
+                        <StackLayout col="0" orientation="vertical" horizontalAlignment="left">
+                            <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+                                <label text="{{'提现单:  ' + name}}" row="0" col="0" horizontalAlignment="left" ></label>
+                                <label text="已提现" row="0" col="1" horizontalAlignment="left" class="orderState"></label>
+                            </GridLayout>
+                            <GridLayout rows="auto" columns="auto" class="checkNum">
+                                <label text="{{date}}" row="0" col="0" horizontalAlignment="left" ></label>
+                            </GridLayout>
+                        </StackLayout>
+
+                        <GridLayout col="1" rows="auto" columns="auto,auto" verticalAlignment="center">
+                            <label text="{{account}}" row="0" col="0" horizontalAlignment="left" ></label>
+                            <Image src="res://jr2x" col="1" horizontalAlignment="right" class="rightImage"/>
+                        </GridLayout>
+                    </GridLayout>
+
+                    <StackLayout class="line"></StackLayout>
+                </StackLayout>
+            </lv:RadListView.itemTemplate>
+
+        </lv:RadListView>
+
+
+</Page>

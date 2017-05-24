@@ -1,0 +1,54 @@
+﻿.mainview {
+    background-color:#eeeeee;
+    
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+.item-image {
+    height: 50px;
+    width: 50px;
+}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16
+}
+
+Page { 
+    background-color: white
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+
+
+.hint-label {
+    font-size: 14;
+    color: #888888
+}
+
+.item-view {
+    background-color:white;
+    width: 100%;
+    padding-bottom: 12;
+    padding-top: 12;
+    padding-left: 10;
+    padding-right: 8;
+    margin-top: 10;
+    font-size: 16;
+    color: black
+}
+
+
+.right-image {
+    height: 12;
+    margin-top: 1;
+    margin-left: 8
+}

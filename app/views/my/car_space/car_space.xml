@@ -1,0 +1,98 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <ActionBar title="" class="actionBar-view">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="载货空间"  /> 
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+    </Page.actionBar>
+   
+	
+<StackLayout orientation="vertical" class="mainview">
+<StackLayout orientation="vertical"   class="list_page">  
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onFontset">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="内长(米)"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                  <TextField  id="carInsideLong" hint="请输入" keyboardType="phone" 
+                           class="code_input" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onFontset">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="内宽(米)"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                 <TextField  id="carInsideWidth" hint="请输入" keyboardType="phone" 
+                class="code_input" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onFontset">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="内高(米)"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                 <TextField  id="carInsideHigh" hint="请输入" keyboardType="phone" 
+                class="code_input" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*" rows="auto" class="items-view" tap="onFontset">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="载货空间(立方米)"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="1" >
+                 <TextField  id="carLoadSpace" hint="请输入" keyboardType="phone" 
+                class="code_input" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    </StackLayout>
+
+    <StackLayout orientation="vertical"  verticalAlignment="bottom" class="btn_page" >  
+    <button text="保存" class= "grid_label_select" tap="save" />
+   </StackLayout>    
+
+</StackLayout>
+</Page>

@@ -1,0 +1,195 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" cssClass="action-bar-view">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="left" verticalAlignment="center">
+                                <Image src="res://fh" class="bar-image-l" tap="onBackTap"/>
+                                <Label text="返回" verticalAlignment="center" tap="onBackTap"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <Label text="问题件详情" class="title"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="返回"/>
+
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="问题件详情" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <ScrollView>
+        <StackLayout class="page">
+            <Android>
+                <GridLayout columns=" *,30" rows="auto, auto, *" class="first-content">
+                    <Label text="{{'收货人: '+consignee+'（'+sonsigneePhone+'）'}}" row="0" col="0"
+                           horizontalAlignment="left" class="consignee"
+                           textWrap="true"/>
+                    <Label text="待处理" row="0" col="0" class="status-label" horizontalAlignment="right"/>
+                    <Label text="{{'运单号：'+waybillId}}" row="1" col="0" class="waybill-number" textWrap="true"
+                           verticalAlignment="center"/>
+                    <Label text="{{operatDate}}" row="1" col="0" class="time-label" horizontalAlignment="right"
+                           verticalAlignment="center"/>
+                    <Image src="res://jr2x" row="1" col="2" rowSpan="50" android:stretch="none"
+                           horizontalAlignment="right"></Image>
+                </GridLayout>
+            </Android>
+            <ios>
+                <GridLayout columns=" auto,auto" rows="auto" class="ios_topContent">
+                    <GridLayout row="0" col="0" rows="auto" columns="auto,auto" class="ios_leftContent">
+                        <StackLayout orientation="vertical" col="0" horizontalAlignment="left">
+                            <Label text="{{'收货人: '+consignee+'（'+consigneePhone+'）'}}" class="consignee" height="25"
+                                   textWrap="true"/>
+                            <Label text="{{'运单号：'+waybillId}}" row="1" col="0" class="waybill-number" textWrap="true"
+                                   verticalAlignment="center"/>
+                        </StackLayout>
+                        <StackLayout orientation="vertical" col="1" horizontalAlignment="right">
+                            <Label text="待处理" row="0" col="0" class="status-label" height="25"
+                                   horizontalAlignment="right"/>
+                            <Label text="{{datetime}}" row="1" col="0" class="ios_timeLabel"
+                                   verticalAlignment="center"/>
+                        </StackLayout>
+                    </GridLayout>
+                    <StackLayout row="0" col="1" verticalAlignment="center">
+                        <Image src="res://jr2x" class="ios_rightImage"></Image>
+                    </StackLayout>
+                </GridLayout>
+            </ios>
+            <GridLayout rows="30" columns="auto,*" class="content sign-content">
+                <Label text="{{abnormalTypeName}}" row="0" col="0" class="margin-left-10" verticalAlignment="center"
+                       textWrap="true"/>
+            </GridLayout>
+            <StackLayout class="content third-content">
+                <GridLayout rows="*" columns="auto,*">
+                    <Label text="异常单号：" row="0" col="0" horizontalAlignment="left" verticalAlignment="center"
+                           textWrap="true"/>
+                    <Label text="{{exceptionNumber}}" row="0" col="1" class="colorb" verticalAlignment="center"
+                           textWrap="true"/>
+                </GridLayout>
+                <StackLayout class="exception-text">
+                    <Label text="{{describe}}"
+                           verticalAlignment="center" row="1" col="0" class="" textWrap="true"></Label>
+                </StackLayout>
+                //图片信息
+                <StackLayout >
+                    <Repeater id="list-view" items="{{ pictures }}">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="vertical"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="horizontal" class="ios_imageShow" horizontalAlignment="left">
+                                <Image src="{{url1}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                                <Image src="{{url2}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                                <Image src="{{url3}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                                <Image src="{{url4}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+                <!--<FlexboxLayout alignContent="flex-start" flexWrap="wrap">-->
+                    <!--<lv:RadListView id="list-view" items="{{ images }}">-->
+                        <!--<lv:RadListView.listViewLayout>-->
+                            <!--<lv:ListViewGridLayout scrollDirection="Vertical" itemHeight="90" spanCount="4"/>-->
+                        <!--</lv:RadListView.listViewLayout>-->
+                        <!--<lv:RadListView.itemTemplate>-->
+                            <!--<Image src="{{url}}" row="0" col="0" rowSpan="80" width="80" height="80" stretch="fill"-->
+                                   <!--verticalAlignment="center" horizontalAlignment="center"></Image>-->
+                        <!--</lv:RadListView.itemTemplate>-->
+                    <!--</lv:RadListView>-->
+                <!--</FlexboxLayout>-->
+            </StackLayout>
+            <StackLayout class="content fourth-content">
+                <Label text="跟进备注" row="1" col="0" class="remark" verticalAlignment="center"></Label>
+                <Label text="{{resultDesc}}" row="2" col="0" class="remark-info"
+                       verticalAlignment="center" textWrap="true"></Label>
+            </StackLayout>
+
+            <GridLayout rows="40" columns="*,*,*" cssClass="tab-grid margin-top-15">
+                <Label id="node_label" text="维修" row="0" col="0" horizontalAlignment="center"
+                       verticalAlignment="center" tap="onNodeInfoTap"></Label>
+                <Label id="fhreturn_label" text="返货" row="0" col="1" horizontalAlignment="center"
+                       verticalAlignment="center" tap="onFhreturnTap"></Label>
+                <Label id="exception_label" text="信息更改" row="0" col="2" horizontalAlignment="center"
+                       verticalAlignment="center" tap="onExceptionInfoTap"></Label>
+            </GridLayout>
+            <Label class="gray-line"></Label>
+            <StackLayout class="node-info-content" orientation="vertical">
+                <Android>
+                    <StackLayout id="node_info_content" verticalAlignment="center">
+                        <lv:RadListView id="list-view" items="{{ repair_info }}">
+                            <lv:RadListView.itemTemplate>
+                                <GridLayout rows="auto" columns="*,*">
+                                    <Label text="{{label}}" row="0" col="0" class="info-item"/>
+                                    <Label text="{{time}}" row="0" col="1" horizontalAlignment="center"/>
+                                </GridLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </StackLayout>
+                    <StackLayout id="fhreturn_info_content" verticalAlignment="center" visibility="collapse">
+                        <lv:RadListView id="list-view" items="{{ fhreturn_info }}">
+                            <lv:RadListView.itemTemplate>
+                                <GridLayout rows="auto" columns="*,*">
+                                    <Label text="{{label}}" row="0" col="0" class="info-item"/>
+                                    <Label text="{{time}}" row="0" col="1" horizontalAlignment="center"/>
+                                </GridLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </StackLayout>
+                    <StackLayout id="exception_content" verticalAlignment="center" visibility="collapse">
+                        <lv:RadListView id="list-view" items="{{ exception_info }}">
+                            <lv:RadListView.itemTemplate>
+                                <GridLayout rows="auto" columns="*,*">
+                                    <Label text="{{label}}" row="0" col="0" class="info-item"/>
+                                    <Label text="{{time}}" row="0" col="1" horizontalAlignment="center"/>
+                                </GridLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </StackLayout>
+                </Android>
+
+                <ios>
+                    <StackLayout id="node_info_content" verticalAlignment="center">
+                        <Repeater id="list-view" items="{{ repair_info }}">
+                            <Repeater.itemsLayout>
+                                <StackLayout orientation="vertical"/>
+                            </Repeater.itemsLayout>
+                            <Repeater.itemTemplate>
+                                <GridLayout rows="auto" columns="*,*" height="30">
+                                    <Label text="{{label}}" row="0" col="0" class="info-item"/>
+                                    <Label text="{{time}}" row="0" col="1" horizontalAlignment="center"/>
+                                </GridLayout>
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </StackLayout>
+                    <StackLayout id="exception_content" verticalAlignment="center" visibility="collapse">
+                        <Repeater id="list-view" items="{{ exception_info }}">
+                            <Repeater.itemsLayout>
+                                <StackLayout orientation="vertical"/>
+                            </Repeater.itemsLayout>
+                            <Repeater.itemTemplate>
+                                <GridLayout rows="auto" columns="*,*" height="30">
+                                    <Label text="{{label}}" row="0" col="0" class="info-item"/>
+                                    <Label text="{{time}}" row="0" col="1" horizontalAlignment="center"/>
+                                </GridLayout>
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </StackLayout>
+                </ios>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

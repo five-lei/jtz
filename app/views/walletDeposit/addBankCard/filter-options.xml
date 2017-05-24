@@ -1,0 +1,19 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="filter-options-drawer"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="157"
+        android:drawerContentSize="157">
+    <drawer:RadSideDrawer.drawerContent>
+            <StackLayout class="filter-option-stack" height="157">
+                <Button text="银行卡" class="filter-option-item" tap="filterOptionTap" />
+                <Label class="seperateLine" />
+                <Button text="支付宝" class="filter-option-item" tap="filterOptionTap" />
+                <Label class="cancelLine" />
+                <Button text="取消" class="filter-option-item" tap="filterOptionTap" />
+            </StackLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

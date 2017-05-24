@@ -1,0 +1,1074 @@
+<examples:TaskMainPage  id="task-page" class="task"
+        loaded="pageLoaded"
+        navigatingTo="pageNavigatingTo"
+        navigatingFrom="pageNavigatingFrom"
+        xmlns:examples="examples/example-base-page"
+        xmlns:sd="nativescript-telerik-ui-pro/sidedrawer"
+        xmlns:widgets="shared/widgets"
+        xmlns:examples="views/task/taskSpec/filter-base-page"
+        xmlns:lv="nativescript-telerik-ui-pro/listview"
+        xmlns="http://www.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="left" verticalAlignment="center">
+                                <Image src="res://sx2x" id="filterMenuButton" class="bar-image"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1" backgroundColor="red">
+                                <SegmentedBar cssClass="segmentbar"
+                                              selectedIndex="0"
+                                              selectedIndexChanged="segmentBarTaskTap">
+                                    <SegmentedBar.items>
+                                        <SegmentedBarItem title="新任务" width="70"  id="newTask"/>
+                                        <SegmentedBarItem title="维修" selectedTextColor="#333" id="maintenanceTask"/>
+                                        <SegmentedBarItem title="返货"   id="returnTask"/>
+                                    </SegmentedBar.items>
+                                </SegmentedBar>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="2">
+                                <Image src="res://ss2x" class="bar-image" tap="tapSearchHandler"/>
+                                <Image src="res://tx2x" class="bar-image1" tap="tapAlarmHandler"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+
+
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="left" verticalAlignment="center">
+                                <Image src="res://sx@2x" id="filterMenuButton" class="bar-image"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <SegmentedBar cssClass="segmentbar"
+                                              ios:selectedBackgroundColor="white"
+                                              selectedIndex="0"
+                                              selectedIndexChanged="segmentBarTaskTap">
+                                    <SegmentedBar.items>
+                                        <SegmentedBarItem title="新任务" width="70"  id="newTask"/>
+                                        <SegmentedBarItem title="维修" selectedTextColor="#333" id="maintenanceTask"/>
+                                        <SegmentedBarItem title="返货"   id="returnTask"/>
+                                    </SegmentedBar.items>
+                                </SegmentedBar>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="2">
+                                <Image src="res://ss@2x" class="bar-image" tap="tapSearchHandler"/>
+                                <Image src="res://tx@2x" class="bar-image1" tap="tapAlarmHandler"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <StackLayout>
+        <Label class="gray-line" />
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee" orientation="vertical">
+        <TabView id="tab"  dock="top" height="90%"  androidSelectedTabHighlightColor="#fb8901" tabBackgroundColor="white" tabTextColor="#505050" selectedTabTextColor="#fb8901">
+            <TabView.items>
+                <TabViewItem title="待接单">
+                    <TabViewItem.view>
+                        <lv:RadListView id="list-view" items="{{ waiting_list }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="待预约" width="200">
+                    <TabViewItem.view>
+                        //====START===待预约Task记录信息开始
+                        <lv:RadListView id="list-view" items="{{ waiting_appointment }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                        //====END===待预约Task记录信息结束
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="待提货" width="200">
+                    <TabViewItem.view>
+                        //====START===待提货任务记录信息开始
+                        <lv:RadListView id="list-view" items="{{ waiting_pickup }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                        //====END===提货任务记录信息结束
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="待签收" width="200">
+                    <TabViewItem.view>
+                        //====START===待签收任务记录信息开始
+                        <lv:RadListView id="list-view" items="{{ waiting_sign_for }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                        //====END===待签收记录信息结束
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="已签收" width="200">
+                    <TabViewItem.view>
+                        <lv:RadListView id="list-view" items="{{ had_sign_for }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="已取消" width="200">
+                    <TabViewItem.view>
+                        <lv:RadListView id="list-view" items="{{ cancelled }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout  cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                              orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Button  text="{{'('+receivePersonPhone+')'}}"
+                                                         cssClass="{{status==='cancelled'?'call-consignee-gray':'call-consignee'}}" tap="callToConsignee"></Button>
+                                            </StackLayout>
+                                            <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                       textWrap="true"></Label>
+                                                <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                            </StackLayout>
+                                            <Label text="配送并安装"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       cssClass=""></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="全部" width="200">
+                    <TabViewItem.view>
+                        <lv:RadListView id="allTasks" items="{{ allTasks }}">
+                            <lv:RadListView.listViewLayout>
+                                <lv:ListViewLinearLayout itemHeight="210"/>
+                            </lv:RadListView.listViewLayout>
+                            <lv:RadListView.itemTemplate>
+
+                                <StackLayout id="{{id}}" cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                                             orientation="vertical">
+                                    //订单号信息
+                                    <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info"  type="{{status}}" tap="tapTaskDetail">
+                                        <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                                        <StackLayout row="0" col="1" orientation="horizontal">
+                                            <Label text="{{orderNumber}}" cssClass="order-number"  verticalAlignment="top"></Label>
+                                            <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                                                   visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                                        </StackLayout>
+                                        <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                                               cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                                        <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                                               cssClass="company-info"></Label>
+                                        <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                                               cssClass="order-date"></Label>
+                                    </GridLayout>
+                                    <Label cssClass="line"/>
+                                    //收货地址相关信息
+                                    <GridLayout rows="*" columns="*,20,100" cssClass="shipping-info">
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                                            <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                                            <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                                            <!--预约-->
+                                            <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                                            <!--提货-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                                            <!--待签收-->
+                                            <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                                            <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                                            <!--已取消-->
+                                            <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                                            <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                                        </StackLayout>
+                                        <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                                            <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                                            <StackLayout orientation="horizontal">
+                                                <Label text="{{'收货人：'+receivePersonName}}" verticalAlignment="center"></Label>
+                                                <Label id="receivePersonPhone"  text="{{'('+receivePersonPhone+')'}}"
+                                                        cssClass="{{status==='cancelled'?'color9':'color-b'}}" textWrap="true" tap="callToDial" ></Label>
+                                            </StackLayout>
+                                            <StackLayout id="{{id+'_toggle'}}"  tap="toggleCollapsePanel">
+                                                <StackLayout orientation="vertical" cssClass="packing-detail">
+                                                    <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                                           textWrap="true"></Label>
+                                                    <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                                                </StackLayout>
+                                                <Label text="配送并安装" ></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                                        <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                                        <Label cssClass="filter-line"></Label>
+                                    </StackLayout>
+                                    //可隐藏折叠信息
+                                    <StackLayout id="collapseInfoPanel" visibility="collapse">
+                                        <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                                        <DockLayout cssClass="collapse-info">
+                                            <GridLayout dock="top" rows="25" columns="*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                                       col="0" cssClass="address-info" textWrap="true"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="*"
+                                                        cssClass="margin-right-10">
+                                                <Label id="pickupPhone" text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                                       tap="callToDial"></Label>
+                                            </GridLayout>
+                                            <GridLayout dock="top" rows="25" columns="*"
+                                                        cssClass="margin-right-10">
+                                                <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                                            </GridLayout>
+                                        </DockLayout>
+                                        <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                                    </StackLayout>
+
+                                    //底部操作按钮
+                                    <!--待接单、取消-->
+                                    <DockLayout  id="{{id+'_flag'}}"  stretchLastChild="true" cssClass="order-bottom-operate" visibility="{{(status==='waiting_list' || status==='cancelled')?'visible':'collapse'}}">
+                                        <GridLayout dock="left" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                                    cssClass="img20" row="2" col="1"></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                        <GridLayout dock="right" rows="40" columns="auto,*"
+                                                    style="width:50%;">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                                    horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                                    cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                                        </GridLayout>
+                                    </DockLayout>
+                                    <!--预约、提货、待签收-->
+                                    <GridLayout id="{{id+'_flag'}}" rows="auto" columns="*,*,*" stretchLastChild="true"  cssClass="order-bottom-operate-3"  visibility="{{(status!=='waiting_list' && status!=='cancelled' && status!=='had_sign_for')?'visible':'collapse'}}">
+                                        <StackLayout row="0" col="0"  orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}"
+                                                    cssClass="img20"    horizontalAlignment="right" ></Image>
+                                            <Label  tap="tapNavigateHandler" text="导航"    horizontalAlignment="left"  cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                        <StackLayout  row="0" col="1" orientation="horizontal" verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapCallHandler" text="电话" cssClass="{{status==='cancelled'?'operate-btn-3-gray':'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout row="0" col="2"  orientation="horizontal"  verticalAlignment="center"  horizontalAlignment="center">
+                                            <Image  tap="tapGTHandler" src="{{status==='cancelled'?'res://gt_qu':'res://gt2x'}}" cssClass="img20"></Image>
+                                            <Label  tap="tapGTHandler" text="给TA"  cssClass="{{status==='cancelled'?'operate-btn-3-gray'  :'operate-btn-3'}}"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
+                                    <!--已签收-->
+                                    <StackLayout stretchLastChild="true" cssClass="order-bottom-operate-3" visibility="{{status==='had_sign_for'?'visible':'collapse'}}">
+                                        <Label text="已给李四" verticalAlignment="center"  horizontalAlignment="center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </lv:RadListView.itemTemplate>
+                        </lv:RadListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+            </TabView.items>
+        </TabView>
+        <GridLayout dock="bottom" columns="*,*,*,*" rows="auto" class="main-menu" height="10%">
+            <StackLayout col="0" orientation="vertical" id="home" tap="menuNavigator" marginTop="2">
+                <Image src="res://sy_hei2x" height="20"/>
+                <Label text="首页" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="1" orientation="vertical" id="task" tap="menuNavigator" marginTop="3">
+                <Image src="res://rw_huang2x" height="20"/>
+                <Label text="任务" class="menu-icon-text menu-selected"/>
+            </StackLayout>
+            <StackLayout col="2" orientation="vertical" id="course" tap="menuNavigator" marginTop="3">
+                <Image src="res://xy_hei2x" height="20"/>
+                <Label text="师傅学院" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="3" orientation="vertical" id="my" tap="menuNavigator" marginTop="3">
+                <Image src="res://wd_hei2x" height="20"/>
+                <Label text="我的" class="menu-icon-text "/>
+            </StackLayout>
+        </GridLayout>
+    </DockLayout>
+    </StackLayout>
+</examples:TaskMainPage>

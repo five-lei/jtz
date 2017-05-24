@@ -1,0 +1,119 @@
+.iosActionBar{
+    background-color: white;
+    color: rgb(255,138,37);
+}
+
+.image-logo {
+    font-size: 12;
+    width: 80;
+    height: 80;
+    horizontal-align: center;
+    margin-top: 5;
+}
+.ios_image_logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-position: center center;
+    margin-top: 8px;
+}
+.ios_head_labal{
+    color: black;
+    margin-top: 66px;
+    font-size: 13px;
+    text-align: center;
+}
+.mainview {
+    background-color: white;
+}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    margin-right: 10
+}
+
+.bar-image {
+    height: 22;
+}
+.line {
+    height: 1;
+    background-color: #D3D3D3;
+}
+.line_text {
+    height: 0.5;
+    background-color: #D3D3D3;
+    margin-left: 20;
+    margin-right: 20
+}
+
+.grid_label {
+    margin-top: 30;
+    font-size: 16;
+    color: black;
+    margin-left: 20;
+    margin-right: 20px;
+    height: 44px;
+}
+
+.code_input {
+    background-color: white;
+    border-color: transparent;
+    color: #8A8A8A;
+    text-align: left
+}
+
+.name-label {
+    width: 35%
+}
+
+.text {
+    color: orange
+}
+
+.grid_labe_passw {
+    font-size: 16;
+    color: black;
+    margin-left: 20;
+    margin-right: 20;
+    height: 44px;
+}
+
+.set_information {
+    margin-top: 10;
+    color: black;
+    font-size: 25;
+}
+head_labal{
+   color: black;
+    padding-top: 60;
+    margin-top: 60;
+    font-size: 18;
+}
+.bt_lon{
+    border-radius: 5;
+    background-color: #fb8901;
+    margin: 20;
+    color: white;
+}
+
+page{
+    background-color: white;
+}
+ActionBar{
+    background-color: transparent;
+}
+
+.line-login {
+    height:110;
+}
+
+.exist-account{
+    color:#fb8901;
+    font-size:18;
+}
+
+.item-image {
+    height: 50px;
+    width: 50px;
+}

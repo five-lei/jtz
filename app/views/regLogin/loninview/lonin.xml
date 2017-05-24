@@ -1,0 +1,71 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+                <ActionBar title="">
+                    <ActionBar.actionItems>
+                        <ActionItem>
+                            <ActionItem.actionView>
+                                <StackLayout orientation="horizontal">
+                                    <Label text="帮助" class="lonin-tabtitle" tap="dialForHelp"/>
+                                    <!--test entry-->
+                                    <!--<Label text="注1" class="lonin-tabtitle" tap="zhuce"/>-->
+                                    <!--<Label text="我的" class="lonin-tabtitle" tap="wode"/>-->
+                                    <!--<Label text="好友" class="lonin-tabtitle" tap="haoyou"/>-->
+                                    <!--<Label text="详情" class="lonin-tabtitle" tap="detail"/>-->
+                                </StackLayout>
+                            </ActionItem.actionView>
+                        </ActionItem>
+                    </ActionBar.actionItems>
+                </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem text="帮助" ios.position="right" tap="dialForHelp"/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <GridLayout>
+        <StackLayout orientation="vertical">
+            <StackLayout height="140">
+                <Image src="res://dl_logo2x" class="loni-logo"  />
+            </StackLayout>
+            <StackLayout orientation="vertical" class="mainview">
+                <StackLayout orientation="horizontal" class="grid_label_one">
+                    <Label text="账  号:" verticalAlignment="center" class="name-label"/>
+                    <GridLayout columns="*,auto" rows="40">
+                        <TextField  text="{{phone}}" row="0" col="0" hint="请输入账号" id="DI_Account" keyboardType="phone" class="code_input"
+                                   verticalAlignment="center" horizontalAlignment="left"/>
+                        <Image src="res://btn_clear_pressed" row="0" col="1" class="code-btn" horizontalAlignment="right"
+                               tap="Clear_Account"/>
+                    </GridLayout>
+                </StackLayout>
+
+                <StackLayout class="line_text"></StackLayout>
+                <StackLayout orientation="horizontal" class="grid_label_one">
+                    <Label text="密  码:" verticalAlignment="center" class="name-label"/>
+                    <GridLayout columns="*,auto" rows="40">
+                        <TextField  text="{{PassWord}}" row="0" col="0" hint="请输入密码" id="Pass_word" secure="true" keyboardType="done"
+                                   class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                        <Image src="res://eye_closep" row="1" col="1" id="Eye_image" class="code-btn"
+                               horizontalAlignment="right" tap="Show_Pass"/>
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout class="line_text"></StackLayout>
+            </StackLayout>
+            <Button text="登录" tap="lonin" ios:height="44" class="bt_lon" />
+            <GridLayout columns="*, *" rows="auto">
+                <!--<StackLayout horizontalAlignment="left" col="0">-->
+                    <!--<Label text="忘记密码" tap="forget_password" class="left-label"/>-->
+                <!--</StackLayout>-->
+                <StackLayout col="1" horizontalAlignment="right">
+                    <!--<Label text=" 验证码登录" tap="auth_code" class="right-label"/>-->
+                    <Label text="忘记密码" tap="forget_password" class="right-label"/>
+
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <Label text="立即注册" tap="phone_regist" class="registered-text" verticalAlignment="bottom" orientation="vertical" horizontalAlignment="center"/>
+    </GridLayout>
+
+</Page>

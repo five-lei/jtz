@@ -1,0 +1,67 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" class="actionBar-view">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                             tap="onBackTap">
+                    <Image src="res://fh" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="账户与安全"/>
+
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="账号与安全" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="change_psd">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="修改密码" verticalAlignment="center"/>
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="change_phone">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="修改绑定手机号" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label class="hint-label" id="mobile"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+
+    </StackLayout>
+</Page>

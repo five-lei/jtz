@@ -1,0 +1,72 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" 
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left"
+                                 tap="onBackTap">
+                        <Image src="res://fh_ico" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                 row="0" col="1">
+                        <Label text="我的好友"/>
+                    </StackLayout>
+                    <StackLayout tap="addfriend" orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Image src="res://jy2x" class="bar-image"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="我的好友" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem ios.position="right">
+                    <Image src="res://jy@2x" stretch="none" tap="addfriend" verticalAlignment="center" ></Image>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <StackLayout height="50" style="background-color: #eeeeee;">
+            <GridLayout columns="120,*" rows="*" style="background-color: white;" margin="10" borderRadius="5"
+                        borderWidth="1" borderColor="white" tap="search_frined">
+                <Image src="res://ico_search_1" stretch="none" class="search_image" verticalAlignment="center"
+                       horizontalAlignment="right" />
+                <Label text="请输入姓名或手机号搜索" col="1" row="0" verticalAlignment="center"/>
+            </GridLayout>
+        </StackLayout>
+        <GridLayout style="background-color: white;">
+            <lv:RadListView id="list-view" items="{{ groceryList }}" pullToRefresh="true" pullToRefreshInitiated="pullToRefreshInitiated" >
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout itemHeight="100" />
+                </lv:RadListView.listViewLayout>
+                <!--<lv:RadListView.headerItemTemplate>
+                    <StackLayout verticalAlignment="center" style="background-color: #eeeeee;">
+                        <Label text="{{ letter }}" class="headerTitle" height="25" />
+                    </StackLayout>
+                </lv:RadListView.headerItemTemplate>-->
+
+                <lv:RadListView.itemTemplate >
+                    <StackLayout orientation="vertical" >
+                    <StackLayout orientation="horizontal" tap="item_intent" id="{{id}}" style="background-color: white;">
+                    <Image src="{{picture}}" horizontalAlignment="left" verticalAlignment="center" class="image_item"
+                     stretch="aspectFill"/>
+                    <GridLayout columns="*" rows="*,*" horizontalAlignment="right">
+                    <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center" class="item"
+                    col="0" row="0"/>
+                    <Label text="{{mobile}}" horizontalAlignment="left" verticalAlignment="center"
+                    class="phone_item" col="0" row="1"/>
+                    </GridLayout>
+                    </StackLayout>
+                        <StackLayout orientation="vertical" class="menu-line"></StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+
+        </GridLayout>
+    </StackLayout>
+</Page>

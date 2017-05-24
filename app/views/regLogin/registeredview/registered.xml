@@ -1,0 +1,77 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"  style="background-color: white;" loaded="loaded" >
+    <Page.actionBar>
+        <Android>
+            <ActionBar title=""  >
+                <GridLayout columns="*,*" rows="auto" verticalAlignment="top"  class="actionBar-view">
+                    <StackLayout orientation="horizontal"  row="0" col="0" tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回"   verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout  orientation="horizontal" horizontalAlignment="right"
+                                  verticalAlignment="center" row="0" col="2" >
+                        <Label text="帮助"  tap="dialForHelp"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+       <ios>
+           <ActionBar title="" class="iosActionBar">
+               <NavigationButton text=""/>
+               <ActionItem text="帮助" ios.position="right" tap="dialForHelp"/>
+           </ActionBar>
+       </ios>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <StackLayout height="60">
+            <Label text="手机号注册" class="phone_regist"/>
+        </StackLayout>
+        <StackLayout orientation="vertical" class="mainview">
+            <StackLayout orientation="horizontal" class="grid_label">
+                <Label text="+ 86  :"   verticalAlignment="center" class="name-label"/>
+                <TextField  hint="请输入手机号" keyboardType="phone"  id="DI_Account"
+                            ios:class="code_input" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+            </StackLayout>
+            <StackLayout class="line_text" >
+            </StackLayout>
+            <StackLayout orientation="horizontal" class="grid_label_one">
+                <Label text="密码:" verticalAlignment="center" class="name-label"/>
+                <GridLayout columns="*,auto" rows="40">
+                    <TextField row="0" col="0" hint="请输入登录密码" id="Pass_word_1" secure="true" keyboardType="done" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                    <Image src="res://eye_closep" row="1" col="1"  class="image_eye" horizontalAlignment="right" id="Eye_image_1" tap="Eye_Show_1"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="line_text"></StackLayout>
+            <StackLayout orientation="horizontal" class="grid_label_one">
+                <Label text="确认密码:" verticalAlignment="center" class="name-label"/>
+                <GridLayout columns="auto,*" rows="40">
+                    <TextField row="0" col="0" hint="请再次输入登录密码" id="Pass_word_2" secure="true" keyboardType="done" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                    <Image src="res://eye_closep" row="1" col="1"  class="image_eye"  horizontalAlignment="right" id="Eye_image_2" tap="Eye_Show_2"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="line_text"></StackLayout>
+            <StackLayout orientation="horizontal" class="grid_label_one">
+                <Label text="验证码:"   verticalAlignment="center" class="name-label"/>
+                <GridLayout columns="*,*" rows="40" >
+                    <TextField  row="0" col="0" hint="请输入验证码" id="validateCode" keyboardType="phone"  class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+                    <button text="获取验证码"  id="Bt_Auth" row="0" col="1" tap="Bt_Get_Auth" class= "code-btn" horizontalAlignment="right"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="line_text" >
+            </StackLayout>
+        </StackLayout>
+        <Button text="下一步" tap="next_registered" ios:height="44" class="bt_lon"/>
+        <GridLayout columns="auto,35,auto" rows="auto" class="grid_labe_passw">
+           <Label   row="0" col="0" text="我已阅读并同意"   verticalAlignment="center" class="code_input_s"/>
+           <Image src="{{ readState ? 'res://xuanzhong' : 'res://weixuan'}}" tap="agreeOrNot" id="readProtocal" row="0" col="1" style="width:20;height:20;"/>
+           <StackLayout row="0" col="2" orientation="vertical" style="margin-left:-5" verticalAlignment="center">
+               <label  text=" 一智通用户协议" verticalAlignment="center" style="color:#fb8901" tap="consentAgreement"/>
+               <StackLayout class="line_mtext" >
+               </StackLayout>
+           </StackLayout>
+       </GridLayout>
+        <StackLayout class="line-login"></StackLayout>
+        <StackLayout>
+            <label text="已有账号登录" verticalAlignment="bottom" tap="goto_login" class="exist-account" horizontalAlignment="center"></label>
+        </StackLayout>
+    </StackLayout>
+</Page>

@@ -1,0 +1,40 @@
+﻿ActionBar{
+    background-color: white;
+    color: black;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+.dateLabel{
+    color: rgb(156,156,156);
+    font-size: 14px;
+    height: 28px;
+    margin-left: 12px;
+}
+.recordContent{
+    background-color: white;
+}
+
+.checkAmount{
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+.checkNum{
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+}
+.checkNum label{
+    color: rgb(156,156,156);
+    font-size: 13px;
+}
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+.Label_back{
+    color: orange;
+}

@@ -1,0 +1,50 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <ActionBar title="">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top"  class="actionBar-view">
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://btn_back_pressed" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="选择区域"  /> 
+        </StackLayout>
+        <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                <Label text="完成"  />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+    </Page.actionBar>
+    
+<StackLayout orientation="vertical" class="mainview">
+
+    <StackLayout class="line" >
+    </StackLayout>
+
+    <GridLayout rows="auto, *" columns="*, *,*">
+
+    <StackLayout row="0" colSpan="3" orientation="vertical" class="item-top">
+    <Label text="已选湖北省、武汉市、天心区"  /> 
+    </StackLayout>
+    <ListView items="{{ provinceList }}" row="1" colSpan="3">
+    <ListView.itemTemplate>
+    <StackLayout orientation="horizontal" tap="toCityOne">
+    <Image src="res://ico_check1" class="bar-image" horizontalAlignment="left"/>
+    <Label id="province_text" text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+            class="item-text"/>
+    </StackLayout>        
+
+    </ListView.itemTemplate>
+
+    </ListView>
+
+    </GridLayout>
+
+</StackLayout>
+</Page>

@@ -1,0 +1,12 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+    shownModally="onShownModally"
+    style="border-radius:5px; border-width: 1px; border-color:white;">
+
+    <GridLayout rows="auto" columns="*" id="mdlItemsSelect" horizontalAlignment="center">
+        <StackLayout style="padding-left:40; padding-right:40; padding-top: 20;padding-bottom: 20;font-size: 16;" tap="phoneTap">
+                <Image src="res://zixun" height="60" />
+                <label text="电话咨询" textWrap="true" style="margin-top: 10;"/> 
+        </StackLayout>
+    </GridLayout>
+
+</Page>

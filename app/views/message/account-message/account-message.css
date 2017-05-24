@@ -1,0 +1,87 @@
+Page{
+    background-color: white;
+}
+.content{
+    padding-left: 10;
+    padding-right: 10;
+    padding-top: 10;
+}
+.fh{
+    font-size: 20px;
+    color:#FB8901;
+}
+.title-label{
+    color: black;
+    font-size: 20px;
+}
+.top-text{
+    font-size: 10px;
+    color:#FB8901;
+}
+.service{
+    margin-right: -70px;
+}
+
+/*内容*/
+.order{
+    height: auto;
+    border-width: 1px;
+    border-color: #DEDEDE;
+    border-style: solid;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px 0 0 0 ;
+    margin-bottom: 10px;
+}
+.distance{
+    margin-left: 10px;
+    color:#333333;
+}
+
+.money{
+    height: 35px;
+    font-size: 25px;
+    color: #333333;
+    margin-top: 5px;
+    text-align: center;
+}
+.yuan{
+    height: 35px;
+    text-align:center;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 20px;
+}
+.newline{
+   color: #999999;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.line{
+    height: 1px;
+    background-color: #DEDEDE;
+    margin-top: 10px;
+}
+.new-msg{
+    height: 32px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.time{
+    width: 40%;
+    text-align: center;
+    background-color: #CCCCCC;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 14px;
+}
+.ios_actionBar{
+    color: #fb8901;
+    background-color: white;
+}
+.ios_title{
+    color: black;
+}

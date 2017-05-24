@@ -1,0 +1,64 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      style="background-color: #eeeeee;" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" style="background-color: orange;">
+                <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view"
+                            style="background-color: orange;">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left"
+                                 tap="onBackTap">
+                        <Image src="res://btn_back_normal" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                 row="0" col="1">
+                        <Label text="通讯录好友"/>
+                    </StackLayout>
+                    <StackLayout tap="addfriend" orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="通讯录好友" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem ios.position="right">
+
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <GridLayout>
+            <lv:RadListView id="list-view" items="{{ groceryList }}" pullToRefresh="true" pullToRefreshInitiated="pullToRefreshInitiated" >
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout android:itemHeight="100" />
+                </lv:RadListView.listViewLayout>
+                <lv:RadListView.headerItemTemplate>
+                    <StackLayout verticalAlignment="center">
+                        <Label text="{{ letter }}" class="headerTitle" height="25" />
+                    </StackLayout>
+                </lv:RadListView.headerItemTemplate>
+
+                <lv:RadListView.itemTemplate >
+                    <StackLayout orientation="vertical" >
+                        <StackLayout orientation="horizontal" tap="item_intent" style="background-color: white;" width="375">
+                            <Image src="{{image}}" horizontalAlignment="left" verticalAlignment="center" class="image_item"
+                            />
+                            <GridLayout columns="*" rows="*,*" horizontalAlignment="right">
+                                <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center" class="item"
+                                       col="0" row="0"/>
+                                <Label text="{{phone}}" horizontalAlignment="left" verticalAlignment="center"
+                                       class="phone_item" col="0" row="1"/>
+                            </GridLayout>
+                        </StackLayout>
+                        <StackLayout orientation="vertical" class="menu-line"></StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+
+        </GridLayout>
+    </StackLayout>
+</Page>

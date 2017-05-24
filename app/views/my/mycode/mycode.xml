@@ -1,0 +1,53 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
+    >
+
+    <Page.actionBar>
+        <ActionBar title="">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="title_text" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh_ico" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="我的二维码"  /> 
+        </StackLayout>
+        
+       </GridLayout>
+        </ActionBar>
+
+        <iOS>
+            <ActionBar title="我的二维码" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    
+	
+<StackLayout orientation="vertical" class="mainview">
+    <StackLayout orientation="horizontal"  class="items-view">
+            <Image src="res://change" class="item-image"/> 
+            <GridLayout columns="*,*" rows="auto"  verticalAlignment="center">
+            <StackLayout orientation="vertical" row="0" col="0" >
+                <Label text="康师傅"  class="car-name" verticalAlignment="top"/>  
+                <Label text="13622753515"  class="car-size" verticalAlignment="bottom"/> 
+            </StackLayout>
+     
+            </GridLayout>
+   </StackLayout>
+
+   <Image src="res://code"  horizontalAlignment="center" class="code-image"/>  
+    <Label text="用软件扫描二维码,加我为好友"  verticalAlignment="center" 
+                 horizontalAlignment="center" class="hint-label"/> 
+                 
+    <StackLayout orientation="vertical"  class="item-view" horizontalAlignment="center"> 
+    
+       <Label text="点击生成链接"  class="cars-name" verticalAlignment="top" horizontalAlignment="center"/>  
+       <Label text="发送微信，QQ加好友"   verticalAlignment="top" horizontalAlignment="center"/>  
+    </StackLayout> 
+ </StackLayout>   
+
+</Page>

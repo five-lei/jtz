@@ -1,0 +1,126 @@
+<Page
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:lv="nativescript-telerik-ui-pro/listview"
+        navigatingTo="pageNavigatingTo"
+        tap="tap">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" cssClass="action-bar-view">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="goBack" horizontalAlignment="left" verticalAlignment="center">
+                                <Image src="res://fh" class="bar-image-l"/>
+                                <Label text="返回" verticalAlignment="center"/>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <Label text="家具学院" class="title"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+    </Page.actionBar>
+    <StackLayout>
+        <Label class="gray-line"></Label>
+        <TabView androidSelectedTabHighlightColor="#fb8901" tabBackgroundColor="white" tabTextColor="#505050" selectedTabTextColor="#fb8901">
+            <TabView.items>
+                <TabViewItem title="视频教程">
+                    <TabViewItem.view>
+                        <StackLayout class="list">
+                            <lv:RadListView id="video-view" items="{{lists}}" pullToRefresh="true" row="1" pullToRefreshInitiated="onPullToRefreshInitiated" loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                                <lv:RadListView.listViewLayout>
+                                    <lv:ListViewGridLayout spanCount="2"/>
+                                </lv:RadListView.listViewLayout>
+                                <lv:RadListView.itemTemplate>
+                                    <StackLayout horizontalAlignment="center" class="details">
+                                    <StackLayout tap="onVideo" id="{{videoId}}">
+                                        <Image src="{{image}}" width="173"/>
+                                        <Label text="{{title}}" class="text"/>
+                                    </StackLayout>
+                                        <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                                            <StackLayout orientation="horizontal" tap="videoShare">
+                                                <Image src="res://fx" width="14" marginTop="2" marginLeft="2"/>
+                                                <Label text="分享" class="character"/>
+                                            </StackLayout>
+                                            <Image src="{{ isFavourite ? 'res://add_to_fav_1' : 'res://sc_da2x' }}"
+                                                   cssClass="{{ cssClass }}" width="18" marginLeft="15" tap="toggleFavourite1"/>
+                                            <Label text="{{ isFavourite ? '已收藏' : '收藏' }}" cssClass="{{ cssClass }}"
+                                                   class="character"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </lv:RadListView.itemTemplate>
+                            </lv:RadListView>
+                        </StackLayout>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="文章教程">
+                    <TabViewItem.view>
+                        <StackLayout class="list">
+                            <lv:RadListView id="article-view" items="{{detailList}}" pullToRefresh="true" row="1" pullToRefreshInitiated="pullToRefreshInitiated" loadOnDemandMode="Manual" loadMoreDataRequested="loadMoreItemsRequested">
+                                <lv:RadListView.listViewLayout>
+                                    <lv:ListViewGridLayout spanCount="1"/>
+                                </lv:RadListView.listViewLayout>
+                                <lv:RadListView.itemTemplate>
+                                    <StackLayout class="push">
+                                        <!--<GridLayout columns="*,*,*" rows="auto" height="auto">-->
+                                            <!--<StackLayout tap="onArticle">-->
+                                                <!--<Image col="0" src="{{image}}" class="push-img"/>-->
+                                            <!--</StackLayout>-->
+                                            <!--<StackLayout col="1" colspan="2" orientation="vertical" class="push-right">-->
+                                                <!--<StackLayout tap="onArticle">-->
+                                                    <!--<Label text="{{title}}" class="push-title"/>-->
+                                                    <!--<Label text="{{text}}" class="push-content"/>-->
+                                                <!--</StackLayout>-->
+                                                <!--<GridLayout columns="*,*" rows="*" width="100%" class="push-icon">-->
+                                                    <!--<StackLayout orientation="horizontal" row="0" col="0" colSpan="2">-->
+                                                        <!--<StackLayout orientation="horizontal" tap="articleShare">-->
+                                                            <!--<Image src="res://fx" width="14" marginTop="2" marginLeft="2"/>-->
+                                                            <!--<Label text="分享" class="character"/>-->
+                                                        <!--</StackLayout>-->
+                                                        <!--<Image tap="toggleFavourite" width="18" marginLeft="15"-->
+                                                               <!--src="{{ isFavourite ? 'res://add_to_fav_1' : 'res://sc_da2x' }}"-->
+                                                               <!--verticalAlignment="center" cssClass="{{ cssClass }}"/>-->
+                                                        <!--<Label text="{{ isFavourite ? '已收藏' : '收藏' }}" cssClass="{{ cssClass }}"-->
+                                                               <!--width="30" class="character"/>-->
+                                                    <!--</StackLayout>-->
+                                                <!--</GridLayout>-->
+                                            <!--</StackLayout>-->
+                                        <!--</GridLayout>-->
+                                        <GridLayout columns="*,*,*" rows="auto" height="auto">
+                                            <Image col="0" src="{{src}}" class="push-img"/>
+                                            <StackLayout col="1" colspan="2" orientation="vertical" class="push-right">
+                                                <StackLayout tap="onArticle" id="{{id}}">
+                                                    <Label text="{{ detail_title }}" class="push-title"/>
+                                                    <Label text="{{ detail_content }}" class="push-content"/>
+                                                </StackLayout>
+                                                <GridLayout columns="*,*" rows="*" width="100%" class="push-icon">
+                                                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                                                        <StackLayout orientation="horizontal" marginTop="2" tap="{{onShare}}">
+                                                            <Image src="{{src_share}}" width="15" marginTop="2" marginLeft="2"/>
+                                                            <Label text="{{text_share}}" class="character"/>
+                                                        </StackLayout>
+                                                        <StackLayout orientation="horizontal" tap="{{oncollection}}">
+                                                            <Image cssClass="{{ cssClass }}" src="{{ collection ? 'res://add_to_fav_1'  : 'res://sc_da2x'}}"
+                                                                   height="18" marginLeft="15"/>
+                                                            <Label cssClass="{{ cssClass }}" text="{{ collection ? '已收藏' : '收藏'}}" width="50"
+                                                                   id="collect-text2" marginTop="3"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </GridLayout>
+                                            </StackLayout>
+                                        </GridLayout>
+                                    </StackLayout>
+                                </lv:RadListView.itemTemplate>
+                            </lv:RadListView>
+                        </StackLayout>
+                    </TabViewItem.view>
+                </TabViewItem>
+            </TabView.items>
+        </TabView>
+    </StackLayout>
+</Page>
+

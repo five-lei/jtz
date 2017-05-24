@@ -1,0 +1,62 @@
+<Page  xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" >
+                <GridLayout columns="*,*" rows="auto" verticalAlignment="top"  class="actionBar-view">
+                    <StackLayout orientation="horizontal"  row="0" col="0" tap="onBackTap" >
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"  />
+                    </StackLayout>
+                    <StackLayout  orientation="horizontal" horizontalAlignment="right"
+                                  verticalAlignment="center" row="0" col="2" >
+                        <Label text="帮助" tap="dialForHelp"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+       <ios>
+           <ActionBar title="" class="iosActionBar">
+               <NavigationButton text=""/>
+               <ActionItem text="帮助" ios.position="right" tap="dialForHelp"/>
+           </ActionBar>
+       </ios>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <StackLayout orientation="vertical">
+            <Label text="设置信息" horizontalAlignment="center" class="set_information" />
+
+            <Android>
+            <StackLayout  orientation="horizontal" verticalAlignment="center" horizontalAlignment="center" class="image-logo" tap='addHeadPortrait'>
+                <Image id="portrait" src="res://main5" class="item-image" stretch="aspectFill" borderRadius="50%"/>
+            </StackLayout>
+
+            </Android>
+
+            <ios>
+                <StackLayout  orientation="vertical"  backgroundImage="res://ts_z2x" class="ios_image_logo" tap='addHeadPortrait' id="myPortrait_ios" >
+                    <Label text="添加头像" class="ios_head_labal" horizontalAlignment="center" verticalAlignment="center"/>
+                </StackLayout>
+            </ios>
+        </StackLayout>
+        <StackLayout orientation="vertical" class="mainview">
+            <StackLayout orientation="horizontal" class="grid_label">
+                <Label text="真实姓名:"  verticalAlignment="center" class="name-label"/>
+                <TextField id="realName"  hint="请输入真实姓名(必填)" keyboardType="done" class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+            </StackLayout>
+            <StackLayout class="line_text" >
+            </StackLayout>
+            <StackLayout orientation="horizontal" class="grid_labe_passw">
+                <Label text="推荐人手机号:"   verticalAlignment="center" class="name-label"/>
+                <TextField id="recommandMobile"  hint="请输入手机号码(选填)" keyboardType="phone"
+                            class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+            </StackLayout>
+            <StackLayout class="line_text" >
+            </StackLayout>
+        </StackLayout>
+        <Button text="完成注册" tap="Complete_Regist" class="bt_lon"/>
+        <StackLayout class="line-login"></StackLayout>
+        <StackLayout>
+            <label text="已有账号登录" verticalAlignment="bottom" tap="goto_login" class="exist-account" horizontalAlignment="center"></label>
+        </StackLayout>
+    </StackLayout>
+</Page>

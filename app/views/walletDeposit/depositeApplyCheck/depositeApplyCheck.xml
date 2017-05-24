@@ -1,0 +1,94 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:lv="nativescript-telerik-ui-pro/listview" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" class="Label_back"/>
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="提现账单"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="提现账单">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <GridLayout columns="*" rows="auto,*" class="page">
+        <StackLayout orientation="vertical" col="0" row="0">
+            <StackLayout class="content-Top" orientation="vertical" id="content-top">
+                <StackLayout class="content-Top-title" orientation="vertical">
+                    <label text="一智通供应链管理有限公司" class="companyLabel"></label>
+                    <label text="{{'总完成运单' +(completeNum != undefined ? completeNum : '0')+ '单,已提现' +(depositeNum != undefined ? depositeNum : '0')+ '单'}}" class="depositeRecordLabel"></label>
+                </StackLayout>
+
+                <StackLayout class="content-Top-center" orientation="vertical" verticalAlignment="center"
+                             horizontalAlignment="center">
+                    <GridLayout rows="auto" columns="auto,auto" horizontalAlignment="center">
+                        <label text="{{'¥ '+(totalAmount != undefined ? totalAmount : '0.00')}}" row="0" col="0" textWrap="true" class="moneyAccount"></label>
+                        <label text="余额" row="0" col="1" class="balanceLabel"></label>
+                    </GridLayout>
+
+                    <label text="{{'付款中: ¥ '+(payAmount != undefined ? payAmount : '0.00')+'    已付款: ¥ ' +(completePay != undefined ? completePay : '00.00')}}" horizontalAlignment="center"></label>
+
+                    <button totalWaybill="{{totalAmount}}" text="申请提现" horizontalAlignment="center" tap="depositeApplyBtn"></button>
+                </StackLayout>
+
+            </StackLayout>
+
+            <GridLayout rows="50" columns="auto,*" class="content-depositeRecord" tap="jumpDepositeRecord">
+                <label text="历史提现记录" row="0" col="0" horizontalAlignment="left"  class="centerShow" verticalAlignment="center"></label>
+                <Image src="res://btn_more" row="0" col="1" stretch="none" verticalAlignment="center"
+                       horizontalAlignment="right" class="rightIcon"></Image>
+            </GridLayout>
+
+            <label class="recordLabel" text="最近提现记录" verticalAlignment="center"></label>
+        </StackLayout>
+
+        <GridLayout  col="0" row="1">
+            <lv:RadListView items="{{depositeInfoList}}" itemLoading="{{onItemLoading}}">
+                <!--listView的布局-->
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                </lv:RadListView.listViewLayout>
+
+                <!--listView的内容-->
+                <lv:RadListView.itemTemplate>
+                    <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                    <StackLayout class="content-depositeUnderway" orientation="vertical" >
+                        <GridLayout rows="auto" columns="auto,auto,*" verticalAlignment="center" class="depositeNumber" >
+                            <label text="{{'提现单号:' + wtNo}}" row="0" col="0" horizontalAlignment="left"
+                                   class="firstLabel"></label>
+                            <label text="{{withdrawTime}}" row="0" col="1" class="secondLabel" tap="{{labelTap}}"></label>
+                            <label text="{{withdrawState}}" row="0" col="2" class="thirdLabel" horizontalAlignment="right"></label>
+                        </GridLayout>
+                        <label text="{{'¥' + withdrawMoney}}"></label>
+                        <GridLayout rows="auto" columns="auto,auto" class="paymentInfo">
+                            <label  row="0" col="0" text="{{'已付¥' + paidMoney}}"></label>
+                            <label  row="0" col="1" text="{{'   未付¥' + noPiadMoney}}"></label>
+                        </GridLayout>
+
+                        <StackLayout class="line"></StackLayout>
+                        <button  wtNo="{{ wtNo }}" text="查看详情" class="checkBtn" tap="jumpCheckDetail"></button>
+                        <StackLayout class="space"></StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+        </GridLayout>
+    </GridLayout>
+
+
+</Page>

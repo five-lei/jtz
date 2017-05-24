@@ -1,0 +1,26 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="loaded">
+    <Page.actionBar>
+        <ActionBar title="" class="actionBarView">
+            <NavigationButton text="返回"/>
+
+            <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="选择配送方式" horizontalAlignment="center" class="navigationTitle"/>
+            </StackLayout>
+
+        </ActionBar>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical">
+        <GridLayout id="distributionSelect" rows="*" columns="*,*" class="selectLine" verticalAlignment="center" tap="distributionSelectTap">
+            <label row="0" col="0" text="配送" horizontalAlignment="left" verticalAlignment="center"></label>
+            <Image row="0" col="1" src="{{selectedOne ? 'res://x_ssq' : 'res://ico_check1'}}" verticalAlignment="center" horizontalAlignment="right"/>
+        </GridLayout>
+        <StackLayout class="sectionLine"></StackLayout>
+        <GridLayout id="installSelect" rows="*" columns="*,*" class="selectLine" verticalAlignment="center" tap="installSelectTap">
+            <label row="0" col="0" text="安装"></label>
+            <Image row="0" col="1" src="{{selectedTwo ? 'res://x_ssq' : 'res://ico_check1'}}" verticalAlignment="center" horizontalAlignment="right"/>
+        </GridLayout>
+
+        <Button text="确定" class="confirmBtn" horizontalAlignment="center"></Button>
+    </StackLayout>
+</Page>

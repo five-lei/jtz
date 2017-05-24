@@ -1,0 +1,118 @@
+/*订单*/
+
+.color9{
+    color: #999999;
+}
+
+.order-info{
+    padding: 0 10 0 0;
+}
+.orderNumberContent{
+    height: 50;
+}
+
+.order-number{
+    font-size: 16;
+}
+
+.order-date{
+    color: #858585;
+    margin-top: 10;
+    font-size: 12;
+}
+
+.company-info{
+    color: #858585;
+    font-size: 14;
+    margin-top: 10;
+}
+.order-payment{
+    color: #f72e00;
+    font-size: 16;
+}
+.order-payment-gray{
+    color: #999999;
+    font-size: 16;
+}
+
+/*收货地址相关信息*/
+.shipping-info{
+    padding: 10;
+}
+
+.address-info{
+    font-size: 15;
+}
+.packing-detail{
+    font-size: 12;
+    margin-top: 5;
+    color: #999999;
+}
+.packing-detail label{
+    margin-bottom: 5;
+}
+.btn{
+    width:60;
+    height: 30;
+    padding: 1 0;
+    color: white;
+    font-size: 14 ;
+    border-radius: 5;
+}
+.btn-accept{
+    background-color: rgb(255,138,37);
+}
+.btn-cancel{
+    border-width: 1;
+    border-color: rgb(254,173,84);
+    color: rgb(255,125,0);
+}
+/*折叠信息*/
+#collapseInfoPanel{
+}
+.collapse-info{
+    background-color: #fff5e5;
+    padding:10;
+    padding-bottom: 5;
+}
+.order-bottom-operate-3{
+    height:40;
+    padding-top: 15;
+}
+.order-bottom-operate{
+    height:40;
+    padding-top: 5;
+}
+.operate-btn-3{
+    color:#017dfb;
+    font-size: 16;
+}
+.operate-btn{
+    margin-left:50 !important;
+    color:#017dfb;
+    font-size: 16;
+}
+.operate-btn-3-gray{
+    color:#999999;
+    font-size: 16;
+}
+.operate-btn-gray{
+    margin-left:50 !important;
+    color:#999999;
+    font-size: 16;
+}
+.topRepeaterSelectedStyle{
+    background-color: #fff;
+    color:#fb8901;
+    width: 33%;
+    height: 40;
+}
+.topRepeaterStyle{
+    background-color: #fff;
+    width: 33.34%;
+    height: 40;
+    color:#505050;
+}
+.shipping_address_info{
+    margin: 8px 0px 8px 8px;
+}

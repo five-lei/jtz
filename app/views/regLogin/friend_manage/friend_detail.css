@@ -1,0 +1,120 @@
+.iosActionBar{
+    color: white;
+    background-color: rgb(255,138,37);
+}
+.head_image{
+ margin-top: 10;
+   width: 80;
+   height: 80;
+    horizontal-align: center;
+}
+.friend_name {
+    margin-top: 10;
+    font-size: 18;
+    horizontal-align: center;
+}
+.friend_stype {
+    margin-top: 10;
+    font-size: 18;
+    margin-left: 20;
+}
+.view{
+    margin-top: 5;
+height: 5;
+background-color: ghostwhite;
+
+}
+.information_type {
+    margin-top: 5;
+    font-size: 18;
+    horizontal-align: center;
+}
+.information_grid {
+    color: white;
+    margin-top: 5;
+    font-size: 18;
+    horizontal-align: center;
+    vertical-align: center;
+}
+.province{
+font-size: 16;
+color: orange;
+margin-left: 20;
+}
+
+.ios_province{
+    font-size: 16px;
+    color: rgb(255,138,37);
+    margin-left: 20px;
+    margin-top: 8px;
+}
+.ios_city{
+    margin-left: 20px;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.city{
+    margin-left: 20;
+    font-size: 14;
+}
+.infor_detail {
+    margin-top: 1;
+    font-size: 12;
+    horizontal-align: center;
+    vertical-align: center;
+}
+.infor_detail_grid {
+    margin-top: 3;
+    horizontal-align: center;
+    vertical-align: center;
+}
+.addfriend_bt{
+ margin-bottom: 0;
+   height: 50;
+}
+
+.infor {
+    margin-left: 61;
+}
+.bar-image{
+ width: 25;
+ height: 25;
+}
+.actionBar-view {
+    color: white;
+    font-size: 16;
+    margin-right: 10;
+    background: orange;
+}
+.image_score{
+    height: 20;
+    width: 20;
+    margin-left: 20;
+
+}
+.text_score{
+    color: white;
+    margin-left: 10;
+}
+type_service{
+    border-radius:1;
+    border-width:1;
+    border-color: sandybrown;
+    background-color: #ff8b00;
+
+}
+Page{
+    background-color:white;
+}
+
+ActionBar{
+    background-color: transparent;
+}
+
+.visible {
+    visibility:visible;
+}
+
+.collapse {
+    visibility: collapse;
+}

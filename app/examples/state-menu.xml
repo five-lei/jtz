@@ -1,0 +1,31 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="example-menu-drawer3"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="180"
+        android:drawerContentSize="180">
+    <drawer:RadSideDrawer.drawerContent>
+        <GridLayout class="example-menu-background" backgroundColor="white">
+            <StackLayout class="example-menu-stack" verticalAlignment="bottom">
+                <Label text="待签收" class="example-menu-item" type="waiting_sign_for" taskType="waitPickUp"
+                       tap="statusTap" textWrap="true" horizontalAlignment="center"/>
+                <StackLayout class="menu-line">
+                </StackLayout>
+                <Label text="待接单" class="example-menu-item" type="waiting_list" taskType="distributionWaitAccept"
+                       tap="statusTap" horizontalAlignment="center"/>
+                <StackLayout class="menu-line">
+                </StackLayout>
+
+                <Label text="待预约" class="example-menu-item" type="waiting_appointment" taskType="accepted"
+                       tap="statusTap" horizontalAlignment="center"/>
+                <StackLayout class="menu-line">
+                </StackLayout>
+                <Label text="待提货" class="example-menu-item" type="waiting_pickup" taskType="waiting_pickup"
+                       tap="statusTap" horizontalAlignment="center"/>
+            </StackLayout>
+        </GridLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

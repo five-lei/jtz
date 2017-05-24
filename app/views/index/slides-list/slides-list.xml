@@ -1,0 +1,31 @@
+<Page loaded="loaded">
+   <Page.actionBar>
+      <!--导航布局开始-->
+      <Android>
+         <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+               <StackLayout orientation="horizontal"  row="0" col="0"
+                            tap="onBackTap" horizontalAlignment="left">
+                  <Image src="res://fh" height="20" marginRight="5"/>
+                  <Label text="返回" verticalAlignment="center" class="fh" tap="return"/>
+               </StackLayout>
+               <StackLayout  orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" class="title-label">
+                  <Label text="广告详情"/>
+               </StackLayout>
+            </GridLayout>
+         </ActionBar>
+      </Android>
+
+      <iOS>
+         <ActionBar title="广告详情" class="iosActionBar">
+            <NavigationButton text="" />
+         </ActionBar>
+      </iOS>
+   </Page.actionBar>
+   <StackLayout>
+      <StackLayout class="gray-line" ></StackLayout>
+      <WebView src="{{src}}"/>
+   </StackLayout>
+
+</Page>

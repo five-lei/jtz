@@ -1,0 +1,59 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-text">
+                        <Label text="字体设置"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="保存"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="字体设置" class="iosActionBar">
+                <NavigationButton text="" />
+
+                <ActionItem ios.position="right">
+                    <label text="保存"  verticalAlignment="center" class="leftBarBtn"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*" rows="auto" class="items-view">
+            <button id="big" text="大" row="0" col="0" class="grid_label_select"
+                    horizontalAlignment="right" tap="big_btn"/>
+            <button id="middle" text="中" row="0" col="1" class="grid_label_normol"
+                    horizontalAlignment="center" tap="middle_btn"/>
+            <button id="short" text="小" row="0" col="2" class="grid_label_normol"
+                    horizontalAlignment="left" tap="short_btn"/>
+
+        </GridLayout>
+
+        <Label text="枫桥夜泊" verticalAlignment="center" horizontalAlignment="center" class="title-label"/>
+
+        <Label text="张继" verticalAlignment="center" horizontalAlignment="center"
+               class="hint-label"/>
+        <Label text="月落乌啼霜满天，江枫渔火对愁眠。" verticalAlignment="center" horizontalAlignment="center" class="text-label"/>
+        <Label text="姑苏城外寒山寺，夜半钟声到客船。" verticalAlignment="center" horizontalAlignment="center" class="text-label"/>
+
+    </StackLayout>
+</Page>

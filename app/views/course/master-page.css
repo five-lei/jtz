@@ -1,0 +1,177 @@
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+Page{
+    background-color: rgb(255, 138, 37);
+}
+
+.title-label{
+    font-size: 18px;
+    color: white;
+}
+.top-view{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.icon-img{
+    width: 34px;
+    margin-bottom: 8px;
+}
+.top-text{
+    font-size: 14px;
+    color: #646464;
+}
+
+/*第二部分*/
+.popular-tutorial{
+    background-color: white;
+    width: 100%;
+    padding:15px 10px 10px;
+}
+.popular-title{
+    color: #333333;
+    font-size: 16px;
+}
+.line{
+    height: 16px;
+    width: 2px;
+    background-color: orange;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+.tutorial-title{
+    color: #333333;
+    font-size: 18px;
+}
+.details{
+    padding:0px 10px 10px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.particulars{
+    padding:10px 10px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.details-left{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.details-right{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.hot{
+    width:40px;
+    height:20px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
+.text{
+    font-size: 20px;
+    color: #333333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.tex{
+    color: white;
+    font-size: 18px;
+    margin-top: 17px;
+    text-align: center;
+}
+.video{
+    height: 60px;
+}
+.video-img{
+    margin-left:28px;
+    margin-right: 10px;
+}
+.article-img{
+    margin-right: 10px;
+    margin-left: 28px;
+}
+.character{
+    font-size: 10px;
+    color:#666666;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+
+/*第四部分*/
+.more{
+    color: #cdcdcd;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+.push{
+    background-color: white;
+    margin-bottom: 10px;
+}
+.push-img{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.push-right{
+    margin-left: 10px;
+}
+.push-title{
+    font-size: 18px;
+    color: #333333;
+}
+.push-content{
+    margin-top: 10px;
+    font-size: 15px;
+    color: #888888;
+}
+.push-icon{
+    margin-top: 10px;
+}
+.items-view{
+    margin-bottom: 5px;
+}
+
+/*收藏*/
+.friend-favorite {
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+@keyframes friend-favorite-selected {
+    from { transform: scale(1, 1) rotate(-120); opacity: 0; animation-timing-function: linear; }
+    50% { transform: scale(2, 2) rotate(-60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-selected {
+    animation-name: friend-favorite-selected;
+    animation-duration: 0.4;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+@keyframes friend-favorite-unselected {
+    from { transform: scale(1, 1) rotate(120); opacity: 0; animation-timing-function: linear; }
+    60% { transform: scale(2, 2) rotate(60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-unselected {
+    animation-name: friend-favorite-unselected;
+    animation-duration: 0.2;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}

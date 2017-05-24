@@ -1,0 +1,146 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <ActionBar title=""  class="actionBar-view">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="车辆认证"  /> 
+        </StackLayout>
+        <StackLayout  orientation="vertical" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" tap="onPhone">
+                <Image src="res://kf" class="bar-image1"/>
+                <Label text="客服"  class="bar-text" />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+    </Page.actionBar>
+   
+	
+<StackLayout orientation="vertical" class="mainview">
+<StackLayout orientation="vertical"   class="list_page">  
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <StackLayout orientation="vertical" class="top">  
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" > 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="车牌号码"  verticalAlignment="center" class="hint-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="left"  
+                     verticalAlignment="center" row="0" col="1" >
+                <Label id="type" text=""  class="action-label" />
+                <Label id="number" text=""   style="margin-left:5; color:#333333;"/>
+                
+    </StackLayout>
+    </GridLayout>
+    <StackLayout class="line-text">
+    </StackLayout> 
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" > 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="车辆类型"  verticalAlignment="center" class="hint-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="left"  
+                     verticalAlignment="center" row="0" col="1" >
+                <Label  text="冷藏车"  class="action-label" />
+                
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="line-text">
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" > 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="车辆长度"  verticalAlignment="center" class="hint-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="left"  
+                     verticalAlignment="center" row="0" col="1" >
+                <Label id="length" text=""  class="action-label" />
+                
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="line-text">
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" > 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="可载重货"  verticalAlignment="center" class="hint-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="left"  
+                     verticalAlignment="center" row="0" col="1" >
+                <Label  text="20.00吨"  class="action-label" />
+                
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="line-text">
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" > 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Label text="载货空间"  verticalAlignment="center" class="hint-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="left"  
+                     verticalAlignment="center" row="0" col="1" >
+                <Label  text="265.00方"  class="action-label" />
+                
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines">
+    </StackLayout>
+    </StackLayout>
+
+    <GridLayout columns="*,*,*,*" rows="auto,auto" class="item-view" >
+    <Label text="认证照片"  row="0" col="0" verticalAlignment="center" class="grid-label"/>
+    
+    <GridLayout  orientation="vertical"  row="1" col="0" class="car-item" >
+                <Label id="set1" text=""  class="car-text" horizontalAlignment="center"
+                 verticalAlignment="bottom"/>
+                
+    </GridLayout>
+
+    <GridLayout  orientation="vertical"  row="1" col="1" class="car-item" >
+                <Label id="set2" text="待审核"  class="car-text" horizontalAlignment="center"
+                 verticalAlignment="bottom"/>
+                
+    </GridLayout>
+
+    <GridLayout  orientation="vertical"  row="1" col="2" class="car-item" >
+                <Label id="set3" text="待审核"  class="car-text" horizontalAlignment="center"
+                 verticalAlignment="bottom"/>
+                
+    </GridLayout>
+
+    <GridLayout  orientation="vertical"  row="1" col="3" class="car-item" >
+                <Label id="set4" text="待审核"  class="car-text" horizontalAlignment="center"
+                 verticalAlignment="bottom"/>
+                
+    </GridLayout>
+    </GridLayout>
+
+    
+
+    </StackLayout>
+
+    <StackLayout orientation="vertical"  verticalAlignment="bottom" class="btn_page" >  
+    <button text="重新认证" class= "grid_label_select"  tap="ResetTap"/>
+   </StackLayout>    
+
+</StackLayout>
+</Page>

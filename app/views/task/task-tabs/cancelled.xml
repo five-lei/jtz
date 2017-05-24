@@ -1,0 +1,113 @@
+<!--已取消-->
+<ScrollView>
+    <Repeater items="{{ cancelled }}">
+        <Repeater.itemsLayout>
+            <StackLayout orientation="vertical"/>
+        </Repeater.itemsLayout>
+        <Repeater.itemTemplate>
+            <StackLayout flex="1" cssClass="{{status==='cancelled'?'order-content color9':'order-content'}}"
+                         orientation="vertical">
+                //订单号信息
+                <GridLayout rows="40" columns="40,*,20,auto" cssClass="order-info" type="{{status}}" tap="tapTaskDetail">
+                    <Image row="0" rowSpan="40" col="0" src="{{statusImage}}" stretch="fill" cssClass="img22"></Image>
+                    <StackLayout row="0" col="1" orientation="horizontal">
+                        <Label text="{{orderNumber}}" cssClass="order-number"></Label>
+                        <Image src="res://qiang2x" stretch="fill" verticalAlignment="top" cssClass="img16"
+                               visibility="{{status==='waiting_list'?'visible':'collapse'}}"></Image>
+                    </StackLayout>
+                    <Label text="{{'¥ '+ price}}" row="0" col="3" horizontalAlignment="right"
+                           cssClass="{{status==='cancelled'?'order-payment-gray':'order-payment'}}"></Label>
+                    <Label text="{{address}}" row="40" col="1" verticalAlignment="bottom"
+                           cssClass="company-info"></Label>
+                    <Label text="{{datetime}}" row="40" col="3" verticalAlignment="bottom"
+                           cssClass="order-date"></Label>
+                </GridLayout>
+                <Label cssClass="line"/>
+                //收货地址相关信息
+                <GridLayout rows="*" columns="*,20,100" tap="toggleCollapsePanel" cssClass="shipping-info">
+                    <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_list'?'visible':'collapse'}}">
+                        <button text="受理" tap="tapAcceptTask" cssClass="btn btn-accept"></button>
+                        <button text="取消" tap="tapCancelTask" cssClass="btn btn-cancel"></button>
+                    </StackLayout>
+                    <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_appointment'?'visible':'collapse'}}">
+                        <!--预约-->
+                        <button text="预约" tap="tapOrderTask" cssClass="btn btn-accept"></button>
+                        <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                    </StackLayout>
+                    <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_pickup'?'visible':'collapse'}}">
+                        <!--提货-->
+                        <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                        <button text="提货" tap="tapPickTask" cssClass="btn btn-cancel"></button>
+                    </StackLayout>
+                    <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='waiting_sign_for'?'visible':'collapse'}}">
+                        <!--待签收-->
+                        <button text="二次预约" tap="tapOrderAgainTask" cssClass="btn btn-accept"></button>
+                        <button text="签收" tap="tapReceiveTask" cssClass="btn btn-cancel"></button>
+                    </StackLayout>
+                    <StackLayout row="0" col="3" rowSpan="70" orientation="vertical" visibility="{{status==='cancelled'?'visible':'collapse'}}">
+                        <!--已取消-->
+                        <Image src="res://yiquxiao" cssClass="img58_50"></Image>
+                        <button text="删除" tap="tapDeleteTask" cssClass="btn btn-cancel"></button>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" row="1" col="0" cssClass="shipping-address-info">
+                        <Label text="{{'收货地址：'+address}}" cssClass="address-info" textWrap="true"></Label>
+                        <StackLayout orientation="horizontal">
+                            <Label text="{{'收货人：'+receivePersonName}}"></Label>
+                            <Label text="{{'('+receivePersonPhone+')'}}"
+                                   cssClass="{{status==='cancelled'?'color9':'color-b'}}" textWrap="true"></Label>
+                        </StackLayout>
+                        <StackLayout orientation="vertical" cssClass="packing-detail">
+                            <Label text="{{'包装数量：'+packCount+'   包装体积：'+packVolume+'  楼层：'+floor}}"
+                                   textWrap="true"></Label>
+                            <Label text="{{'预约计时：'+appointmentTime+'h   受理计时：'+dealTime+'h'}}" textWrap="true"></Label>
+                        </StackLayout>
+                        <Label text="配送并安装"></Label>`
+                    </StackLayout>
+                </GridLayout>
+                <StackLayout id="collapse-widget" orientation="vertical" visibility="visible">
+                    <Image src="res://xiala2x" cssClass="img20_7" horizontalAlignment="center"></Image>
+                    <Label cssClass="filter-line"></Label>
+                </StackLayout>
+                //可隐藏折叠信息
+                <StackLayout id="collapseInfoPanel" visibility="collapse">
+                    <Label id="collapse-widget-line" cssClass="orange-line"></Label>
+                    <DockLayout cssClass="collapse-info">
+                        <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                    cssClass="margin-right-10">
+                            <Label id="addressInfoLabel" text="{{'提货地址：'+pickupAddress}}" row="0"
+                                   col="0" cssClass="address-info" textWrap="true"></Label>
+                        </GridLayout>
+                        <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                    cssClass="margin-right-10">
+                            <Label text="{{'提货电话：'+pickupPhone}}" row="1" col="0"
+                                   cssClass=""></Label>
+                        </GridLayout>
+                        <GridLayout dock="top" rows="25" columns="auto,auto,*"
+                                    cssClass="margin-right-10">
+                            <Label text="{{'提货码：'+pickupNumber}}" row="1" col="0" cssClass=""></Label>
+                        </GridLayout>
+                    </DockLayout>
+                    <Label id="collapse-widget-line2" cssClass="orange-line"></Label>
+                </StackLayout>
+
+                //底部操作按钮
+                <DockLayout stretchLastChild="true" cssClass="order-bottom-operate">
+                    <GridLayout dock="left" rows="40" columns="auto,*"
+                                style="width:50%;">
+                        <Image  tap="tapNavigateHandler" src="{{status==='cancelled'?'res://dao_qu':'res://dh2x'}}" verticalAlignment="center"  horizontalAlignment="center"
+                                cssClass="img20" row="2" col="1"></Image>
+                        <Label  tap="tapNavigateHandler" text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"
+                                cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                    </GridLayout>
+                    <GridLayout dock="right" rows="40" columns="auto,*"
+                                style="width:50%;">
+                        <Image  tap="tapCallHandler" src="{{status==='cancelled'?'res://dian_qu':'res://call2x'}}" verticalAlignment="center"
+                                horizontalAlignment="center" cssClass="img20" row="2" col="2"></Image>
+                        <Label  tap="tapCallHandler" text="电话" row="20" col="2" horizontalAlignment="center"  verticalAlignment="center"
+                                cssClass="{{status==='cancelled'?'operate-btn-gray':'operate-btn'}}"></Label>
+                    </GridLayout>
+                </DockLayout>
+            </StackLayout>
+        </Repeater.itemTemplate>
+    </Repeater>
+</ScrollView>

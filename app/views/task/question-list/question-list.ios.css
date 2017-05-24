@@ -1,0 +1,33 @@
+@import { url('~/views/task/question-list/question-list-common.css') };
+
+.qs-ios_actionBar{
+    background-color: #fb8901;
+    color: white;
+}
+.qs-ios_rightImage{
+    width: 24px;
+    height: 24px;
+}
+.qs-ios_searchImage{
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+}
+.qs-ios_Line{
+    background-color: rgb(240,240,240);
+    height: 8px;
+}
+/*问题内容*/
+.qs-problem-content{
+    position: absolute;
+    color: #333;
+    background-color: white;
+    font-size: 14;
+    margin-bottom: 5;
+    margin-top: 8px;
+}
+.qs-ios_listLine{
+    height: 8px;
+    background-color: rgb(240,240,240);
+    margin-top: 6px;
+}

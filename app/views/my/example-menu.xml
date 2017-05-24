@@ -1,0 +1,41 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="example-menu-drawer"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="380"
+        android:drawerContentSize="380">
+    <drawer:RadSideDrawer.drawerContent>
+        <GridLayout class="example-menu-background" backgroundColor="white">
+            <StackLayout class="example-menu-stack" verticalAlignment="bottom">
+                
+                <Label  text="请按照示例图片提交照片,保持照片文字信息清晰可辨、四角完整,否则不予审核通过" 
+                 class="menu-text" textWrap="true"/>
+                <Image src="res://rz_shili" height="150" stretch="aspectFill" class="example-img"/>
+                
+                <StackLayout class="menu-line-text" >
+                </StackLayout>
+
+                <StackLayout style="width:100%" tap="codeTap">
+                <Label text="拍照" class="example-menu-item" horizontalAlignment="center" />
+                </StackLayout>
+
+                <StackLayout class="menu-line" >
+                </StackLayout>
+
+                <StackLayout style="width:100%" tap="informationTap">
+                <Label text="从手机相册中选择" class="example-menu-item"  horizontalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout class="menu-line-text" >
+                </StackLayout>
+
+                <StackLayout style="width:100%" tap="exitTap">
+                <Label text="取消" class="example-menu-item" horizontalAlignment="center"/>
+                </StackLayout>
+            </StackLayout>
+        </GridLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

@@ -1,0 +1,81 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="color:rgb(255,138,37);font-size: 16px;margin-top:1px"/>
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="余额收支明细" style="color:black;font-size: 18px;"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" row="0" col="2" horizontalAlignment="right" verticalAlignment="center" tap="{{onSelectTime}}">
+                        <label text="筛选" android:class="ADrightBar"></label>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text="返回"></NavigationButton>
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="center" verticalAlignment="center">
+                    <label text="余额收支明细" class="titleLabel"></label>
+                </StackLayout>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" tap="{{onSelectTime}}">
+                            <label text="筛选"></label>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <lv:RadListView items="{{messages}}"  id="listview" itemLoading="{{onItemLoading}}" style.backgroundColor="white">
+        <!--listView的布局-->
+        <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout scrollDirection="Vertical" />
+        </lv:RadListView.listViewLayout>
+
+        <!--listView的页眉-->
+        <!--<lv:RadListView.headerItemTemplate>-->
+            <!--<StackLayout verticalAlignment="center">-->
+                <!--<Label text="{{header}}" class="headerTitle" height="35" />-->
+            <!--</StackLayout>-->
+        <!--</lv:RadListView.headerItemTemplate>-->
+
+        <!--listView的内容-->
+        <lv:RadListView.itemTemplate>
+            <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+            <StackLayout >
+
+                <StackLayout verticalAlignment="center" class="headerSection">
+                    <Label text="{{header}}" ios:class="headerTitle" android:class="ADheaderTitle" visibility="collapse" />
+                </StackLayout>
+
+                <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+                    <StackLayout row="0" col="0" orientation="vertical" horizontalAlignment="left">
+                        <label text="{{name + ' - ' +taskNumber}}"></label>
+                        <label text="{{date}}" class="checkAmount-date"></label>
+                    </StackLayout>
+
+                    <label text="{{account}}" row="0" col="1" horizontalAlignment="right"
+                           class="checkAmount-number" ></label>
+                </GridLayout>
+
+                <StackLayout class="line"></StackLayout>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+
+    </lv:RadListView>
+
+</Page>

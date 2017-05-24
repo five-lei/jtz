@@ -1,0 +1,64 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+ 
+    <Page.actionBar>
+        <ActionBar title="" class="actionBar-view">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top"  >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="证件照上传"  /> 
+        </StackLayout>
+        <StackLayout  orientation="vertical" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" tap="onPhone">
+                <Image src="res://kf" class="bar-image1"/>
+                <Label text="客服"  class="bar-text" />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+    </Page.actionBar>
+   
+	
+<GridLayout orientation="vertical" class="mainview">  
+    <StackLayout class="line" >
+    </StackLayout>
+
+   <GridLayout rows="*,*,*,*" columns="*" 
+              horizontalAlignment="center" verticalAlignment="center" class="mine-view">
+    <StackLayout orientation="vertical"  class="items-view" row="0" col="0"> 
+          <Image src="res://sczj" horizontalAlignment="center" class="car-image" />
+          <Label text="行驶证"  horizontalAlignment="center" class="hint-label"/>
+
+    </StackLayout>
+    
+    <StackLayout orientation="vertical"  class="items-view" row="1" col="0">  
+           <Image src="res://sczj" horizontalAlignment="center" class="car-image" />
+           <Label text="车头照片"  horizontalAlignment="center" class="hint-label"/>
+    </StackLayout>
+
+    <StackLayout orientation="vertical"  class="items-view" row="2" col="0">  
+             <Image src="res://sczj" horizontalAlignment="center" class="car-image" />
+             <Label text="车身45度照片"  horizontalAlignment="center" class="hint-label"/>  
+    </StackLayout>
+
+
+    <StackLayout orientation="vertical"  class="items-view" row="3" col="0" >   
+               <Image src="res://sczj" horizontalAlignment="center" class="car-image" />
+               <Label text="车尾照片"  horizontalAlignment="center" class="hint-label"/>
+    </StackLayout>
+
+    
+
+    </GridLayout> 
+
+    <StackLayout orientation="vertical"  verticalAlignment="bottom" class="btn_page" >  
+    <button text="保存" class= "grid_label_select"  tap="SaveTap"/> 
+    </StackLayout>
+
+</GridLayout>
+</Page>

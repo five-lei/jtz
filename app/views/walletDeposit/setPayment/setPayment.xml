@@ -1,0 +1,56 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar >
+        <Android>
+            <ActionBar >
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" style="font-size: 16;color:rgb(255,138,37);margin-top:1px" /> 
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" >
+                        <Label text="支付设置" style="color:black;font-size: 18px; "/>
+                    </StackLayout>
+                    
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+        <ActionBar title="支付设置" class="iosActionBar">
+            <NavigationButton text=""/>
+            <!--<ActionItem ios.position="left">-->
+                <!--<ActionItem.actionView>-->
+                    <!--<StackLayout orientation="horizontal" tap="onNavBtnTap">-->
+                        <!--<label text="取消" color="rgb(255,135,0)"  verticalAlignment="center"></label>-->
+                    <!--</StackLayout>-->
+                <!--</ActionItem.actionView>-->
+            <!--</ActionItem>-->
+        </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout class="page">
+
+        <Android>
+           <StackLayout class="lines">
+           </StackLayout>
+        </Android>
+        <StackLayout orientation="vertical"  class="content">
+            <GridLayout rows="45" columns="auto,*" class="modifierPassword" tap="jumpModifierPassword">
+                <label text="修改支付密码" row="0" col="0"  horizontalAlignment="left" verticalAlignment="center" ios:class="ioslabel" android:class="androidlabel"></label>
+                <Image android:src="res://jr" ios:src="res://drawable-hdpi/btn_more" row="0" col="1" ios:stretch="none" verticalAlignment="center" horizontalAlignment="right" class="rightIcon"
+                       android:style="height:15"></Image>
+            </GridLayout>
+
+            <GridLayout rows="45" columns="auto,*" class="forgetPassword" tap="jumpForgetPassword">
+                <label text="忘记支付密码" row="0" col="0"  horizontalAlignment="left" verticalAlignment="center" ios:class="ioslabel" android:class="androidlabel"></label>
+                <Image android:src="res://jr" ios:src="res://drawable-hdpi/btn_more" row="0" col="1" ios:stretch="none" verticalAlignment="center" horizontalAlignment="right" class="rightIcon"
+                       android:style="height:15"></Image>
+            </GridLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+</Page>

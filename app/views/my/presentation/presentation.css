@@ -1,0 +1,183 @@
+﻿.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+Page {
+    background-color: rgb(255, 138, 37)
+}
+ActionBar {
+    color: white;
+    font-size: 16;
+    }
+
+.title_view {
+    margin-top: 10;
+    background:#D3D3D3 
+}
+
+.title-label {
+    font-size: 18;
+}
+
+.star-image {
+    height: 18px;
+    width: 18px;  
+}
+
+.right-menu {
+    height: 20;
+    margin-right: 15
+    
+}
+
+.person-img {
+    margin-top: 10;
+    height: 60;
+    width: 60;  
+    border-radius:3px;
+}
+
+.number{
+    height: 10;
+    margin-left: 25px;
+    margin-top:60px;
+}
+
+.star_page {
+    background-color: rgb(255, 138, 37);
+    padding-bottom: 15;
+    font-size: 16;
+    color: white;
+}
+
+.score_page {
+    margin-top: 10;
+    margin-right: 20;
+    margin-left: 15;
+    font-size: 14
+}
+
+.grid_page {
+    margin-top: 10;
+    font-size: 14
+}
+
+.bar-image {
+    height:20;
+    margin-right: 5
+}
+
+.bar-image2 {
+    height:12;
+    margin-right: 2
+}
+
+.mainview {
+    background-color: #eeeeee ;
+}
+
+.hint-label {
+    color: cornflowerblue
+}
+
+
+.item-view {
+    background-color:white;
+    padding-bottom: 10;
+    padding-top: 10;
+    padding-left: 10;
+    
+    font-size: 16;
+}
+
+.items-view {
+    background-color:white;
+    margin-top: 10;
+    padding-top: 10;
+    padding-bottom: 10;
+    padding-left: 10;
+    font-size: 16;
+}
+
+.line {
+    height: 0.5;
+    margin-left: 1;
+    background-color: #D3D3D3 ;
+    margin-top: 10
+}
+
+.line-text {
+    height: 0.5;
+    background-color: #D3D3D3 ;
+}
+
+.text {
+   color: #999999;
+   font-size: 14
+}
+
+.text_province {
+   color: rgb(255, 138, 37);
+   font-size: 16;
+   margin-top: 10
+}
+
+.text_city {
+   color: black;
+   font-size: 14;
+   
+}
+
+.person-btn {
+    
+    height: 23px;
+    width: 60px;
+    font-size: 12;
+    background-color: rgb(255, 138, 37);
+    color: white;
+    border-radius:12px;
+    border-color: white;
+    border-width: 1
+    
+}
+
+.type-btn {
+    background: transparent;
+    height: 15px;
+    width: 15px;
+    font-size: 10;
+    margin-top: 5;
+    margin-right: 3;
+    background-color: rgba(0,0,0,0.1);;
+    color: white;
+    border-color: white;
+    
+}
+
+.grid_btn {
+   background-color: rgb(255, 138, 37);
+   padding-left: 6;
+   padding-right: 6;
+   padding-top: 10;
+   padding-bottom: 10;
+   color: white;
+   margin-right: 10;
+   margin-bottom: 10;
+   border-radius:4px;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.collapse {
+    visibility: collapse;
+}
+
+.image_score{
+    height: 20;
+    width: 20;
+    margin-left: 20;
+
+}
+

@@ -1,0 +1,17 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      loaded="loaded"
+      backgroundColor="transparent" >
+  <StackLayout orientation="vertical" backgroundColor="white" width="265" height="315">
+    <AbsoluteLayout>
+      <Image src="res://ad_bj" height="100"/>
+      <Image left="235" top="5" src="res://close" tap="closeModal" ios:class="closeImage"/>
+    </AbsoluteLayout>
+    <StackLayout>
+      <Label text="为了系统更好的推送任务" class="balance" />
+      <Label textWrap="true" class="msg" text="请师傅选择服务区域" class="select-msg"/>
+      <Label textWrap="true" text="选择服务区域后，我们系统能更精准的推送任务到你的APP，方便师傅更好的服务" class="msg"/>
+    </StackLayout>
+    <Button text="立即选择" class="btn" tap="select"/>
+  </StackLayout>
+
+</Page>

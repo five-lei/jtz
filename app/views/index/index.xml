@@ -1,0 +1,181 @@
+<Page id="home-page"
+      backgroundSpanUnderStatusBar="true"
+      xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:Slides="nativescript-slides"
+      loaded="pageLoaded">
+    <Android>
+        <Page.actionBar>
+            <ActionBar>
+                <StackLayout orientation="vertical" verticalAlignment="center" class="bar-a">
+                    <GridLayout columns="auto,*,*" rows="auto">
+                        <StackLayout col="0" >
+                            <Image src="res://per" width='50px' stretch="aspectFill" height="50px"  borderRadius="50%" class="head-portrait" id="portrait"/>
+                        </StackLayout>
+                        <StackLayout col="1" orientation="horizontal" verticalAlignment="top">
+                            <Label text="{{realName}}" class="action-label"/>
+                            <!--<Button text="测试0" tap="testDemo"/>-->
+                        </StackLayout>
+                        <StackLayout col="2" orientation="horizontal" horizontalAlignment="right" >
+                            <Image src="res://ss" width="20" class="bar-img" tap="onSearch"/>
+                            <Image src="res://shaoma" tap="{{doScanWithTorch}}" width="20" class="bar-img"/>
+                            <AbsoluteLayout tap="onMessageTap">
+                                <Image src="res://xioaxi" width="21" class="bar-pic"/>
+                                <Label text="12" class="number" borderWidth="1" borderRadius="50%"/>
+                            </AbsoluteLayout>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
+            </ActionBar>
+        </Page.actionBar>
+    </Android>
+
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee">
+        <StackLayout orientation="vertical" height="89.8%" dock="top">
+            <iOS>
+                <GridLayout columns="auto,*,auto,auto,auto" rows="*" height="44" class="iosTopStyle">
+                    <Image src="res://zhanghaobd" col="0" row="0" class="ios-icon" horizontalAlignment="left"
+                           verticalAlignment="center"/>
+                    <Label text="{{realName}}" col="1" row="0" horizontalAlignment="left" verticalAlignment="center"/>
+
+                    <Image src="res://ss" width="20" class="bar-img" col="2" row="0" horizontalAlignment="right" tap="onSearch"/>
+                    <Image src="res://shaoma" width="20" tap="{{doScanWithTorch}}" class="bar-img" col="3" row="0" horizontalAlignment="right"/>
+                    <AbsoluteLayout col="4" row="0" horizontalAlignment="right" width="25">
+                        <Image src="res://xioaxi" width="21" class="bar-pic" tap="onMessageTap"/>
+                        <Label text="6" left="15" top="6" class="ios-remindNum" borderWidth="1"/>
+                    </AbsoluteLayout>
+                </GridLayout>
+                <StackLayout class="ios-line"></StackLayout>
+            </iOS>
+            <ScrollView>
+                <StackLayout orientation="vertical" id="content">
+                    <StackLayout orientation="vertical" class="main-top" title="" backgroundImage="res://index_bj">
+                        <GridLayout class="bar-b">
+                            <StackLayout orientation="horizontal" horizontalAlignment="left">
+                                <Label text="余额" class="bar-b-a" tap="advertisement"/>
+                                <Label text="(未提现)" class="bar-b-b"/>
+                                <Image src="res://yw" width="12" class="yw-img" tap="Grid_style"/>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right">
+                                <Label text="查看钱包" class="bar-b-c" tap="onMoneyTap"/>
+                            </StackLayout>
+                        </GridLayout>
+                        <StackLayout orientation="horizontal" class="bar-c">
+                            <Label text="{{'￥ ' + (sumMoney != undefined ? sumMoney : '0.00')}}" class="bar-c-a"  textWrap="true"/>
+                            <Image src="res://yue" width="18"/>
+                        </StackLayout>
+                        <GridLayout columns="*,*" rows="auto">
+                            <StackLayout col="0" orientation="vertical">
+                                <Label text="今日完成" class="today"/>
+                                <Label text="{{completeTask}}" class="money"/>
+                            </StackLayout>
+                            <StackLayout col="1" orientation="vertical">
+                                <Label text="今日收入" class="today"/>
+                                <Label text="{{'￥ ' + (dayIncome != undefined ? dayIncome : '0.00')}}" class="money"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                    <StackLayout id="task_list" orientation="vertical" class="main-view">
+                        <GridLayout columns="*,*,*" rows="auto" height="90" class="content">
+                            <StackLayout col="0" orientation="vertical" id="jiedan" tap="onJieDan">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://jiedan" height="60"/>
+                                    <Label text="{{waitJieDan}}" visibility="{{ waitJieDan > 0 ?'visible':'collapse'}}" borderWidth="1" marginLeft="40" class="bubble"/>
+                                </AbsoluteLayout>
+                                <Label text="待接单" class="text"/>
+                            </StackLayout>
+                            <StackLayout col="1" orientation="vertical" tap="onYuYue">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://yuyue" height="60"/>
+                                    <Label text="{{waitYuYue}}" visibility="{{ waitYuYue > 0 ?'visible':'collapse'}}" borderWidth="1" marginLeft="40" class="bubble"/>
+                                </AbsoluteLayout>
+                                <Label text="待预约/提货" class="text"/>
+                            </StackLayout>
+                            <StackLayout col="2" orientation="vertical" tap="onQianShou">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://qianshou" height="60"/>
+                                    <Label text="{{waitQianShou}}" visibility="{{ waitQianShou > 0 ?'visible':'collapse'}}" borderWidth="1" marginLeft="40" class="bubble"/>
+                                </AbsoluteLayout>
+                                <Label text="待签收" class="text"/>
+                            </StackLayout>
+                        </GridLayout>
+                        <GridLayout columns="*,*,*" rows="auto" height="90">
+                            <StackLayout col="0" orientation="vertical" tap="onWeiTi">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://wenti" height="60"/>
+                                    <Label text="{{wenti}}" visibility="{{ wenti > 0 ?'visible':'collapse'}}" borderWidth="1" marginLeft="40" class="bubble"/>
+                                </AbsoluteLayout>
+                                <Label text="问题件" class="text"/>
+                            </StackLayout>
+                            <StackLayout col="1" orientation="vertical" tap="onChaoShi">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://chaoshi" height="60"/>
+                                    <Label text="{{chaoshi}}" visibility="{{ chaoshi > 0 ?'visible':'collapse'}}" marginLeft="40" class="bubble" borderWidth="1"/>
+                                </AbsoluteLayout>
+                                <Label text="超时件" class="text"/>
+                            </StackLayout>
+                            <StackLayout col="2" orientation="vertical" tap="onWanCheng">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://wancheng" height="60"/>
+                                    <Label text="{{finish}}" visibility="{{ finish > 0 ?'visible':'collapse'}}" marginLeft="40" class="bubble" borderWidth="1"/>
+                                </AbsoluteLayout>
+                                <Label text="已完成" class="text"/>
+                            </StackLayout>
+                        </GridLayout>
+                        <GridLayout columns="*,*,*" rows="auto" height="90">
+                            <StackLayout col="0" orientation="vertical" tap="onFanHuo">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://fanhuo" height="60"/>
+                                    <Label text="{{fanhuo}}" visibility="{{ fanhuo > 0 ?'visible':'collapse'}}" marginLeft="40" class="bubble" borderWidth="1"/>
+                                </AbsoluteLayout>
+                                <Label text="返货" class="text"/>
+                            </StackLayout>
+                            <StackLayout col="1" orientation="vertical" tap="onWeiXiu">
+                                <AbsoluteLayout horizontalAlignment="center">
+                                    <Image src="res://weixiu" height="60"/>
+                                    <Label text="{{weixiu}}" visibility="{{ weixiu > 0 ?'visible':'collapse'}}" marginLeft="40" class="bubble" borderWidth="1"/>
+                                </AbsoluteLayout>
+                                <Label text="维修" class="text"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                    <!--<GridLayout rows="* auto" marginBottom="10">-->
+                        <!--<Slides:SlideContainer id="slides" row="0" pageIndicators="true" loop="true"-->
+                                               <!--start="onStart" cancelled="onCancelled" changed="onChanged"-->
+                                               <!--finished="onFinished">-->
+                            <!--<Slides:Slide>-->
+                                <!--<Image src="res://main1" width="100%" stretch="aspectFill" id="img1" tap="onSlidesList" />-->
+                            <!--</Slides:Slide>-->
+                            <!--<Slides:Slide>-->
+                                <!--<Image src="res://main2" width="100%" stretch="aspectFill" id="img2" tap="onSlidesList"/>-->
+                            <!--</Slides:Slide>-->
+                            <!--<Slides:Slide>-->
+                                <!--<Image src="res://main3" width="100%" stretch="aspectFill" id="img3" tap="onSlidesList"/>-->
+                            <!--</Slides:Slide>-->
+                            <!--<Slides:Slide>-->
+                                <!--<Image src="res://main4" width="100%" stretch="aspectFill" id="img4" tap="onSlidesList"/>-->
+                            <!--</Slides:Slide>-->
+                        <!--</Slides:SlideContainer>-->
+                    <!--</GridLayout>-->
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <GridLayout dock="bottom" columns="*,*,*,*" rows="auto" class="main-menu" id="main_menu" height="10.2%">
+            <StackLayout col="0" orientation="vertical" id="home" tap="menuNavigator" marginTop="2">
+                <Image src="res://sy_huang2x" height="20"/>
+                <Label text="首页" class="menu-icon-text menu-selected"/>
+            </StackLayout>
+            <StackLayout col="1" orientation="vertical" id="task" tap="menuNavigator" marginTop="3">
+                <Image src="res://re_hei2x" height="20"/>
+                <Label text="任务" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="2" orientation="vertical" id="course" tap="menuNavigator" marginTop="3">
+                <Image src="res://xy_hei2x" height="20"/>
+                <Label text="师傅学院" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="3" orientation="vertical" id="my" tap="menuNavigator" marginTop="3">
+                <Image src="res://wd_hei2x" height="20"/>
+                <Label text="我的" class="menu-icon-text "/>
+            </StackLayout>
+        </GridLayout>
+    </DockLayout>
+</Page>

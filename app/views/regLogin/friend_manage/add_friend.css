@@ -1,0 +1,79 @@
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+.iosActionBar .leftBarBtn{
+    color: rgb(255,138,37);
+}
+.ios_titleSearch{
+    height: 30px;
+}
+.ios_titleSearch image{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+.ios_titleSearch label{
+    color: dimgray;
+    font-size: 14px;
+}
+
+.main-label {
+    horizontal-align: center;
+    color: gray;
+    font-size: 18;
+}
+
+.actionBar-view {
+    color: black;
+    font-size: 16;
+    margin-right: 10;
+    background: white;
+}
+
+.search-image {
+    width: 25;
+    height: 25;
+}
+.bar-image{
+  height: 22;
+}
+.item{
+margin-left: 12;
+ margin-top: 10;
+ padding: 1;
+ font-size: 16;
+ color: black;
+}
+.stype_item{
+   
+ margin-left: 12;
+ padding: 1;
+ font-size: 12
+}
+.phone_item{
+    margin-left: 12;
+    margin-bottom: 10;
+    font-size: 14px;
+    color: dimgray;
+}
+.image_item{
+    margin-top: 5;
+    margin-bottom: 5;
+   width: 50;
+   height: 50;
+   margin-left: 20;
+}
+
+page{
+    background-color:whitesmoke;
+}
+
+.code_input {
+    background-color: white;
+    border-color: transparent;
+    color: #8A8A8A;
+    text-align: left;
+    font-size:16;
+}

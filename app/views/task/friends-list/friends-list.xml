@@ -1,0 +1,78 @@
+<Page
+        xmlns="http://www.nativescript.org/tns.xsd"
+        navigatingTo="pageNavigatingTo"
+        tap="tap">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" automationText="ActionBar">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="goBack" horizontalAlignment="left">
+                        <Image src="res://btn_back_normal" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="action-title">
+                        <Label text="选择好友" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" class="margin-right-15">
+                        <Label text="完成" tap="gtFinishHandler"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="" automationText="ActionBar">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="goBack" horizontalAlignment="left">
+                        <Image src="res://btn_back_normal" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="选择好友"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="2" class="title-label">
+                        <Label text="完成" tap="gtFinishHandler"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </iOS>
+
+    </Page.actionBar>
+    <GridLayout rows="auto, *" columns="*" cssClass="main-content" id="main-content">
+        <!--  <StackLayout style="background-color: #eeeeee;">
+              <GridLayout columns="*" rows="*" style="background-color: white;" margin="10" borderRadius="5"
+                          borderWidth="1" borderColor="white">
+                  <SearchBar hint="运单号/发货人姓名/手机号"  class="ios_searchBar" id="searchBar" horizontalAlignment="right"></SearchBar>
+              </GridLayout>
+          </StackLayout>-->
+        <GridLayout row="1" rows="auto, *">
+            <!-- List -->
+            <ListView row="1" items="{{ friends }}" id="friend-list" separatorColor="#00000000"
+                      ios:itemLoading="changeCellBackground">
+                <ListView.itemTemplate>
+                    <StackLayout orientation="horizontal" tap="toggleFavourite" class="{{isFavourite ? 'friend-favorite-selected':'friend-favorite-unselected'}}"
+                                 backgroundColor="{{ isFavourite ? '#eee' : '#fff' }}">
+                        <Image src="{{image}}" horizontalAlignment="left" verticalAlignment="center" class="image_item"
+                               borderRadius="360"/>
+                        <GridLayout columns="*,auto" rows="*,*">
+                            <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center" class="item"
+                                   col="0" row="0"/>
+                            <Label text="{{number}}" horizontalAlignment="left" verticalAlignment="center"
+                                   class="phone_item" col="0" row="1"/>
+                            <Image row="0" rowSpan="4" col="2"
+                                   src="{{ isFavourite ? 'res://xuanzhong' : 'res://add_to_fav' }}"
+                                   verticalAlignment="center" cssClass="{{ cssClass }}"/>
+                        </GridLayout>
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </GridLayout>
+    </GridLayout>
+</Page>

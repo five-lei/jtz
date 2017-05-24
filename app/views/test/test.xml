@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" loaded="pageLoaded" class="page">
+    <Page.actionBar>
+        <ActionBar title="返回" color="#000000"  tap="onGoBackTap">
+        </ActionBar>
+    </Page.actionBar>
+    <DockLayout>
+        <StackLayout dock="top"  height="90%">
+            <ScrollView width="100%">
+                <StackLayout id="Item-1-container" width="100%"  backgroundColor="lightgreen">
+                    <Label text="demo演示" horizontalAlignment="center"></Label>
+                    <button text="更换头像" height="60" tap="changehead"></button>
+                    <button text="历史任务" height="60" tap="tapHistoryTask"></button>
+                    <button text="问题件详情页" height="60" tap="tapQuestionDetail"></button>
+                    <button text="Layout DEMO" height="60" tap="tapExample"></button>
+                    <button text="注册登录页" height="60" tap="tapRegLogin"></button>
+                    <button text="消息模块" height="60" tap="tapMessage"></button>
+                    <button text="任务-好友列表" height="60" tap="tapFriendsList"></button>
+                    <button text="历史任务筛选" height="60" tap="tapHistoryTaskFilter"></button>
+                    <button text="test api" height="60" tap="test"></button>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </DockLayout>
+</Page>

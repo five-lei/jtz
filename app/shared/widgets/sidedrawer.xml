@@ -1,0 +1,15 @@
+<StackLayout class="filter-option-background">
+    <StackLayout class="filter-option-stack">
+        <GridLayout rows="*" columns="*,auto,*" class="order-option-menu" verticalAlignment="center">
+            <Label text="取消" row="0" col="0" horizontalAlignment="left"/>
+            <Label text="预约时间" row="0" col="1" horizontalAlignment="center" cssClass="color-o"/>
+            <Label text="确定" row="0" col="2" horizontalAlignment="right" cssClass="color-o"/>
+        </GridLayout>
+
+        <!--   <GridLayout rows="*" columns="*,*" class="order-option-menu" verticalAlignment="center">
+               <DatePicker year="{{year}}" minDate="{{minDate}}"  row="0" col="0"></DatePicker>
+               <TimePicker hour="5" minute="20"  row="0" col="2"></TimePicker>
+
+           </GridLayout>-->
+    </StackLayout>
+</StackLayout>

@@ -1,0 +1,146 @@
+﻿ActionBar{
+    background-color: white;
+    color: black;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+
+/*第一部分*/
+.content-Top{
+    width:85%;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 10px;
+}
+.content-Top-title{
+    background-color: rgb(254,173,84);
+    color: white;
+}
+.companyLabel{
+    margin-top:12px;
+    margin-left: 20px;
+    font-size: 16px;
+}
+.depositeRecordLabel{
+    margin: 10px 0px 12px 20px;
+    font-size: 13px;
+}
+.content-Top-center{
+    margin-top:20px;
+}
+
+.moneyAccount{
+    color: rgb(255,0,0);
+    font-size: 30px;
+    margin-right:8px;
+}
+.balanceLabel{
+    margin-top:6px;
+    font-size: 14px;
+}
+.content-Top-center>label{
+    margin-top: 8px;
+    font-size: 16px;
+}
+.content-Top-center button{
+    width:90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 40px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgb(254,173,84);
+    color: rgb(255,125,0);
+}
+
+/*第二部分*/
+.content-depositeRecord{
+    background-color: white;
+    margin-top:15px;
+}
+.content-depositeRecord label{
+    margin-left:8px;
+}
+.content-depositeRecord image{
+    margin-right: 8px;
+}
+
+.page>label{
+    color: #909090;
+    font-size: 14px;
+    margin-left: 8px;
+    height: 35px;
+}
+
+/*第三部分*/
+.content-depositeUnderway{
+    background-color: white;
+}
+ .depositeNumber{
+    margin-top: 15px;
+    margin-left: 8px;
+    margin-bottom: 14px;
+}
+ .depositeNumber .firstLabel{
+    font-size: 14px;
+    color: #333333;
+}
+ .depositeNumber .secondLabel{
+    font-size: 13px;
+    color: #808080;
+    margin-left: 6px;
+}
+ .depositeNumber .thirdLabel{
+    font-size: 12px;
+    color: #4193d3;
+     margin-right: 8px;
+}
+.content-depositeUnderway>label{
+    font-size: 21px;
+    color: #f76969;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.content-depositeUnderway .paymentAccount{
+    color: #333333;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.page>button{
+    color: #3a8dea;
+    font-size: 14px;
+    height: 40px;
+    background-color: white;
+    margin-top: 1px;
+}
+
+
+.Label_back{
+    color: orange;
+}
+.recordLabel{
+    height: 36px;
+    margin-left: 8px;
+    color: dimgray;
+    font-size:14px;
+    line-height: 36px;
+}
+.line{
+    background-color: rgb(240,240,240);
+    height: 1px;
+}
+.space{
+    background-color: rgb(240,240,240);
+    height: 8px;
+}
+.checkBtn{
+    height: 44px;
+}
+.paymentInfo{
+    margin-left: 10px;
+    font-size: 15px;
+    color: dimgray;
+    margin-bottom: 18px;
+}

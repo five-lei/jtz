@@ -1,0 +1,27 @@
+<Page>
+    <Page.actionBar>
+    <ActionBar title="Title">
+        <NavigationButton text="go back" android.systemIcon = "ic_menu_back"/>
+    </ActionBar>
+    </Page.actionBar>
+
+    <StackLayout>
+
+        <DockLayout>
+            <TabView backgroundColor="gray">
+                <TabView.items>
+                    <TabViewItem title="Tab 1">
+                        <TabViewItem.view>
+                            <Label text="Label in Tab1" />
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Tab 2">
+                        <TabViewItem.view>
+                            <Label text="Label in Tab2" />
+                        </TabViewItem.view>
+                    </TabViewItem>
+                </TabView.items>
+            </TabView>
+        </DockLayout>
+    </StackLayout>
+</Page>

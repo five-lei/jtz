@@ -1,0 +1,84 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="loaded">
+    <Page.actionBar>
+        <ActionBar title="Title">
+            <!--<NavigationButton text="返回" tap="onNavBtnTap" android.systemIcon = "ic_menu_back" ios.systemIcon = "ic_menu_back"/>-->
+            <android>
+                <NavigationButton icon="res://quxiao2x" tap="onNavBtnTap" />
+            </android>
+            <ios>
+                <ActionItem icon="res://quxiao2x" ios.position="left"  tap="onNavBtnTap"/>
+            </ios>
+            <ActionBar.titleView>
+                <StackLayout orientation="horizontal">
+                    <GridLayout columns="auto">
+                        <Label text="返货签收" row="0" col="0" class="orderNumber" />
+                    </GridLayout>
+                </StackLayout>
+            </ActionBar.titleView>
+        </ActionBar>
+    </Page.actionBar>
+    <ScrollView>
+        <StackLayout class="page">
+            <GridLayout rows="auto" columns="auto" class="first-content">
+                <Label text="填写物流信息" row="0" col="0" horizontalAlignment="center" class="consignee" textWrap="true" />
+            </GridLayout>
+            <StackLayout class="second-content con">
+                <GridLayout columns="auto,*" rows="*">
+                    <Label text="物流公司" marginRight="10" col="0" row="0" class="consignee" verticalAlignment="center" />
+                    <TextView col="1" row="0" hint="请输入" class="code_input" fontSize="16" text="{{logisticsName}}"/>
+                </GridLayout>
+                <Label class="gray-line"/>
+                <GridLayout columns="auto,*" rows="*">
+                    <Label text="物流单号" marginRight="10" col="0" row="0" class="consignee" verticalAlignment="center" />
+                    <TextView  col="1" row="0" hint="请输入" fontSize="16" class="code_input"   text="{{logisticsBill}}"/>
+                </GridLayout>
+                <Label class="gray-line"/>
+                <GridLayout columns="auto,*" rows="*">
+                    <Label text="物流电话" marginRight="10" col="0" row="0" class="consignee" verticalAlignment="center" />
+                    <TextView  col="1" row="0" hint="请输入" fontSize="16" class="code_input"  text="{{tel}}"/>
+                </GridLayout>
+                <Label class="gray-line"/>
+                <GridLayout columns="auto,*" rows="*">
+                    <Label text="到付金额" marginRight="10" col="0" row="0" class="consignee" verticalAlignment="center" />
+                    <TextView  col="1" row="0" hint="请输入（单位：元）" fontSize="16" class="code_input"  text="{{arrivePayMoney}}"/>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout class="content third-content">
+                <GridLayout rows="auto" columns="auto,*">
+                    <label text="签收图" row="0" col="0" class="title" verticalAlignment="top"></label>
+                    <label text="最多6张" row="0" col="1" verticalAlignment="center" class="alert-info"></label>
+                </GridLayout>
+                <!--图片信息-->
+                <FlexboxLayout alignContent="flex-start" flexWrap="wrap" cssClass="image-info">
+                    <Repeater id="list-view" items="{{ imageItems }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="horizontal" class="ios_imageShow"
+                                         horizontalAlignment="left" id="pic_container">
+                                <AbsoluteLayout>
+                                    <Image src="{{url}}" imgId="{{id}}" verticalAlignment="center" class="ios_image"  tap="onPicTap"
+                                           stretch="aspectFill"
+                                           height="80" width="75"/>
+                                    <Image src="res://san2x" imgId="{{id}}" height="15" left="60" tap="onPictureDelete"
+                                           visibility="{{url=='res://tjtp2x'?'collapse':'visible'}}"/>
+                                </AbsoluteLayout>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                        <WrapLayout orientation="horizontal" class="ios_imageShow">
+                            <Image src="res://tjtp2x" verticalAlignment="center" class="ios_image"
+                                   stretch="aspectFill"
+                                   height="80" width="75"/>
+                        </WrapLayout>
+                    </Repeater>
+                </FlexboxLayout>
+            </StackLayout>
+            <GridLayout columns="auto, *" rows="*" class="content operate-content">
+                <StackLayout row="0" col="1" class="accept-btn" tap="submit">
+                    <Label text="确认签收" horizontalAlignment="center" verticalAlignment="center" ></Label>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

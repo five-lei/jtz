@@ -1,0 +1,29 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="filter-type-drawer"
+        drawerLocation="bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="210"
+        android:drawerContentSize="210">
+    <drawer:RadSideDrawer.drawerContent>
+        <DockLayout class="filter-option-background">
+            <StackLayout class="filter-option-stack" id="waybill">
+                <Button text="选择运单类型" class="filter-option-menu"/>
+                <Label class="filter-line"/>
+                <Button text="安装" class="filter-option-item" waybillServiceType="installService" tap="filterOptionTap" />
+                <Label class="filter-line"/>
+                <Button text="送货上门" class="filter-option-item" waybillServiceType="deliveryService" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="送货上门并安装" class="filter-option-item" waybillServiceType="ServiceDeliveryInstall" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="取消" class="filter-option-item" tap="filterCancelTap"/>
+                <Label class="filter-line"/>
+            </StackLayout>
+        </DockLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>
+
+
+

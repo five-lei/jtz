@@ -1,0 +1,153 @@
+.bar-image {
+    width:23;
+    height:23;
+    margin-right: 15
+}
+ActionBar{
+    color: white;
+}
+
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+
+.bar-image1 {
+    width:25;
+    height:25;
+    margin-right: 15
+}
+
+.bar-image2 {
+    width:13;
+    height:13;
+    
+}
+
+.title_view {
+    margin-top: 10;
+    background:#D3D3D3 
+}
+
+.action-image {
+    width:50;
+    height:50;
+}
+
+.action-label {
+    margin-left: 8;
+}
+
+.mainview {
+    background-color:#eeeeee;
+    
+}
+.topView {
+    background-color:rgb(255, 138, 37);
+    color:white;
+    width: 100%;
+    font-size: 18;
+    padding-top: 20;
+    padding-bottom: 10;
+    padding-left: 10
+}
+
+.mine-view {
+    background-color:white;
+    width: 100%;
+    height: 75
+}
+
+.mine-text {
+    margin-top: 3
+}
+
+.item-view {
+    background-color:white;
+    width: 100%;
+    padding-bottom: 12;
+    padding-top: 12;
+    padding-left: 10;
+    padding-right: 10;
+    margin-top: 10;
+    font-size: 16;
+}
+
+.items-view {
+    background-color:white;
+    width: 100%;
+    padding-bottom: 12;
+    padding-top: 12;
+    padding-right: 10;
+    padding-left: 10;
+    font-size: 16;
+}
+
+.hint-label {
+    font-size: 14;
+    color: #888888;
+    margin-right: 5
+    
+}
+
+.lines {
+    height: 0.5;
+    width: 100%;
+    background-color: #D3D3D3 ;
+}
+
+.icon-img {
+    height: 30;
+    width: 30;
+    margin-bottom: 3
+}
+
+.item-image {
+    height: 20px;
+    width: 20px;
+}
+
+.star-image {
+    height: 18px;
+    width: 18px;
+}
+
+.star-item {
+    margin-left: 5;
+    margin-top: 3;
+    font-size: 15
+}
+
+.right-image {
+    height: 12;
+    margin-top: 1;
+    margin-left: 2
+}
+
+.person-btn {
+    height: 18px;
+    width: 70px;
+    font-size: 12;
+    background-color: white;
+    margin-left: 5;
+    color: rgb(255, 138, 37);
+    border-radius:10px;
+    border-color: white;   
+}
+
+Page { 
+    background-color: rgb(255, 138, 37)
+}
+
+/*气泡*/
+.number{
+    padding:2;
+    font-size: 8px;
+    background-color: forestgreen;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    border-color:white;
+    margin-left: 4;
+    margin-top:38px;
+}

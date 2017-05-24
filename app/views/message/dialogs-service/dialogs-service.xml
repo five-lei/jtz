@@ -1,0 +1,7 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      loaded="loaded">
+    <StackLayout orientation="vertical" class="page">
+        <Image src="res://zixun" width="100" tap="onPhone"/>
+        <Label class="msg" text="电话咨询"/>
+    </StackLayout>
+</Page>

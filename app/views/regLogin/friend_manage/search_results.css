@@ -1,0 +1,33 @@
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: black;
+}
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    margin-right: 10;
+    background: white;
+}
+.bar-image{
+    height: 25;
+}
+.AndActionBar{
+    color: black;
+}
+.image_item{
+    margin-top: 8;
+    margin-bottom: 8;
+    width: 40;
+    height: 40;
+    margin-left: 20;
+}
+.item{
+    margin-top: 10;
+    margin-left: 13;
+    font-size: 14;
+    color: black;
+}
+.phone_item{
+    margin-left: 13;
+    font-size: 12;
+}

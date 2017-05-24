@@ -1,0 +1,38 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="pageLoaded">
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" class="actionBar-view">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top"  >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="设置个人头像"  /> 
+        </StackLayout>
+        
+       </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="设置个人头像" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+	
+<StackLayout orientation="vertical" class="mainview">
+
+    <Image id="change_img" src="{{ srcThumb }}" class="head-image" stretch="aspectFill"/>
+
+    <button text="从相册中选择" class= "change_btn" tap="onSelectSingleTap"/>
+    <button text="手机拍照" class= "change_btn" tap="takeToCamera"/>
+</StackLayout>
+</Page>

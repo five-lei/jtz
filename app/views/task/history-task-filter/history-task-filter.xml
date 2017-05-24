@@ -1,0 +1,99 @@
+<examples:WaybillTypeSelectedPage
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:examples="views/task/history-task-filter/filter-base-page"
+        loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" automationText="ActionBar" cssClass="white-action-bar">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="goBack" horizontalAlignment="left">
+                        <Image src="res://btn_nav_back_click" class="bar-image-l"/>
+                        <Label text="返回" verticalAlignment="center" cssClass="bar-back-label"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label text="筛选历史任务" class="title-label"/>
+                    </StackLayout>
+
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="返回"/>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1">
+                    <Label text="历史任务"  class="ios_titleLabel"/>
+                </StackLayout>
+
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee">
+        <ScrollView id="content" dock="top">
+            <StackLayout orientation="vertical" class="mainview">
+
+                <GridLayout columns="auto,*" rows="*" style="background-color: white;" borderRadius="5" borderWidth="1"
+                            borderColor="white" class="search_text">
+                    <Image src="res://ico_search_1" col="0" row="0" stretch="none" class="search_image" verticalAlignment="center" horizontalAlignment="right"/>
+                    <TextField id="search-criteria" text="" row="0" col="1" hint="运单号\收货人\收货人手机号" keyboardType="phone" verticalAlignment="center"
+                               class="code_input"/>
+                </GridLayout>
+                <GridLayout columns="auto,*" rows="auto" class="item-view" tap="onSelectAddress">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Label text="收货人所在地址" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="去选择" class="hint-label" id="receipt-address"/>
+                        <Image src="res://ico_jump_one" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+                <Label class="gray-line"></Label>
+                <GridLayout columns="auto,*" rows="auto" class="item-view" tap="onTwo">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Label text="运单签收时间" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="去选择" class="hint-label" tap="onSelectTime" id="signInTime"/>
+                        <Image src="res://ico_jump_one" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+                <Label class="gray-line"></Label>
+                <GridLayout columns="auto,*" rows="auto" class="item-view" tap="onTwo">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Label text="运单分配时间" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="去选择" class="hint-label" tap="onSelectTime" id="allocation-time"/>
+                        <Image src="res://ico_jump_one" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+                <Label class="gray-line"></Label>
+                <GridLayout columns="auto,*" rows="auto" class="item-view">
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0">
+                        <Label text="新任务运单类型" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" id="waybill_type">
+                        <Label text="去选择" id="waybillType" class="hint-label"/>
+                        <Image src="res://ico_jump_one" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <GridLayout columns="*" rows="auto" cssClass="action-content">
+                    <StackLayout orientation="horizontal" class="action-search" ios:horizontalAlignment="center"
+                                 android:horizontalAlignment="center" verticalAlignment="center" tap="onSearch">
+                        <Label text="搜索" verticalAlignment="center"/>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </DockLayout>
+</examples:WaybillTypeSelectedPage>

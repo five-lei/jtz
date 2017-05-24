@@ -1,0 +1,45 @@
+﻿.iosActionBar{
+    color: black;
+    background-color: white;
+}
+
+.action-cancel{
+    color: orange;
+}
+
+Page{
+    background-color: white;
+}
+.page{
+    background-color: rgb(240,240,240);
+}
+.content{
+    margin-top:15%;
+}
+.content-label{
+    margin-top:30px;
+    margin-bottom: 40px;
+}
+.content-label TextField{
+    border-width: 1px;
+    border-color: lightgray;
+    width:14%;
+    height: 13%;
+    background-color: white;
+    text-align: center;
+    font-size: 30px;
+}
+.label-one{
+    border: 1px solid red;
+}
+.content-btn{
+    width:90%;
+    height: 45px;
+    background-color: rgb(255,138,37);
+    color: white;
+    font-size: 18px ;
+    border-radius: 6px;
+}
+.Label_back{
+    color: orange;
+}

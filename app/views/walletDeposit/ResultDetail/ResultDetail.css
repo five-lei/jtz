@@ -1,0 +1,40 @@
+﻿ActionBar{
+    background-color: white;
+    color: black;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+
+.content{
+    background-color: white;
+    height: 40%;
+}
+
+.topContent{
+    margin:31px 0px 0px 12px;
+}
+
+.wordLabel{
+    color: #333333;
+    font-size: 15px;
+    margin-left:12px;
+}
+.greenLine{
+    width: 2px;
+    background-color:rgb(0,193,105);
+}
+.dateLabel{
+    color: #909090;
+    font-size: 13px;
+    margin-left: 12px;
+}
+.greyLine{
+    width: 2px;
+    background-color: rgb(205,205,205);
+}
+.Label_back{
+    color: orange;
+    margin-right: 10;
+}

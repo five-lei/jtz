@@ -1,0 +1,103 @@
+<Page xmlns:lv="nativescript-telerik-ui-pro/listview" loaded="loaded">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+        <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal"  row="0" col="0"
+                             tap="onBackTap" horizontalAlignment="left">
+                    <Image src="res://fh" height="20" marginRight="5"/>
+                    <Label text="返回" verticalAlignment="center" class="fh" tap="return"/>
+                </StackLayout>
+                <StackLayout  orientation="horizontal" horizontalAlignment="center"
+                                            verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="文章详情"/>
+                </StackLayout>
+                <StackLayout  orientation="horizontal" horizontalAlignment="right"
+                              verticalAlignment="center" row="0" col="2" height="40" width="50" class="title-label" tap="shareText">
+                    <Image src="res://fxx" width="20" marginRight="20" />
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="文章详情" class="iosActionBar">
+                <NavigationButton text="" />
+                <ActionItem ios.position="right" tap="shareText">
+                    <Image src="res://fxx" width="25"></Image>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <ScrollView>
+    <StackLayout orientation="vertical" class="top">
+        <StackLayout horizontalAlignment="center">
+            <Label id="detail_title" text="" class="title"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal">
+            <GridLayout columns="*,*" rows="auto">
+                <Label id="detail_time" col="0" text="发布 2016/12/12" class="issue-text" horizontalAlignment="left"/>
+                <StackLayout col="1" orientation="horizontal" horizontalAlignment="right">
+                    <Image id="collect_img" src="res://sc_da2x"  height="16"  tap="collect"/>
+                    <Label text="收藏" class="collect-text" id="collect-text"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+         <StackLayout orientation="vertical">
+           <Label id="detail_content" class="msg" text="走近建材卖场，消费者总是被琳琅满目的地板搞到头昏眼花，在为消费者提供更多选择的同时，也加大了选择的难度。在选择地板时，不仅需要考虑居室的色调，还要考虑居室的家装风格，选择不当就会破坏居室的整体效果。下面就由家网小编给大家讲讲。" textWrap = "true"/>
+         </StackLayout>
+        <!--<StackLayout orientation="vertical">-->
+            <!--<Label id="detail_describe" text="北欧风格，色调沉稳是关键" class="con-text"/>-->
+            <!--<Image src="res://img"/>-->
+            <!--<Label class="msg" textWrap = "true" text="对于时尚而追求简洁的人来说，北欧风格的家装是最合适不过的，北欧风格的家装于简约著称。室内的顶、地六个面，不用纹案和图样装饰。只用色块，线条来分点缀。"/>-->
+        <!--</StackLayout>-->
+        <!--<StackLayout orientation="vertical">
+            <Label text="2.中式家具源于理性与文化" class="con-text"/>
+            <Image src="res://img"/>
+            <Label class="msg" textWrap = "true" text="对于时尚而追求简洁的人来说，北欧风格的家装是最合适不过的，北欧风格的家装于简约著称。室内的顶、地六个面，不用纹案和图样装饰。只用色块，线条来分点缀。"/>
+        </StackLayout>-->
+
+        <!--第四部分-->
+        <GridLayout  class="popular-tutorial">
+            <StackLayout orientation="horizontal" horizontalAlignment="left">
+                <Label class="line" horizontalAlignment="left"/>
+                <Label text="更多文章" class="popular-title"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right" tap="moreArticle">
+                <Label text="更多" class="more" marginRight="5"/>
+                <Image src="res://jr" height="10"/>
+            </StackLayout>
+        </GridLayout>
+       
+            <lv:RadListView id="list-view" items="{{ detailList }}" selectionBehavior="Press" itemSelected="{{itemSelected}}">
+                 <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout itemHeight=""/>
+                 </lv:RadListView.listViewLayout>
+                 <lv:RadListView.itemTemplate>
+                   <StackLayout orientation="vertical" class="items-view">
+                     <GridLayout columns="*,*,*" rows="auto" height="auto">
+                         <Image col="0" row="*" height="80px" width="110px" stretch="aspectFill" src="{{src}}" class="push-img" />
+                         <StackLayout col="1" row="*" colspan="2"  orientation="vertical" class="push-right">
+                            <StackLayout >
+                                 <Label text="{{ detail_title }}" class="push-title"/>
+                                 <Label text="{{ detail_content }}" class="push-content"/>
+                            </StackLayout>
+                            <GridLayout columns="*,*" rows="*" width="100%" class="push-icon">
+                              <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                                 <StackLayout  orientation="horizontal" >
+                                     <Image src="{{src_share}}"  width="14" marginTop="2"  marginLeft="2"/>
+                                     <Label text="{{text_share}}" class="character"/>
+                                </StackLayout>
+                                <Image src="{{ collection ? 'res://add_to_fav_1' : 'res://sc_da2x'}}" width="18" marginLeft="15" tap="{{oncollection}}"/>
+                                <Label text="{{ collection ? '已收藏' : '收藏'}}" class="character" width="50" id="collect-text2"/>
+                             </StackLayout>
+                           </GridLayout>
+                        </StackLayout>
+                     </GridLayout>
+                    </StackLayout>
+                 </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+    </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,145 @@
+.iosActionBar {
+    background-color: rgb(255, 138, 37);
+}
+
+.information_text {
+    font-size: 25;
+    horizontal-align: center;
+}
+
+Page {
+    background-color: rgb(255, 138, 37)
+}
+
+.actionBar-view {
+    color: rgb(255, 138, 37);
+}
+
+.information_text1 {
+    font-size: 20;
+    horizontal-align: center;
+}
+
+.information_text2 {
+    margin-top: 10;
+    font-size: 18;
+    horizontal-align: center;
+}
+
+.information_type {
+    margin-top: 2;
+    font-size: 16;
+    horizontal-align: center;
+}
+
+.information_grid {
+    margin-top: 5;
+    font-size: 18;
+    vertical-align: center;
+    margin-right: 10
+}
+
+.infor_detail {
+    margin-top: 1;
+    font-size: 12;
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.infor_detail_grid {
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.info_detail_grid_close {
+    display: none;
+}
+
+.information_bt {
+    background-color: rgb(255, 138, 37);
+    margin-bottom: 0;
+    color: white;
+    font-size: 16;
+    height: 50;
+}
+
+.infor {
+    margin-left: 61;
+}
+
+
+/* 安，配，返 选中与未选中样式 */
+
+.operationSelected {
+    background: #ff8b00;
+    padding: 2;
+    font-size: 10;
+    margin-top: 2;
+    margin-right: 3;
+    margin-left: 7;
+    background-color: rgba(0, 0, 0, 0.1);
+    ;
+    color: #fff;
+    border-color: #ff8b00;
+    text-align: center;
+    visibility: visible;
+    border-radius: 2;
+}
+
+.operationNotSelected {
+    background: transparent;
+    padding: 2;
+    font-size: 10;
+    margin-top: 2;
+    margin-right: 3;
+    margin-left: 7;
+    background-color: rgba(0, 0, 0, 0.1);
+    ;
+    color: #ff8b00;
+    border-color: #ff8b00;
+    text-align: center;
+    visibility: collapse;
+    border-radius: 2;
+}
+
+
+/*服务类型选项样式*/
+
+.typeSelected {
+    background-color: #ff8b00;
+    margin-left: 8;
+    margin-top: 10;
+    height: 65;
+    width: 80;
+    color: white;
+}
+
+.typeNotSelected {
+    background-color: #fff;
+    margin-left: 8;
+    margin-top: 10;
+    height: 65;
+    width: 80;
+    color: #000;
+}
+
+.bar-image {
+    width: 30;
+    height: 30;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.collapse {
+    visibility: collapse;
+}
+
+.dissatisfy {
+    background-color: #ddd;
+    margin-bottom: 0;
+    color: #aaa;
+    font-size: 16;
+    height: 50;
+}

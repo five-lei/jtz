@@ -1,0 +1,37 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:lv="nativescript-telerik-ui-pro/listview"
+    loaded="loaded"
+    style="border-radius:5px; border-width: 1px; border-color:white;">
+
+    <GridLayout rows="auto" columns="*" id="mdlItemsSelect" >
+        <StackLayout>
+            <Label text="车辆类型" style="padding-top: 15; font-size: 18;  color: orange; text-align: center; margin-bottom: 5; width: 100%;" />
+
+            <GridLayout rows="*" style="margin-left: 5;margin-right: 5;margin-top:10;">
+                <lv:RadListView id="list-view" items="{{ dataItems }}" selectionBehavior="Press" itemSelected="{{itemSelected}}" itemDeselected="{{itemDeselected}}" >
+                <lv:RadListView.listViewLayout >
+               <lv:ListViewGridLayout  spanCount="3" />
+               </lv:RadListView.listViewLayout>
+                <lv:RadListView.itemTemplate >
+               <StackLayout  orientation="vertical" style="padding:5" 
+               backgroundColor="white" >
+                    <StackLayout id="select" orientation="vertical" style="border-radius:2px;border-width: 1px;" 
+               backgroundColor="{{ selected ? '#FFDEAD' : 'white'}}" borderColor="{{ selected ? 'orange' : '#D3D3D3'}}">
+                    <Label text="{{ length }}" style="font-size: 14;" horizontalAlignment="center" color="{{ selected ? 'orange' : '#333333'}}"/>
+                    <Label text="{{ space }}" style="font-size: 14; color: #D3D3D3;" horizontalAlignment="center"/>
+                     </StackLayout>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+    </lv:RadListView>
+
+                
+            </GridLayout>
+
+            <GridLayout columns="*,*" rows="auto" style="margin-top: 25; margin-bottom: 15; margin-right: 10; margin-left:10;">
+                <Button text="确认" tap="closeModal" colspan="2"
+                 style=" background-color:rgb(255,138,37); border-radius:2px;border-color:rgb(255,138,37);border-width: 1px;font-size: 18;color: white; padding: 10;"/>
+            </GridLayout>
+        </StackLayout>
+    </GridLayout>
+
+</Page>

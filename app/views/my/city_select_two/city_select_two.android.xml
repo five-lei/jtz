@@ -1,0 +1,165 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="onNavigatingTo"
+      loaded="loaded"
+      xmlns:lv="nativescript-telerik-ui-pro/listview">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="选择区域"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" tap="completeTap">
+                        <Label text="完成"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="选择区域" class="iosActionBar">
+                <NavigationButton text=""/>
+
+                <ActionItem ios.position="right">
+                    <label text="完成" verticalAlignment="center" class="leftBarBtn"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout id="grid" rows="auto, *" columns="*, *,*">
+
+            <StackLayout row="0" colSpan="3" orientation="horizontal" class="item-top">
+                <Label id="provinces" text="已选省0、" textWrap="true"/>
+                <Label id="citys" text="市0、" textWrap="true"/>
+                <Label id="districts" text="区0" textWrap="true"/>
+            </StackLayout>
+
+            <StackLayout id="l1" orientation="vertical" row="1" colSpan="3">
+
+                <StackLayout orientation="horizontal" tap="onSelectAllTap1">
+                    <Image id="img1" src="res://ico_check1" class="bar-image1" horizontalAlignment="left"/>
+                    <StackLayout orientation="vertical" style="padding-left: 5">
+                        <Label id="label1" text="全国 " horizontalAlignment="left" verticalAlignment="center"
+                               class="item-text" color="#333333"/>
+                    </StackLayout>
+                </StackLayout>
+                <lv:RadListView id="lv1" items="{{ provinceList }}" selectionBehavior="Press"
+                                itemSelected="{{itemSelected}}" itemDeselected="{{itemDeselected}}"
+                                multipleSelection="true">
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout orientation="vertical" backgroundColor="white">
+                            <StackLayout id="select" orientation="horizontal">
+                                <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                       horizontalAlignment="left"/>
+                                <StackLayout orientation="vertical" style="padding-left: 5">
+                                    <StackLayout class="lines">
+                                    </StackLayout>
+                                    <Label text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+                                           class="item-text" color="{{ selected ? 'orange' : '#333333'}}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </StackLayout>
+            <!--<ListView id="lv1" items="{{ provinceList }}" row="1" colSpan="{{ slelet ? '1' : '3' }}" separatorColor="red" >
+            <ListView.itemTemplate >
+            <StackLayout orientation="horizontal" tap="toCityOne" >
+            <Image src="res://ico_check1" class="bar-image1" horizontalAlignment="left"/>
+            <Label text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+                    class="item-text"/>
+            </StackLayout>
+
+            </ListView.itemTemplate>
+            </ListView>-->
+
+            <StackLayout id="l2" orientation="horizontal" row="1" col="1" colSpan="2" visibility="collapsed">
+                <StackLayout class="line-item">
+                </StackLayout>
+                <StackLayout orientation="vertical">
+                    <StackLayout orientation="horizontal" tap="onSelectAllTap2">
+                        <Image id="img2" src="res://ico_check1" class="bar-image1" horizontalAlignment="left"/>
+                        <StackLayout orientation="vertical" style="margin-left: 5">
+                            <Label id="label2" text="全选 " horizontalAlignment="left" verticalAlignment="center"
+                                   class="item-text" color="#333333"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <lv:RadListView id="lv2" items="{{ cityList }}" multipleSelection="true" selectionBehavior="Press"
+                                    itemSelected="{{itemSelected}}" itemDeselected="{{itemDeselected}}">
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical" backgroundColor="white">
+                                <StackLayout orientation="horizontal">
+
+                                    <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                           horizontalAlignment="left"/>
+                                    <StackLayout orientation="vertical" style="padding-left: 5">
+                                        <StackLayout class="lines">
+                                        </StackLayout>
+                                        <Label text="{{ city }} " horizontalAlignment="left" verticalAlignment="center"
+                                               class="item-text" color="{{ selected ? 'orange' : '#333333'}}"/>
+
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+                    </lv:RadListView>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout id="l3" orientation="horizontal" row="1" col="2" visibility="collapsed">
+                <StackLayout class="line-item">
+                </StackLayout>
+                <StackLayout orientation="vertical">
+                    <StackLayout orientation="horizontal" tap="onSelectAllTap3">
+                        <Image id="img3" src="res://ico_check1" class="bar-image1" horizontalAlignment="left"/>
+                        <StackLayout orientation="vertical" style="padding-left: 5">
+                            <Label id="label3" text="全选 " horizontalAlignment="left" verticalAlignment="center"
+                                   class="item-text" color="#333333"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <lv:RadListView id="lv3" items="{{ districtList }}" multipleSelection="true"
+                                    selectionBehavior="Press" itemSelected="{{itemSelected}}"
+                                    itemDeselected="{{itemDeselected}}">
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical" backgroundColor="white">
+                                <StackLayout orientation="horizontal">
+                                    <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                           horizontalAlignment="left"/>
+                                    <StackLayout orientation="vertical" style="padding-left: 5">
+                                        <StackLayout class="lines">
+                                        </StackLayout>
+                                        <Label text="{{ district }} " horizontalAlignment="left"
+                                               verticalAlignment="center" class="item-text"
+                                               color="{{ selected ? 'orange' : '#333333'}}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+
+                    </lv:RadListView>
+                </StackLayout>
+
+            </StackLayout>
+
+        </GridLayout>
+
+    </StackLayout>
+</Page>

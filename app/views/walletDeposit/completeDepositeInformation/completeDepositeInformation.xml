@@ -1,0 +1,81 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar >
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" class="Label_back" />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="已提现账单"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" >
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+        <ActionBar title="已提现账单">
+            <NavigationButton text=""/>
+            <!--<ActionBar.actionItems>-->
+                <!--<ActionItem ios.position="left">-->
+                    <!--<ActionItem.actionView>-->
+                        <!--<StackLayout orientation="horizontal" tap="onNavBtnTap">-->
+                            <!--<Image src="res://drawable-hdpi/btn_nav_back_click" stretch="none" verticalAlignment="center"></Image>-->
+                            <!--<label text="返回" color="rgb(255,135,0)"  verticalAlignment="center"></label>-->
+                        <!--</StackLayout>-->
+                    <!--</ActionItem.actionView>-->
+                <!--</ActionItem>-->
+            <!--</ActionBar.actionItems>-->
+        </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout class="page">
+        <label text="2016年12月" class="dateLabel"></label>
+
+       <StackLayout class="recordContent">
+           <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+               <label text="3月账单" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="-500.00" row="0" col="1" horizontalAlignment="right" ></label>
+           </GridLayout>
+           <GridLayout rows="auto" columns="auto,*" class="checkNum">
+               <label text="11/01 - 12/01" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="已提现" row="0" col="1" horizontalAlignment="right" ></label>
+           </GridLayout>
+           <StackLayout class="line">
+           </StackLayout>
+
+           <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+               <label text="2月账单" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="-500.00" row="0" col="1" horizontalAlignment="right" ></label>
+           </GridLayout>
+           <GridLayout rows="auto" columns="auto,*" class="checkNum">
+               <label text="10/01 - 11/01" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="已提现" row="0" col="1" horizontalAlignment="right" ></label>
+           </GridLayout>
+           <StackLayout class="line">
+           </StackLayout>
+
+           <GridLayout rows="auto" columns="auto,*" class="checkAmount">
+               <label text="1月账单" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="-500.00" row="0" col="1" horizontalAlignment="right"></label>
+           </GridLayout>
+           <GridLayout rows="auto" columns="auto,*" class="checkNum">
+               <label text="09/01 - 10/01" row="0" col="0" horizontalAlignment="left" ></label>
+               <label text="已提现" row="0" col="1" horizontalAlignment="right"></label>
+           </GridLayout>
+           <StackLayout class="line">
+           </StackLayout>
+       </StackLayout>
+
+    </StackLayout>
+
+</Page>

@@ -1,0 +1,14 @@
+@import { url('~/views/task/question-list/question-list-common.css') };
+
+/*问题内容*/
+.qs-problem-content{
+    position: absolute;
+    background-color: white;
+    margin-top: 10;
+    height:auto;
+    padding: 10 0;
+    color: #333;
+    border-bottom: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #ddd;
+}

@@ -1,0 +1,63 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh_ico" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="实名认证"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" style="margin-right: 10;" >
+                        <Label text="帮助" tap="onHelp"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="实名认证" class="iosActionBar">
+
+                    <NavigationButton text="" />
+                    <ActionItem text="帮助" ios.position="right" tap="onHelp"/>
+
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+   
+
+<StackLayout  orientation="vertical"  class="mainview" >
+<GridLayout orientation="vertical"  columns="*" rows="auto,auto,auto,auto" class="list_page" >  
+
+    <GridLayout  row="0" col="0"  orientation="vertical" class="item-view" tap="onDriverTap">
+                <Image src="res://main6" class="item-img" stretch="aspectFill"/>
+                <Label text="我是个人"  class="car-text-one" 
+                 horizontalAlignment="right"
+                 verticalAlignment="center"/>
+                
+    </GridLayout>
+
+    <GridLayout  row="1" col="0" orientation="vertical"   class="item-view" tap="onDriverCPTap">
+                <Image src="res://main6" class="item-img" stretch="aspectFill"/>
+                <Label text="我是企业"  class="car-text-two" horizontalAlignment="left"
+                 verticalAlignment="center"/>
+                
+    </GridLayout>
+
+
+
+</GridLayout>
+<StackLayout  orientation="vertical"  verticalAlignment="center" class="btn_page">  
+  <Label text="遇到问题，请拨打免费客服电话"  verticalAlignment="center" horizontalAlignment="center" 
+                            /> 
+    <Label text="400-006-111"  verticalAlignment="center" horizontalAlignment="center"  class="item-text"/>
+</StackLayout>
+</StackLayout>
+</Page>

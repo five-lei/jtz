@@ -1,0 +1,27 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="filter-options-drawer"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="300"
+        android:drawerContentSize="300">
+    <drawer:RadSideDrawer.drawerContent>
+        <DockLayout class="qs-filter-option-background">
+            <StackLayout class="qs-filter-option-stack" dock="top">
+                <Button text="时间筛选" class="qs-filter-option-item" tap="filterOptionTap" />
+                <Label class="line" />
+                <Button text="货物破损" class="qs-filter-option-item" tap="filterOptionTap" />
+                <Label class="line" />
+                <Button text="运单差错" class="qs-filter-option-item" tap="filterOptionTap" />
+                <Label class="line" />
+                <Button text="开单错误" class="qs-filter-option-item" tap="filterOptionTap" />
+                <Label class="line" />
+                <Button text="客户问题" class="qs-filter-option-item" tap="filterOptionTap" />
+                <Label class="line" />
+                <Button text="取消" verticalAlignment="center" class="qs-filter-option-item" tap="filterCancelTap" />
+            </StackLayout>
+        </DockLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

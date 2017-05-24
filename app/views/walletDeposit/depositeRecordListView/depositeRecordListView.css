@@ -1,0 +1,46 @@
+﻿ActionBar{
+    background-color: white;
+    color: black;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+.listContent{
+    background-color: white;
+}
+.headerTitle{
+    font-size: 14px;
+    color: rgb(156,156,156);
+    margin-left: 16px;
+    height: 30px;
+}
+.checkAmount{
+    margin: 12px 8px 6px 8px;
+}
+.checkNum{
+    margin: 0px 8px 6px 8px;
+}
+.checkNum label{
+    color: rgb(156,156,156);
+    font-size: 13px;
+}
+
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+.list-group-item{
+    background-color: white;
+}
+.section{
+    background-color: rgb(240,240,240);
+    width:100%;
+}
+
+.rightImage{
+    margin-right: 8px;
+    height: 15px;
+    width: 15px;
+    margin-left: 8px;
+}

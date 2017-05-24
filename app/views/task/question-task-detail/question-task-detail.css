@@ -1,0 +1,170 @@
+/**
+ * 问题件详情页
+ */
+/*通用css样式*/
+
+.line {
+    margin: 10 0 0 0;
+    height: 1;
+    width: 100%;
+    background-color: rgb(239, 239, 239)
+}
+
+.orange-line {
+    height: 1;
+    width: 100%;
+    background-color: #f0d59c
+}
+
+
+/**
+ *
+ */
+
+ActionBar {
+    background-color: white;
+    color: black;
+}
+
+.page {
+    background-color: rgb(240, 240, 240);
+    color: #333;
+    font-size: 14;
+}
+.action-title{
+    font-size: 16;
+}
+.colorb {
+    color: #017dfb;
+}
+
+.content {
+    margin-top: 10;
+    background-color: white;
+}
+
+
+/*第一部分*/
+
+.first-content {
+    background-color: #fff4e7;
+    height: 70;
+    padding: 16
+}
+
+.status-label{
+    color: #dd3e36;
+}
+.time-label {
+    color: #999999;
+    font-size: 12;
+    margin-right: 20;
+}
+
+.consignee {
+    font-size: 16;
+}
+
+.waybill-number {
+    color: #999999;
+}
+
+
+/*第2部分*/
+
+.second-content {
+    height: 60;
+    padding: 10;
+}
+
+.receive-text {
+    color: #999999;
+    margin-top: 20;
+    font-size: 12;
+}
+
+.exception-text{
+    padding: 10 0 10 0;
+}
+/**
+ * 第3部分
+ */
+
+
+/**签收信息*/
+
+.third-content {
+    padding: 10;
+    font-size: 14;
+}
+
+.third-content .title {
+    font-size: 18;
+}
+
+.third-content image {
+    margin-right: 10;
+}
+
+.alert-info {
+    font-size: 12;
+    color: #999999;
+}
+
+.sign-info label {
+    margin-top: 5;
+    font-size: 16;
+}
+
+.sign-info .name {
+    color: #2793fe;
+}
+
+.sign-info .info-item {
+    color: #333333;
+}
+
+
+.sign-content{
+    padding: 5 0 5 0;
+}
+
+.fourth-content{
+    padding: 10;
+}
+
+.remark{
+    color: #858585;
+    font-size: 12;
+}
+.remark-info{
+    margin-top: 5;
+}
+
+/* ios的样式*/
+.ios_title{
+    color: black;
+}
+.ios_actionBar{
+    background-color: white;
+    color: #FB8901;
+}
+/*.ios_leftContent{*/
+    /*width:85%;*/
+/*}*/
+.ios_topContent{
+    background-color: #fff4e7;
+    padding: 13px 15px 15px 15px;
+}
+.ios_rightImage{
+    width: 15px;
+    height: 15px;
+    margin-left: 8px;
+}
+.ios_timeLabel{
+    color: #999999;
+    font-size: 12;
+}
+.ios_imageShow{
+    padding: 0px 0px 8px 0px;
+}

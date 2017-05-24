@@ -1,0 +1,88 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" class="actionBar-view">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                             tap="onBackTap">
+                    <Image src="res://fh" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="意见反馈"/>
+
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="意见反馈" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines" verticalAlignment="top">
+        </StackLayout>
+        <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                     android:horizontalAlignment="left" class="items-view">
+            <Label text="意见反馈的类型" class="action-label" verticalAlignment="center"/>
+            <StackLayout orientation="vertical" verticalAlignment="center" class="person">
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" verticalAlignment="center" class="item-view">
+
+            <button id="suggest" text="功能意见" class="grid_label_select" horizontalAlignment="left" tap="onSuggestTap"/>
+
+            <button id="complaint" text="业务投诉" class="grid_label_normal" horizontalAlignment="right"
+                    tap="onComplaintTap"/>
+
+        </StackLayout>
+
+        <StackLayout class="lines" verticalAlignment="top">
+        </StackLayout>
+        <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                     android:horizontalAlignment="left" class="suggest-view">
+            <Label text="建议/投诉" verticalAlignment="center"/>
+            <StackLayout orientation="vertical" verticalAlignment="center" class="person">
+            </StackLayout>
+        </StackLayout>
+
+        <TextView id="content" hint="请输入要描述的内容" class="text-input" textWrap="true"/>
+
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="mine-view">
+            <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                <Image src="res://ts_z" class="action-image"/>
+
+                <Label text="最多3张" verticalAlignment="bottom"/>
+
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" horizontalAlignment="right" verticalAlignment="bottom" row="0"
+                         col="2">
+                <Label id="num" text="0" class="import_number"/>
+                <Label text="/"/>
+                <Label text="120" class="text"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines" verticalAlignment="top">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*,*,*,*" rows="auto" class="iteme-phone">
+            <Label row="0" col="0" text="手机号" verticalAlignment="center"/>
+            <TextView  row="0" col="1" colSpan="5" id="phone" text="15626270709" verticalAlignment="center" class="item-phone" keyboardType="phone"/> 
+        </GridLayout>
+        <button text="提交" class="commit_label" horizontalAlignment="left" tap="conmmit"/>
+
+
+    </StackLayout>
+</Page>

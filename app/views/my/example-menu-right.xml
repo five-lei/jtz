@@ -1,0 +1,59 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="example-menu-drawer"
+        drawerLocation="Right"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="104"
+        android:drawerContentSize="180">
+    <drawer:RadSideDrawer.drawerContent>
+    <ScrollView id="content"  >
+        <GridLayout class="example-menu-background" backgroundColor="white">
+            
+            <StackLayout class="example-menu-right-stack" verticalAlignment="top">
+            
+
+            <Label id="one" text="京 " horizontalAlignment="left" verticalAlignment="center"  class="example-menu-right-background" tap="tap1"/>  
+            <StackLayout class="lines"  >
+            </StackLayout>
+
+            <Label text="津 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/> 
+            <StackLayout class="lines" >
+            </StackLayout>
+
+            <Label text="粤 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/>  
+            <StackLayout class="lines" >
+            </StackLayout>
+
+            <Label text="湘 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/> 
+            <StackLayout class="lines" >
+            </StackLayout>
+
+            <Label text="京 " horizontalAlignment="left" verticalAlignment="center"  class="example-menu-right-background" />  
+            <StackLayout class="lines"  >
+            </StackLayout>
+
+            <Label text="津 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/> 
+            <StackLayout class="lines" >
+            </StackLayout>
+
+            <Label text="粤 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/>  
+            <StackLayout class="lines" >
+            </StackLayout>
+
+            <Label text="湘 " horizontalAlignment="left" verticalAlignment="center" class="example-menu-right-background"/> 
+            <StackLayout class="lines" >
+            </StackLayout>
+            
+                <!--<ListView items="{{ provinceList }}">
+                   <ListView.itemTemplate>
+                      <Label text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+                       />       
+                   </ListView.itemTemplate>
+                </ListView>  -->
+            </StackLayout>
+        </GridLayout>
+         </ScrollView>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

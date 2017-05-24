@@ -1,0 +1,224 @@
+<Page id="my-page"  isoSwipeBackNavigationEnabled="true" navigatingTo="onNavigatingTo" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <GridLayout orientation="vertical" class="title_view">
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="right"
+                                 android:horizontalAlignment="right">
+                        <!--<Image src="res://erweim" class="bar-image" tap="onCodeTap"/>-->
+                        <Image src="res://xioaxi" class="bar-image1" tap="onMessage"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+
+        <ios>
+            <ActionBar title="" class="iosActionBar">
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" tap="onNavBtnTap">
+                            <Image src="res://xioaxi" stretch="none" tap="onMessage"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee">
+        <ScrollView id="content" height="90%" dock="top">
+            <StackLayout orientation="vertical"  class="mainview">
+
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                             android:horizontalAlignment="left" class="topView">
+                    <AbsoluteLayout tap="onAttestationTap">         
+                    <Image id="person_img" src="res://per" class="action-image"  width='50px' stretch="aspectFill" height="50px"  borderRadius="50%" />
+                    <Label id="person_real" text="未实名认证" class="number" visibility="visible"/>
+                    </AbsoluteLayout>
+
+                    <StackLayout orientation="vertical" verticalAlignment="center">
+                        <StackLayout orientation="horizontal" verticalAlignment="top" tap="onPersonalTap">
+                            <Label id="person_name" text="邓师傅" class="action-label"/>
+                            <StackLayout orientation="horizontal" class="person-btn" horizontalAlignment="center">
+                                <Image id="person_type_img" src="res://yjyh" class="bar-image2"/>
+                                <Label id="person_type" text="普通用户" verticalAlignment="center"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout id="security_y" orientation="horizontal" verticalAlignment="bottom" tap="onCreditTap"
+                                     class="star-item" visibility="collapsed">
+                            <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                            <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                            <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                            <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                            <Image src="res://ico_xing_two" class="star-image" verticalAlignment="center"/>
+                            <Label id="creditStar" text="4.8" verticalAlignment="center"/>
+                        </StackLayout>
+                        <StackLayout id="security_n" orientation="horizontal" verticalAlignment="bottom" 
+                                     class="star-item" visibility="visible">
+                             <Label text="暂无评分" verticalAlignment="center" style="margin-left:4"/>        
+                        </StackLayout>             
+
+                    </StackLayout>
+                </StackLayout>
+
+                <GridLayout rows="*" columns="*,*,*" horizontalAlignment="center" class="mine-view">
+
+                    <StackLayout row="0" col="0" orientation="vertical" verticalAlignment="center" tap="onMoneyTap">
+                        <Image src="res://qianbao" class="icon-img" />
+                        <Label text="我的钱包" horizontalAlignment="center" class="mine-text"/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="1" orientation="vertical" verticalAlignment="center" tap="onCollectTap">
+                        <Image src="res://shoucan" class="icon-img"  />
+                        <Label text="我的收藏" horizontalAlignment="center" class="mine-text"/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="2" orientation="vertical" verticalAlignment="center" tap="onFriendsList">
+                        <Image src="res://haoyou" class="icon-img" />
+                        <Label text="我的好友" horizontalAlignment="center" class="mine-text"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines" >
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onCarTap" visibility="collapsed">
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0">
+                        <Image src="res://wodecheliang" class="item-image"/>
+                        <Label text="我的车辆" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="未认证" class="hint-label"/>
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines" visibility="collapsed">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onHistoryTask">
+                    <StackLayout orientation="horizontal" row="0" col="0" >
+                        <Image src="res://lishirenwu" class="item-image"/>
+                        <Label text="历史任务" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onToscore">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Image src="res://pingfen" class="item-image"/>
+                        <Label text="去评分" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="为我们点赞" class="hint-label"/>
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onPhone">
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0">
+                        <Image src="res://lianxikef" class="item-image"/>
+                        <Label text="联系客服" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="4006-006-111" class="hint-label"/>
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onShare">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Image src="res://yaoqing" class="item-image"/>
+                        <Label text="邀请好友" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Image src="res://jr" class="right-image"/>
+
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onAboutTap">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Image src="res://guanywm" class="item-image"/>
+                        <Label text="关于我们" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Image src="res://jr" class="right-image"/>
+
+                    </StackLayout>
+                </GridLayout>
+
+                <!--<GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onSuggestTap">
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0">
+                        <Image src="res://yjfk" class="item-image"/>
+                        <Label text="意见反馈" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="未填写" class="hint-label"/>
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>-->
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*" rows="auto" class="items-view" tap="onSetTap" style="margin-bottom:10">
+                    <StackLayout orientation="horizontal" row="0" col="0">
+                        <Image src="res://shezhi" class="item-image"/>
+                        <Label text="设置" class="action-label" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label text="个人设置、安全设置等" class="hint-label"/>
+                        <Image src="res://jr" class="right-image"/>
+                    </StackLayout>
+                </GridLayout>
+
+            </StackLayout>
+        </ScrollView>
+        <GridLayout  dock="bottom" columns="*,*,*,*" rows="auto"  class="main-menu" height="10%">
+            <StackLayout col="0" orientation="vertical" id="home" tap="menuNavigator" marginTop="2">
+                <Image src="res://sy_hei2x" height="20" />
+                <Label text="首页" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="1" orientation="vertical" id="task" tap="menuNavigator" marginTop="3">
+                <Image src="res://re_hei2x" height="20" />
+                <Label text="任务" class="menu-icon-text" />
+            </StackLayout>
+            <StackLayout col="2" orientation="vertical" id="course" tap="menuNavigator" marginTop="3">
+                <Image src="res://xy_hei2x" height="20" />
+                <Label text="师傅学院" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="3" orientation="vertical" id="my" tap="menuNavigator" marginTop="3">
+                <Image src="res://wd_huang2x" height="20" />
+                <Label text="我的" class="menu-icon-text menu-selected"/>
+            </StackLayout>
+        </GridLayout>
+    </DockLayout>
+</Page>

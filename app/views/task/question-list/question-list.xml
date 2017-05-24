@@ -1,0 +1,133 @@
+<examples:QuestionTaskPage
+        xmlns="http://schemas.nativescript.org/tns.xsd"
+        xmlns:lv="nativescript-telerik-ui-pro/listview"
+        xmlns:examples="views/task/question-list/filter-base-page"
+        navigatingTo="pageNavigatingTo"
+        loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <ActionItem>
+                    <ActionItem.actionView>
+                        <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                            <StackLayout orientation="horizontal" row="0" col="0"
+                                         tap="onBackTap" horizontalAlignment="left" verticalAlignment="center">
+                                <Image src="res://fh_ic" class="bar-image-l" tap="onBackTap"/>
+                                <Label text="返回" verticalAlignment="center" tap="onBackTap"/>
+                            </StackLayout>
+
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                         verticalAlignment="center" row="0" col="1">
+                                <Label text="问题件" class="qs-title"/>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                         verticalAlignment="center" row="0" col="2">
+                                <Image id="searchMenuButton" src="res://ss2x" class="bar-image-r"
+                                       tap="tapSearchHandler"/>
+                                <Image id="filterMenuButton" src="res://sx2x" class="bar-image-r1"  visibility="collapse"/>
+                            </StackLayout>
+                        </GridLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="问题件" class="qs-ios_actionBar">
+                <NavigationButton text="返回"/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                     verticalAlignment="center" row="0" col="2">
+                            <Image id="searchMenuButton" src="res://ss2x" class="qs-ios_searchImage"
+                                   tap="tapSearchHandler"/>
+                            <Image id="filterMenuButton" src="res://sx2x" class="qs-ios_rightImage"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <StackLayout  style.backgroundColor="#eee">
+        <GridLayout rows="auto,auto,*" columns="*">
+            <ScrollView id="scrollView" orientation="horizontal" ios.showsHorizontalScrollIndicator="false"
+                        row="0" col="0" loaded="scrollViewLoaded" >
+                <Repeater items="{{ barTypes }}" >
+                    <Repeater.itemsLayout>
+                        <StackLayout orientation="horizontal"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <GridLayout tap="repeaterItemTap" tabIndex="{{tabIndex}}" columns="*" rows="*,auto"  width="100"
+                                    class="{{ isSelected ? 'chartItemInRepeaterSelectedStyle' : 'chartItemInRepeaterStyle' }}">
+                            <Label text="{{tabName}}" col="0" row="0" horizontalAlignment="center"
+                                   verticalAlignment="center"></Label>
+                            <GridLayout col="0" row="1"
+                                        class="{{ isSelected ? 'galleryRepeaterItemBottomSelectedBorder' : 'galleryRepeaterItemBottomBorder'}}"/>
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </ScrollView>
+            <StackLayout class="ios_Line" row="1" col="0"></StackLayout>
+            <GridLayout row="2" col="0">
+                <lv:RadListView id="task_list_view"
+                                items="{{currentTaskList}}"
+                                pullToRefresh="true" row="1"
+                                loadMoreDataRequested="onLoadMoreItemsRequested"
+                                pullToRefreshInitiated="pullToRefreshInitiated"
+                                loadOnDemandMode="Auto"
+                                itemLoading="onItemLoading">
+                    <!--listView的布局-->
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+
+                    <lv:RadListView.itemTemplate>
+                        <!-- StackLayout 外面这个布局一定要有, 不然不会显示-->
+                        //====START===全部问题记录信息开始
+                        <StackLayout flex="1" class="qs-problem-content" orientation="vertical">
+                            //订单号信息
+                            <DockLayout stretchLastChild="true" tap="tapQuestionDetail" class="margin-left-10" matterRecordId="{{id}}">
+                                <GridLayout dock="top" rows="25" columns="auto,*,*" class="margin-right-15">
+                                    <Label text="{{'单号：'+orderNumber}}" row="0" col="1"
+                                           class="qs-order-number"></Label>
+                                    <Label text="{{status}}" col="3" horizontalAlignment="right"
+                                           class="qs-task-status"></Label>
+                                </GridLayout>
+                                <GridLayout dock="top" rows="auto" columns="auto,auto,*">
+                                    <Label text="{{questionType}}" row="0" col="2" class="qs-order-problem-info"></Label>
+                                    <Label text="{{datetime}}" row="0" col="3" horizontalAlignment="right"
+                                           class="qs-deal-date margin-right-15"></Label>
+                                </GridLayout>
+                            </DockLayout>
+                            <Label class="qs-line"/>
+                            //图片信息
+                            <StackLayout class="qs-second-content" visibility="{{(images.length>0)?'visible':'collapse'}}">
+                                <Repeater items="{{ images }}">
+                                    <Repeater.itemsLayout>
+                                        <WrapLayout orientation="horizontal"/>
+                                    </Repeater.itemsLayout>
+                                    <Repeater.itemTemplate>
+                                        <StackLayout orientation="horizontal" class="qs-ios_imageShow" horizontalAlignment="left">
+                                            <Image  src="{{$value}}" width="75" height="75" stretch="fill" verticalAlignment="center"></Image>
+                                        </StackLayout>
+                                    </Repeater.itemTemplate>
+                                </Repeater>
+                            </StackLayout>
+                            <GridLayout rows="auto,*,*" columns="*" class="qs-third-content">
+                                <Label text="{{description}}" row="0" col="0" textWrap="true"></Label>
+                                <Label text="跟进备注" row="1" col="0" class="qs-remark"
+                                       verticalAlignment="center"></Label>
+                                <Label text="{{remark}}" row="2" col="0" class="qs-remark-info"
+                                       verticalAlignment="center" textWrap="true"></Label>
+                            </GridLayout>
+                            <ios>
+                                <StackLayout class="qs-ios_listLine"></StackLayout>
+                            </ios>
+                        </StackLayout>
+                        //====END===全部记录信息结束
+
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+</examples:QuestionTaskPage>

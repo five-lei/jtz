@@ -1,0 +1,53 @@
+@import { url('~/views/task/history-task/history-task-common.css') };
+
+.iosActionBar{
+    color:#FB8901;
+    background-color: white;
+}
+.titleLabel{
+    color: black;
+}
+.ios_Line{
+    height: 8px;
+    background-color: rgb(240,240,240);
+}
+.ios_leftImage{
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ios_order{
+    font-size: 16px;
+    color: rgb(35,35,35);
+}
+.ios_centerImage{
+    width: 18px;
+    height: 18px;
+}
+.ios_companyInfo{
+    color: dimgray;
+    font-size: 14px;
+}
+
+.order-content{
+    position: absolute;
+    color: #333;
+    background-color: white;
+    font-size: 14;
+    margin-bottom: 5;
+    height:auto;
+    margin-top: 8px;
+    /*padding: 10 0 10 0;*/
+}
+.ios_consignee{
+    margin-top: 6px;
+}
+.img20{
+    margin-right: 6px;
+}
+.ios_listLine{
+    height: 8px;
+    background-color: rgb(240,240,240);
+    margin-top: 6px;
+}

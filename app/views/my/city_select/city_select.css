@@ -1,0 +1,100 @@
+﻿.mainview {
+    background-color:white;
+    
+}
+
+
+.actionBar-view {
+    background-color:white;
+    color: orange;
+    font-size: 16;
+    margin-right: 10
+    
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+
+
+.bar-image {
+    width:20;
+    height:20;
+    margin-left: 10
+}
+
+.line {
+    height: 1;
+    width: 100%;
+    background-color: #D3D3D3 ;
+}
+
+.items-view {
+    background-color:white;
+    width: 100%;
+    padding-bottom: 30;
+    padding-top: 20;
+    padding-left: 10;
+    padding-right: 10;
+    font-size: 16;
+    color: black
+}
+
+.hint-label {
+    font-size: 16;
+    color: #8A8A8A
+}
+
+.text-label {
+    font-size: 14;
+    color: black;
+    margin-top: 10
+}
+
+
+.grid_label_select { 
+    width: 60;
+    height: 60;
+    background-color: #FFDEAD; 
+    border-radius:2px;
+    border-color: #FF8800;
+    border-width: 1px;
+    font-size: 16;
+    color: orange
+    
+}
+
+.grid_label_normol { 
+    width: 60;
+    height: 60;
+    background-color: white; 
+    border-radius:2px;
+    border-color: #8A8A8A;
+    border-width: 1px;
+    font-size: 16;
+    color: black
+    
+}
+
+
+.item-top{
+    background-color: #FFDEAD; 
+    padding: 10;
+    color: orange;
+    font-size: 16
+}
+
+.item-text{
+    padding-left: 5;
+    padding-right: 10;
+    padding-bottom: 10;
+    padding-top: 10;
+    color: black;
+    font-size: 16
+}
+
+.text {
+   color: orange
+}

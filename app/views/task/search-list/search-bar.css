@@ -1,0 +1,116 @@
+/**
+ * 搜索页面
+ */
+
+ActionBar {
+    background-color: white;
+    color: black;
+}
+
+SearchBar {
+    width: 100%;
+    margin-left: 20;
+    margin-right: 20;
+}
+
+.search-btn {
+    color: #fb8901;
+    font-size: 16px;
+}
+
+/*.page {
+    background-color: #ffffff;
+    color: #333;
+}*/
+.color9 {
+    color: #999;
+}
+
+.content {
+    margin-top: 13;
+}
+
+.first-content {
+    padding: 0 10 0 10;
+    font-size: 12px;
+}
+
+.tag {
+    color: #999;
+    background-color: #eeeeee;
+    padding: 5 12 5 12;
+    border-radius: 3;
+    margin: 10 0 0 10;
+}
+
+.ios_dropdown-list{
+    width: 80px;
+    height: 38px;
+    font-size: 15px;
+    color: #999;
+    text-align: center;
+}
+
+
+.ad_searchBar {
+    font-size: 12;
+}
+.ios_ad_searchBar{
+    font-size: 12px;
+    width: 60px;
+}
+
+.mdl-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.list-label{
+    color: #333;
+    padding-top: 5;
+    padding-bottom: 5;
+}
+
+.mdl-icon {
+    font-family: 'MaterialIcons';
+    /*color: darkgray;*/
+    vertical-align: center;
+    iconText: '\ue5c6';
+}
+
+/*different styles for specific lists - remember ID is container's ID + _pickerList*/
+#searchTaskType_pickerList {
+    border-color: silver;
+    text-align: center;
+    vertical-align: center;
+    font-size: 14;
+}
+
+.mdl-pickerList {
+    /*common styles for ALL dropdown lists*/
+    height: 125;
+    min-width: 60;
+    background-color: white;
+    border-color: #eee;
+    border-width: 1;
+
+}
+
+
+/* ios 的样式*/
+.ios_searchBar {
+    width: 75%;
+    margin-right: 12px;
+    background-color: white;
+    color: black;
+    /*margin-left: -8px;*/
+    text-align: center;
+}
+
+.iosActionBar {
+    background-color: white;
+    color: rgb(255, 138, 37);
+}
+
+.ios_search_btn {
+    color: rgb(255, 138, 37);
+}

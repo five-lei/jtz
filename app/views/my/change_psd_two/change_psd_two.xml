@@ -1,0 +1,72 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded" >
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" class="actionBar-view">
+        <GridLayout columns="*,*,*,*" rows="auto" verticalAlignment="top" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" colspan="2" class="title-label">
+                <Label text="修改密码"  /> 
+        </StackLayout>
+        <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="3" tap="help">
+                <Label text="帮助"  />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="修改密码" class="iosActionBar">
+                <NavigationButton text="" />
+
+                <ActionItem ios.position="right">
+                    <label text="帮助"  verticalAlignment="center" class="leftBarBtn" tap="help"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+<StackLayout orientation="vertical" class="mainview">
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" class="grid_label" ios:height="35">
+    <Label text="原始密码"   verticalAlignment="center" class="name-label"/>  
+    <TextField  hint="请输入原始登录密码" id="oldPwd"
+                class="code_input" verticalAlignment="center" horizontalAlignment="left" secure='true'/>
+    </StackLayout> 
+
+    <StackLayout class="line_text" >
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" class="grid_label_next" ios:height="35">
+    <Label text="新密码"   verticalAlignment="center" class="name-label"/>  
+    <TextField  hint="请输入新密码"  id="newPwd"
+                class="code_input" verticalAlignment="center" horizontalAlignment="left" secure='true'/>
+    </StackLayout> 
+
+    <StackLayout class="line_text" >
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" class="grid_label_next" ios:height="35">
+    <Label text="确认新密码"   verticalAlignment="center" class="name-label"/>  
+    <TextField  hint="请再次输入新密码" id="againPwd"
+                class="code_input" verticalAlignment="center" horizontalAlignment="left" secure='true'/>
+    </StackLayout> 
+
+    <StackLayout class="line_text" >
+    </StackLayout>
+         
+    <button text="完成，去登录"   class= "grid_label_select" tap="next_btn"/>
+
+</StackLayout>
+</Page>

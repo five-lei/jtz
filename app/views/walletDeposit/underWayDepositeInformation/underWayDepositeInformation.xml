@@ -1,0 +1,82 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,auto,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" class="Label_back" tap="onBackTap"/>
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="{{billDate}}"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="{{billDate}}">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout class="page">
+        <StackLayout class="content-checkMessage" orientation="vertical">
+            <GridLayout rows="auto" columns="auto,auto,*" verticalAlignment="center" class="depositeNumber">
+                <label text="账单范围" row="0" col="0" horizontalAlignment="left" class="firstLabel"></label>
+                <label text="{{withdrawDate}}" row="0" col="1" class="secondLabel"></label>
+                <label text="{{withdrawState}}" row="0" col="2" class="thirdLabel" horizontalAlignment="right"></label>
+            </GridLayout>
+            <label text="{{'¥ '+ totalMoney}}" horizontalAlignment="center"></label>
+            <label text="{{'账单总金额(已付¥' + paidMoney + '   未付¥' + noPiadMoney + ')'}}" horizontalAlignment="center" class="paymentAccount"></label>
+
+            <GridLayout rows="auto" columns="*,*,*" verticalAlignment="center" class="checkOtherInformation">
+                <StackLayout orientation="vertical" row="0" col="0" horizontalAlignment="left" tap="leftClick">
+                    <label text="运单金额" horizontalAlignment="center" class="name"></label>
+                    <label text="{{dispatchTaskMoney}}" horizontalAlignment="center" class="account"></label>
+                    <label text="" class="firstLine" id="leftLine"></label>
+                </StackLayout>
+
+                <StackLayout orientation="vertical" row="0" col="1" horizontalAlignment="center" tap="centerClick">
+                    <label text="异常费用" horizontalAlignment="center" class="name"></label>
+                    <label text="{{otherMoney}}" horizontalAlignment="center" class="account"></label>
+                    <label text="" class="secondLine" id="centerLine"></label>
+                </StackLayout>
+
+                <StackLayout orientation="vertical" row="0" col="2" horizontalAlignment="right" tap="rightClick">
+                    <label text="售后金额" horizontalAlignment="center" class="name"></label>
+                    <label text="{{repairAndFhreturnMoney}}" horizontalAlignment="center" class="account"></label>
+                    <label text="" class="thirdLine" id="rightLine"></label>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <ScrollView orientation="vertical" ios.showsVerticalScrollIndicator="false">
+            <Repeater items="{{ messages }}">
+                <Repeater.itemsLayout>
+                    <StackLayout orientation="vertical"/>
+                </Repeater.itemsLayout>
+                <Repeater.itemTemplate>
+                    <GridLayout rows="*" columns="*,*,auto" class="listInformation" tap="itemClick" taskId="{{taskId}}">
+                        <StackLayout orientation="vertical" row="0" col="0" horizontalAlignment="left"
+                                     verticalAlignment="center">
+                            <label text="{{number}}" class="number"></label>
+                            <label text="{{date}}" class="date"></label>
+                        </StackLayout>
+                        <label text="{{account}}" row="0" col="1" horizontalAlignment="right" class="money"></label>
+                        <StackLayout col="2" row="0" horizontalAlignment="right" verticalAlignment="center">
+                            <Image src="res://jr2x" col="1" horizontalAlignment="right" class="rightImage"/>
+                        </StackLayout>
+                    </GridLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </ScrollView>
+    </StackLayout>
+
+</Page>

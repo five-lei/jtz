@@ -1,0 +1,13 @@
+@import { url('~/views/task/receive-task/receive-task-common.css') };
+/**
+ *
+ */
+
+.first-content {
+    background-color: #fff4e7;
+    padding: 16 10
+}
+.second-content {
+    height: auto;
+    padding: 10;
+}

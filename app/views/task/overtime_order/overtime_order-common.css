@@ -1,0 +1,319 @@
+﻿
+ActionBar {
+    font-size: 16;
+    color: #333333;
+    }
+
+.iosActionBar{
+    color: #fb8901;
+    background-color: white;
+}
+ExamplePage { 
+    background-color: white;
+}
+
+.title-label {
+    font-size: 18;
+}
+
+.mainview {
+    width:100%;
+    height:100%;
+    background-color: #eeeeee ;
+}
+
+.list_page {
+   height: 91%;
+   margin-left: 5;
+   margin-right: 5;
+}
+
+.btn_page {
+   height: 9%;
+   background-color:white; 
+}
+
+.item-image {
+    height: 50px;
+    width: 50px;
+    margin-left: 5
+}
+
+.items-view {
+    background-color:white;
+    padding-bottom: 15;
+    padding-top: 15;
+    padding-right: 10;
+    padding-left: 10;
+    font-size: 16;
+    border-radius:3px;
+}
+
+.item-view {
+    width: 20%;
+    color: cornflowerblue;
+    font-size: 16;
+}
+
+.iteme-view {
+    width: 80%;
+    
+}
+
+.car-name {
+    font-size: 16;
+    margin-left: 5;
+}
+
+.car-size {
+    font-size: 16;
+    color: #999999;
+}
+
+.car-names {
+    font-size: 16;
+    color: #999999;
+    margin-left: 5;
+}
+
+.hint-label {
+    color: cornflowerblue;
+    margin-right: 5
+}
+
+
+.grid_label_select { 
+    height: 100%;
+    background-color:rgb(255, 138, 37); 
+    border-radius:2px;
+    border-color:rgb(255, 138, 37);
+    border-width: 1px;
+    font-size: 16;
+    color: white;
+}
+
+.recipeContainer {
+	height: 54;
+    background-color: white;
+    padding: 8 16;
+}
+
+.recipeTitle {
+	font-size: 16;
+    color: #455b66;
+}
+
+.recipeAuthor {
+	font-size: 11;
+    color: #455b66;
+}
+
+
+
+.exampleHolderStyle {
+    padding: 16;
+    background-color: white;
+}
+.taskTabsHolderStyle{
+    background-color: #eee;
+    color: #333;
+}
+
+
+/*通用css样式*/
+.leftIcon{
+    margin-right: 15;
+}
+.rightIcon{
+    position: absolute;
+    right:8;
+    margin-right:8;
+}
+.line{
+    height: 1;
+    width: 100%;
+    background-color: rgb(239,239,239)
+}
+.orange-line{
+    height: 1;
+    width: 100%;
+    background-color: #f0d59c
+}
+
+page{
+    color: #333;
+}
+.segmentbar {
+    background-color: #eb750d;
+    color:#ffffff;
+}
+.main-content{
+    padding-bottom: 20;
+
+}
+/*订单*/
+.order-content{
+    position: absolute;
+    color: #333;
+    background-color: white;
+    font-size: 14;
+    margin-top: 10;
+    height:auto;
+    padding: 0 0 10 0;
+    /*border-bottom: solid;*/
+    /*border-bottom-width: 1;*/
+    /*border-bottom-color: #ddd;*/
+}
+.color9{
+    color: #999999;
+}
+
+.order-info{
+    padding: 0 10 0 0;
+}
+.orderNumberContent{
+    height: 50;
+}
+
+.order-number{
+    font-size: 16;
+}
+
+.order-date{
+    color: #858585;
+    margin-top: 10;
+    font-size: 12;
+}
+
+.company-info{
+    color: #858585;
+    font-size: 14;
+    margin-top: 10;
+}
+.order-payment{
+    color: #f72e00;
+    font-size: 16;
+}
+.order-payment-gray{
+    color: #999999;
+    font-size: 16;
+}
+
+/*收货地址相关信息*/
+.shipping-info{
+    padding: 10;
+}
+
+.address-info{
+    font-size: 15;
+}
+.packing-detail{
+    font-size: 12;
+    margin-top: 5;
+    color: #999999;
+}
+.packing-detail label{
+    margin-bottom: 5;
+}
+.btn{
+    width:60;
+    height: 30;
+    padding: 1 0;
+    color: white;
+    font-size: 14 ;
+    border-radius: 5;
+}
+.btn-accept{
+    background-color: rgb(255,138,37);
+}
+.btn-cancel{
+    border-width: 1;
+    border-color: rgb(254,173,84);
+    color: rgb(255,125,0);
+}
+/*折叠信息*/
+#collapseInfoPanel{
+}
+.collapse-info{
+    background-color: #fff5e5;
+    padding:10;
+    padding-bottom: 5;
+}
+.order-bottom-operate{
+    height:40;
+    padding-top: 5;
+}
+.operate-btn{
+    margin-left:50 !important;
+    color:#017dfb;
+    font-size: 16;
+}
+.operate-btn-gray{
+    margin-left:50 !important;
+    color:#999999;
+    font-size: 16;
+}
+/**筛选菜单*/
+.filter-line{
+    height: 1;
+    width: 100%;
+    margin:0;
+    background-color: rgb(239,239,239)
+}
+.filter-option-stack {
+    margin:0 0;
+    background-color: #fff;
+}
+.cancel-btn-stack button{
+    margin-top: 0;
+    font-size:12;
+    vertical-align: center;
+}
+.filter-option-background{
+    background-color: #fff;
+}
+.filter-option-menu,.filter-option-item {
+    color: #151F2F;
+    height: 38;
+    vertical-align: center;
+    border-width: 1;
+    border-color: white;
+
+}
+.order-bottom-operate-3{
+    height:40;
+    padding-top: 15;
+}
+.filter-option-menu{
+    background-color: #ddd;
+}
+/**预约时间sidedraw*/
+.order-option-menu{
+    padding: 10;
+    background-color: #eee;
+}
+
+/* ios 的样式 */
+.ios_line{
+    height: 8px;
+    background-color: rgb(240,240,240);
+}
+.ios_bottomLine{
+    background-color: rgb(240,240,240);
+    height: 2px;
+}
+.ios_consignee{
+    margin-top: 6px;
+}
+.ios_listLine{
+    margin-top: 8px;
+    background-color: rgb(240,240,240);
+    height: 10px;
+}
+.img20{
+    margin-right: 6px;
+}
+.titleLabel{
+    color: black;
+    font-size: 17px;
+}

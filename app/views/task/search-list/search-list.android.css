@@ -1,0 +1,47 @@
+@import { url('~/views/task/search-list/search-list-common.css') };
+@import { url('~/views/task/search-list/search-bar.css') };
+@import { url('~/views/task/search-list/question-task.css') };
+
+.dropdown-list {
+    width: 50;
+    height: 25;
+    font-size: 12;
+    color: #999;
+    margin-left: 20;
+    margin-top: 10;
+    text-align: center;
+}
+
+#searchBar {
+    margin-left: -10;
+}
+
+/*订单*/
+.order-content{
+    position: absolute;
+    color: #333;
+    background-color: white;
+    font-size: 14;
+    margin-top: 10;
+    margin-bottom: 5;
+    height:auto;
+    padding: 10 0 10 0;
+    border-bottom: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #ddd;
+}
+
+/**
+ * 问题件详情
+ */
+.qs-problem-content{
+    position: absolute;
+    background-color: white;
+    margin-top: 10;
+    height:auto;
+    padding: 10 0;
+    color: #333;
+    border-bottom: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #ddd;
+}

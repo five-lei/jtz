@@ -1,0 +1,55 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+        <ActionBar class="actionBar-view">
+            <GridLayout columns="*,*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal" row="0" col="0"
+                             tap="onBackTap" horizontalAlignment="left">
+                    <Image src="res://fh" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" colspan="2" class="title-label">
+                    <Label text="修改密码(1/2)"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right"
+                             verticalAlignment="center" row="0" col="3">
+                    <Label text="帮助"/>
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="修改密码(1/2)" class="iosActionBar">
+                <NavigationButton text="" />
+
+                <ActionItem ios.position="right">
+                    <label text="帮助"  verticalAlignment="center" class="leftBarBtn"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+
+        <GridLayout columns="*,*,*" rows="auto" class="grid_label">
+            <Label text="验证码" row="0" col="0" verticalAlignment="center"/>
+            <TextField row="0" col="1" hint="请输入验证码" keyboardType="phone"
+                       class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+            <button text="YSD205" row="0" col="2" class="code-btn"/>
+        </GridLayout>
+
+        <StackLayout class="line_text">
+        </StackLayout>
+
+        <button text="下一步" class="grid_label_select" ios:height="44" tap="next_btn"/>
+
+    </StackLayout>
+</Page>

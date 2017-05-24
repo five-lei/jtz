@@ -1,0 +1,86 @@
+﻿.mainview {
+    background-color:#DCDCDC;
+    height: 100%;
+}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    padding-right: 10
+}
+
+Page { 
+    background-color: white
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+.bar-image1 {
+    height:20;
+}
+
+
+.bar-text {
+    font-size: 14
+}
+
+.item-image {
+    height: 20px;
+    width: 20px;
+}
+
+.right-image {
+    height: 15;
+    width: 15
+    
+}
+
+.car-image {
+    height: 40;
+    
+    margin-bottom: 5
+}
+
+.action-label {
+    margin-left: 5
+}
+
+.line {
+    height: 1;
+    background-color: #D3D3D3 ;
+}
+
+.items-view {
+    background-color:white;
+    padding-bottom: 33;
+    padding-top: 30;
+    margin-top: 10;
+    margin-left: 20;
+    margin-right: 20;
+    font-size: 16;
+    border-radius: 5
+}
+
+
+.hint-label {
+    font-size: 14;
+    color: black
+}
+
+.mine-view {
+   width: 100%;
+   
+}
+
+.grid_label_select { 
+    background-color:rgb(255,138,37); 
+    border-radius:2px;
+    border-color:rgb(255,138,37);
+    border-width: 1px;
+    font-size: 16;
+    color: white;   
+    
+}

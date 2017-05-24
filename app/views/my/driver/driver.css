@@ -1,0 +1,87 @@
+﻿.mainview {
+    background-color:white;
+    
+}
+
+ExamplePage { background-color: white }
+
+.actionBar-view {
+    
+    color: rgb(255,138,37);
+    font-size: 16;
+
+}
+
+.title-label {
+    font-size: 18;
+}
+
+
+.car-image {
+    height: 25;
+    margin-bottom: 10
+}
+
+
+.items-view {
+    background-color:white;
+    width: 100%;
+    color: black;
+    font-size: 15
+}
+.grid-view {
+    margin-left: 15;
+    color: black
+}
+.iteme-view {
+    height: 114;
+    padding-bottom: 20;
+    padding-top: 20;
+    margin-right: 15;
+    font-size: 15;
+}
+
+.hint-label {
+    font-size: 15;
+    color: #8A8A8A;
+    margin-top: 10;
+    margin-bottom: 10
+}
+
+.item-view {
+    background-color:white;
+    width: 100%;
+    margin-top: 10;
+    color: black;
+    font-size: 15
+}
+
+.code_input {
+    background-color:white;
+    border-color: transparent;
+    color: #8A8A8A;
+    text-align: left;
+    font-size: 15 
+}
+
+.btn_page {
+   height: 10%;  
+}
+
+.list_page {
+   height: 90%;
+}
+
+.grid_label_select { 
+    background-color:rgb(255,138,37); 
+    border-radius:2px;
+    border-color:rgb(255,138,37);
+    border-width: 1px;
+    font-size: 16;
+    color: white;
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,34 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="filter-options-drawer"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="400"
+        android:drawerContentSize="400">
+    <drawer:RadSideDrawer.drawerContent>
+        <DockLayout class="filter-option-background">
+            <StackLayout class="filter-option-stack">
+                <Button text="筛选类型" class="filter-option-menu"/>
+                <Button text="送货上门" screen="homeDelivery" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="上门安装"  screen="install" class="filter-option-item" verticalAlignment="top" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="送货上门并安装"  screen="homeDeliveryInstall" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="给朋友运单"  screen="ToFriend" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="按时间筛选"  screen="ByTime" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="抢单运单"  screen="qiang" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="朋友给我的"  screen="ToMe" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="正序排列"  screen="asc" class="filter-option-item" tap="filterOptionTap"/>
+                <Label class="filter-line"/>
+                <Button text="倒序排列"  screen="desc" class="filter-option-item" tap="filterOptionTap"/>
+            </StackLayout>
+        </DockLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

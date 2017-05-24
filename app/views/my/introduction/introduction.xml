@@ -1,0 +1,28 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"  loaded="pageLoaded" class="page">
+
+    <Page.actionBar>
+      
+        <Android>
+        <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                             tap="onBackTap">
+                    <Image src="res://fh" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center" style="color:orange"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" >
+                    <Label id="title" text="功能介绍" style="color:black; font-size:18;"/>
+
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+    </Page.actionBar>
+
+   <StackLayout  >
+	<WebView id="webView" />
+    </StackLayout>
+</Page>

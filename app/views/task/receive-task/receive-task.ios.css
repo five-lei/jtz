@@ -1,0 +1,15 @@
+@import { url('~/views/task/receive-task/receive-task-common.css') };
+/**
+ *
+ */
+.iosActionBar{
+    background-color: white;
+    color: #FB8901;
+}
+.titleLabel{
+    color: black;
+}
+.first-content {
+    background-color: #fff4e7;
+    padding: 10 10
+}

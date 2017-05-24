@@ -1,0 +1,171 @@
+{
+  "data": [
+    {
+      "id": "11",
+      "waybillId": "11",
+      "status": "maintenance_waiting_list",
+      "statusImage": "maintenance_waiting_list",
+      "orderNumber": "1ZT324835",
+      "price": "500.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "张三",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口2",
+
+      "pickupPhone": "15126270897",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "54",
+      "remark": "产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    },
+    {
+      "id": "22",
+      "waybillId": "111",
+      "status": "maintenance_waiting_list",
+      "statusImage": "maintenance_waiting_list",
+      "orderNumber": "1ZT324835",
+      "price": "500.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "remark": "参见 Angular 更新记录 了解 Angular 产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    },
+    {
+      "id": "33",
+      "waybillId": "33",
+      "status": "waiting_pickup",
+      "statusImage": "waiting_pickup",
+      "orderNumber": "1ZT324835",
+      "price": "400.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "remark": "参见 Angular 更新记录 了解 Angular 产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    },
+    {
+      "id": "44",
+      "waybillId": "44",
+      "status": "maintenance_waiting_sign_for",
+      "statusImage": "maintenance_waiting_sign_for",
+      "orderNumber": "1ZT324835",
+      "price": "300.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "remark": "参见 Angular 更新记录 了解 Angular 产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    },
+    {
+      "id": "55",
+      "waybillId": "55",
+      "status": "maintenance_waiting_appointment",
+      "statusImage": "maintenance_waiting_appointment",
+      "orderNumber": "1ZT324835",
+      "price": "300.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "dealTime": "10"
+    },
+    {
+      "id": "66",
+      "waybillId": "66",
+      "status": "maintenance_finish",
+      "statusImage": "maintenance_finish",
+      "orderNumber": "1ZT324835",
+      "price": "300.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "remark": "参见 Angular 更新记录 了解 Angular 产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    },
+    {
+      "id": "77",
+      "waybillId": "77",
+      "status": "maintenance_finish",
+      "statusImage": "maintenance_finish",
+      "orderNumber": "1ZT324835",
+      "price": "300.00",
+      "company": "一智通供应链管理有限公司",
+      "datetime": "2017/03/10 13:39",
+      "address": "广州市白云区新市路口",
+      "receivePersonName": "胡歌",
+      "receivePersonPhone": "15626270808",
+      "pickupAddress": "广州市白云区新市路口",
+
+      "pickupPhone": "15626270808",
+      "pickupNumber": "775566",
+
+      "packCount": "2",
+      "packVolume": "3",
+      "floor": "6 无电梯",
+      "appointmentTime": "22",
+      "remark": "参见 Angular 更新记录 了解 Angular 产品的最新的增强、修复和破环性变更",
+      "dealTime": "10"
+    }
+  ]
+}

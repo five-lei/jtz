@@ -1,0 +1,110 @@
+<examples:ExamplePage
+        xmlns:examples="views/my/example-base-page"
+        xmlns="http://schemas.nativescript.org/tns.xsd"
+        navigatingTo="onNavigatingTo"
+        loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" style="margin-right: 10;">
+                        <Label text="帮助" tap="onHelp"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionBar.actionItems>
+                    <ActionItem ios.position="right">
+                        <ActionItem.actionView>
+                            <StackLayout orientation="horizontal" tap="onHelp">
+                                <label text="帮助" color="rgb(255,135,0)" verticalAlignment="center" tap="onHelp"></label>
+                            </StackLayout>
+                        </ActionItem.actionView>
+                    </ActionItem>
+                </ActionBar.actionItems>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+
+    <StackLayout orientation="vertical" class="mainview">
+        <StackLayout orientation="vertical" class="list_page">
+
+
+            <StackLayout orientation="vertical" style="margin-left: 15;margin-right: 15">
+                <Label text="实名认证" style="margin-top: 10;margin-bottom: 10;font-size: 25;color: black;"
+                       verticalAlignment="center" horizontalAlignment="center"/>
+
+                <GridLayout columns="*,*,*,*" rows="auto" class="item-view" >
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0" ios:height="38">
+                        <Label text="真实姓名" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="left"
+                                 verticalAlignment="center" row="0" col="1" colSpan="3" ios:height="38">
+                        <TextField id="realName" text="{{realName}}" hint="请输入身份证号上的姓名" keyboardType="name"
+                                   class="code_input"/>
+
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+
+                <GridLayout columns="*,*,*,*" rows="auto" class="items-view" >
+                    <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                                 android:horizontalAlignment="left" row="0" col="0" ios:height="38">
+                        <Label text="身份证号" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="left"
+                                 verticalAlignment="center" row="0" col="1" colSpan="3" ios:height="38">
+                        <TextField id="idNo" text="{{idNo}}" hint="请输入18位身份证号码" keyboardType="phone"
+                                   class="code_input"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="lines">
+                </StackLayout>
+            </StackLayout>
+
+            <Label text="身份证上传" style="margin-left: 15;margin-right: 15" class="hint-label" verticalAlignment="center"/>
+
+            <GridLayout columns="*,*" rows="auto" class="grid-view">
+                <Image id="exampleMenuButton1" automationText="ExampleMenu"
+                             orientation="vertical" class="iteme-view" row="0" col="0" src="res://rz_one" stretch="aspectFill">
+                </Image>
+                <Image id="exampleMenuButton2" automationText="ExampleMenu"
+                             orientation="vertical" class="iteme-view" row="0" col="1" src="res://rz_two" stretch="aspectFill">
+                    
+                </Image>
+            </GridLayout>
+
+            <Label text="上传手持身份证正面照片" style="margin-left: 15;margin-right: 15" class="hint-label" verticalAlignment="center"/>
+
+            <GridLayout columns="*,*" rows="auto" class="grid-view">
+                <Image id="exampleMenuButton3" automationText="ExampleMenu"
+                             orientation="vertical" class="iteme-view" row="0" col="0" src="res://rz_three" stretch="aspectFill" >
+                    
+                </Image>
+            </GridLayout>
+
+        </StackLayout>
+
+        <StackLayout orientation="vertical" verticalAlignment="bottom" class="btn_page">
+            <button text="提交认证" class="grid_label_select" tap="btn_page" ios:height="44"/>
+        </StackLayout>
+
+    </StackLayout>
+</examples:ExamplePage>

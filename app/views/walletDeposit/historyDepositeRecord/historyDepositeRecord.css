@@ -1,0 +1,68 @@
+﻿.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+
+Page{
+    background-color: white;
+}
+
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+
+.headerSection{
+    background-color: rgb(240,240,240);
+}
+.headerTitle{
+    font-size: 14px;
+    color: rgb(156,156,156);
+    margin-left: 12px;
+    height: 35px;
+}
+
+.ADheaderTitle{
+    font-size: 14px;
+    color: rgb(156,156,156);
+    margin-left: 12px;
+    padding-top: 8;
+    padding-bottom: 8;
+}
+
+.checkAmount{
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+.checkNum{
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+}
+.checkNum label{
+    color: rgb(156,156,156);
+    font-size: 13px;
+}
+
+.textLine{
+    width:300px;
+    height: 20px;
+    background-color: red;
+}
+.rightImage{
+    margin-left: 18px;
+    margin-right: 8px;
+    height: 18px;
+    width: 18px;
+}
+.orderState{
+    color: dimgray;
+    font-size: 13px;
+    margin-left: 12px;
+}

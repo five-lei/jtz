@@ -1,0 +1,148 @@
+
+<examples:ExamplePage  
+         xmlns:examples="views/my/example-base-page-right"
+         xmlns="http://schemas.nativescript.org/tns.xsd" 
+         navigatingTo="onNavigatingTo"
+         loaded="loaded">
+
+    <Page.actionBar>
+        <ActionBar title="" class="actionBar-view">
+        <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" class="title-label">
+                <Label text="车辆认证"  /> 
+        </StackLayout>
+        <StackLayout  orientation="vertical" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" tap="onPhone">
+                <Image src="res://kf" class="bar-image1"/>
+                <Label text="客服"  class="bar-text" />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+    </Page.actionBar>
+   
+	
+<StackLayout orientation="vertical" class="mainview">
+<StackLayout orientation="vertical"   class="list_page">  
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="item-view" >
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Image src="res://chepai" class="item-image" />
+                <Label text="车牌号码"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" id="exampleMenuButton1" automationText="ExampleMenu">
+                 <Label id="car_ty" text="粤"  class="text" verticalAlignment="center"/>
+                 <Image src="res://down" class="item-image" />
+                 <StackLayout class="line_vertical">
+                 </StackLayout>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="2" >
+                 <TextField id="carNum" hint="请输入车牌号码" keyboardType="phone" 
+                class="code_input" text="{{ carNum }}"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines">
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onType"> 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Image src="res://cheliang" class="item-image"/>
+                <Label text="车辆类型"  verticalAlignment="center" class="action-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                <Label text="{{ selectedItem || '请选择' }}"  class="hint-label" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines">
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onlength"> 
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Image src="res://chechang" class="item-image"/>
+                <Label text="车辆长度"  verticalAlignment="center" class="action-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                <Label text="请选择"  class="hint-label" />
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onFontset">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0" colspan="2">
+                <Image src="res://zhonglaing" class="item-image"/>
+                <Label text="可载重货(吨)"  class="action-label" verticalAlignment="center"/>
+    </StackLayout>
+
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                 <TextField  id="carLoadWeight" hint="请输入" keyboardType="phone" 
+                class="code_input" text="{{ carLoadWeight }}"/> 
+    </StackLayout>
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*" rows="auto" class="items-view" tap="onCargoTap">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Image src="res://kongjian" class="item-image"/>
+                <Label text="载货空间(m3)"  verticalAlignment="center" class="action-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="1" >
+                
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>          
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onCarphotoTap">
+    <StackLayout orientation="horizontal"  ios:horizontalAlignment="left"
+            android:horizontalAlignment="left" row="0" col="0">
+                <Image src="res://chetupian" class="item-image"/>
+                <Label text="车辆照片"  verticalAlignment="center" class="action-label"/>
+    </StackLayout>
+    <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="2" >
+                
+                <Image src="res://jr" class="right-image"/>
+    </StackLayout>          
+    </GridLayout>
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    </StackLayout>
+
+    <StackLayout orientation="vertical"  verticalAlignment="bottom" class="btn_page" >  
+    <button text="提交" class= "grid_label_select" tap="commit" />
+   </StackLayout>    
+
+</StackLayout>
+</examples:ExamplePage>

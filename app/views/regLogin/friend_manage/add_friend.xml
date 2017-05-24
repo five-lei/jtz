@@ -1,0 +1,78 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="onNavigatingTo" class="page"
+      style="background-color: #eeeeee;" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" style="background-color: white;">
+            <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view">
+                <StackLayout orientation="horizontal" row="0" col="0" tap="onBackTap" horizontalAlignment="left"
+                             >
+                    <Image src="res://btn_nav_back_click" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center"/>
+                </StackLayout>
+                <StackLayout style="visibility: collapse;" orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1">
+                    <Label text="添加好友"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right" verticalAlignment="center" row="0"
+                             col="2">
+                    <Label text=""/>
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="添加好友" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <StackLayout height="70" style="background-color: #eeeeee;">
+            <GridLayout columns="120,*" rows="*" style="background-color: white;" margin="10" borderRadius="5"
+                        borderWidth="1" borderColor="white" ios:class="ios_titleSearch">
+                <Image android:src="res://ico_search_1" ios:src="res://sousuo2x" android:stretch="none" verticalAlignment="center" horizontalAlignment="right" android:class="search-image" tap="searchResult"/>
+                <TextField hint="请输入姓名或手机号搜索" col="1" row="0" verticalAlignment="center" id="nameOrMobile" class="code_input"/>
+            </GridLayout>
+        </StackLayout>
+        <!--<GridLayout>-->
+            <!--<StackLayout orientation="vertical" >-->
+                <!--<StackLayout orientation="horizontal" tap="item_intent" style="background-color: white;" height="70">-->
+                    <!--<Image src="res://ty2x" horizontalAlignment="left" verticalAlignment="center" class="image_item"-->
+                    <!--/>-->
+                    <!--<GridLayout columns="*" rows="*,*" horizontalAlignment="right">-->
+                        <!--<Label text="添加通讯录好友" horizontalAlignment="left" verticalAlignment="center" class="item"-->
+                               <!--col="0" row="0"/>-->
+                        <!--<Label text="添加或要求通讯录的朋友" horizontalAlignment="left" verticalAlignment="center"-->
+                               <!--class="phone_item" col="0" row="1"/>-->
+                    <!--</GridLayout>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout orientation="vertical" class="menu-line"></StackLayout>-->
+
+                <!--<StackLayout orientation="horizontal" tap="accordingToCity" style="background-color: white;" height="70">-->
+                    <!--<Image src="res://city2x" horizontalAlignment="left" verticalAlignment="center" class="image_item"-->
+                    <!--/>-->
+                    <!--<GridLayout columns="*" rows="*,*" horizontalAlignment="right">-->
+                        <!--<Label text="按城市" horizontalAlignment="left" verticalAlignment="center" class="item"-->
+                               <!--col="0" row="0"/>-->
+                        <!--<Label text="选择城市添加好友" horizontalAlignment="left" verticalAlignment="center"-->
+                               <!--class="phone_item" col="0" row="1"/>-->
+                    <!--</GridLayout>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout orientation="vertical" class="menu-line"></StackLayout>-->
+                <!--<StackLayout orientation="horizontal" tap="{{doScanWithTorch}}" style="background-color: white;" height="70">-->
+                    <!--<Image src="res://saosao2x" horizontalAlignment="left" verticalAlignment="center" class="image_item"-->
+                    <!--/>-->
+                    <!--<GridLayout columns="*" rows="*,*" horizontalAlignment="right">-->
+                        <!--<Label text="扫一扫" horizontalAlignment="left" verticalAlignment="center" class="item"-->
+                               <!--col="0" row="0"/>-->
+                        <!--<Label text="扫二维码名片" horizontalAlignment="left" verticalAlignment="center"-->
+                               <!--class="phone_item" col="0" row="1"/>-->
+                    <!--</GridLayout>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout orientation="vertical" class="menu-line"></StackLayout>-->
+            <!--</StackLayout>-->
+        <!--</GridLayout>-->
+    </StackLayout>
+</Page>

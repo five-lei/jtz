@@ -1,0 +1,201 @@
+<Page id="course-page" loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="师傅学院"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="师傅学院" class="iosActionBar">
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <!--导航布局结束-->
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee">
+        <!--第一部分 开始-->
+        <ScrollView dock="top" height="90%">
+            <StackLayout orientation="vertical" class="top">
+                <GridLayout rows="*" columns="*,*,*" horizontalAlignment="center" class="top-view">
+
+                    <StackLayout row="0" col="0" orientation="vertical" verticalAlignment="center" tap="furniture">
+                        <Image src="res://jjxy" class="icon-img"/>
+                        <Label text="家具学院" horizontalAlignment="center" class="top-text"/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="1" orientation="vertical" verticalAlignment="center" tap="building">
+                        <Image src="res://jcxy" class="icon-img"/>
+                        <Label text="建材学院" horizontalAlignment="center" class="top-text"/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="2" orientation="vertical" verticalAlignment="center">
+                        <Image src="res://cjwt" class="icon-img"/>
+                        <Label text="常见问题" horizontalAlignment="center" class="top-text"/>
+                    </StackLayout>
+                </GridLayout>
+                <!--第一部分结束-->
+                <!--第二部分开始-->
+                <StackLayout class="popular-tutorial" orientation="horizontal">
+                    <Label class="line"/>
+                    <Label text="热门教程" class="popular-title"/>
+                </StackLayout>
+                <StackLayout class="details">
+                    <FlexboxLayout alignContent="flex-start" flexWrap="wrap" cssClass="image-info">
+                    <Repeater id="video-list-view" items="{{ lists }}" selectionBehavior="Press">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="vertical"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout class="details-left" verticalAlignment="center"
+                                         horizontalAlignment="center">
+                                <StackLayout tap="video" id="{{videoId}}">
+                                    <AbsoluteLayout>
+                                        <Image src="{{image}}" stretch="aspectFill" height="125" width="100%"/>
+                                        <Label text="热推" class="hot"/>
+                                    </AbsoluteLayout>
+                                    <Label text="{{title}}" class="text"/>
+                                </StackLayout>
+                                <StackLayout orientation="horizontal" class="icon">
+                                    <StackLayout orientation="horizontal" tap="videoShare">
+                                        <Image src="res://fx" width="14" marginTop="2" marginLeft="2"/>
+                                        <Label text="分享" class="character"/>
+                                    </StackLayout>
+                                    <Image src="{{ isFavourite ? 'res://add_to_fav_1' : 'res://sc_da2x' }}"
+                                            width="18" marginLeft="15" tap="{{toggleFavourite}}"/>
+                                    <Label text="{{ isFavourite ? '已收藏' : '收藏' }}" height="16" cssClass="{{ cssClass }}" class="character"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                    </FlexboxLayout>
+                </StackLayout>
+                <!--<GridLayout columns="*,*" rows="auto" width="100%" class="details" horizontalAlignment="center">-->
+                <!--<StackLayout row="0" col="0" class="details-left" verticalAlignment="center"-->
+                <!--horizontalAlignment="center">-->
+                <!--<StackLayout tap="video">-->
+                <!--<AbsoluteLayout>-->
+                <!--<Image src="res://pic" height="125"/>-->
+                <!--<Label text="热推" class="hot"/>-->
+                <!--</AbsoluteLayout>-->
+                <!--<Label text="灯具安装教程" class="text"/>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout orientation="horizontal">-->
+                <!--<StackLayout orientation="horizontal" tap="share">-->
+                <!--<Image src="res://fx" width="17" marginTop="2" marginLeft="2"/>-->
+                <!--<Label text="分享" class="character"/>-->
+                <!--</StackLayout>-->
+                <!--<Image src="res://sc_da2x" height="18" marginLeft="15" isFavourite="true"-->
+                <!--tap="video_collect"/>-->
+                <!--<Label text="收藏" class="character" id="video-msg"/>-->
+                <!--</StackLayout>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout row="0" col="1" colSpan="2" class="details-right" verticalAlignment="center"-->
+                <!--horizontalAlignment="center">-->
+                <!--<StackLayout tap="video">-->
+                <!--<AbsoluteLayout>-->
+                <!--<Image src="res://pic" height="125"/>-->
+                <!--</AbsoluteLayout>-->
+                <!--<Label text="灯具安装教程" class="text"/>-->
+                <!--</StackLayout>-->
+                <!--<StackLayout orientation="horizontal">-->
+                <!--<StackLayout orientation="horizontal" tap="share">-->
+                <!--<Image src="res://fx" width="17" marginTop="2" marginLeft="2"/>-->
+                <!--<Label text="分享" class="character"/>-->
+                <!--</StackLayout>-->
+                <!--<Image src="res://sc_da2x" height="18" marginLeft="15" isFavourite="true"-->
+                <!--tap="video_collect1"/>-->
+                <!--<Label text="收藏" class="character" id="video-msg1"/>-->
+                <!--</StackLayout>-->
+                <!--</StackLayout>-->
+                <!--</GridLayout>-->
+                <!--第二部分结束-->
+                <!--第三部分-->
+                <GridLayout columns="*,*" rows="auto" width="100%" class="particulars">
+                    <StackLayout row="0" col="0" class="details-left video" backgroundImage="res://sp"
+                                 orientation="horizontal" tap="video_course">
+                        <Image src="res://video" width="30" class="video-img"/>
+                        <Label text="视频教程" class="tex"/>
+                    </StackLayout>
+                    <StackLayout col="1" class="details-right" backgroundImage="res://sp"
+                                 orientation="horizontal" tap="article_details">
+                        <Image src="res://wenzhang" width="30" class="article-img"/>
+                        <Label text="文章教程" class="tex"/>
+                    </StackLayout>
+                </GridLayout>
+                <!--第三部分结束-->
+                <!--第四部分-->
+                <GridLayout rows="auto" class="popular-tutorial">
+                    <StackLayout horizontalAlignment="left" orientation="horizontal">
+                        <Label class="line"/>
+                        <Label text="热推文章" class="popular-title"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right" tap="more">
+                        <Label text="更多" class="more"/>
+                        <Image src="res://jr" height="10"/>
+                    </StackLayout>
+                </GridLayout>
+                <StackLayout class="push">
+                    <Repeater id="article-list-view" items="{{ detailList }}" selectionBehavior="Press">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="vertical"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="vertical" class="items-view">
+                                <GridLayout columns="*,*,*" rows="auto" height="auto">
+                                    <Image col="0" row="*" height="80px" width="110px" stretch="aspectFill" src="{{src}}" class="push-img"/>
+                                    <StackLayout col="1" row="*" colspan="2" orientation="vertical" class="push-right">
+                                        <StackLayout tap="itemSelected" id="{{id}}">
+                                            <Label text="{{ detail_title }}" class="push-title"/>
+                                            <Label text="{{ detail_content }}" class="push-content"/>
+                                        </StackLayout>
+                                        <GridLayout columns="*,*" rows="*" width="100%" class="push-icon">
+                                            <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                                                <StackLayout orientation="horizontal" marginTop="2" tap="{{onShare}}">
+                                                    <Image src="{{src_share}}" width="15" marginTop="2" marginLeft="2"/>
+                                                    <Label text="{{text_share}}" class="character"/>
+                                                </StackLayout>
+                                                <StackLayout orientation="horizontal" tap="{{oncollection}}">
+                                                    <Image cssClass="{{ cssClass }}"
+                                                           src="{{ collection ? 'res://add_to_fav_1'  : 'res://sc_da2x'}}"
+                                                           height="18" marginLeft="15"/>
+                                                    <Label cssClass="{{ cssClass }}"
+                                                           text="{{ collection ? '已收藏' : '收藏'}}" width="50"
+                                                           id="collect-text2" marginTop="3"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </GridLayout>
+                                    </StackLayout>
+                                </GridLayout>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+                <!--第四部分结束-->
+            </StackLayout>
+        </ScrollView>
+        <GridLayout dock="bottom" columns="*,*,*,*" rows="auto" class="main-menu" height="10%">
+            <StackLayout col="0" orientation="vertical" id="home" tap="menuNavigator" marginTop="2">
+                <Image src="res://sy_hei2x" height="20"/>
+                <Label text="首页" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="1" orientation="vertical" id="task" tap="menuNavigator" marginTop="3">
+                <Image src="res://re_hei2x" height="20"/>
+                <Label text="任务" class="menu-icon-text"/>
+            </StackLayout>
+            <StackLayout col="2" orientation="vertical" id="course" tap="menuNavigator" marginTop="3">
+                <Image src="res://xy_huang2x" height="20"/>
+                <Label text="师傅学院" class="menu-icon-text menu-selected"/>
+            </StackLayout>
+            <StackLayout col="3" orientation="vertical" id="my" tap="menuNavigator" marginTop="3">
+                <Image src="res://wd_hei2x" height="20"/>
+                <Label text="我的" class="menu-icon-text"/>
+            </StackLayout>
+        </GridLayout>
+    </DockLayout>
+</Page>

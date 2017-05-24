@@ -1,0 +1,58 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar >
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="结果详情"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" tap="onNavBtnTap">
+                        <Label text="完成" class="Label_back" />
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+        <ActionBar title="结果详情" class=".binding-bar">
+            <NavigationButton text=""/>
+            <ActionBar.actionItems>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="horizontal" tap="onNavBtnTap">
+                            <label text="完成" color="rgb(255,135,0)"  verticalAlignment="center"></label>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+            </ActionBar.actionItems>
+        </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <StackLayout class="page">
+    <StackLayout class="content">
+        <GridLayout rows="20,25,25,20,25" columns="20,auto" class="topContent">
+            <Image src="res://deposite_apply" row="0" col="0"  verticalAlignment="center"></Image>
+            <label row="0" col="1" text="提交申请已提交,我们将在2-3个工作日给予审核." class="wordLabel"></label>
+
+            <label row="1" col="0" class="greenLine"></label>
+            <label row="1" col="1" text="{{depositeTime}}" class="dateLabel"></label>
+
+            <label row="2" col="0" class="greyLine"></label>
+
+            <Image src="res://dollar" row="3" col="0"  verticalAlignment="center"></Image>
+            <label row="3" col="1" text="预计到账时间" class="wordLabel"></label>
+
+            <label row="4" col="1" text="{{arriveTime}}" class="dateLabel"></label>
+        </GridLayout>
+
+    </StackLayout>
+    </StackLayout>
+
+</Page>

@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo" class="page"
+      style="background-color: #eeeeee;" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" style="background-color: white;">
+                <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view"
+                            style="background-color: white;">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center"
+                                 class="AndActionBar" row="0" col="1">
+                        <Label text="查找结果" />
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="查找结果" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+        <GridLayout>
+            <lv:RadListView id="list-view" items="{{ groceryList }}" pullToRefresh="true"
+                            pullToRefreshInitiated="pullToRefreshInitiated" loadOnDemandMode="Manual"
+                            loadMoreDataRequested="loadMoreItemsRequested">
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout itemHeight="100" />
+                </lv:RadListView.listViewLayout>
+                <lv:RadListView.itemTemplate >
+                    <StackLayout orientation="vertical" >
+                        <StackLayout orientation="horizontal" tap="item_intent" id="{{id}}" style="background-color: white;" width="375">
+                            <Image src="{{picture}}" horizontalAlignment="left" verticalAlignment="center" class="image_item"
+                            />
+                            <GridLayout columns="*" rows="*,*" horizontalAlignment="right">
+                                <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center" class="item"
+                                       col="0" row="0"/>
+                                <Label text="{{mobile}}" horizontalAlignment="left" verticalAlignment="center"
+                                       class="phone_item" col="0" row="1"/>
+                            </GridLayout>
+                        </StackLayout>
+                        <StackLayout orientation="vertical" class="menu-line"></StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+        </GridLayout>
+    </StackLayout>
+</Page>

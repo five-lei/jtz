@@ -1,0 +1,74 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh " class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="选择区域"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="完成"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="选择区域" class="iosActionBar">
+                <NavigationButton text="" />
+                <ActionItem ios.position="right" text="完成"></ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout rows="auto, *" columns="*, 2*">
+
+            <StackLayout row="0" colSpan="3" orientation="vertical" class="item-top">
+                <GridLayout rows="*" columns="*, *">
+                    <Label text="武汉市" row="0" col="0" tap="toCityOne" horizontalAlignment="center"/>
+                    <Label text="长沙市" row="0" col="1" tap="toCityTwo" horizontalAlignment="center"/>
+                </GridLayout>
+            </StackLayout>
+            <ListView id="lv1" items="{{ provinceList }}" row="1" colSpan="3">
+                <ListView.itemTemplate>
+                    <StackLayout orientation="horizontal">
+                        <Image src="res://ico_check1" class="bar-image" horizontalAlignment="left"/>
+                        <Label text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+                               class="item-text"/>
+                    </StackLayout>
+
+                </ListView.itemTemplate>
+            </ListView>
+
+            <ListView id="lv2" items="{{ cityList }}" row="1" colSpan="3" visibility="collapsed">
+                <ListView.itemTemplate>
+                    <StackLayout orientation="horizontal">
+                        <StackLayout class="line-item">
+                        </StackLayout>
+                        <Image src="res://ico_check1" class="bar-image" horizontalAlignment="left"/>
+                        <Label text="{{ city }} " horizontalAlignment="left" verticalAlignment="center"
+                               class="item-text"/>
+                    </StackLayout>
+
+                </ListView.itemTemplate>
+
+            </ListView>
+
+        </GridLayout>
+
+    </StackLayout>
+</Page>

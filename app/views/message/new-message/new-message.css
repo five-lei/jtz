@@ -1,0 +1,57 @@
+Page{
+    background-color: white;
+}
+.page{
+    background-color: #F0F0F0;
+    padding: 10px 0 0 0;
+}
+.fh{
+    font-size: 16px;
+    color:#FB8901;
+}
+.title-label{
+    color: black;
+    font-size: 18px;
+}
+.top-text{
+    font-size: 10px;
+    color:#FB8901;
+}
+.line1{
+    height: 1px;
+    background-color: #E4E4E4;
+}
+.n-msg{
+    height: 40px;
+    background-color: white;
+}
+.new-msg {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.inform-msg{
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 10px;
+}
+.new-pic{
+    height:25px;
+    width: 40px;
+}
+.item-img{
+    margin-left:10px;
+}
+
+.push-message{
+    height: 30px;
+    margin-top: 7px;
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+.ios_switchImage{
+    margin-left: 6px;
+    height: 30px;
+}

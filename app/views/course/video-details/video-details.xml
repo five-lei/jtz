@@ -1,0 +1,135 @@
+<Page xmlns:Video="nativescript-videoplayer" xmlns:lv="nativescript-telerik-ui-pro/listview" loaded="loaded">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" horizontalAlignment="left"
+                                 verticalAlignment="center" row="0" col="0" class="title-label" tap="return">
+                        <Image src="res://fh" height="20"/>
+                        <Label text="返回" class="title-text"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <ScrollView>
+        <StackLayout orientation="vertical" class="top">
+            <StackLayout id="vedio-detail">
+                <StackLayout backgroundColor="#000000">
+                    <Video:Video id="nativeVideoPlayer" controls="true"
+                                 loop="true" autoplay="true" height="280"
+                                 src="{{videoPath}}"/>
+                </StackLayout>
+                <GridLayout class="play">
+                    <StackLayout horizontalAlignment="left">
+                        <Label text="{{'播放次数：'+views}}" class="play-text" id="playViews"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" class="icon-right" marginTop="5" horizontalAlignment="right" tap="share">
+                        <Image src="res://fx" height="15"/>
+                        <Label text="分享" class="icon-text" marginTop="2"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" height="40" horizontalAlignment="right" tap="collect">
+                        <Image cssClass="{{ cssClass }}"
+                               src="{{ isFavourite ? 'res://add_to_fav_1' : 'res://sc_da2x'}}"
+                               width="18"/>
+                        <Label cssClass="{{ cssClass }}" text="{{ isFavourite ? '已收藏' : '收藏'}}"
+                               class="character" id="collect-text2" marginTop="3" />
+
+                    </StackLayout>
+                </GridLayout>
+                <Label class="line"/>
+                <Label text="{{videoTitle}}" class="title"/>
+                <Label class="content-text" textWrap="false" id="content-text"
+                       text="{{description}}"/>
+                <StackLayout orientation="vertical" backgroundColor="white">
+                    <Image src="res://xl" width="20" height="20" tap="dropDown"/>
+                </StackLayout>
+            </StackLayout>
+            <!--第三部分-->
+            <GridLayout class="popular-tutorial">
+                <StackLayout orientation="horizontal" horizontalAlignment="left">
+                    <Label class="line1" horizontalAlignment="left"/>
+                    <Label text="更多教程" class="popular-title"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right" tap="moreVideo">
+                    <Label text="更多" class="more" marginRight="5"/>
+                    <Image src="res://jr" height="10"/>
+                </StackLayout>
+
+            </GridLayout>
+            <StackLayout orientation="horizontal" class="video">
+                <ScrollView orientation="horizontal" ios:ios.showsHorizontalScrollIndicator="false"
+                            loaded="scrollViewLoaded">
+                    <Repeater id="video_list" items="{{ lists }}">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout col="2" orientation="vertical" class="video-content" tap="videoDetails">
+                                <Image src="{{image}}" class="video-img"/>
+                                <Label text="{{title}}" class="video-title"/>
+                                <Label text="{{description}}" class="video-text"/>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </ScrollView>
+            </StackLayout>
+            <!--第四部分-->
+            <GridLayout class="popular-tutorial">
+                <StackLayout orientation="horizontal" horizontalAlignment="left">
+                    <Label class="line1" horizontalAlignment="left"/>
+                    <Label text="精选文章" class="popular-title"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right" tap="moreArticle">
+                    <Label text="更多" class="more" marginRight="5"/>
+                    <Image src="res://jr" height="10"/>
+                </StackLayout>
+            </GridLayout>
+            <StackLayout class="push">
+                <Repeater id="list-view" items="{{ detailList }}">
+                    <Repeater.itemsLayout>
+                        <StackLayout orientation="vertical"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <StackLayout orientation="vertical" class="items-view">
+                            <StackLayout orientation="vertical" class="items-view">
+                                <GridLayout columns="*,*,*" rows="auto" height="auto">
+                                    <Image col="0" row="*" height="80px" width="110px" stretch="aspectFill" src="{{src}}" class="push-img"/>
+                                    <StackLayout col="1" colspan="2" orientation="vertical" class="push-right">
+                                        <StackLayout>
+                                            <Label text="{{ detail_title }}" class="push-title"/>
+                                            <Label text="{{ detail_content }}" class="push-content"/>
+                                        </StackLayout>
+                                        <GridLayout columns="*,*" rows="*" width="100%" class="push-icon">
+                                            <StackLayout orientation="horizontal" row="0" col="0" colSpan="2">
+                                                <StackLayout orientation="horizontal" marginTop="2" tap="{{onShare}}">
+                                                    <Image src="{{src_share}}" width="15" marginTop="2" marginLeft="2"/>
+                                                    <Label text="{{text_share}}" class="character"/>
+                                                </StackLayout>
+                                                <StackLayout orientation="horizontal" tap="{{oncollection}}">
+                                                    <Image cssClass="{{ cssClass }}"
+                                                           src="{{ collection ? 'res://add_to_fav_1' : 'res://sc_da2x'}}"
+                                                           width="18" marginLeft="15"/>
+                                                    <Label cssClass="{{ cssClass }}" text="{{ collection ? '已收藏' : '收藏'}}"
+                                                           class="character" width="50" id="collect-text2" marginTop="3"/>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </GridLayout>
+                                    </StackLayout>
+                                </GridLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,47 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" xmlns:lv="nativescript-telerik-ui-pro/listview" style="background-color: #eeeeee;" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" style="background-color: orange;">
+                <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view" style="background-color: orange;">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left" tap="onBackTap">
+                        <Image src="res://btn_back_normal" class="bar-image" />
+                        <Label text="返回" verticalAlignment="center" />
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center" row="0" col="1">
+                        <Label text="选择城市添加好友" />
+                    </StackLayout>
+                    <!--<StackLayout></StackLayout>-->
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="选择城市添加好友" class="iosActionBar">
+                <NavigationButton text="" />
+                <ActionItem ios.position="right">
+
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <StackLayout orientation="vertical">
+    <!--所选城市显示 start-->
+        <GridLayout cloumns='auto' rows='auto' horizontalAlignment='center'>
+            <StackLayout>
+                <GridLayout columns="50,240,50,*" rows="auto">
+                    <TextField text="" hint='请选择城市' class='code_input' row='0' col='1' id="receipt-address"/>
+                    
+                    <StackLayout orientation="horizontal" class="search_bt"   borderRadius="5" borderWidth="1"  borderColor="white"  row='0' col='2'>
+                        <Label   text="搜索" tap="search_result" verticalAlignment='center'/>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </GridLayout>
+    <!--所选城市显示 end-->
+
+    <!--城市选择 start-->
+        <StackLayout orientation="horizontal" class="city_bt"   borderRadius="5" borderWidth="1"  borderColor="white">
+            <Label   text="点击选择城市" tap="chooseCity" verticalAlignment='center'/>
+        </StackLayout>
+    <!--城市选择 end-->
+    </StackLayout>
+</Page>

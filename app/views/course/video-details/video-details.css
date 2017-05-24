@@ -1,0 +1,160 @@
+.iosActionBar{
+    background-color: black;
+    color: white;
+}
+Page{
+    background-color: #F0F0F0;
+}
+.title-text{
+    font-size: 16px;
+    color:#FB8901;
+    margin-left: 5px;
+}
+.play{
+    width:100%;
+    background-color: white;
+    padding: 3px 10px 3px;
+}
+.play-text{
+    margin-top: 5px;
+    color: #333333;
+}
+.icon-text{
+    font-size: 9px;
+    text-align: center;
+}
+.icon-right{
+    margin-right: 40px;
+}
+.line{
+    height:1px;
+    background-color: rgb(240,240,240);
+}
+.title{
+    padding: 10px;
+    background-color: white;
+    font-size: 18px;
+    color: #333333;
+}
+.content-text{
+    padding:0 10px;
+    background-color: white;
+}
+
+/*第三部分*/
+.video{
+    padding: 0 0 10px 10px;
+    background-color: white;
+}
+.video-content{
+    margin-right: 5px;
+}
+.video-img{
+    height: 100px;
+    margin-bottom: 5px;
+}
+.video-title{
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 2px;
+    margin-left: 1px;
+}
+.video-text{
+    font-size: 13px;
+    color: #888888;
+    margin-left: 1px;
+}
+
+
+/*第四部分*/
+.popular-tutorial{
+    padding:10px 10px 15px;
+    margin-top: 10px;
+    /*margin-bottom: 10px;*/
+    background-color: white;
+}
+.popular-title{
+    color: #333333;
+}
+.more{
+    color: #cdcdcd;
+    font-size: 12px;
+    margin-top: 1px;
+}
+.push{
+    background-color: white;
+    padding: 0 10px ;
+    margin-bottom: 10px;
+}
+.push-img{
+    margin-bottom: 10px;
+}
+.push-right{
+    margin-left: 10px;
+}
+.push-title{
+    font-size: 18px;
+    color: #333333;
+}
+.push-content{
+    margin-top: 10px;
+    font-size: 15px;
+    color: #888888;
+}
+.items-view{
+    margin-bottom: 5px;
+}
+.push-icon{
+    margin-top: 10px;
+}
+.line1{
+    height: 16px;
+    width: 2px;
+    background-color: orange;
+    margin-right: 5px;
+}
+.character{
+    font-size: 10px;
+    color:#666666;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+/*收藏*/
+.friend-favorite {
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+@keyframes friend-favorite-selected {
+    from { transform: scale(1, 1) rotate(-120); opacity: 0; animation-timing-function: linear; }
+    50% { transform: scale(2, 2) rotate(-60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-selected {
+    animation-name: friend-favorite-selected;
+    animation-duration: 0.4;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+@keyframes friend-favorite-unselected {
+    from { transform: scale(1, 1) rotate(120); opacity: 0; animation-timing-function: linear; }
+    60% { transform: scale(2, 2) rotate(60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-unselected {
+    animation-name: friend-favorite-unselected;
+    animation-duration: 0.2;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}

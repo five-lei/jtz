@@ -1,0 +1,120 @@
+.mainview {
+    background-color:white;
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+.iosActionBar .leftBarBtn{
+    color: rgb(255,138,37);;
+}
+
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    padding-right: 10
+}
+
+Page {
+    background-color: white
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+.bar-image1 {
+    width:20;
+    height:20;
+    margin-left: 10
+}
+
+.linee {
+    height: 0.5;
+    width: 100%;
+    margin-left: 72;
+    background-color: #D3D3D3 ;
+}
+
+.line-item {
+    height: 100%;
+    width: 1.5;
+    background-color: #D3D3D3 ;
+}
+
+.items-view {
+    background-color:white;
+    width: 100%;
+    padding-bottom: 30;
+    padding-top: 20;
+    padding-left: 10;
+    padding-right: 10;
+    font-size: 16;
+    color: black
+}
+
+.hint-label {
+    font-size: 16;
+    color: #8A8A8A
+}
+
+.text-label {
+    font-size: 14;
+    color: black;
+    margin-top: 10
+}
+
+
+.grid_label_select {
+    width: 60;
+    height: 60;
+    background-color: #FFDEAD;
+    border-radius:2px;
+    border-color: #FF8800;
+    border-width: 1px;
+    font-size: 16;
+    color: orange
+
+}
+
+.grid_label_normol {
+    width: 60;
+    height: 60;
+    background-color: white;
+    border-radius:2px;
+    border-color: #8A8A8A;
+    border-width: 1px;
+    font-size: 16;
+    color: black
+
+}
+
+
+.item-top{
+    background-color: #FFDEAD;
+    padding: 10;
+    color: orange;
+    font-size: 16
+}
+
+.item-text{
+    padding-bottom: 10;
+    padding-top: 10;
+    color: black;
+    font-size: 16
+}
+
+.text {
+    color: orange
+}
+
+.ios_item_top{
+    background-color: rgb(254,240,222);
+    padding: 10px;
+    color: rgb(246,99,0);
+    font-size: 16px;
+}

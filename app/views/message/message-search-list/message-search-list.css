@@ -1,0 +1,159 @@
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: black;
+}
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    margin-right: 10;
+    background: white;
+}
+.bar-image{
+    height: 25;
+}
+ActionBar{
+    color: black;
+}
+Page{
+    background-color: white;
+}
+.image_item{
+    margin-top: 8;
+    margin-bottom: 8;
+    width: 40;
+    height: 40;
+    margin-left: 20;
+}
+.item{
+    margin-top: 10;
+    margin-left: 13;
+    font-size: 14;
+    color: black;
+}
+.phone_item{
+    margin-left: 13;
+    font-size: 12;
+}
+
+.nsChatView-messageField {
+    padding-right: 0;
+    font-size: 14;
+    padding-bottom: 3;
+    background-color: white;
+    border-color: transparent;
+    color: #8A8A8A;
+    text-align: left;
+}
+.search_text{
+    margin: 10;
+}
+.search_bt{
+    background-color: orange;
+    font-size: 12;
+    width: 50;
+    height: 30;
+}
+.search_bt Label{
+    width: 50;
+    color:white;
+    text-align: center;
+}
+
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+    margin-top: 10px;
+}
+.line1{
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+
+.item{
+
+    margin-left: 12px;
+    margin-top: 10px;
+    padding: 1px;
+    font-size: 16px;
+    color: black;
+}
+.stype_item{
+    margin-left: 12px;
+    padding: 1px;
+    font-size: 12px;
+
+}
+.image_item{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+}
+.text_item_left{
+    margin-left: 8px;
+}
+.text_item_right{
+    margin-right: 8px;
+}
+.item-right{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.ios_actionBar{
+    color: #fb8901;
+    background-color: white;
+}
+.ios_title{
+    color: black;
+}
+.ios_dateLabel{
+    color: dimgray;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.ios_itemStyle{
+    margin-left: 12px;
+    padding: 1px;
+    font-size: 12px;
+    color: dimgray;
+}
+
+.task-type-one {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+    font-size: 14;
+    background-color: #fb8901;
+    color: white;
+    border-radius:22.5px;   
+}
+
+.task-type-two {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+    font-size: 14;
+    background-color: #0da0fd;
+    color: white;
+    border-radius:22.5px;   
+}
+
+.task-type-three {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+    font-size: 14;
+    background-color: #1677d2;
+    color: white;
+    border-radius:22.5px;   
+}

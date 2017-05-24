@@ -1,0 +1,49 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      loaded="loaded">
+    <Page.actionBar>
+        <iOS>
+            <ActionBar title="我的好友" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionItem ios.position="right">
+                    <Image src="res://jy@2x" stretch="none" tap="addfriend" verticalAlignment="center"></Image>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <GridLayout rows="auto,*" columns="*" class="content">
+        <StackLayout class="top_search" row="0" col="0" orientation="horizontal" tap="search_frined"
+                     horizontalAlignment="center">
+            <Image src="res://sousuo2x" stretch="none" class="search_image" verticalAlignment="center"
+                   horizontalAlignment="center"/>
+            <Label text="请输入姓名或手机号搜索" verticalAlignment="center" horizontalAlignment="center"/>
+        </StackLayout>
+
+        <GridLayout row="1" col="0">
+            <lv:RadListView id="list-view" items="{{ groceryList }}" class="list_view" itemLoading="onItemLoading">
+                <!--listView的布局-->
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout scrollDirection="Vertical" />
+                </lv:RadListView.listViewLayout>
+
+                <lv:RadListView.itemTemplate>
+                    <StackLayout orientation="vertical">
+                        <StackLayout verticalAlignment="center" class="list_headerSection">
+                            <Label text="{{title}}" class="list_titleName" visibility="collapse"/>
+                        </StackLayout>
+                        <StackLayout orientation="horizontal" tap="item_intent" class="list_content">
+                            <Image src="{{image}}" horizontalAlignment="left" verticalAlignment="center" />
+                            <GridLayout columns="*" rows="auto,auto" horizontalAlignment="right" >
+                                <Label text="{{name}}" horizontalAlignment="left" verticalAlignment="center" class="list_name" col="0" row="0"/>
+                                <Label text="{{phone}}" horizontalAlignment="left" verticalAlignment="center" class="list_phone" col="0" row="1"/>
+                            </GridLayout>
+                        </StackLayout>
+                        <StackLayout class="list_line"></StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+
+        </GridLayout>
+    </GridLayout>
+</Page>

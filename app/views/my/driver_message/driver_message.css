@@ -1,0 +1,75 @@
+﻿.mainview {
+    background-color:white;
+    
+}
+
+Page { background-color: white}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    margin-right: 10  
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+
+.item-view {
+    margin: 15;
+    color: black;
+    font-size: 16
+}
+
+.items-view {
+    margin-left: 15;
+    margin-right: 15;
+    margin-top: 10;
+    color: black;
+    font-size: 16
+}
+
+.lable-text{
+    margin-top: 10
+}
+
+.item-text{
+    margin-top: 20
+}
+
+.item-image{
+    height: 140
+}
+
+
+.line_text {
+    height: 0.5;
+    background-color: #D3D3D3 ;
+    margin-left: 15;
+    margin-right: 15
+}
+
+
+.hint-label {
+    color: #8A8A8A;
+    margin-left: 10
+}
+
+.text-label {
+    font-size: 14;
+    color: black;
+    margin-top: 10
+}
+
+.items-text {
+   color: #666666;
+   margin-bottom: 27;
+   font-size: 16
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}

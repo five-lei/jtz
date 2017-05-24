@@ -1,0 +1,382 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" cssClass="actionBar-view">
+                <GridLayout columns="auto,*,auto" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" class="bar-image-l"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" horizontalAlignment="center" width="50%"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label text="{{orderNumber}}" class="orderNumber"/>
+                        <Label text="维修详情" horizontalAlignment="center" class="order-description"  visibility="{{(taskType==='maintenance_waiting_list' || taskType=='maintenance_waiting_pickup' || taskType==='maintenance_waiting_sign_for'|| taskType==='maintenance_finish')?'visible':'collapse'}}"/>
+                        <Label text="返货详情" horizontalAlignment="center" class="order-description"   visibility="{{(taskType==='maintenance_waiting_list' || taskType=='maintenance_waiting_pickup' || taskType==='maintenance_waiting_sign_for'|| taskType==='maintenance_finish')?'collapse':'visible'}}"/>
+                    </StackLayout>
+                    <StackLayout taskId="{{id}}" orientation="vertical" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Image src="res://kf" class="bar-image-r" tap="tapContactService"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar title="" class="actionBar-view">
+                <NavigationButton text="返回"/>
+
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout taskId="{{id}}" orientation="vertical">
+                            <Image src="res://kf" class="bar-image-r" tap="tapContactService"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center">
+                    <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center"
+                                 visibility="{{(taskType==='maintenance_waiting_list' || taskType=='maintenance_waiting_pickup' || taskType==='maintenance_waiting_sign_for'|| taskType==='maintenance_finish')?'visible':'collapse'}}">
+                        <Label text="{{orderNumber}}" class="orderNumber"/>
+                        <Label text="维修详情" horizontalAlignment="center" class="order-description"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center"
+                                 visibility="{{(taskType==='maintenance_waiting_list' || taskType=='maintenance_waiting_pickup' || taskType==='maintenance_waiting_sign_for'|| taskType==='maintenance_finish')?'collapse':'visible'}}">
+                        <Label text="{{orderNumber}}" class="orderNumber"/>
+                        <Label text="返货详情" horizontalAlignment="center" class="order-description"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <ScrollView>
+        <StackLayout class="page">
+            <!--任务状态  受理-预约/提货-签收 -->
+            <GridLayout rows="80" columns="auto,*,auto,*,auto" class="accept-task-progress">
+                <Image src="{{status>1?'res://sl2x':'res://weifasheng2x'}}" row="0" col="0" stretch="none"
+                       horizontalAlignment="center" class="first-progress-image"></Image>
+                <Label row="0" col="1" cssClass="{{ status>1  ? 'progress-line' : 'progress-line-un' }}"
+                       style="margin-top:-45px;"/>
+                <Image src="{{status>2?'res://sl2x':'res://weifasheng2x'}}" row="0" col="2" stretch="none"
+                       horizontalAlignment="center" class="second-progress-image"></Image>
+                <Label row="0" col="3" cssClass="{{ status>3  ? 'progress-line' : 'progress-line-un' }}"
+                       style="margin-top:-45px;"/>
+                <Image src="{{status>3?'res://sl2x':'res://weifasheng2x'}}" row="0" col="4" stretch="none"
+                       horizontalAlignment="center" class="last-progress-image"></Image>
+                <Label text="受理" row="20" col="0" cssClass="{{ status>1  ? 'progress-label' : 'progress-label-un' }}"
+                       horizontalAlignment="center" style="margin-top:45px;"/>
+                <Label text="预约/提货" row="10" col="2"
+                       cssClass="{{ status>3 ? 'progress-label' : 'progress-label-un' }}"
+                       horizontalAlignment="center" style="margin-top:45px;"/>
+                <Label text="签收" row="10" col="4" cssClass="{{ status>=4 ? 'progress-label' : 'progress-label-un' }}"
+                       horizontalAlignment="center"
+                       style="margin-top:45px;"/>
+            </GridLayout>
+            <!--返货-配送信息 -start-->
+            <StackLayout orientation="vertical" class="order-relinfo-content"
+                         visibility="{{(taskType==='return_waiting_list' || taskType=='return_waiting_pickup' || taskType==='return_waiting_sign_for'|| taskType==='return_finish')?'visible':'collapse'}}">
+                <!--收货人信息-->
+                <GridLayout columns="50, auto,*" rows="auto, auto,auto" class="order-relinfo-receive">
+                    <Image src="res://shou2x" row="0" col="0" rowSpan="50" verticalAlignment="center"
+                           horizontalAlignment="center" stretch="none"></Image>
+                    <Label text="{{'收货人: '+consignee+'（'+consigneePhone+'）'}}" row="0" col="1"
+                           verticalAlignment="center"/>
+                    <Image src="res://dianhua2x" row="0" col="2" stretch="fill" horizontalAlignment="center"
+                           verticalAlignment="center" cssClass="img22" tap="callToConsignee"></Image>
+                    <Label text="{{'收货地址:'+consigneeAddress}}" row="1" col="1" colSpan="2" cssClass="margin-top-5"
+                           textWrap="true"/>
+                </GridLayout>
+                <Label android:class="line" ios:class="ios_line"></Label>
+                <!--提货人信息-->
+                <GridLayout columns="50,20, *" rows="auto, auto,auto" class="order-relinfo-pick">
+                    <Image src="res://ti2x" row="0" col="0" rowSpan="50" stretch="none" verticalAlignment="center"
+                           horizontalAlignment="center"></Image>
+                    <Label text="{{'提货电话：'+ pickupPhone}}" row="0" col="1" colSpan="3" verticalAlignment="center"/>
+                    <Image src="res://mi2x" row="1" col="1" verticalAlignment="center" cssClass="img16"></Image>
+                    <Label text="{{'提货码：'+ pickupNumber}}" row="1" col="2" verticalAlignment="center"
+                           horizontalAlignment="left" cssClass="margin-left-5"/>
+                    <Label text="{{'提货地址: '+ pickupAddress}}" row="2" col="1" colSpan="3" textWrap="true"
+                           cssClass="margin-top-5"/>
+                </GridLayout>
+            </StackLayout>
+            <!--返货-配送信息 -end-->
+            <!--维修-配送信息 start-->
+            <StackLayout orientation="vertical" class="order-relinfo-content"
+                         visibility="{{(taskType==='return_waiting_list' || taskType=='return_waiting_pickup' || taskType==='return_waiting_sign_for'|| taskType==='return_finish')?'collapse':'visible'}}">
+                <!--收货人信息-->
+                <GridLayout columns="50, auto,*" rows="auto, auto,auto" class="order-relinfo-receive">
+                    <Image src="res://shou2x" row="0" col="0" rowSpan="50" verticalAlignment="center"
+                           horizontalAlignment="center" stretch="none"></Image>
+                    <Label text="{{'收货人: '+consignee+'（'+consigneePhone+'）'}}" row="0" col="1"
+                           verticalAlignment="center"/>
+                    <Image src="res://dianhua2x" row="0" col="2" stretch="fill" horizontalAlignment="center"
+                           verticalAlignment="center" cssClass="img22" tap="callToConsignee"></Image>
+                    <Label text="{{'收货地址:'+consigneeAddress}}" row="1" col="1" colSpan="2" cssClass="margin-top-5"
+                           textWrap="true"/>
+                </GridLayout>
+                <Android>
+                    <Label android:class="line" ios:class="ios_line"></Label>
+                </Android>
+            </StackLayout>
+            <!--维修-配送信息 end-->
+            <!--返货-商品信息 -start-->
+            <StackLayout rows="50" class="commodity-info-content" tap="commodityInfoTap"
+                         visibility="{{(taskType==='return_waiting_list' || taskType=='return_waiting_pickup' || taskType==='return_waiting_sign_for'|| taskType==='return_finish')?'visible':'collapse'}}">
+                <label text="商品信息" horizontalAlignment="left" class="title"></label>
+                <!--商品详情-->
+                <Repeater id="list-view" items="{{ product }}">
+                    <Repeater.itemsLayout>
+                        <StackLayout orientation="vertical"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <GridLayout columns="90,*,*" rows="*, *,*, auto" class="commodity-info"
+                                    verticalAlignment="center">
+                            <Image src="{{images[0]}}" row="0" col="0" rowSpan="80" width="80" height="80"
+                                   stretch="fill"
+                                   verticalAlignment="center" horizontalAlignment="center"></Image>
+                            <Label text="{{productName}}" row="0" col="1" colSpan="3" class="name"/>
+                            <Label text="{{'包装件数：'+pieces}}" row="1" col="1" verticalAlignment="center"
+                                   class="info-item"/>
+                            <Label text="{{'体积：'+volume +'m³'}}" row="1" col="3" verticalAlignment="center"
+                                   horizontalAlignment="left"
+                                   class="info-item"/>
+                            <Label row="3" col="1" class="line"></Label>
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+                <!--商品数量-->
+                <GridLayout columns="auto" rows="auto" class="total-count" verticalAlignment="center">
+                    <Label text="{{'共返货 '+product_package_num+' 件，总体积 '+product_total_volume+' 立方'}}"
+                           row="2" col="1" verticalAlignment="center" class="info-item"/>
+                </GridLayout>
+                <StackLayout>
+                    <Label class="line"></Label>
+                </StackLayout>
+                <!--指定物流信息-->
+                <GridLayout columns="auto" rows="auto" class="total-count" verticalAlignment="center">
+                    <Label text="{{'指定物流：'+appoint_logistics+';  物流指定电话：'+appoint_logistics_num+';'}}"
+                           row="2" col="1" verticalAlignment="center" class="info-item"/>
+                </GridLayout>
+                <Label class="line"></Label>
+                <!--底部操作按钮-->
+                <DockLayout stretchLastChild="true">
+                    <GridLayout dock="left" rows="40" columns="80,*" style="width:50%;" tap="callToService">
+                        <Image src="res://call2x" row="20" col="0" stretch="fill" verticalAlignment="center"
+                               horizontalAlignment="right" cssClass="img20"></Image>
+                        <Label text="联系客服" row="20" col="1" horizontalAlignment="left" verticalAlignment="center"
+                               class="operate-btn"></Label>
+                    </GridLayout>
+                    <GridLayout dock="right" rows="40" columns="80,*" style="width:50%;" waybillId="{{waybillId}}" tap="tapQuestionFeedback">
+                        <Image src="res://wtfk2x" row="20" col="0" stretch="fill" verticalAlignment="center"
+                               horizontalAlignment="right" cssClass="img23_20"></Image>
+                        <Label text="问题反馈" row="20" col="1" horizontalAlignment="left" verticalAlignment="center"
+                               class="operate-btn"></Label>
+                    </GridLayout>
+                </DockLayout>
+                <!--商品信息 -end-->
+            </StackLayout>
+            <!--返货-商品信息 -end-->
+            <!--维修-任务信息 -start-->
+            <StackLayout class="commodity-info-content" tap="commodityInfoTap"
+                         visibility="{{(taskType==='return_waiting_list' || taskType=='return_waiting_pickup' || taskType==='return_waiting_sign_for'|| taskType==='return_finish')?'collapse':'visible'}}">
+                <label text="任务信息" horizontalAlignment="left" class="title"></label>
+                <Label text="{{'商品信息:' + products}}" horizontalAlignment="left"/>
+                <!--<Label text="{{handleMethod}}" horizontalAlignment="left" marginBottom="5"/>-->
+                <!--任务详情-->
+                <StackLayout class="signInfo">
+                    <Repeater id="list-view" items="{{ abnor_imgs }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="horizontal" class="ios_imageShow" horizontalAlignment="center">
+                                <Image src="{{path}}" width="80" height="80" stretch="fill"
+                                       verticalAlignment="center" class="firstImage"></Image>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+                <Label class="line"></Label>
+                <Label text="{{'备注:' + remark}}" textWrap="true" ios:class="remarkLabel"/>
+                <Label class="line"></Label>
+                <!--底部操作按钮-->
+                <DockLayout stretchLastChild="true">
+                    <GridLayout dock="left" rows="40" columns="80,*" style="width:50%;" tap="callToService">
+                        <Image src="res://call2x" row="20" col="0" stretch="fill" verticalAlignment="center"
+                               horizontalAlignment="right" cssClass="img20"></Image>
+                        <Label text="联系客服" row="20" col="1" horizontalAlignment="left" verticalAlignment="center"
+                               class="operate-btn"></Label>
+                    </GridLayout>
+                    <GridLayout dock="right" rows="40" columns="80,*" style="width:50%;"  waybillId="{{waybillId}}" tap="tapQuestionFeedback">
+                        <Image src="res://wtfk2x" row="20" col="0" stretch="fill" verticalAlignment="center"
+                               horizontalAlignment="right" cssClass="img23_20"></Image>
+                        <Label text="问题反馈" row="20" col="1" horizontalAlignment="left" verticalAlignment="center"
+                               class="operate-btn"></Label>
+                    </GridLayout>
+                </DockLayout>
+                <!--商品信息 -end-->
+            </StackLayout>
+            <!--维修-任务信息 -end-->
+            <Label android:class="line" ios:class="ios_line"></Label>
+            <!--费用信息 -start-->
+            <StackLayout ios:class="ios_costInfo"
+                         visibility="{{(taskType=='return_waiting_list' || taskType=='return_waiting_pickup' || taskType=='return_waiting_sign_for' || taskType=='return_finish')?'visible':'collapse'}}">
+                <GridLayout columns="auto, *,auto" rows=" *,*" android:class="total-fee" ios:class="ios_fee">
+                    <Label text="返回费用" row="0" col="0"></Label>
+                    <Label text="{{'¥  '+return_fee}}" row="0" col="3" class="fee-number"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *,auto" rows=" *,*" android:class="total-fee" ios:class="ios_totalFee">
+                    <Label text="费用总计" row="0" col="0"></Label>
+                    <Label text="{{'¥  '+total_fee}}" row="0" col="3" class="fee-number"></Label>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout ios:class="ios_costInfo"
+                         visibility="{{(taskType=='return_waiting_list' || taskType=='return_waiting_pickup' || taskType=='return_waiting_sign_for' || taskType=='return_finish')?'collapse':'visible'}}">
+                <GridLayout columns="auto, *,auto" rows=" *,*" android:class="total-fee" ios:class="ios_fee">
+                    <Label text="维修费用" row="0" col="0"></Label>
+                    <Label text="{{'¥  '+return_fee}}" row="0" col="3" class="fee-number"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *,auto" rows=" *,*" android:class="total-fee" ios:class="ios_totalFee">
+                    <Label text="费用总计" row="0" col="0"></Label>
+                    <Label text="{{'¥  '+total_fee}}" row="0" col="3" class="fee-number"></Label>
+                </GridLayout>
+            </StackLayout>
+            <!--费用信息 -end-->
+            <!--节点信息，异常信息 -start-->
+            <GridLayout rows="40" columns="*,*" cssClass="tab-grid margin-top-15">
+                <Label id="node_label" text="节点信息" row="0" col="0" horizontalAlignment="center"
+                       verticalAlignment="center" tap="onNodeInfoTap"></Label>
+                <Label id="exception_label" text="异常信息" row="0" col="1" horizontalAlignment="center"
+                       verticalAlignment="center" tap="onExceptionInfoTap"></Label>
+            </GridLayout>
+            <Label class="gray-line"></Label>
+            <StackLayout class="node-info-content" orientation="vertical">
+                <!--节点信息-->
+                <StackLayout id="node_info_content" verticalAlignment="center">
+                    <Repeater items="{{ node_info }}">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="vertical"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <GridLayout rows="auto" columns="*,*">
+                                <Label text="{{logType}}" row="0" col="0" class="info-item"/>
+                                <Label text="{{operateDate}}" row="0" col="1" horizontalAlignment="center"/>
+                            </GridLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+                <!--异常信息-->
+                <StackLayout id="exception_content" verticalAlignment="center" visibility="collapse">
+                    <Repeater items="{{ exception_info }}">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="vertical"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <GridLayout rows="auto" columns="*,*">
+                                <Label text="{{registerTime}}" row="0" col="0" class="info-item"/>
+                                <Label text="{{abnormalNum}}" row="0" col="1" horizontalAlignment="center"/>
+                            </GridLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+            </StackLayout>
+            <!--节点信息，异常信息 -end-->
+            <!--返货-物流信息 -start-->
+            <StackLayout class="sign-parcel-content"
+                         visibility="{{taskType==='return_finish'?'visible':'collapse'}}">
+                <label text="物流信息" horizontalAlignment="left" class="title"></label>
+                <Label text="{{'物流公司：'+logistics_company}}" horizontalAlignment="left" marginLeft="10"/>
+                <Label text="{{'物流单号：'+logistics_number}}" horizontalAlignment="left" marginLeft="10"/>
+                <Label text="{{'物流电话：'+logistics_tel}}" horizontalAlignment="left" marginLeft="10"/>
+                <Label text="{{'到付金额：￥ '+pay}}" horizontalAlignment="left" marginLeft="10"/>
+                <StackLayout class="signInfo">
+                    <Repeater id="list-view" items="{{ sign_up_images }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="horizontal" class="ios_imageShow" horizontalAlignment="center">
+                                <Image src="{{path}}" width="78" height="78" stretch="fill"
+                                       verticalAlignment="center" class="firstImage"></Image>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+
+            </StackLayout>
+            <!--返货-物流信息 -end-->
+            <!--维修-完成信息 -start-->
+            <StackLayout class="sign-parcel-content"
+                         visibility="{{taskType==='maintenance_finish'?'visible':'collapse'}}">
+                <label text="维修完成信息" horizontalAlignment="left" class="title"></label>
+                <StackLayout class="signInfo">
+                    <Repeater id="list-view" items="{{ sign_up_images }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <StackLayout orientation="horizontal" class="ios_imageShow" horizontalAlignment="center">
+                                <Image src="{{path}}" width="78" height="78" stretch="fill"
+                                       verticalAlignment="center" class="firstImage"></Image>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+                <Label text="完成描述" horizontalAlignment="left" marginTop="5"/>
+                <Label text="{{finish_remark}}" textWrap="true" horizontalAlignment="left"/>
+            </StackLayout>
+            <!--维修-完成信息 -end-->
+
+            <!--底部信息-->
+            <StackLayout class="operate-content"
+                         isInDetail="yes"
+                         from="{{taskType}}"
+                         waybillId="{{ orderNumber }}"
+                         taskId="{{ id }}"
+                         taskType="aftermarket"
+                         receivePersonName="{{ consignee }}"
+                         installFee="{{price}}"
+                         receivePersonPhone="{{ consigneePhone }}"
+                         visibility="{{(taskType==='maintenance_finish' || taskType=='return_finish' || !taskType)?'collapse':'visible'}}">
+                <!--待受理-->
+                <GridLayout columns="auto, *" rows="*"
+                            visibility="{{taskType==='return_waiting_list' || taskType==='maintenance_waiting_list'?'visible':'collapse'}}">
+                    <StackLayout row="0" col="0" class="cancel-btn" tap="onBackTap">
+                        <Label text="取消受理" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    </StackLayout>
+                    <StackLayout row="0" col="1" class="accept-btn" tap="tapAcceptTask">
+                        <Label text="受理运单" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    </StackLayout>
+                </GridLayout>
+                <!--待提货-->
+                <GridLayout columns="*" rows="*"
+                            visibility="{{taskType==='return_waiting_pickup'?'visible':'collapse'}}">
+                    <StackLayout row="0" col="0" class="accept-btn" tap="tapPickTask">
+                        <Label text="提货" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    </StackLayout>
+                </GridLayout>
+                <!--待预约-->
+                <GridLayout columns="*" rows="*"
+                            visibility="{{taskType==='maintenance_waiting_appointment'?'visible':'collapse'}}">
+                    <StackLayout row="0" col="0" class="accept-btn" tap="tapOrderTask">
+                        <Label text="预约" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    </StackLayout>
+                </GridLayout>
+                <!--待签收-->
+                <GridLayout columns="*" rows="*"
+                            visibility="{{taskType==='return_waiting_sign_for'|| taskType==='maintenance_waiting_sign_for'?'visible':'collapse'}}">
+                    <StackLayout row="0" col="1" class="accept-btn" tap="tapReceiveTask">
+                        <Label text="签收" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</Page>

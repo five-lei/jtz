@@ -1,0 +1,15 @@
+@import { url('~/views/task/return-task/return-task-common.css') };
+
+.order-content{
+    position: absolute;
+    color: #333;
+    background-color: white;
+    font-size: 14;
+    margin-top: 10;
+    margin-bottom: 5;
+    height:auto;
+    padding: 10 0 10 0;
+    border-bottom: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #ddd;
+}

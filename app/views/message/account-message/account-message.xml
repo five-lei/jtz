@@ -1,0 +1,83 @@
+<Page loaded="loaded"
+      xmlns:lv="nativescript-telerik-ui-pro/listview">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" height="20" marginRight="5"/>
+                        <Label text="返回" verticalAlignment="center" class="fh" tap="return"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="账号变动"/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="2" orientation="vertical" verticalAlignment="center" class="service">
+                        <Image src="res://rili" class="icon-img" width="22" tap="tapOrderTask"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="返回"/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="vertical" verticalAlignment="center" class="service">
+                            <Image src="res://rili" class="icon-img" width="22" tap="tapOrderTask"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="账号变动" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee" orientation="vertical"
+                class="content">
+        <GridLayout columns="*" rows="auto,*">
+            <ios>
+                <StackLayout class="titleLine" col="0" row="0"></StackLayout>
+            </ios>
+            <GridLayout col="0" row="1">
+                <lv:RadListView id="list-view" items="{{ detailList }}">
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout android:itemHeight="210" scrollDirection="Vertical"/>
+                    </lv:RadListView.listViewLayout>
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout>
+                            <Label text="{{time}}" class="time"></Label>
+                            <StackLayout orientation="vertical" class="order">
+                                <Label text="{{account_type}}" class="distance"/>
+                                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                             verticalAlignment="center">
+                                    <Label text="{{money}}" class="money"/>red
+                                    <Label text="元" class="yuan"/>
+                                </StackLayout>
+                                <Label text="{{dataType +' :  '+ dataTime}}" class="distance"/>
+                                <Label text="{{feedback_type+' ： ' + feedback_type_number}}" class="distance newline"
+                                       textWrap="true"/>
+                                <StackLayout class="line">
+                                </StackLayout>
+                                <GridLayout columns="*" rows="*,*" class="new-msg" tap="waterMessageDetail">
+                                    <Label text="查看详情" horizontalAlignment="left" verticalAlignment="center" col="0"
+                                           row="0"/>
+                                    <Image src="res://jr" col="2" row="0" horizontalAlignment="right" class="new-pic"
+                                           width="22"/>
+                                </GridLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+        </GridLayout>
+    </DockLayout>
+
+</Page>

@@ -1,0 +1,158 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      xmlns:f="nativescript-fresco/nativescript-fresco">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="">
+                <StackLayout orientation="vertical" class="title_view">
+                    <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                        <StackLayout orientation="horizontal" row="0" col="0"
+                                     tap="onBackTap" horizontalAlignment="left">
+                            <Image src="res://fh_ico" class="bar-image"/>
+                            <Label text="返回" verticalAlignment="center"/>
+                        </StackLayout>
+
+                        <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                     verticalAlignment="center" row="0" col="1" class="title-label">
+                            <Label text="信用等级"/>
+                        </StackLayout>
+
+                        <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" tap="onCreditTap">
+                        <Label text="信用规则" class="bar_label" style="font-size: 16;margin-right:10"/>
+                    </StackLayout>
+                    </GridLayout>
+
+                </StackLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="信用等级" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <ScrollView id="content">
+    <StackLayout orientation="vertical" class="mainview">
+
+            <StackLayout orientation="vertical" horizontalAlignment="center" class="star_page">
+                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                    <Label text="5.0" horizontalAlignment="center" class="score_text"/>
+                    <Label text="分" horizontalAlignment="center" verticalAlignment="bottom"
+                           class="score"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" verticalAlignment="bottom" horizontalAlignment="center">
+                    <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                    <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                    <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                    <Image src="res://ico_xing_one" class="star-image" verticalAlignment="center"/>
+                    <Image src="res://ico_xing_two" class="star-image" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center" class="score_time">
+                    <Label text="评估时间:" horizontalAlignment="center"/>
+                    <Label text="2017-5-6" horizontalAlignment="center"
+                           class="score_times"/>
+                </StackLayout>
+
+            </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="预约及时率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="95%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="安装及时率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="96%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="48安装完成率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="98%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="安装完成率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="98%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="破损率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="28%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="投诉率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="8%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCarTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="核销达成率" class="action-label" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="96%" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <Label text="对此信息有疑问?" class="text" verticalAlignment="center" horizontalAlignment="center" tap="onQuery"/>
+
+    </StackLayout>
+    </ScrollView>
+</Page>

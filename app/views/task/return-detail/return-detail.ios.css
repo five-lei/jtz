@@ -1,0 +1,18 @@
+@import { url('~/views/task/return-detail/return-detail-common.css') };
+
+.ios_line{
+    height: 8px;
+    background-color: rgb(240,240,240);
+}
+.remarkLabel{
+    margin-top: 6px;
+}
+.ios_costInfo{
+    background-color: white;
+}
+.ios_fee{
+    padding: 8px 8px 8px 8px;
+}
+.ios_totalFee{
+    padding:0px 8px 8px 8px;
+}

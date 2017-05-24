@@ -1,0 +1,8 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      loaded="loaded"
+      style="border-radius:5px; border-width: 1px; border-color:white;">
+        <StackLayout orientation="vertical">
+            <Label text="余额名词解释" class="balance"/>
+            <Label textWrap="true" class="msg" text="余额是指没有申请提现的新任务、维修任务、返货任务签收之后的金额汇总，其中包括在任务中产生的异常费用"/>
+        </StackLayout>
+</Page>

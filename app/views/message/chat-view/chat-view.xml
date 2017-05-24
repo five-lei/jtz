@@ -1,0 +1,213 @@
+<Page loaded="loaded" navigatingTo="onNavigatingTo" xmlns:lv="nativescript-telerik-ui-pro/listview"
+      xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+            <ActionBar title="">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top" class="actionBar-view">
+                    <StackLayout orientation="horizontal" row="0" col="0" horizontalAlignment="left" tap="return">
+                        <Image src="res://fh" height="20" marginRight="5"/>
+                        <Label text="返回" verticalAlignment="center" class="fh"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label id="title" text=""/>
+                    </StackLayout>
+
+                    <StackLayout row="0" col="2" orientation="vertical" verticalAlignment="center"
+                                 horizontalAlignment="right" class="service" tap="onFiltrate">
+                        <Image src="res://shuaixuan" width="22" style="margin-right:10"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="首页"/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout orientation="vertical" verticalAlignment="center" horizontalAlignment="right"
+                                     class="service" tap="onService">
+                            <Image src="res://shuaixuan" width="22" style="margin-right:10"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                </StackLayout>
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label id="title" text="" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <GridLayout orientation="vertical" rows="auto,*, auto, auto" columns="*" class="content">
+        <!-- the date / time -->
+        <Label className="nsChatView-date"
+               horizontalAlignment="center"
+               text="{{ date }}"
+               visibility="{{ date ? 'visible' : 'collapsed' }}"/>
+
+        <!--new task-->
+        <StackLayout class="nsChatView-newTask"
+                     row="0" id="top_header" tap="toDetail">
+            <StackLayout orientation="horizontal" class="nsChatView-newTaskNumber">
+                <Label text="" class="new" id="top_type" />   <!-- 任务标识符 -->
+                <Label text="" id="top_task" class="newTaskId"/> <!-- 任务单号 -->
+            </StackLayout>
+            <StackLayout class="nsChatView-receiver"
+                         orientation="horizontal">
+                <Label text="" id="top_receive"/> <!-- 收发货人 -->
+            </StackLayout>
+            <StackLayout row="2" class="nsChatView-deliver"
+                         orientation="horizontal">
+                <GridLayout columns="*,*" rows="auto">
+                    <Label text="" ios:horizontalAlignment="left"
+                           id="top_message" android:horizontalAlignment="left" col="0"/> <!-- 服务描述 -->
+                    <Label text="" id="top_types" ios:horizontalAlignment="right"
+                           android:horizontalAlignment="right" col="1"/> <!-- 任务状态 -->
+                </GridLayout>
+            </StackLayout>
+
+        </StackLayout>
+
+        <lv:RadListView className="nsChatView-messageList"
+                        id="message_list"
+                        row="1"
+                        items="{{ messages }}"
+                        horizontalAlignment="stretch"
+                        verticalAlignment="stretch"
+                        itemLoading="onItemLoading"
+                        selectionBehavior="Press"
+                        itemSelected="{{itemSelected}}">
+
+            <!-- template for an IChatMessage item -->
+            <lv:RadListView.itemTemplate>
+                <!-- chat message item -->
+                <StackLayout backgroundColor="#eeeeee">
+                <StackLayout horizontalAlignment="center">
+
+                    <!-- the date / time -->
+                    <Label className="nsChatView-date"
+                           horizontalAlignment="center"
+                           text="{{ date }}"
+                           visibility="{{ date ? 'visible' : 'collapsed' }}"/>
+
+                    <GridLayout className="{{ 'nsChatView-item-' + (isRight ? 'right' : 'left') }}"  rows="auto" columns="auto,*,*,auto,auto">
+
+                        <!-- avatar -->
+                        <Image row="0" col="{{ isRight ? '4' : '0' }}"
+                               stretch="aspectFill"
+                               className="nsChatView-avatar"
+                               verticalAlignment="top"
+                               src="{{ image }}"
+                               visibility="{{ image ? 'visible' : 'collapsed' }}"/>
+
+                        <!-- the message -->
+                        <StackLayout row="0" col="{{ isRight ? '3' : '1' }}"
+                                     className="nsChatView-message"
+                                     orientation="vertical">
+
+                            <!-- the message area -->
+                            <Label className="nsChatView-name"
+                                   horizontalAlignment="{{ isRight ? 'right' : 'left' }}"
+                                   text="{{ name }}" textWrap="true"/>
+                            <Border className="nsChatView-messageArea">
+                                <StackLayout className="nsChatView-content"
+                                             verticalAlignment="top"
+                                             horizontalAlignment="{{ isRight ? 'right' : 'left' }}">
+
+                                    <Image className="nsChatView-messageImage"
+                                           horizontalAlignment="{{ isRight ? 'right' : 'left' }}"
+                                           src="{{ photos }}" id="sendPhoto"
+                                           visibility="{{ imMessageType=='IMAGE' ? 'visible' : 'collapsed' }}"/>
+                                    <!-- the message text -->
+                                    <Label className="nsChatView-messageText"
+                                           width="60%"
+                                           horizontalAlignment="{{ isRight ? 'right' : 'left' }}"
+                                           text="{{ message }}" textWrap="true"
+                                           visibility="{{ imMessageType=='TEXT' ? 'visible' : 'collapsed' }}"/>
+                                    <GridLayout
+                                            rows="auto,auto,auto" columns="*"
+                                            visibility="{{ imMessageType=='TASK' ? 'visible' : 'collapsed' }}">
+                                        <StackLayout row="0"
+                                                     orientation="horizontal">
+                                            <!-- <Label text="{{ Type }}"/>-->
+                                            <Label text="{{ '任务单号：' + taskId }}"/>
+                                        </StackLayout>
+                                        <StackLayout row="1"
+                                                     orientation="horizontal">
+                                            <Label text="{{'收货人: '+ recieve }}"/>
+                                        </StackLayout>
+                                        <StackLayout row="2"
+                                                     orientation="horizontal">
+                                            <Label text="{{ taskType }}"/>
+                                        </StackLayout>
+
+                                    </GridLayout>
+                                </StackLayout>
+                            </Border>
+                        </StackLayout>
+
+                        <!-- The invisible separator -->
+                        <Border row="0" col="{{ isRight ? '0' : '2' }}"
+                                className="nsChatView-separator"/>
+                    </GridLayout>
+                </StackLayout>
+                </StackLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+
+        <!-- message input field and SEND button -->
+        <GridLayout className="nsChatView-sendMessageArea"
+                    row="2"
+                    rows="*,auto" columns="auto,*,auto">
+            <Image className="nsChatView-image"
+                   col="0" row="0"
+                   src="res://add_nessage"
+                   tap="addTap"/>
+            <!-- chat message field -->
+            <TextField className="nsChatView-messageField"
+                       col="1" row="0"
+                       hint="请输入"
+                       id="textfield"
+                       maxLength="2"/>
+
+            <!-- SEND button -->
+            <Button className="nsChatView-messageButton"
+                    col="2" row="0"
+                    text="发送"
+                    tap="send"/>
+            <StackLayout class="lines" row="1" colSpan="3">
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout
+                row="3"
+                rows="*" columns="*,*,*,*,*"
+                id="grid"
+                visibility="collapsed">
+            <StackLayout col="0" row="0" orientation="vertical" class="nsChatView-catlayout">
+                <Image className="nsChatView-catimage"
+                       src="res://photo"
+                       tap="PhotoTap"/>
+                <Label text="相册" textWrap="true" horizontalAlignment="center"/>
+            </StackLayout>
+            <!-- SEND button -->
+            <StackLayout col="1" row="0" orientation="vertical" class="nsChatView-catlayout">
+                <Image className="nsChatView-catimage"
+                       src="res://camera"
+                       tap="CameraTap"/>
+                <Label text="照相" textWrap="true" horizontalAlignment="center"/>
+            </StackLayout>
+            <StackLayout col="2" row="0" orientation="vertical" class="nsChatView-catlayout">
+                <Image className="nsChatView-catimage"
+                       src="res://lt"
+                       tap="TaskTap"/>
+                <Label text="任务" textWrap="true" horizontalAlignment="center"/>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+
+</Page>

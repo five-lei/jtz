@@ -1,0 +1,142 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="onNavigatingTo"
+      loaded="loaded"
+      xmlns:lv="nativescript-telerik-ui-pro/listview">
+
+    <Page.actionBar>
+        <iOS>
+            <ActionBar title="选择区域" class="iosActionBar">
+                <NavigationButton text=""/>
+
+                <ActionItem ios.position="right">
+                    <label text="完成" verticalAlignment="center" class="leftBarBtn" tap="completeTap"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+
+        <GridLayout id="grid" rows="auto, *" columns="*, *,*">
+
+            <StackLayout row="0" colSpan="3" orientation="horizontal" class="ios_item_top" >
+                <Label id="provinces" text="已选省0、" textWrap="true"/>
+                <Label id="citys" text="市0、" textWrap="true"/>
+                <Label id="districts" text="区0" textWrap="true"/>
+            </StackLayout>
+
+            <GridLayout id="l1" rows="auto,*" columns="*" row="1" colSpan="3">
+
+                <StackLayout orientation="horizontal" tap="onSelectAllTap1" row="0" col="0">
+                    <Image id="img1" src="res://ico_check1" class="bar-image1" horizontalAlignment="left"/>
+                    <StackLayout orientation="vertical" style="padding-left: 5">
+                        <Label id="label1" text="全国 " horizontalAlignment="left" verticalAlignment="center" class="item-text"
+                               color="{{ selected ? 'orange' : '#333333'}}"/>
+                    </StackLayout>
+                </StackLayout>
+                <lv:RadListView id="lv1" items="{{ provinceList }}" selectionBehavior="Press"
+                                itemSelected="{{itemSelected}}" itemDeselected="{{itemDeselected}}"
+                                multipleSelection="true" row="1" col="0">
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical" />
+                    </lv:RadListView.listViewLayout>
+
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout orientation="vertical" backgroundColor="white">
+                            <StackLayout id="select" orientation="horizontal">
+                                <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                       horizontalAlignment="left"/>
+                                <StackLayout orientation="vertical" style="padding-left: 5">
+                                    <StackLayout class="lines">
+                                    </StackLayout>
+                                    <Label text="{{ province }} " horizontalAlignment="left" verticalAlignment="center"
+                                           class="item-text" color="{{ selected ? 'orange' : '#333333'}}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>
+
+            <GridLayout id="l2" rows="*" columns="auto,*" row="1" col="1" colSpan="2" visibility="collapsed">
+                <StackLayout class="line-item" row="0" col="0">
+                </StackLayout>
+                <GridLayout row="0" col="1" rows="auto,*" columns="*">
+                    <StackLayout orientation="horizontal" tap="onSelectAllTap2" row="0" col="0">
+                        <Image id="img2" src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                               horizontalAlignment="left"/>
+                        <StackLayout orientation="vertical" style="margin-left: 5">
+                            <Label id="label2" text="全选 " horizontalAlignment="left" verticalAlignment="center" class="item-text"
+                                   color="{{ selected ? 'orange' : '#333333'}}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <lv:RadListView id="lv2" items="{{ cityList }}" multipleSelection="true" selectionBehavior="Press"
+                                    itemSelected="{{itemSelected}}" itemDeselected="{{itemDeselected}}" row="1" col="0">
+                        <lv:RadListView.listViewLayout>
+                            <lv:ListViewLinearLayout scrollDirection="Vertical" />
+                        </lv:RadListView.listViewLayout>
+
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical" backgroundColor="white">
+                                <StackLayout orientation="horizontal">
+
+                                    <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                           horizontalAlignment="left"/>
+                                    <StackLayout orientation="vertical" style="padding-left: 5">
+                                        <StackLayout class="lines">
+                                        </StackLayout>
+                                        <Label text="{{ city }} " horizontalAlignment="left" verticalAlignment="center"
+                                               class="item-text" color="{{ selected ? 'orange' : '#333333'}}"/>
+
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+                    </lv:RadListView>
+                </GridLayout>
+
+            </GridLayout>
+
+            <GridLayout id="l3" rows="*" columns="auto,*"  row="1" col="2" visibility="collapsed">
+                <StackLayout class="line-item" col="0" row="0">
+                </StackLayout>
+                <GridLayout rows="auto,*" columns="*" col="1" row="0">
+                    <StackLayout orientation="horizontal" tap="onSelectAllTap3" row="0" col="0">
+                        <Image id="img3" src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                               horizontalAlignment="left"/>
+                        <StackLayout orientation="vertical" style="padding-left: 5">
+                            <Label id="label3" text="全选 " horizontalAlignment="left" verticalAlignment="center" class="item-text"
+                                   color="{{ selected ? 'orange' : '#333333'}}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <lv:RadListView id="lv3" items="{{ districtList }}" multipleSelection="true"
+                                    selectionBehavior="Press" itemSelected="{{itemSelected}}"
+                                    itemDeselected="{{itemDeselected}}" row="1" col="0">
+                        <lv:RadListView.listViewLayout>
+                            <lv:ListViewLinearLayout scrollDirection="Vertical" />
+                        </lv:RadListView.listViewLayout>
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical" backgroundColor="white">
+                                <StackLayout orientation="horizontal">
+                                    <Image src="{{selected ? 'res://x_ssq' : 'res://ico_check1'}}" class="bar-image1"
+                                           horizontalAlignment="left"/>
+                                    <StackLayout orientation="vertical" style="padding-left: 5">
+                                        <StackLayout class="lines">
+                                        </StackLayout>
+                                        <Label text="{{ district }} " horizontalAlignment="left"
+                                               verticalAlignment="center" class="item-text"
+                                               color="{{ selected ? 'orange' : '#333333'}}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+
+                    </lv:RadListView>
+                </GridLayout>
+
+            </GridLayout>
+
+        </GridLayout>
+
+</Page>

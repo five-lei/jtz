@@ -1,0 +1,85 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="认证信息"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                        <Label text="帮助" tap="onHelp"/>
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <ios>
+            <ActionBar title="认证信息" class="iosActionBar">
+                <NavigationButton text=""/>
+                <ActionBar.actionItems>
+                    <ActionItem ios.position="right">
+                        <ActionItem.actionView>
+                            <StackLayout orientation="horizontal" tap="onHelp">
+                                <label text="帮助" color="rgb(255,135,0)" verticalAlignment="center"></label>
+                            </StackLayout>
+                        </ActionItem.actionView>
+                    </ActionItem>
+                </ActionBar.actionItems>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <ScrollView id="content">
+        <StackLayout orientation="vertical" class="mainview">
+            <Android>
+                <StackLayout class="lines">
+                </StackLayout>
+            </Android>
+
+            <StackLayout orientation="horizontal" class="item-view">
+                <Label text="真实姓名" verticalAlignment="center"/>
+                <Label text="{{realName}}" verticalAlignment="center" class="hint-label"/>
+            </StackLayout>
+
+            <StackLayout class="line_text">
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" class="item-view">
+                <Label text="身份证号" verticalAlignment="center"/>
+                <Label text="{{idNo}}" verticalAlignment="center" class="hint-label"/>
+            </StackLayout>
+
+            <StackLayout class="line_text">
+            </StackLayout>
+
+            <StackLayout orientation="vertical" class="items-view">
+                <Image src="{{idNoPhotoFront}}" class="item-image" stretch="aspectFill"/>
+                <Label text="身份证正面" verticalAlignment="center" horizontalAlignment="center" class="lable-text"/>
+            </StackLayout>
+
+            <StackLayout orientation="vertical" class="items-view">
+                <Image src="{{idNoPhotoBack}}" class="item-image" stretch="aspectFill"/>
+                <Label text="身份证背面" verticalAlignment="center" horizontalAlignment="center" class="lable-text"/>
+            </StackLayout>
+
+            <StackLayout orientation="vertical" class="items-view">
+                <Image src="{{idNoPhotoHand}}" class="item-image" stretch="aspectFill"/>
+                <Label text="手持身份证正面照片" verticalAlignment="center" horizontalAlignment="center" class="lable-text"/>
+            </StackLayout>
+
+            <Label text="{{userIdStatus}}" verticalAlignment="center" horizontalAlignment="center"
+                   class="item-text"/>
+            <Label text="400-006-111" verticalAlignment="center" horizontalAlignment="center" class="items-text"/>
+
+        </StackLayout>
+    </ScrollView>
+</Page>

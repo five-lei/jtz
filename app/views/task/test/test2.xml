@@ -1,0 +1,77 @@
+//订单号信息
+<DockLayout stretchLastChild="true" height="55">
+    <Image  dock="left" src="res://xin2x" row="1" col="0" stretch="none"
+            verticalAlignment="center" horizontalAlignment="left" class="leftIcon margin-left-10"></Image>
+    <GridLayout dock="top" rows="30"  columns="auto,*,*" class="margin-right-20" style="margin-left:-10px;">
+        <Label text="1ZT324835" row="0" col="1" class="orderNumber"></Label>
+        <Image src="res://qiang2x"  stretch="none"
+               verticalAlignment="center" horizontalAlignment="right" class="rightIcon margin-left-20"  row="2" col="1"></Image>
+        <Label text="¥ 500" col="3"  horizontalAlignment="right" class="order-payment"></Label>
+    </GridLayout>
+    <GridLayout dock="top" rows="30"  columns="auto,auto,*" class="margin-right-10" style="margin-left:-15px;">
+        <Label text="一智通供应链管理有限公司" row="0" col="2" class="company-info "></Label>
+        <Label text="2017/03/10 13:39" row="0" col="3" horizontalAlignment="right" class="orderDate margin-right-20"></Label>
+    </GridLayout>
+</DockLayout>
+<Label class="line"/>
+        //收货地址相关信息
+<DockLayout stretchLastChild="true"  tap="toggleDetailInfo"  class="shipping-address-info margin-left-10">
+<GridLayout dock="right" rows="60"  columns="auto" class="margin-left-10" >
+    <button text="受理" tap="acceptOrderPage" class="btn btn-accept"></button>
+    <button text="取消" tap="cancelOrderPage" class="btn btn-cancel" style="margin-top:100px;"></button>
+</GridLayout>
+<GridLayout dock="top" rows="30"  columns="auto,auto,*">
+    <Label text="收货地址：广州市白云区新市路口" row="0" col="0" class="address-info"></Label>
+</GridLayout>
+<GridLayout dock="top" rows="30"  columns="auto,auto,*">
+    <Label text="收货人：胡哥(15626270808)" row="1" col="0"  class=""></Label>
+</GridLayout>
+<GridLayout dock="top" rows="25"  columns="auto,*,auto,auto,auto" class="packing-detail">
+    <Label text="包装数量：1" row="1" col="0"  class=""></Label>
+    <Label text="包装体积：2" row="1" col="1" class="margin-left-10"></Label>
+    <Label text="楼层：2 无电梯" row="1" col="2"  class=""></Label>
+</GridLayout>
+<GridLayout dock="top" rows="25"  columns="auto,*,auto,auto,auto" class="packing-detail">
+    <Label text="预约计时：54h" row="1" col="0"  class=""></Label>
+    <Label text="受理计时：10h" row="1" col="1" class="margin-left-10"></Label>
+</GridLayout>
+<GridLayout dock="top" rows="25"  columns="auto,*,auto,auto,auto">
+    <Label text="配送并安装" row="1" col="0"  class=""></Label>
+</GridLayout>
+</DockLayout>
+<StackLayout  id="collapse-widget">
+<GridLayout  rows="10" >
+    <Image src="res://xiala2x"  stretch="none"
+           verticalAlignment="center" horizontalAlignment="center"   row="2" col="1"></Image>
+</GridLayout>
+<GridLayout  rows="5" >
+    <Label class="line"></Label>
+</GridLayout>
+</StackLayout>
+        //可隐藏折叠信息
+<Label id="collapse-widget-line" class="orange-line"></Label>
+<DockLayout class="collapse-info" id="otherInfoPanel">
+<GridLayout dock="top" rows="25"  columns="auto,auto,*" class="margin-right-10">
+    <Label  id="addressInfoLabel" text="收货地址：广州市白云区新市路口" row="0" col="0" class="address-info"></Label>
+</GridLayout>
+<GridLayout dock="top" rows="25"  columns="auto,auto,*" class="margin-right-10">
+    <Label text="收货电话：15626270808" row="1" col="0"  class=""></Label>
+</GridLayout>
+<GridLayout dock="top" rows="25"  columns="auto,auto,*" class="margin-right-10">
+    <Label text="收货码：5566" row="1" col="0"  class=""></Label>
+</GridLayout>
+</DockLayout>
+<Label id="collapse-widget-line2" class="orange-line"></Label>
+        //底部操作按钮
+<DockLayout stretchLastChild="true" class="order-bottom-operate">
+<GridLayout dock="left" rows="40" columns="auto,*" style="width:50%;">
+    <Image src="res://dh2x"  stretch="none"
+           verticalAlignment="center" horizontalAlignment="center" class="leftIcon"  row="2" col="1"></Image>
+    <Label text="导航" row="20" col="1" horizontalAlignment="center" verticalAlignment="center"  class="operate"></Label>
+</GridLayout>
+<GridLayout dock="right" rows="40" columns="auto,*"  style="width:50%;">
+    <Image src="res://call2x"  stretch="none"
+           verticalAlignment="center" horizontalAlignment="center" class="leftIcon"  row="2" col="2"></Image>
+    <Label text="电话" row="20" col="2" horizontalAlignment="center" verticalAlignment="center" class="operate"></Label>
+</GridLayout>
+</DockLayout>

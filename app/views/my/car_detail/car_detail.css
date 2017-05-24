@@ -1,0 +1,115 @@
+﻿.mainview {
+    background-color:#eeeeee;
+    
+}
+
+.top {
+    background-color:white;    
+}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+    padding-right: 10
+}
+
+Page { 
+    background-color: white
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+.bar-image1 {
+    height:20;
+}
+
+
+.bar-text {
+    font-size: 14
+}
+
+
+.action-label {
+    margin-left: 5;
+    font-size: 15;
+    color: #333333
+}
+
+.grid-label {
+    margin-bottom: 5;
+    margin-left: 5
+}
+
+.line-text {
+    height: 0.5;
+    background-color: #D3D3D3 ;
+    margin-left: 10
+}
+
+.items-view {
+    background-color:white;
+    padding-bottom: 12;
+    padding-top: 12;
+    padding-left: 5;
+    padding-right: 5;
+    font-size: 16;
+    color: black;
+    font-size: 15
+}
+
+.hint-label {
+    font-size: 15;
+    margin-left: 5;
+    color: #858585
+}
+
+.item-view {
+    background-color:white;
+    padding-left: 5;
+    padding-right: 5;
+    padding-bottom: 10;
+    padding-top: 10;
+    margin-top: 10;
+    font-size: 16;
+    color: black;
+    font-size: 15
+}
+
+.car-item {
+   background-color: orange;
+   height: 70;
+   color: white;
+   margin: 5
+}
+
+.car-text {
+   background: transparent;
+   background-color: rgba(0,0,0,0.1);;
+   width: 100%;
+   text-align: center;
+}
+
+.btn_page {
+   height: 10%;
+    
+}
+
+.list_page {
+   height: 90%;
+   
+}
+
+.grid_label_select { 
+    background-color:rgb(255,138,37); 
+    border-radius:2px;
+    border-color:rgb(255,138,37);
+    border-width: 1px;
+    font-size: 16;
+    color: white;
+ 
+    padding: 10
+    
+}

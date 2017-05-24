@@ -1,0 +1,127 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded='pageLoaded'>
+    <Page.actionBar>
+        <Android>
+            <ActionBar class='androidActionBar'>
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://fh_ico" class="bar-image"/>
+                        <Label text="返回" style="color:white;font-size: 16px; margin-top:1px"  />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" >
+                        <Label text="" style="color:black;font-size: 18px; "/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" >
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+
+    </Page.actionBar>
+
+    <StackLayout  style="background-color: white; height: 100%;">
+      <StackLayout  style="height: 91%;">
+        <StackLayout style="background-color: rgb(255,138,37);">
+            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                <Label text="多样的技能" color="white" style="font-size: 25;" verticalAlignment="center"/> 
+            </StackLayout>
+            <Label text="更能提升你的魅力" color="white" class="information_text1"/>
+        </StackLayout>
+        <Label text="选出你所能维修的类型" color="sandybrown" class="information_text2" />
+<!--
+        <StackLayout orientation="vertical" >
+            <GridLayout columns="*,*,*,*" rows="*" class="information_grid"  id="Grid_style">
+                <StackLayout orientation="vertical" row="0" col="0" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" tap="Grid_style"
+                             style="background-color: #ff8b00;margin-left:10;height:65;color:white" verticalAlignment="center">
+                    <Label text="地板" class="information_type" />
+                </StackLayout>
+                <StackLayout orientation="vertical" borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0"
+                             col="1" style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="灯具" class="information_type"/>
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="2"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="集成吊顶" class="information_type"/>
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="3"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="门窗" class="information_type"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>-->
+        <StackLayout orientation="vertical" row="2" col="0" style="margin-top:15">
+            <WrapLayout orientation="horizontal">
+                <Repeater id="repairTypes" items="{{ serviceList }}" >
+                    <Repeater.itemsLayout>
+                        <WrapLayout orientation="horizontal"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <StackLayout orientation="vertical" borderRadius="1" borderWidth="1"
+                                     borderColor="sandybrown" class="{{ selectCondition?'typeSelected':'typeNotSelected' }}"
+                                     tap="{{onSelected}}">
+                            <StackLayout width="12" height="12" verticalAlignment="top" horizontalAlignment="right">
+                                <Image src="res://sc2x" class='{{selectCondition?"visible":"collapse"}}'/>
+                            </StackLayout>
+                            <Label text="{{serviceType}}" class="information_type"/>
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </WrapLayout>
+        </StackLayout>
+
+        <Label text="是否支持返货" color="sandybrown" class="information_text2" row="3" col="0"/>
+        <!--<StackLayout orientation="vertical" >
+            <GridLayout columns="*,*,*,*" rows="*" class="information_grid"  id="Grid_style">
+                <StackLayout orientation="vertical" row="0" col="0" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" tap="Grid_style"
+                             style="background-color: #ff8b00;margin-left:10;height:65;color:white" verticalAlignment="center">
+                    <Label text="地板" class="information_type" />
+                </StackLayout>
+                <StackLayout orientation="vertical" borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0"
+                             col="1" style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="灯具" class="information_type"/>
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="2"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="集成吊顶" class="information_type"/>
+                </StackLayout>
+                <StackLayout borderRadius="1" borderWidth="1" borderColor="sandybrown" row="0" col="3"
+                             style="margin-left:10;height:65" verticalAlignment="center">
+                    <Label text="门窗" class="information_type"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+      </StackLayout>-->
+      <StackLayout orientation="vertical" row="2" col="0" style="margin-top:15">
+            <WrapLayout orientation="horizontal">
+                <Repeater id="maintainTypes" items="{{ maintainList }}" >
+                    <Repeater.itemsLayout>
+                        <WrapLayout orientation="horizontal"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <StackLayout orientation="vertical" borderRadius="1" borderWidth="1"
+                                     borderColor="sandybrown" class="{{ selectCondition?'typeSelected':'typeNotSelected' }}"
+                                     tap="{{onSelected}}">
+                            <StackLayout width="12" height="12" verticalAlignment="top" horizontalAlignment="right">
+                                <Image src="res://sc2x" class='{{selectCondition?"visible":"collapse"}}'/>
+                            </StackLayout>
+                            <Label text="{{serviceType}}" class="information_type"/>
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </WrapLayout>
+        </StackLayout>
+        </StackLayout>
+     <button text="确定" style="background-color: rgb(255,138,37);height:9%; color:white;font-size:16;" tap="next_btn" />
+    </StackLayout>
+</Page>

@@ -1,0 +1,55 @@
+<Page xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="pageNavigatingTo"
+      tap="tap">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+        <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal"  row="0" col="0"
+                              horizontalAlignment="left" tap="return">
+                    <Image  src="res://fh" height="20" marginRight="5"/>
+                    <Label text="返回"   verticalAlignment="center" class="fh" tap="return" />
+                </StackLayout>
+                <StackLayout  orientation="horizontal" horizontalAlignment="center"
+                              verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="视频教程"  />
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="视频教程" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <!--导航布局结束-->
+    <!--第一部分 开始-->
+    <GridLayout columns="*" rows="auto,*">
+        <Label row="0" col="0" class="gray-line"></Label>
+        <GridLayout row="1" col="0" class="list">
+                <lv:RadListView id="video-view" items="{{lists}}" pullToRefresh="true"  pullToRefreshInitiated="pullToRefreshInitiated" loadOnDemandMode="Auto" loadMoreDataRequested="loadMoreItemsRequested">
+                    <lv:RadListView.listViewLayout >
+                        <lv:ListViewGridLayout  spanCount="2" itemHeight="180"/>
+                    </lv:RadListView.listViewLayout>
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout class="details" horizontalAlignment="center">
+                            <StackLayout tap="onVideo">
+                                <Image src="{{image}}" height="125"/>
+                                <Label text="{{title}}" class="text"/>
+                            </StackLayout>
+                            <StackLayout orientation="horizontal" class="icon">
+                                <StackLayout orientation="horizontal" tap="videoShare">
+                                    <Image src="res://fx"  width="14" marginTop="2" marginLeft="2"/>
+                                    <Label text="分享" class="character"/>
+                                </StackLayout>
+                                <Image src="{{ isFavourite ? 'res://add_to_fav_1' : 'res://sc_da2x' }}" cssClass="{{ cssClass }}" width="18" marginLeft="15" tap="toggleFavourite"/>
+                                <Label text="{{ isFavourite ? '已收藏' : '收藏' }}" cssClass="{{ cssClass }}" class="character"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+        </GridLayout>
+    </GridLayout>
+</Page>

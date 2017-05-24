@@ -1,0 +1,215 @@
+﻿.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+Page{
+    background-color: white;
+}
+
+.page{
+    background-color: rgb(240,240,240);
+}
+label{
+    text-align: center;
+}
+
+/*第一部分*/
+.content-Top{
+    width:85%;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 10px;
+}
+.content-Top-title{
+    background-color: rgb(254,173,84);
+    color: white;
+}
+.companyLabel{
+    margin-top:8px;
+    margin-left: 20px;
+    font-size: 16px;
+}
+.depositeRecordLabel{
+    margin: 6px 0px 12px 20px;
+    font-size: 13px;
+}
+.content-Top-center{
+    margin-top:20px;
+}
+
+.moneyAccount{
+    color: rgb(255,0,0);
+    font-size: 30px;
+    margin-right:8px;
+}
+.balanceLabel{
+    margin-top:6px;
+    font-size: 14px;
+}
+.content-Top-center>label{
+    margin-top: 8px;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/*第二部分: 未出账单*/
+.content-notBill{
+    background-color: white;
+    margin-top: 12px;
+}
+.content-notBill label{
+    font-size: 16px;
+    color: #333333;
+}
+.content-notBill .check{
+    margin-left: 8px;
+}
+.content-notBill .money{
+    margin-right: 8px;
+}
+
+/*第三部分: 账单信息*/
+.depositeInfo{
+    background-color: #fef1e2;
+}
+.depositeInfo label{
+    width:50%;
+    height: 45px;
+    color: #333333;
+    font-size: 16px;
+    margin-top: 2px;
+    text-align: center;
+}
+.depositeInfo .noDeposite{
+    background-color: white;
+}
+
+/*未账单详细信息 */
+.checkDetailInfo{
+    background-color: white;
+}
+.checkDetailInfo .detailInfo{
+    margin: 15px 8px 0px 8px;
+}
+.checkDetailInfo .detailInfo .left{
+    font-size: 15px;
+    color: #333333;
+    margin-right: 8px;
+}
+.checkDetailInfo .detailInfo .center{
+    font-size: 13px;
+    color: #808080;
+    margin-top: 3px;
+}
+.checkDetailInfo .detailInfo .right{
+    font-size: 13px;
+    color: #3ac167;
+}
+.checkDetailInfo .money{
+    font-size: 21px;
+    color: #f76969;
+    margin-top: 20px;
+}
+.checkDetailInfo .checkMoney{
+    color: #909090;
+    font-size: 13px;
+}
+.checkDetailInfo .OtherInformation{
+    margin-top: 20px;
+}
+.checkDetailInfo .OtherInformation StackLayout{
+    width:25%;
+}
+.checkDetailInfo .OtherInformation .name{
+    font-size: 13px;
+    color: #333333;
+}
+.checkDetailInfo .OtherInformation .account{
+    font-size: 15px;
+    color: #333333;
+}
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+    margin-top: 18px;
+}
+
+.checkDetailInfo .operateBtn button{
+    font-size: 14px;
+    color: #3a8dea;
+}
+.checkDetailInfo .operateBtn label{
+    width: 1px;
+    background-color: #e5e5e5;
+}
+
+.space{
+    height: 12px;
+    background-color: rgb(240,240,240);
+}
+
+
+/*已提现账单的详细信息*/
+.complete-CheckDetailInfo{
+    background-color: white;
+}
+.complete-CheckDetailInfo .complete-detailInfo{
+    margin: 15px 8px 0px 8px;
+}
+.complete-CheckDetailInfo .complete-detailInfo .left{
+    font-size: 15px;
+    color: #333333;
+    margin-right: 8px;
+}
+.complete-CheckDetailInfo .complete-detailInfo .center{
+    font-size: 13px;
+    color: #808080;
+    margin-top: 3px;
+}
+.complete-CheckDetailInfo .complete-detailInfo .right{
+    font-size: 14px;
+    color: rgb(89,159,214);
+}
+.complete-CheckDetailInfo .complete-money{
+    font-size: 21px;
+    color: #f76969;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+.complete-CheckDetailInfo .complete-checkInfo{
+    color: #333333;
+    font-size: 15px;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+.complete-CheckDetailInfo .complete-detailBtn{
+    height: 40px;
+}
+.complete-CheckDetailInfo .complete-completeDepositeLabel{
+    background-color: rgb(240,240,240);
+    height: 100px;
+}
+.complete-CheckDetailInfo .complete-completeDepositeLabel label{
+    background-color: white;
+    height: 45px;
+    width:100%;
+    text-align: left;
+    font-size: 16px;
+    color: #333333;
+}
+
+/*已提交账单 Label*/
+.completeDepositeLabel{
+    height: 45px;
+    background-color: white;
+    margin-top: 1px;
+}
+.completeDepositeLabel label{
+    margin-left: 8px;
+    font-size: 16px;
+    color: #333333;
+}
+.Label_back{
+    color: orange;
+}

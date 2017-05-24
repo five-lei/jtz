@@ -1,0 +1,247 @@
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+Page{
+    background-color: white;
+}
+.fh{
+    font-size: 16px;
+    color:#FB8901;
+}
+.title{
+    font-size: 18px;
+    color: #000000;
+}
+.menus{
+    padding: 10px;
+}
+.menus-text{
+    width: 30%;
+    text-align: center;
+    font-size: 16px;
+    color: #666666;
+}
+
+.top-view{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+}
+.icon-img{
+    width: 34px;
+    margin-bottom: 8px;
+}
+.top-text{
+    font-size: 14px;
+    color: #646464;
+}
+
+.details{
+    margin-bottom: 5px;
+}
+.text{
+    font-size: 16px;
+    color: #333333;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.character{
+    font-size: 10px;
+    color:#666666;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+.tab-text{
+    font-size: 18px;
+}
+.list{
+    padding: 5px;
+}
+
+/*文章教程*/
+.more{
+    color: #cdcdcd;
+}
+.push{
+    background-color: white;
+}
+.push-img{
+    margin-bottom: 10px;
+    margin-top: 2px;
+    margin-left: 8px;
+}
+.push-right{
+    margin-left: 15px;
+    margin-top: 12px;
+
+}
+.push-title{
+    font-size: 16px;
+    color: #333333;
+}
+.push-content{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #888888;
+}
+.push-icon{
+    margin-top: 10px;
+}
+.character{
+    /*margin-left: 5px;*/
+}
+
+
+
+
+.conf-segmented-bar {
+    background-color: #4ac1fa;
+    color: white;
+}
+
+.main-content {
+    background-color: #dddddd;
+    color: #333;
+}
+.friend-logo{
+    width:50;
+    height:50;
+}
+.friend-container{
+    background-color: #fff;
+}
+.friend-container label{
+    /*margin-top: 10;*/
+}
+
+.friend-favorite {
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+@keyframes friend-favorite-selected {
+    from { transform: scale(1, 1) rotate(-120); opacity: 0; animation-timing-function: linear; }
+    50% { transform: scale(2, 2) rotate(-60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-selected {
+    animation-name: friend-favorite-selected;
+    animation-duration: 0.4;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+@keyframes friend-favorite-unselected {
+    from { transform: scale(1, 1) rotate(120); opacity: 0; animation-timing-function: linear; }
+    60% { transform: scale(2, 2) rotate(60); opacity: 0.3; animation-timint-function: ease-in; }
+    to { transform: scale(1, 1) rotate(0); opacity: 1; }
+}
+
+.friend-favorite-unselected {
+    animation-name: friend-favorite-unselected;
+    animation-duration: 0.2;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.friend-time {
+    font-family: "sans-serif";
+    /*font-weight: 700;*/
+    font-size: 12;
+    color: #4ac1fa;
+    margin-top: 16;
+}
+
+.friend-room {
+    font-family: "sans-serif";
+    /*font-weight: 700;*/
+    font-size: 12;
+    color: white;
+    text-transform: uppercase;
+    margin: 16 0 0 4;
+}
+
+.friend-title {
+    font-family: "sans-serif";
+    /*font-weight: 300;*/
+    font-size: 20;
+    color: #c3c3c3;
+    margin-bottom: 16;
+}
+
+.main-label {
+    horizontal-align: center;
+    color: gray;
+    font-size: 18;
+}
+
+.actionBar-view {
+    color: white;
+    font-size: 16;
+    margin-right: 10;
+    background: orange;
+}
+
+.search-image {
+    width: 25;
+    height: 25;
+}
+.bar-image{
+    width: 30;
+    height: 30;
+
+}
+.list_image{
+    width: 30;
+    height: 30;
+}
+
+
+.item{
+    margin-top: 10;
+    margin-left: 13;
+    font-size: 14;
+    color: black;
+}
+.phone_item{
+    margin-left: 13;
+
+    font-size: 12;
+}
+.image_item{
+    margin-top: 8;
+    margin-bottom: 8;
+    width: 40;
+    height: 40;
+    margin-left: 20;
+}
+
+/* ios的样式 */
+.ios_titleSection{
+    width:50%;
+}
+.ios_title_text{
+    text-align: center;
+    height: 45px;
+    width:100%;
+}
+.ios_title_line{
+    height: 2px;
+    width: 75%;
+}
+.ios_line{
+    background-color: rgb(240,240,240);
+    height: 1px;
+    margin-bottom: 12px;
+}
+.ios_details{
+    margin-left: 8px;
+}

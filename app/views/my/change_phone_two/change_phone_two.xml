@@ -1,0 +1,68 @@
+
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar title=""  class="actionBar-view">
+        <GridLayout columns="*,*,*,*" rows="auto" verticalAlignment="top" >
+        <StackLayout orientation="horizontal"  row="0" col="0" 
+                     tap="onBackTap" horizontalAlignment="left">
+                <Image src="res://fh" class="bar-image"/>
+                <Label text="返回"   verticalAlignment="center"/>          
+       </StackLayout>
+
+       <StackLayout  orientation="horizontal" horizontalAlignment="center"  
+                     verticalAlignment="center" row="0" col="1" colspan="2" class="title-label">
+                <Label text="修改手机号(2/2)"  /> 
+        </StackLayout>
+        <StackLayout  orientation="horizontal" horizontalAlignment="right"  
+                     verticalAlignment="center" row="0" col="3" >
+                <Label text="帮助" tap="help" />
+        </StackLayout>
+       </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="修改手机号(2/2)" class="iosActionBar">
+                <NavigationButton text="" />
+
+                <ActionItem ios.position="right">
+                    <label text="帮助"  verticalAlignment="center" class="leftBarBtn" tap="help"></label>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+	
+<StackLayout orientation="vertical" class="mainview">
+
+    <StackLayout class="lines" >
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" class="grid_label">
+    <Label text="新手机号"   verticalAlignment="center" class="name-label"/>  
+    <TextField  hint="请输入手机号" keyboardType="phone" id="newPhone"
+                class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+    </StackLayout> 
+
+    <StackLayout class="line_text" >
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" class="grid_label_one">
+    <Label text="验证码"   verticalAlignment="center" class="name-label"/>
+
+    <GridLayout columns="*,*" rows="auto" >  
+    <TextField  row="0" col="0" hint="请输入验证码" keyboardType="phone" id="code"
+                class="code_input" verticalAlignment="center" horizontalAlignment="left"/>
+    <button id="code_btn" text="获取验证码"  isEnabled="true" row="0" col="1" class= "code-btn" horizontalAlignment="right" tap="get_code"/>
+    </GridLayout> 
+    </StackLayout>
+
+    <StackLayout class="line_text" >
+    </StackLayout>
+         
+    <button text="下一步" class= "grid_label_select" ios:height="44" tap="next_btn"/>
+
+</StackLayout>
+</Page>

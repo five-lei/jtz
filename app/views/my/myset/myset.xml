@@ -1,0 +1,151 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" loaded="loaded">
+
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="个人设置"/>
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="个人设置" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onChange">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="更换头像" verticalAlignment="center"/>
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image id="portrait" src="res://per" class="item-image" stretch="aspectFill" borderRadius="50%"/>
+                <Image  src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <!--<GridLayout columns="*,*" rows="auto" class="items-view">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="更换个人中心背景" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>-->
+
+        <GridLayout columns="*,*" rows="auto" class="items-view" tap="onDriverTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="实名认证" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="items-view" visibility="collapsed">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="真实姓名" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="邓紫琪" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines" visibility="collapsed">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="items-view" visibility="collapsed">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="身份证号" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label text="430725199305050033" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="item-view" tap="onCityTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="服务地区" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Label id="selectedAreaLabel" text="{{selectedAreaText}}" class="text"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="items-view" tap="onServiceTypeTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="服务类型" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*" rows="auto" class="items-view" tap="onIncrementServiceTap">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="增值服务" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="1">
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+
+    </StackLayout>
+</Page>

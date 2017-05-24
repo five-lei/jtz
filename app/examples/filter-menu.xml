@@ -1,0 +1,30 @@
+<drawer:RadSideDrawer
+        xmlns="http://www.nativescript.org/tns.xsd"
+        xmlns:drawer="nativescript-telerik-ui-pro/sidedrawer"
+        id="example-menu-drawer1"
+        drawerLocation="Bottom"
+        loaded="drawerLoaded"
+        drawerClosed="drawerClosed"
+        ios:drawerContentSize="180"
+        android:drawerContentSize="180">
+    <drawer:RadSideDrawer.drawerContent>
+        <GridLayout class="example-menu-background" backgroundColor="white">
+            <StackLayout class="example-menu-stack" verticalAlignment="bottom">
+                
+                <Label  text="不限"  class="example-menu-item" screen="null"  tap="statusTap" textWrap="true" horizontalAlignment="center"/>
+                <StackLayout class="menu-line">
+                </StackLayout>
+                
+                <Label text="上门安装" class="example-menu-item" screen="install" tap="statusTap" horizontalAlignment="center"  />
+
+                <StackLayout class="menu-line">
+                </StackLayout>
+
+                <Label text="送货上门" tap="statusTap" screen="homeDelivery" class="example-menu-item" horizontalAlignment="center"/>
+                <StackLayout class="menu-line" >
+                </StackLayout>
+                <Label text="送货上门并安装" tap="statusTap" screen="homeDeliveryInstall" class="example-menu-item" horizontalAlignment="center"/>
+            </StackLayout>
+        </GridLayout>
+    </drawer:RadSideDrawer.drawerContent>
+</drawer:RadSideDrawer>

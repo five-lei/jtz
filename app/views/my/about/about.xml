@@ -1,0 +1,98 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+
+    <Page.actionBar>
+        <Android>
+        <ActionBar class="actionBar-view">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                             tap="onBackTap">
+                    <Image src="res://fh" class="bar-image"/>
+                    <Label text="返回" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center"
+                             verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="关于我们"/>
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="关于我们" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <ScrollView id="content">
+        <StackLayout orientation="vertical" class="mainview">
+            <Image src="res://yilogo" horizontalAlignment="center" class="logo-img"/>
+            <Label text="For Android V5.0 build127502" verticalAlignment="center"
+                   horizontalAlignment="center" class="hint-label"/>
+            <Image src="res://code" horizontalAlignment="center" class="code-img"/>
+            <Label text="扫描二维码,你的朋友也可以下载家装通APP" verticalAlignment="center"
+                   horizontalAlignment="center" class="code-label"/>
+
+            <GridLayout columns="*,*,*" rows="auto" class="item-view">
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                             android:horizontalAlignment="left" row="0" col="0">
+                    <Label text="检查更新" verticalAlignment="center"/>
+                </StackLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="right"
+                             verticalAlignment="center" row="0" col="2">
+                    <Image src="res://ico_jump_one" class="right-image"/>
+                </StackLayout>
+            </GridLayout>
+
+            <StackLayout class="lines">
+            </StackLayout>
+
+            <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="IntroductionTap">
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                             android:horizontalAlignment="left" row="0" col="0">
+                    <Label text="功能介绍" verticalAlignment="center"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right"
+                             verticalAlignment="center" row="0" col="2">
+                    <Image src="res://ico_jump_one" class="right-image"/>
+                </StackLayout>
+            </GridLayout>
+
+            <StackLayout class="lines">
+            </StackLayout>
+
+            <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="ServiceTap">
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                             android:horizontalAlignment="left" row="0" col="0">
+                    <Label text="服务协议" verticalAlignment="center"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right"
+                             verticalAlignment="center" row="0" col="2">
+                    <Image src="res://ico_jump_one" class="right-image"/>
+                </StackLayout>
+            </GridLayout>
+
+            <StackLayout class="lines">
+            </StackLayout>
+
+            <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="HelpTap">
+                <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                             android:horizontalAlignment="left" row="0" col="0">
+                    <Label text="使用帮助" verticalAlignment="center"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right"
+                             verticalAlignment="center" row="0" col="2">
+                    <Image src="res://ico_jump_one" class="right-image"/>
+                </StackLayout>
+            </GridLayout>
+
+            <Label text="Copyright@2014-2017" verticalAlignment="center"
+                   horizontalAlignment="center" class="about-label"/>
+            <Label text="广东一智通供应链管理有限公司 版权所有" verticalAlignment="center"
+                   horizontalAlignment="center" class="hint-label"/>
+
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,83 @@
+<Page loaded="loaded">
+    <Page.actionBar>
+        <!--导航布局开始-->
+        <Android>
+        <ActionBar title="">
+            <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top"  class="actionBar-view">
+                <StackLayout orientation="horizontal"  row="0" col="0" horizontalAlignment="left" tap="return" >
+                    <Image src="res://fh" height="20" marginRight="5"/>
+                    <Label text="返回"   verticalAlignment="center" class="fh"/>
+                </StackLayout>
+
+                <StackLayout  orientation="horizontal" horizontalAlignment="center"
+                              verticalAlignment="center" row="0" col="1" class="title-label">
+                    <Label text="消息中心"  />
+                </StackLayout>
+
+                <StackLayout  row="0" col="2" orientation="vertical" verticalAlignment="center" class="service" tap="onService">
+                    <Image  src="res://kf" class="icon-img" width="22"/>
+                    <Label text="客服" horizontalAlignment="center" class="top-text"/>
+                </StackLayout>
+            </GridLayout>
+        </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" class="ios_actionBar">
+                <NavigationButton text="首页"/>
+                <ActionItem ios.position="right">
+                    <ActionItem.actionView>
+                        <StackLayout  orientation="vertical" verticalAlignment="center" class="service" tap="onService">
+                            <Image  src="res://kf" class="icon-img" width="22"/>
+                            <Label text="客服" horizontalAlignment="center" class="top-text"/>
+                        </StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>
+                <StackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="消息中心" horizontalAlignment="center" class="ios_title"/>
+                </StackLayout>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <StackLayout orientation="vertical" class="content">
+        <StackLayout class="line1">
+        </StackLayout>
+        <StackLayout orientation="horizontal" height="60" tap="tapMessageDetail">
+            <Image src="res://message" horizontalAlignment="left" verticalAlignment="center" class="image_item" android:borderRadius="360"/>
+            <GridLayout columns="*" rows="*,*">
+                <Label text="系统消息" horizontalAlignment="left" verticalAlignment="center"  class="item" col="0" row="0"/>
+                <Label text="2017/02/14 19:12" horizontalAlignment="right" verticalAlignment="center" ios:class="ios_dateLabel"  android:class="item-right" col="1" row="0"/>
+                <Label text="您好！截止2017年1月22日，您的积分..." horizontalAlignment="left" verticalAlignment="center" ios:class="ios_itemStyle"  android:class="stype_item" col="0" row="1"/>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line">
+        </StackLayout>
+        <StackLayout orientation="horizontal" height="60" tap="tapAccountDetail">
+            <Image src="res://zhanghaobd" horizontalAlignment="left" verticalAlignment="center" class="image_item" android:borderRadius="360"/>
+            <GridLayout columns="*" rows="*,*">
+                <Label text="账户变动" horizontalAlignment="left" verticalAlignment="center"  class="item" col="0" row="0"/>
+                <Label text="账户余额、密码、支付密码变动通知" horizontalAlignment="left" verticalAlignment="center"   class="stype_item" col="0" row="1"/>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line">
+        </StackLayout>
+        <StackLayout orientation="horizontal" height="60" tap="tapTaskDetail">
+            <Image src="res://task_message" horizontalAlignment="left" verticalAlignment="center" class="image_item" android:borderRadius="360"/>
+            <GridLayout columns="*" rows="*,*">
+                <Label text="任务消息" horizontalAlignment="left" verticalAlignment="center"  class="item" col="0" row="0"/>
+                <Label text="2017/02/14 19:12" horizontalAlignment="right" verticalAlignment="center" ios:class="ios_dateLabel"  android:class="item-right" col="1" row="0"/>
+                <Label text="您好！截止2017年1月22日，您的积分..." horizontalAlignment="left" verticalAlignment="center" ios:class="ios_itemStyle"  android:class="stype_item" col="0" row="1"/>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line">
+        </StackLayout>
+        <StackLayout orientation="horizontal" height="60" tap="tapKefuDetail">
+            <Image src="res://kefu_message" horizontalAlignment="left" verticalAlignment="center" class="image_item" android:borderRadius="360"/>
+            <GridLayout columns="*" rows="*,*">
+                <Label text="客服消息" horizontalAlignment="left" verticalAlignment="center"  class="item" col="0" row="0"/>
+                <Label text="在线客服的最新消息" horizontalAlignment="left" verticalAlignment="center"   class="stype_item" col="0" row="1"/>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout class="line">
+        </StackLayout>
+    </StackLayout>
+</Page>

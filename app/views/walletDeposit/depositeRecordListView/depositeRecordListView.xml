@@ -1,0 +1,67 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-telerik-ui-pro/listview"
+      navigatingTo="onNavigatingTo">
+    <Page.actionBar >
+        <Android>
+            <ActionBar class="actionBar-view">
+                <GridLayout columns="*,auto,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap">
+                        <Image src="res://btn_nav_back_click" class="bar-image"/>
+                        <Label text="返回" class="Label_back" />
+
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="已提现账单"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2" >
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+        <ActionBar title="已提现账单" >
+            <NavigationButton text="" />
+        </ActionBar>
+        </ios>
+    </Page.actionBar>
+
+    <lv:RadListView id="listview" class="list-group" items="{{messages}}" itemLoading="{{onItemLoading}}">
+        <!--listView的布局-->
+        <lv:RadListView.listViewLayout>
+            <lv:ListViewLinearLayout scrollDirection="Vertical" />
+        </lv:RadListView.listViewLayout>
+
+        <!--listView的内容-->
+        <lv:RadListView.itemTemplate >
+            <StackLayout class="listContent">
+                <StackLayout class="section" verticalAlignment="center" >
+                    <Label text="{{header}}"  class="headerTitle" visibility="collapse"/>
+                </StackLayout>
+                <GridLayout columns="*,auto" rows="auto" tap="itemClick" wtNo="{{month_wtNo}}">
+                    <StackLayout orientation="vertical" col="0" row="0">
+                        <GridLayout rows="auto" columns="auto,*" class="checkAmount" >
+                            <label text="{{monthLabel}}" row="0" col="0" horizontalAlignment="left" ></label>
+                            <label text="{{accountLabel}}" row="0" col="1" horizontalAlignment="right" ></label>
+                        </GridLayout>
+                        <GridLayout rows="auto" columns="auto,*" class="checkNum">
+                            <label text="{{dateLabel}}" row="0" col="0" horizontalAlignment="left" ></label>
+                            <label text="已提现" row="0" col="1" horizontalAlignment="right" ></label>
+                        </GridLayout>
+                    </StackLayout>
+
+                    <StackLayout col="1" row="0" horizontalAlignment="right" verticalAlignment="center">
+                        <Image src="res://jr2x" col="1" horizontalAlignment="right" class="rightImage"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <StackLayout class="line"></StackLayout>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+
+
+    </lv:RadListView>
+
+</Page>

@@ -1,0 +1,136 @@
+
+/**
+ *
+ */
+
+Page {
+    background-color: white;
+}
+ActionBar{
+    color: black;
+}
+
+.page {
+    background-color: rgb(240, 240, 240);
+    color: #333;
+}
+.color3{
+    color: #333;
+}
+.content{
+    margin-top: 10;
+    background-color: white;
+}
+.con{
+    background-color: white;
+}
+.code_input {
+    background-color: white;
+    border-color: transparent;
+    color: #8A8A8A;
+    text-align: left
+}
+/*第一部分*/
+
+.first-content {
+    background-color: #fff4e7;
+    padding: 10
+}
+
+.time-label {
+    color: #dd3e36;
+}
+
+.consignee {
+    font-size: 16;
+}
+
+.waybill-number {
+    color: #999999;
+    margin-top: 20
+}
+
+
+/*第2部分*/
+
+.second-content {
+    padding:0 10;
+}
+
+.receive-text {
+    color: #999999;
+    margin-top: 20;
+    font-size: 12;
+}
+
+
+/**
+ * 第3部分
+ */
+
+
+/**签收信息*/
+
+.third-content {
+    padding: 5;
+    font-size: 14;
+}
+.third-content .title{
+    font-size: 18;
+}
+
+.third-content image {
+    margin-left: 13;
+}
+.alert-info{
+	font-size: 12;
+	color: #999999;
+}
+.sign-info label {
+    margin-top: 5;
+    font-size: 16;
+}
+
+.sign-info .name {
+    color: #2793fe;
+}
+
+.sign-info .info-item {
+    color: #333333;
+}
+/**
+ * 第四部分
+ */
+.fourth-content{
+    height: 40;
+    font-size:18;
+    color: #999;
+}
+
+/**底部按钮*/
+
+.operate-content {
+    position: absolute;
+    bottom: 0;
+    background-color: #ffffff;
+    font-size: 20;
+    height: 60;
+    vertical-align: middle;
+}
+
+.cancel-btn {
+    background-color: #ffffff;
+    color: #fb8901;
+    padding: 15 30 0 30;
+}
+
+.accept-btn {
+    background-color: #fb8901;
+    color: #ffffff;
+    padding: 15 0 0 0;
+}
+
+
+.ios_imageShow {
+    padding: 0px 0px 8px 0px;
+}

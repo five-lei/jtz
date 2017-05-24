@@ -1,0 +1,100 @@
+﻿
+ActionBar {
+    color: white;
+    font-size: 16
+}
+
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+
+Page { 
+    background-color: rgb(255, 138, 37)
+
+}
+
+.title_view {
+    margin-top: 10;
+    background:#D3D3D3 
+}
+
+.title-label {
+    font-size: 18;
+}
+
+.star-image {
+    height: 18px;
+    width: 18px;
+    margin-left: 5;
+    
+}
+
+.star_page {
+    padding-bottom: 25;
+    padding-top: 30;
+    background-color: rgb(255,138,37);
+    width:100%;
+    color: white;
+}
+
+.bar-image {
+    height:20;
+    margin-right: 5
+}
+
+.mainview {
+    background-color: #eeeeee ;
+}
+
+.item-image {
+    height: 50px;
+    width: 50px;
+    margin-right: 5
+}
+
+.hint-label {
+    color: cornflowerblue
+}
+
+.score_text {
+    font-size: 40
+}
+
+.score {
+    margin-bottom: 7;
+    margin-left: 10
+    
+}
+
+.score_time {
+    margin-top: 7;
+    font-size: 12;
+    
+}
+
+.score_times {
+    margin-left: 5
+}
+
+.item-view {
+    background-color:white;
+    padding-bottom: 15;
+    padding-top: 15;
+    padding-left: 10;
+    padding-right: 10;
+    font-size: 16;
+}
+
+.line {
+    height: 0.5;
+    padding-left: 10;
+    background-color: #D3D3D3 ;
+}
+
+.text {
+   color: cornflowerblue;
+   padding: 10;
+   font-size: 14
+}
+

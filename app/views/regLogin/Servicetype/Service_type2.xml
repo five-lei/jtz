@@ -1,0 +1,64 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" loaded="pageLoaded">
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" style="background-color: rgb(255,138,37);">
+            <StackLayout horizontalAlignment='right' style='margin-right:15;font-size:18;' tap='skip'>
+                <Label text="跳过" color="#FFF15A"/>
+            </StackLayout>
+        </ActionBar>
+        </Android>
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+    <!--<GridLayout columns="*" rows="130,40,auto,40,*,50">-->
+    <GridLayout columns="*" rows="130,40,auto,40,*,50">
+        <StackLayout height="130" style="background-color: rgb(255,138,37);" row="0" col="0">
+            <Label text="多样的技能" color="white" class="information_text"/>
+            <Label text="更能提高你的魅力" color="white" class="information_text1"/>
+        </StackLayout>
+        <Label text="选出你所能维修的类型" color="sandybrown" class="information_text2" row="1" col="0"/>
+        <StackLayout orientation="vertical" row="2" col="0" style="margin-top:15">
+            <WrapLayout orientation="horizontal">
+                <Repeater id="list-view2" items="{{ serviceList }}" >
+                    <Repeater.itemsLayout>
+                        <WrapLayout orientation="horizontal"/>
+                    </Repeater.itemsLayout>
+                    <Repeater.itemTemplate>
+                        <StackLayout orientation="vertical" borderRadius="1" borderWidth="1"
+                                     borderColor="sandybrown" class="{{ selectCondition?'typeSelected':'typeNotSelected' }}"
+                                     tap="{{onSelected}}">
+                            <!--style="background-color: #ff8b00;margin-left:10;height:65;width:80;margin-top:10;color:white"-->
+                            <StackLayout width="20" height="20" verticalAlignment="top" horizontalAlignment="right">
+                                <Image src="res://sc2x" class="{{selectCondition?'visibie':'collapse'}}"/>
+                            </StackLayout>
+                            <Label text="{{serviceType}}" class="information_type"/>
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </WrapLayout>
+
+        </StackLayout>
+
+        <Label text="你是支持返货" color="sandybrown" class="information_text2" row="3" col="0"/>
+
+        <StackLayout orientation="vertical" row="4" col="0">
+
+            <GridLayout columns="*,*,*,*" rows="*,*" class="information_grid" tap="onSelectedImitate" id="returnGoods">
+
+                <StackLayout orientation="vertical" row="0" col="0" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" class="{{selectState?'returnSelected':'returnNotSelected'}}">
+                    <StackLayout width="20" height="20" verticalAlignment="top" horizontalAlignment="right">
+                        <Image src="res://sc2x" tap="{{clear}}" class="{{selectState?'visibie':'collapse'}}"/>
+                    </StackLayout>
+                    <Label text="返货" class="information_type"/>
+                </StackLayout>
+
+            </GridLayout>
+        </StackLayout>
+        <Button text="确定" tap="Next_Home" style="background-color: rgb(255,138,37);" class="information_bt" color="white" row="5"
+                col="0"/>
+    </GridLayout>
+</Page>

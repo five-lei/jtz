@@ -1,0 +1,234 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" loaded="loaded">
+    <Page.actionBar>
+        <Android>
+        <ActionBar title="" style="background-color: #FB8901;">
+            <GridLayout columns="80,*,80" rows="auto" verticalAlignment="top" class="actionBar-view">
+                <StackLayout orientation="horizontal" row="0" col="0" tap="onBackTap" horizontalAlignment="left"
+                            >
+                    <Image src="res://btn_back_normal" class="bar-image"/>
+                    <Label text="我的" verticalAlignment="center"/>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center" row="0"
+                             col="1">
+                    <Label text=""/>
+                </StackLayout>
+                <!--<StackLayout orientation="horizontal" horizontalAlignment="right" verticalAlignment="center" row="0"-->
+                             <!--col="2">-->
+                    <!--<Image src="res://zhuan" class="bar-image" tap='shareFriendInfo'/>-->
+                <!--</StackLayout>-->
+            </GridLayout>
+        </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="" class="iosActionBar">
+                <NavigationButton text=""/>
+
+                <ActionItem ios.position="right">
+                    <Image src="res://zhuan@2x" stretch="none" verticalAlignment="center"></Image>
+                </ActionItem>
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <GridLayout columns="*" rows="150,40,auto,auto,*,50">
+        <StackLayout height="200" android:style="background-color: #F98901;" ios:style="background-color: rgb(255,138,37);" row="0" col="0">
+            <Image src="{{picSource}}" class="head_image" tap="gotoCredentials" id="portrait"/>
+            <Label text="{{masterName}}" color="white" class="friend_name" tap="gotoCredentials" id="master_name"/>
+            <StackLayout orientation="horizontal" tap="gotoMyCredit" id="countStars">
+                <Image src="res://ico_xing_one" class="image_score {{star1?'visible':'collapse'}}"/>
+                <Image src="res://ico_xing_one" height="20" width="20" class="{{star2?'visible':'collapse'}}"/>
+                <Image src="res://ico_xing_one" height="20" width="20" class="{{star3?'visible':'collapse'}}"/>
+                <Image src="res://ico_xing_one" height="20" width="20" class="{{star4?'visible':'collapse'}}"/>
+                <Image src="res://ico_xing_one" height="20" width="20" class="{{star5?'visible':'collapse'}}"/>
+                <Label text="{{rankStar}}" class="text_score" id="text_score"/>
+            </StackLayout>
+        </StackLayout>
+        <Label text="服务类型" class="friend_stype" row="1" col="0"/>
+        <StackLayout orientation="vertical" row="2" col="0">
+                <WrapLayout orientation="horizontal">
+                    <Repeater id="serviceShow" items="{{ serviceList }}">
+                        <Repeater.itemsLayout>
+                            <WrapLayout orientation="horizontal"/>
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                             <StackLayout orientation="vertical" height="60" width="75" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" margin="5 10" margin-right='10' style="background-color: #ff8b00;">
+                                    <Label text="{{serviceName}}" class="information_type"/>
+                                    <GridLayout columns="*,*" rows="*" class="infor_detail_grid">
+                                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                                    margin="2" row="0" col="0" style="background-color: #e87e00;color:white">
+                                            <Label text="{{serviceSetup}}" class="infor_detail"/>
+                                        </StackLayout>
+                                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                                    margin="2" row="0" col="1" style="background-color: #e87e00;color:white">
+                                            <Label text="{{serviceAssign}}" class="infor_detail"/>
+                                        </StackLayout>
+                                    </GridLayout>
+                            </StackLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </WrapLayout>
+<!--e-->
+            <!--<GridLayout columns="*,*,*,*" rows="auto,auto" class="information_grid" tap="Grid_style" id="Grid_style">
+                <StackLayout orientation="vertical" height="60" width="75" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" margin="5" row="0" col="0" style="background-color: #ff8b00;">
+
+                    <Label text="地板" class="information_type"/>
+
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout orientation="vertical" height="60" width="75" borderRadius="1" borderWidth="1"
+                             borderColor="sandybrown" margin="5" row="0" col="1" style="background-color: #ff8b00;">
+                    <Label text="灯具" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout height="60" width="75" borderRadius="1" borderWidth="1" borderColor="sandybrown" margin="5"
+                             row="0" col="2" style="background-color: #ff8b00;">
+                    <Label text="集成吊顶" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout height="60" width="75" borderRadius="1" borderWidth="1" borderColor="sandybrown" margin="5"
+                             row="0" col="3" style="background-color: #ff8b00;">
+                    <Label text="门窗" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout height="60" width="75" borderRadius="1" borderWidth="1" borderColor="sandybrown" margin="5"
+                             row="1" col="0" style="background-color: #ff8b00;">
+                    <Label text="涂料" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout height="60" width="75" borderRadius="1" borderWidth="1" borderColor="sandybrown" margin="5"
+                             row="1" col="1" style="background-color: #ff8b00;">
+                    <Label text="卫浴" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout height="60" width="75" borderRadius="1" borderWidth="1" borderColor="sandybrown" margin="5"
+                             row="1" col="2" style="background-color: #ff8b00;">
+                    <Label text="民用家具" class="information_type"/>
+                    <GridLayout columns="*,*,*" rows="*" class="infor_detail_grid">
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="0" style="background-color: #e87e00;">
+                            <Label text="安" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="1" style="background-color: #e87e00;">
+                            <Label text="配" class="infor_detail"/>
+                        </StackLayout>
+                        <StackLayout height="20" width="20" borderRadius="1" borderWidth="1" borderColor="sandybrown"
+                                     margin="2" row="0" col="2" style="background-color: #e87e00;">
+                            <Label text="返" class="infor_detail"/>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
+            </GridLayout>-->
+        </StackLayout>
+        <StackLayout orientation="horizontal" row="3" col="0" class="view">
+        </StackLayout>
+        <StackLayout orientation="vertical" row="4" col="0">
+            <Label text="服务地区" class="friend_stype"/>
+
+            <GridLayout>
+                <ListView items="{{ groceryList }}" id='addressShow'>
+                    <ListView.itemTemplate >
+                        <StackLayout orientation="vertical" >
+                            <Label text="{{province}}" horizontalAlignment="left" verticalAlignment="center"
+                                   android:class="province" ios:class="ios_province"/>
+                            <Label text="{{city}}" horizontalAlignment="left" verticalAlignment="center" android:class="city"
+                                   ios:class="ios_city" />
+
+                        </StackLayout>
+                    </ListView.itemTemplate>
+
+                </ListView>
+            </GridLayout>
+
+        </StackLayout>
+
+        <Button text="添加好友" tap="addFriends" style="background-color: #fb8901;" class="addfriend_bt" color="white" row="5"
+                col="0" id="whetherAddFriends" class="{{showControl?'visible':'collapse'}}"/>
+    </GridLayout>
+
+</Page>

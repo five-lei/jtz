@@ -1,0 +1,74 @@
+﻿
+Page { background-color: rgb(255,138,37); font-size: 14; }
+
+.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+
+
+.title_text {
+    color: white;
+    font-size: 16
+}
+.title-label {
+    font-size: 18;
+}
+
+.car-name {
+    font-size: 20;
+    color: black
+}
+
+.cars-name {
+    font-size: 16;
+    color: black
+}
+
+.mainview {
+    background-color: white;
+    padding-top: 5;
+    margin-left: 20;
+    margin-right: 20;
+    margin-top: 20;
+    margin-bottom: 50;
+    border-radius:5px;
+}
+
+.item-image {
+    height: 60px;
+    width: 60px;
+    margin-right: 10
+}
+
+
+.items-view {
+    background-color:white;
+    padding-top: 10;
+    padding-right: 15;
+    padding-left: 15;
+    font-size: 16;
+}
+
+.item-view {
+    
+    width: 78%;
+    margin-top: 20;
+    margin-left: 20;
+    margin-right: 20;
+    padding-bottom: 5;
+    padding-top: 5;
+    padding-right: 15;
+    padding-left: 15;
+    border-radius:5px;
+    border-color: rgb(255,138,37);
+    border-width: 1
+}
+
+.code-image {
+    margin-left: 20;
+    margin-right: 20;
+    margin-top: 10;
+}
+
+

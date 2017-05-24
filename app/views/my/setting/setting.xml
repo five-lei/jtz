@@ -1,0 +1,130 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" class="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto">
+                    <StackLayout orientation="horizontal" row="0" col="0" colSpan="2"
+                                 tap="onBackTap" verticalAlignment="center">
+                        <Image src="res://fh" class="bar-image"/>
+                        <Label text="返回" verticalAlignment="center"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1" class="title-label">
+                        <Label text="设置"/>
+
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+
+        <iOS>
+            <ActionBar title="设置" class="iosActionBar">
+                <NavigationButton text="" />
+            </ActionBar>
+        </iOS>
+    </Page.actionBar>
+
+    <StackLayout orientation="vertical" class="mainview">
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onMyset">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="个人设置" verticalAlignment="center"/>
+            </StackLayout>
+
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="2">
+                <Label text="基本信息修改" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onSecurity">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="账户安全" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="2">
+                <Label text="手机号、密码" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <!--<GridLayout columns="*,*,*" rows="auto" class="items-view" tap="onMessage">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="新消息通知" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="2">
+                <Label text="去设置" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*" rows="auto" class="item-view" tap="onFontset">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="字体字号" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="2">
+                <Label text="中" class="hint-label"/>
+                <Image src="res://jr" class="right-image"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>
+
+        <GridLayout columns="*,*,*" rows="auto" class="items-view">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="left"
+                         android:horizontalAlignment="left" row="0" col="0">
+                <Label text="清除缓存" verticalAlignment="center"/>
+            </StackLayout>
+            <StackLayout orientation="horizontal" horizontalAlignment="right"
+                         verticalAlignment="center" row="0" col="2">
+                <Label text="4.5M" class="hint-label"/>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout class="lines">
+        </StackLayout>-->
+
+        <StackLayout orientation="horizontal" ios:horizontalAlignment="center"
+                     android:horizontalAlignment="center" class="exit-btn" tap="onExitLogin">
+            <Label text="退出登录" class="text" verticalAlignment="center"/>
+            <StackLayout orientation="vertical" verticalAlignment="center" class="person">
+            </StackLayout>
+        </StackLayout>
+
+        <!--<StackLayout orientation="horizontal" ios:horizontalAlignment="center"
+                     android:horizontalAlignment="center" class="exit-btn" tap="onTap">
+            <Label text="打开喵师傅" class="text" verticalAlignment="center"/>
+            <StackLayout orientation="vertical" verticalAlignment="center" class="person">
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" ios:horizontalAlignment="center"
+                     android:horizontalAlignment="center" class="exit-btn" tap="onMap">
+            <Label text="打开导航" class="text" verticalAlignment="center"/>
+            <StackLayout orientation="vertical" verticalAlignment="center" class="person">
+            </StackLayout>
+        </StackLayout>-->
+
+    </StackLayout>
+</Page>

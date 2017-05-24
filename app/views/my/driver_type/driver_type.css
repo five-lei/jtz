@@ -1,0 +1,85 @@
+﻿.iosActionBar{
+    background-color: rgb(255,138,37);
+    color: white;
+}
+
+.mainview {
+    background-color:white;
+    height: 100%
+}
+ActionBar{
+    color: white;
+}
+
+
+Page { background-color: rgb(255,138,37) }
+
+.actionBar-view {
+    
+    color: white;
+    font-size: 16;
+
+}
+
+
+.title-label {
+    font-size: 18;
+}
+
+.item-view {
+    margin-top: 20;
+    margin-left: 20;
+    margin-right: 20;
+    background-color: gray;
+    font-size: 16
+}
+
+.items-view {
+    margin-top: 20;
+}
+
+.grid_label_select { 
+    background-color:orange; 
+    border-radius:2px;
+    border-color:orange;
+    border-width: 1px;
+    font-size: 16;
+    color: white;
+ 
+    padding: 10
+    
+}
+
+.list_page {
+   height: 85%;
+   padding-top: 20
+  
+}
+
+.btn_page {
+   height: 15%;
+   font-size: 16
+    
+}
+
+.item-text {
+    color: cornflowerblue
+   
+}
+
+.item-img{
+    height: 140
+}
+
+.car-text-one {
+    color: black;
+    margin-right: 30
+   
+}
+
+.car-text-two {
+    color: white;
+    margin-left: 30
+   
+}
+

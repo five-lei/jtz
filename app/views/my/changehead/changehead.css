@@ -1,0 +1,49 @@
+﻿.mainview {
+    background-color:#eeeeee;
+    
+}
+
+.iosActionBar{
+    background-color: white;
+    color: black;
+}
+
+.actionBar-view {
+    color: orange;
+    font-size: 16;
+}
+
+Page { 
+    background-color: white
+}
+
+.title-label {
+    font-size: 18;
+    color: black;
+}
+
+
+
+.bar-image {
+    height:20;
+    margin-right: 5
+}
+
+.head-image {
+    height: 340;
+    margin-bottom: 30
+}
+
+
+.change_btn { 
+    margin-left: 20;
+    margin-right: 20;
+    margin-bottom: 10;
+    background-color: white; 
+    border-radius:2px;
+    border-color: #dddddd;
+    border-width: 1px;
+    font-size: 16;
+    color: black;
+    padding: 10
+}

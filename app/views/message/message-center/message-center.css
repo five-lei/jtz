@@ -1,0 +1,74 @@
+Page{
+    background-color: white;
+}
+.fh{
+    font-size: 16px;
+    color:#FB8901;
+}
+.title-label{
+    color: black;
+    font-size: 18px;
+}
+.top-text{
+    font-size: 10px;
+    color:#FB8901;
+}
+.service{
+    margin-right: -70px;
+}
+.line{
+    height: 1px;
+    background-color: rgb(240,240,240);
+    margin-top: 10px;
+}
+.line1{
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+
+.item{
+
+    margin-left: 12px;
+    margin-top: 10px;
+    padding: 1px;
+    font-size: 16px;
+    color: black;
+}
+.stype_item{
+    margin-left: 12px;
+    padding: 1px;
+    font-size: 12px;
+
+}
+.image_item{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+.item-right{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.ios_actionBar{
+    color: #fb8901;
+    background-color: white;
+}
+.ios_title{
+    color: black;
+}
+.ios_dateLabel{
+    color: dimgray;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.ios_itemStyle{
+    margin-left: 12px;
+    padding: 1px;
+    font-size: 12px;
+    color: dimgray;
+}

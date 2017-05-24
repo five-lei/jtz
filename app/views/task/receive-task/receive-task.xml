@@ -1,0 +1,112 @@
+<examples:SignTypeSelectedPage xmlns="http://schemas.nativescript.org/tns.xsd"
+                         xmlns:lv="nativescript-telerik-ui-pro/listview"
+                         loaded="pageLoaded"
+                         xmlns:examples="views/task/receive-task/filter-base-page">
+    <Page.actionBar>
+        <Android>
+            <ActionBar title="" cssClass="actionBar-view">
+                <GridLayout columns="*,*,*" rows="auto" verticalAlignment="top">
+                    <StackLayout orientation="horizontal" row="0" col="0"
+                                 tap="onBackTap" horizontalAlignment="left">
+                        <Image src="res://quxiao2x" class="bar-image-l"/>
+                    </StackLayout>
+
+                    <StackLayout orientation="vertical" horizontalAlignment="center"
+                                 verticalAlignment="center" row="0" col="1">
+                        <Label text="确认签收" class="action-title"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" horizontalAlignment="right"
+                                 verticalAlignment="center" row="0" col="2">
+                    </StackLayout>
+                </GridLayout>
+            </ActionBar>
+        </Android>
+        <ios>
+            <ActionBar title="" cssClass="iosActionBar">
+                <NavigationButton text="返回"/>
+                <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center">
+                    <Label text="确认签收" horizontalAlignment="center" class="titleLabel"/>
+                </StackLayout>
+            </ActionBar>
+        </ios>
+    </Page.actionBar>
+    <DockLayout width="100%" height="100%" stretchLastChild="false" style.backgroundColor="#eee" orientation="vertical">
+        <StackLayout dock="top" height="90%">
+            <StackLayout class="gray-line"></StackLayout>
+            <ScrollView>
+                <StackLayout class="page">
+                    <GridLayout rows="auto,auto" columns="auto,*" class="first-content">
+                        <Label text="{{'收货人: '+receivePersonName+'（'+receivePersonPhone+'）'}}" row="0" col="0"
+                               horizontalAlignment="center"
+                               class="consignee"
+                               textWrap="true"/>
+                        <Label text="{{'运单号：'+waybillId}}" row="1" col="0" class="waybill-number" textWrap="true"/>
+                        <!--<Label text="{{'剩余时效：'+lessTime}}" row="0" col="1" class="time-label"
+                               horizontalAlignment="right"/>-->
+                    </GridLayout>
+                    <GridLayout rows="auto,auto" columns="*,auto" class="content second-content"  id="moreSelectedType">
+                        <Label text="正常签收" row="0" col="0" class="consignee" textWrap="true" id="sign_text"/>
+                        <Label text="签收时确认订单是否为正常签收还是异常签收" row="1" col="0" class="receive-text" textWrap="true"/>
+                        <Image src="res://jr2x" rowSpan="2" col="1" android:stretch="none" cssClass="img22"
+                               verticalAlignment="center"
+                               orizontalAlignment="right"></Image>
+                    </GridLayout>
+                    <StackLayout class="content third-content">
+                        <GridLayout rows="auto" columns="auto,*" cssClass="sign-title">
+                            <label text="签收信息" row="0" col="0" class="title" verticalAlignment="top"></label>
+                            <label text="最多6张" row="0" col="1" verticalAlignment="center" class="alert-info"></label>
+                        </GridLayout>
+                        <!--图片信息-->
+                        <FlexboxLayout alignContent="flex-start" flexWrap="wrap" cssClass="image-info">
+                            <Repeater id="list-view" items="{{ imageItems }}">
+                                <Repeater.itemsLayout>
+                                    <WrapLayout orientation="horizontal"/>
+                                </Repeater.itemsLayout>
+                                <Repeater.itemTemplate>
+                                    <StackLayout orientation="horizontal" class="ios_imageShow"
+                                                 horizontalAlignment="left" id="pic_container">
+                                        <AbsoluteLayout>
+                                            <Image src="{{url}}" imgId="{{id}}" verticalAlignment="center" class="ios_image"  tap="onPicTap"
+                                                   stretch="aspectFill"
+                                                   height="80" width="75"/>
+                                            <Image src="res://san2x" imgId="{{id}}" height="15" left="60" tap="onPictureDelete"
+                                                   visibility="{{url=='res://tjtp2x'?'collapse':'visible'}}"/>
+                                        </AbsoluteLayout>
+                                    </StackLayout>
+                                </Repeater.itemTemplate>
+                                <WrapLayout orientation="horizontal" class="ios_imageShow">
+                                    <Image src="res://tjtp2x" verticalAlignment="center" class="ios_image"
+                                           stretch="aspectFill"
+                                           height="80" width="75"/>
+                                </WrapLayout>
+                            </Repeater>
+                        </FlexboxLayout>
+                        <StackLayout visibility="collapse" id="abnormal-description">
+                        <Label class="line"/>
+                            <!--<Label text="请输入异常描述（必填）" class="title-input"/>-->
+                            <TextView hint="请输入异常描述（必填）" id="input_view" class="text-input" textWrap="true"/>
+                            <StackLayout backgroundColor="white">
+                                <StackLayout orientation="horizontal" horizontalAlignment="right" marginRight="10">
+                                    <Label text="0" width="30" class="import_number" id="import_number"/>
+                                    <Label text="/"/>
+                                    <Label text="120" id="residue_number" width="30"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <GridLayout rows="*" columns="auto,*" class="content fourth-content">
+                        <Label text="签收人" row="0" col="0" class="margin-left-10" verticalAlignment="center"
+                               textWrap="true"/>
+                        <Label text="{{sign_up_person}}" row="0" col="1" class="margin-left-10 color3"
+                               verticalAlignment="center"
+                               textWrap="true"/>
+                    </GridLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <StackLayout class="accept-btn" tap="signeSubmit" dock="bottom" height="10%" verticalAlignment="center">
+            <Label text="确认签收" horizontalAlignment="center" verticalAlignment="center"></Label>
+        </StackLayout>
+    </DockLayout>
+</examples:SignTypeSelectedPage>
