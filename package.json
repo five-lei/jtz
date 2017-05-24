@@ -1,0 +1,50 @@
+{
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "readme": "NativeScript Application",
+  "repository": "<fill-your-repository-here>",
+  "nativescript": {
+    "id": "org.nativescript.Jztong",
+    "tns-ios": {
+      "version": "2.5.0"
+    },
+    "tns-android": {
+      "version": "2.5.0"
+    }
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "nativescript-ali": "file:D:\\project\\sdk-ali",
+    "nativescript-background-http": "^3.0.0",
+    "nativescript-barcodescanner": "^2.4.1",
+    "nativescript-cache": "^1.0.0",
+    "nativescript-camera": "0.0.8",
+    "nativescript-contacts": "^1.5.0",
+    "nativescript-dialog": "^0.1.0",
+    "nativescript-imagepicker": "^3.0.0",
+    "nativescript-keyboardshowing": "^1.0.0",
+    "nativescript-materialdropdownlist": "^1.0.15",
+    "nativescript-permissions": "^1.2.3",
+    "nativescript-phone": "^1.2.4",
+    "nativescript-platform": "^1.1.0",
+    "nativescript-slides": "^2.2.8",
+    "nativescript-social-share": "^1.3.2",
+    "nativescript-telerik-ui-pro": "^1.6.1",
+    "nativescript-theme-core": "~1.0.2",
+    "nativescript-timedatepicker": "^1.1.1",
+    "nativescript-toasts": "^1.0.3",
+    "nativescript-videoplayer": "^2.4.0",
+    "nativescript-webview-interface": "^1.4.1",
+    "tns-core-modules": "^2.5.2",
+    "tns-core-modules-snapshot": "2.5.1-5.5.372.32"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-traverse": "6.4.5",
+    "babel-types": "6.4.5",
+    "babylon": "6.4.5",
+    "lazy": "1.0.11",
+    "nativescript-dev-android-snapshot": "^0.*.*"
+  }
+}
